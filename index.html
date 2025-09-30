@@ -1,467 +1,263 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Samriddhi – Tailoring MVP Demo (Offline)</title>
-
-  <!-- =========================
-       STYLES (Design)
-       ========================= -->
-  <style>
-    :root{ --bg:#f6f7f9; --card:#ffffff; --text:#0f172a; --muted:#64748b; --brand:#166534; --brand-2:#22c55e; --accent:#e2f8ea }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text)}
-    header{position:sticky;top:0;z-index:10;background:var(--card);border-bottom:1px solid #e5e7eb}
-    .nav{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 16px}
-    .brand{display:flex;gap:10px;align-items:center}
-    .logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));display:grid;place-items:center;color:#fff;font-weight:700}
-    .lang{display:flex;gap:8px}
-    .chip{border:1px solid #e5e7eb;background:#fff;padding:6px 10px;border-radius:999px;cursor:pointer}
-    .chip.active{background:var(--accent);border-color:#86efac}
-    main{max-width:1100px;margin:18px auto;padding:0 16px}
-    .grid{display:grid;grid-template-columns:1fr;gap:16px}
-    @media(min-width:900px){.grid{grid-template-columns:2fr 1fr}}
-    .card{background:var(--card);border:1px solid #e5e7eb;border-radius:16px;box-shadow:0 6px 16px rgba(16,24,40,.04);padding:16px}
-    .title{font-size:20px;font-weight:700;margin:0 0 8px}
-    .muted{color:var(--muted)}
-    .btn{appearance:none;border:0;background:var(--brand);color:#fff;padding:10px 14px;border-radius:10px;font-weight:600;cursor:pointer}
-    .btn.secondary{background:#0f172a0d;color:#0f172a;border:1px solid #e5e7eb}
-    .row{display:flex;gap:10px;flex-wrap:wrap}
-    label{font-size:14px;color:var(--muted)}
-    input,select,textarea{width:100%;padding:10px;border:1px solid #e5e7eb;border-radius:10px;background:#fff}
-    .list{display:flex;flex-direction:column;gap:8px}
-    .lesson{padding:10px;border:1px solid #e5e7eb;border-radius:10px;display:flex;justify-content:space-between;align-items:center;cursor:pointer}
-    .pill{padding:4px 8px;border-radius:999px;background:#f1f5f9;color:#0f172a;font-size:12px}
-    .stat{display:flex;flex-direction:column;border:1px solid #e5e7eb;padding:12px;border-radius:12px}
-    .k{font-size:12px;color:var(--muted)}
-    .v{font-size:18px;font-weight:700}
-    .hidden{display:none}
-    .video{width:100%;aspect-ratio:16/9;border-radius:12px;border:1px solid #e5e7eb}
-    .q{padding:10px;border:1px solid #e5e7eb;border-radius:10px;margin:8px 0}
-    .footer-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-    details{border:1px solid #e5e7eb;border-radius:12px;padding:10px;background:#fff}
-    summary{cursor:pointer;font-weight:700}
-    .sub{margin:8px 0 0 12px;display:flex;flex-direction:column;gap:8px}
-    .right{display:flex;gap:8px;align-items:center}
-    .link{color:var(--brand);text-decoration:none;font-weight:600}
-    .toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:#111827;color:#fff;padding:10px 14px;border-radius:10px;display:none}
-    .table{width:100%;border-collapse:collapse}
-    .table th,.table td{border:1px solid #e5e7eb;padding:8px;text-align:left}
-    .test-chip{display:inline-block;padding:4px 8px;border-radius:999px;background:#f3f4f6;border:1px solid #e5e7eb;font-size:12px}
-  </style>
+  <title>Samriddhi</title>
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-  <header>
-    <div class="nav">
-      <div class="brand">
-        <div class="logo">S</div>
-        <div>
-          <div style="font-weight:800">Samriddhi</div>
-          <div class="muted" style="font-size:12px">Tailoring Program – Empowering Rural Women</div>
-        </div>
+  <!-- NAV -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand-left" onclick="location.hash='#/home'">
+        <div class="logo-square"><span>◴</span></div>
+        <div class="brand-text"><span class="brand-strong">Samriddhi</span></div>
       </div>
-      <div class="right">
-        <a href="#/dashboard" class="link" id="navDashboard">Dashboard</a>
-        <a href="#/toolkit" class="link">Toolkit</a>
-        <a href="#/downloads" class="link">Downloads</a>
-        <div class="lang">
-          <div class="chip" id="lang-en">EN</div>
-          <div class="chip" id="lang-mr">MR</div>
-        </div>
-      </div>
+      <nav class="nav-right">
+        <a class="nav-link" href="#/modules">Programs</a>
+        <a class="nav-link" href="#/banking">Banking <span class="chip-new">NEW</span></a>
+        <a class="nav-link" href="#/dashboard">Toolkit</a>
+        <button id="btnOpenLogin" class="btn login-pill">Login/Register</button>
+      </nav>
     </div>
   </header>
 
-  <main>
-    <!-- Login / Registration -->
-    <section id="page-login" class="card">
-      <h2 class="title">Signup Form</h2>
-      <div class="row" style="justify-content:center;gap:20px;margin-bottom:10px">
-        <button class="btn" id="tabLogin">Login</button>
-        <button class="btn secondary" id="tabSignup">Signup</button>
-      </div>
-
-      <!-- Login -->
-      <div id="loginForm">
-        <label>Email Address</label>
-        <input id="loginEmail" type="email" placeholder="you@example.com"/>
-        <label>Password</label>
-        <input id="loginPassword" type="password" placeholder="••••••••"/>
-        <div class="footer-actions">
-          <button class="btn" id="btnLogin">Login</button>
+  <!-- HOME -->
+  <main class="container" id="page-home">
+    <section class="hero card">
+      <div class="hero-text">
+        <h1>Grow your tailoring business with confidence</h1>
+        <p class="muted">
+          Samriddhi offers practical video lessons, simple calculators and access to partner
+          banking products—designed for women entrepreneurs in small towns and villages.
+        </p>
+        <div class="row gap">
+          <button class="btn primary" id="btnStart">Get Started</button>
+          <a class="btn ghost" href="#/modules">Browse Programs</a>
         </div>
       </div>
-
-      <!-- Signup -->
-      <div id="signupForm" class="hidden">
-        <label>Email Address</label>
-        <input id="signupEmail" type="email" placeholder="you@example.com"/>
-        <label>Password</label>
-        <input id="signupPassword" type="password" placeholder="••••••••"/>
-        <label>Confirm Password</label>
-        <input id="signupConfirm" type="password" placeholder="••••••••"/>
-        <div class="footer-actions">
-          <button class="btn" id="btnSignup">Signup</button>
-        </div>
-      </div>
+      <div class="hero-art"></div>
     </section>
-
-    <!-- Intake -->
-    <section id="page-intake" class="card hidden">
-      <h2 class="title" data-i18n="intake_title">Your Details</h2>
-      <div class="row">
-        <div style="flex:1;min-width:220px">
-          <label data-i18n="literacy_label">Financial literacy level</label>
-          <select id="literacy">
-            <option value="beginner" data-i18n="l_beginner">Beginner</option>
-            <option value="intermediate" data-i18n="l_intermediate">Intermediate</option>
-            <option value="advanced" data-i18n="l_advanced">Advanced</option>
-          </select>
-        </div>
-        <div style="flex:1;min-width:220px">
-          <label>Chosen business</label>
-          <input value="Tailoring" disabled />
-        </div>
+    <section class="features">
+      <div class="feature card">
+        <h3>Learn by doing</h3>
+        <p class="muted">Short, structured lessons in local languages with hands‑on activities.</p>
       </div>
-
-      <div class="card" style="border-style:dashed;margin-top:12px">
-        <div class="title" style="font-size:16px" data-i18n="quiz_fin_title">Financial Literacy Check (10 Qs)</div>
-        <div id="fin-quiz"></div>
+      <div class="feature card">
+        <h3>Bank with ease</h3>
+        <p class="muted">Open accounts and explore loans with our small‑finance bank partners.</p>
       </div>
-
-      <div class="footer-actions">
-        <button class="btn" id="btnSaveIntake" data-i18n="btn_continue">Save & Continue</button>
-      </div>
-    </section>
-
-    <!-- Dashboard -->
-    <section id="page-dashboard" class="grid hidden">
-      <div class="card">
-        <h2 class="title">Your Tailoring Curriculum</h2>
-        <p class="muted">Modules → submodules → lessons. Click a lesson to start.</p>
-        <div id="moduleList" class="list"></div>
-      </div>
-      <div class="card">
-        <div class="title" style="font-size:18px" data-i18n="stats">Your Stats</div>
-        <div class="row" style="margin-top:8px">
-          <div class="stat"><span class="k" data-i18n="k_hours">Watch time</span><span class="v" id="statWatch">0h</span></div>
-          <div class="stat"><span class="k" data-i18n="k_complete">Lessons completed</span><span class="v" id="statDone">0</span></div>
-          <div class="stat"><span class="k" data-i18n="k_score">Avg quiz score</span><span class="v" id="statScore">–</span></div>
-        </div>
-        <div id="testStatus" class="muted" style="margin-top:8px"></div>
-      </div>
-    </section>
-
-    <!-- Lesson Player -->
-    <section id="page-lesson" class="grid hidden">
-      <div class="card">
-        <div class="row" style="justify-content:space-between;align-items:center">
-          <h2 class="title" id="lessonTitle">Lesson</h2>
-          <a class="link" href="#/dashboard">⟵ Back</a>
-        </div>
-        <iframe id="lessonVideo" class="video" src="" title="lesson" allowfullscreen></iframe>
-        <div class="row" style="gap:8px">
-          <span class="pill" id="lessonTrack">Tailoring</span>
-          <span class="pill" id="lessonDuration">15 min</span>
-        </div>
-        <div class="card" style="margin-top:12px">
-          <div class="title" style="font-size:16px">Quiz</div>
-          <div id="lessonQuiz"></div>
-          <button class="btn" id="btnSubmitQuiz">Submit Quiz</button>
-        </div>
-      </div>
-      <div class="card">
-        <div class="title" style="font-size:18px">Simulation</div>
-        <p class="muted">Try numbers for your tailoring business.</p>
-        <div id="simForm"></div>
-        <div id="simOut" class="card" style="margin-top:10px;background:#fafafa"></div>
-      </div>
-    </section>
-
-    <!-- Toolkit -->
-    <section id="page-toolkit" class="card hidden">
-      <h2 class="title">Business Toolkit</h2>
-      <div class="row">
-        <div style="flex:1;min-width:200px">
-          <label>Type</label>
-          <select id="tkType">
-            <option value="income">Income</option>
-            <option value="expense">Expense</option>
-            <option value="inventory">Inventory</option>
-          </select>
-        </div>
-        <div style="flex:1;min-width:200px">
-          <label>Amount (₹)</label>
-          <input id="tkAmount" type="number" placeholder="0" />
-        </div>
-        <div style="flex:2;min-width:220px">
-          <label>Note</label>
-          <input id="tkNote" placeholder="e.g., Sold 5 blouses"/>
-        </div>
-      </div>
-      <div class="footer-actions">
-        <button class="btn" id="btnAddTk">Add Entry</button>
-        <button class="btn secondary" id="btnExportTk">Export CSV</button>
-      </div>
-      <div style="margin-top:12px;overflow:auto">
-        <table class="table" id="tkTable"><thead><tr><th>Date</th><th>Type</th><th>Amount</th><th>Note</th></tr></thead><tbody></tbody></table>
-      </div>
-    </section>
-
-    <!-- Downloads -->
-    <section id="page-downloads" class="card hidden">
-      <h2 class="title">Download Templates</h2>
-      <p class="muted">Printable/CSV toolkits to use offline or share on WhatsApp.</p>
-      <div class="list">
-        <div class="lesson">
-          <div><strong>Cashbook (CSV)</strong><div class="muted">Date, Description, Income, Expense, Balance</div></div>
-          <button class="btn" onclick="downloadCSV('cashbook')">Download</button>
-        </div>
-        <div class="lesson">
-          <div><strong>Inventory (CSV)</strong><div class="muted">Item, Qty, Unit Cost, Total</div></div>
-          <button class="btn" onclick="downloadCSV('inventory')">Download</button>
-        </div>
-        <div class="lesson">
-          <div><strong>Price List (CSV)</strong><div class="muted">Product, Cost, Margin %, Selling Price</div></div>
-          <button class="btn" onclick="downloadCSV('pricelist')">Download</button>
-        </div>
+      <div class="feature card">
+        <h3>Operate smart</h3>
+        <p class="muted">Track costs, set prices, and plan profit using built‑in tools.</p>
       </div>
     </section>
   </main>
 
-  <div class="toast" id="toast">Saved!</div>
+  <!-- LOGIN (phone only) -->
+  <main class="container hidden" id="page-login">
+    <section class="login card">
+      <h2>What's your mobile number?</h2>
+      <p class="muted">Please enter your Aadhaar-linked mobile number</p>
+      <div class="phone-input">
+        <div class="phone-cc">+91</div>
+        <input id="phoneNumber" inputmode="numeric" pattern="[0-9]*" maxlength="10" placeholder="0000000000"/>
+      </div>
+      <p class="tiny muted">By proceeding, you agree to <a href="#">T&amp;C</a> &amp; <a href="#">Privacy Policy</a></p>
+      <button id="btnProceedPhone" class="btn primary wide">Proceed</button>
+      <p class="tiny muted">Demo mode: any 10‑digit number will continue.</p>
+    </section>
+  </main>
 
-  <!-- =========================
-       APP SCRIPT (Logic)
-       ========================= -->
+  <!-- MODULES (recommendation style list) -->
+  <main class="container hidden" id="page-modules">
+    <section class="modules-grid">
+      <aside class="left-rail card">
+        <div class="rail-header">
+          <span class="crumb">Home</span> / <span class="crumb strong">Programs</span>
+        </div>
+        <ol class="steps">
+          <li class="done">Pick a track</li>
+          <li class="done">Set your goals</li>
+          <li class="active">Review recommended content</li>
+        </ol>
+        <button class="btn ghost small" id="btnExitGuide">Go to Dashboard</button>
+      </aside>
+      <section class="recos card">
+        <div class="recos-head">
+          <h2>Recommended course content</h2>
+          <div class="save-indicator">Saved • Total length: <span id="totalLen">0m</span></div>
+        </div>
+        <div id="moduleList" class="module-sections"></div>
+      </section>
+    </section>
+  </main>
+
+  <!-- BANKING -->
+  <main class="container hidden" id="page-banking">
+    <section class="bank-wrap">
+      <div class="bank-hero card">
+        <img class="bank-img" alt="Bank" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjYwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB4Mj0iMSIgeTE9IjAiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzE2YTM0YSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMyMmM1NWUiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0idXJsKCNnKSIvPgogIDxnIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmaWxsPSIjZmZmZmZmIiBmb250LXNpemU9IjY0Ij4KICAgIDx0ZXh0IHg9IjYwIiB5PSIxMTAiPlNBTVJJRERISSBCQU5LSU5HPC90ZXh0PgogIDwvZz4KICA8ZyBmaWxsPSIjZmZmZmZmIj4KICAgIDxyZWN0IHg9IjcwIiB5PSIxNjAiIHdpZHRoPSI0MjAiIGhlaWdodD0iMzAwIiByeD0iMTYiIG9wYWNpdHk9IjAuMTUiLz4KICAgIDxyZWN0IHg9IjUyMCIgeT0iMTYwIiB3aWR0aD0iNDIwIiBoZWlnaHQ9IjMwMCIgcng9IjE2IiBvcGFjaXR5PSIwLjE1Ii8+CiAgICA8cmVjdCB4PSI5NzAiIHk9IjE2MCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIzMDAiIHJ4PSIxNiIgb3BhY2l0eT0iMC4xNSIvPgogIDwvZz4KPC9zdmc+"/>
+        <aside class="calc card">
+          <h3 class="calc-title">Fixed Deposit Calculator</h3>
+          <div class="grid2">
+            <label>Amount (₹)<input id="invAmount" type="number" value="100000"/></label>
+            <label>Sr. Citizen
+              <select id="srCitizen"><option>No</option><option>Yes</option></select>
+            </label>
+          </div>
+          <label>Interest rate and tenure
+            <select id="tenurePick">
+              <option value="60|8.2">5Y (8.2%)</option>
+              <option value="36|7.6">3Y (7.6%)</option>
+              <option value="12|7.0">1Y (7.0%)</option>
+            </select>
+          </label>
+          <div class="facts">
+            <div class="fact"><span>Investment amount</span><strong id="fInv">₹1,00,000</strong></div>
+            <div class="fact"><span>Compounding</span><strong>Quarterly</strong></div>
+            <div class="fact"><span>FD rate applicable</span><strong id="fRate">8.2%</strong></div>
+            <div class="fact"><span>FD tenure</span><strong id="fTenure">5Y</strong></div>
+            <div class="fact"><span>Maturity amount</span><strong id="fMaturity">₹—</strong></div>
+          </div>
+          <button id="btnOpenAcc" class="btn primary wide">Open account (demo)</button>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- DASHBOARD -->
+  <main class="container hidden" id="page-dashboard">
+    <section class="card">
+      <h2>Welcome to your dashboard</h2>
+      <p class="muted">You're logged in (demo session). Explore <a href="#/modules">programs</a> or go to <a href="#/banking">banking</a>.</p>
+    </section>
+  </main>
+
+  <footer class="tiny muted center">© Samriddhi</footer>
+
   <script>
-    // ===== Utilities =====
-    const toast = (msg)=>{const t=document.getElementById('toast');t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',1800)};
+    // Helpers
+    const $ = (s)=>document.querySelector(s);
+    const $$ = (s)=>document.querySelectorAll(s);
 
-    // ===== Router =====
-    const routes=['login','intake','dashboard','lesson','toolkit','downloads'];
-    function go(page){routes.forEach(r=>document.getElementById('page-'+r).classList.add('hidden'));document.getElementById('page-'+page).classList.remove('hidden');location.hash='#/'+page}
-    window.addEventListener('hashchange',()=>{const seg=location.hash.replace('#/','')||'login';if(routes.includes(seg))go(seg)});
-    if(!location.hash) go('login'); else go(location.hash.replace('#/',''));
+    // Client-side routes
+    const pages = ['home','login','modules','banking','dashboard'];
+    function show(page){
+      pages.forEach(p=>document.querySelector('#page-'+p)?.classList.add('hidden'));
+      document.querySelector('#page-'+page)?.classList.remove('hidden');
+      window.location.hash = '#/'+page;
+    }
+    window.addEventListener('hashchange', ()=>{
+      const p = location.hash.replace('#/','') || 'home';
+      if(pages.includes(p)) show(p);
+    });
 
-    // ===== i18n (EN + MR minimal) =====
-    const dict={
-      en:{login_title:'Login / Register',login_sub:'Use your phone number to get started.',btn_getotp:'Get OTP',btn_verify:'Verify & Continue',intake_title:'Your Details',literacy_label:'Financial literacy level',l_beginner:'Beginner',l_intermediate:'Intermediate',l_advanced:'Advanced',quiz_fin_title:'Financial Literacy Check (10 Qs)',btn_continue:'Save & Continue',stats:'Your Stats',k_hours:'Watch time',k_complete:'Lessons completed',k_score:'Avg quiz score'},
-      mr:{login_title:'लॉगिन / नोंदणी',login_sub:'सुरू करण्यासाठी तुमचा फोन क्रमांक वापरा.',btn_getotp:'ओटीपी मिळवा',btn_verify:'तपासा व पुढे जा',intake_title:'तुमची माहिती',literacy_label:'आर्थिक साक्षरतेची पातळी',l_beginner:'प्राथमिक',l_intermediate:'मध्यम',l_advanced:'उच्च',quiz_fin_title:'आर्थिक साक्षरता चाचणी (१० प्रश्न)',btn_continue:'जतन करा व पुढे जा',stats:'तुमची आकडेवारी',k_hours:'पाहण्याचा वेळ',k_complete:'पूर्ण धडे',k_score:'सरासरी क्विझ गुण'}
+    // CTA -> Phone login
+    document.querySelector('#btnStart').onclick = ()=> show('login');
+    document.querySelector('#btnOpenLogin').onclick = ()=> show('login');
+
+    // Phone-only login (demo)
+    document.querySelector('#btnProceedPhone').onclick = ()=>{
+      const ph = (document.querySelector('#phoneNumber').value || '').replace(/\D/g,'');
+      if(ph.length !== 10){ alert('Enter a valid 10-digit mobile number'); return; }
+      localStorage.setItem('sam_session', JSON.stringify({ phone: ph }));
+      show('modules');
     };
-    function applyLang(lang){localStorage.setItem('lang',lang);document.getElementById('lang-en').classList.toggle('active',lang==='en');document.getElementById('lang-mr').classList.toggle('active',lang==='mr');document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');el.textContent=(dict[lang]&&dict[lang][k])||el.textContent;})}
-    document.getElementById('lang-en').onclick=()=>applyLang('en');
-    document.getElementById('lang-mr').onclick=()=>applyLang('mr');
-    applyLang(localStorage.getItem('lang')||'en');
 
-    // ===== Catalog / Lessons / Quiz =====
-    const catalog={
-      tailoring:{title:'Tailoring Program',modules:[
-        {id:'m1',title:'Foundation Skills',submodules:[
-          {id:'m1s1',title:'Tools & Safety',lessons:[
-            {id:'t101',title:'Know Your Sewing Machine',yt:'i1EG-MKy4so',duration:8,quiz:[{id:'q1',text:'What controls stitch speed?',opts:['Foot pedal','Handwheel','Bobbin'],ans:0}],sim:null},
-            {id:'t102',title:'Needles, Threads & Fabrics',yt:'lTx3G6h2xyA',duration:9,quiz:[{id:'q1',text:'Thicker fabric needs…',opts:['Thinner needle','Thicker needle'],ans:1}],sim:null}
-          ]},
-          {id:'m1s2',title:'Measuring & Cutting',lessons:[
-            {id:'t111',title:'Taking Body Measurements',yt:'c4a8t0Q9G-8',duration:12,quiz:[{id:'q1',text:'Bust measured at…',opts:['Widest part','Narrowest part'],ans:0}],sim:null},
-            {id:'t112',title:'Fabric Grain & Layouts',yt:'YlUKcNNmywk',duration:11,quiz:[{id:'q1',text:'Cutting along grain gives…',opts:['More stretch','Better fall'],ans:1}],sim:{inputs:[
-              {k:'fabricCost',label:'Fabric cost per piece (₹)',type:'number',v:140},
-              {k:'timeMins',label:'Cutting time (mins)',type:'number',v:20},
-              {k:'laborPerHr',label:'Labour value/hr (₹)',type:'number',v:60},
-              {k:'price',label:'Selling price (₹)',type:'number',v:280},
-              {k:'dailyOrders',label:'Expected daily orders',type:'number',v:6}
-            ]}}
-          ]}
-        ]},
-        {id:'m2',title:'Garment Construction',submodules:[
-          {id:'m2s1',title:'Blouse Basics',lessons:[
-            {id:'t201',title:'Drafting a Basic Blouse',yt:'kXYiU_JCYtU',duration:14,quiz:[{id:'q1',text:'Dart helps to…',opts:['Add volume','Shape fit'],ans:1}],sim:null},
-            {id:'t202',title:'Darts, Seams & Finishing',yt:'fJ9rUzIMcZQ',duration:15,quiz:[{id:'q1',text:'Typical seam allowance?',opts:['1 cm','3 cm'],ans:0}],sim:null}
-          ]},
-          {id:'m2s2',title:'Kurta & Salwar',lessons:[
-            {id:'t211',title:'Kurta Drafting Basics',yt:'eVTXPUF4Oz4',duration:13,quiz:[{id:'q1',text:'Neckline marking from…',opts:['Shoulder','Center front'],ans:1}],sim:null}
-          ]}
-        ]},
-        {id:'m3',title:'Business & Pricing',submodules:[
-          {id:'m3s1',title:'Costing & Pricing',lessons:[
-            {id:'t301',title:'Cost Sheet for Blouse',yt:'3JZ_D3ELwOQ',duration:9,quiz:[{id:'q1',text:'Margin = Price – …',opts:['Cost','Time'],ans:0}],sim:{inputs:[
-              {k:'fabricCost',label:'Fabric cost per blouse (₹)',type:'number',v:160},
-              {k:'timeMins',label:'Stitching time (mins)',type:'number',v:45},
-              {k:'laborPerHr',label:'Your labour value/hr (₹)',type:'number',v:80},
-              {k:'price',label:'Selling price (₹)',type:'number',v:350},
-              {k:'dailyOrders',label:'Expected daily orders',type:'number',v:4}
-            ]}}
-          ]},
-          {id:'m3s2',title:'Managing Orders',lessons:[
-            {id:'t311',title:'From Order to Delivery',yt:'hT_nvWreIhg',duration:8,quiz:[{id:'q1',text:'Record advance in…',opts:['Cashbook','Inventory'],ans:0}],sim:null}
-          ]}
-        ]}
+    // Exit guide button -> Dashboard
+    document.querySelector('#btnExitGuide').onclick = ()=> show('dashboard');
+
+    // --- Modules (recommendation-style UI) ---
+    const modules = [
+      {title: 'Introduction to Tailoring', minutes: 60, items: [
+        { type:'video', title:'Welcome & safety', mins:6 },
+        { type:'video', title:'Understanding your machine', mins:12 },
+        { type:'video', title:'Threads & needles', mins:10 },
+        { type:'reading', title:'Finding fabric locally', mins:6 },
+        { type:'video', title:'Your first stitch', mins:10 },
+        { type:'video', title:'Care & maintenance', mins:16 }
+      ]},
+      {title: 'Business Basics', minutes: 30, items: [
+        { type:'video', title:'Pricing a blouse', mins:12 },
+        { type:'video', title:'Managing orders', mins:8 },
+        { type:'reading', title:'Keeping a cashbook', mins:10 }
       ]}
-    };
-
-    const finQs=[
-      {t:'If you borrow ₹10,000 at 12% per year, roughly how much interest after 1 year?',opts:['₹120','₹1,200','₹12,000'],ans:1},
-      {t:'Which is safer: keeping savings in a bank or at home in cash?',opts:['Bank','Home'],ans:0},
-      {t:'Inflation means prices…',opts:['Go down','Stay same','Go up over time'],ans:2},
-      {t:'EMI mostly consists of…',opts:['Only principal','Only interest','Principal + interest'],ans:2},
-      {t:'Recording every sale/expense daily is called…',opts:['Bookkeeping','Tax filing','Auditing'],ans:0},
-      {t:'A budget helps you…',opts:['Spend more','Track income/expenses','Avoid savings'],ans:1},
-      {t:'Best way to grow small savings safely?',opts:['Bank RD/FD','Lottery','Friends credit scheme without records'],ans:0},
-      {t:'Collateral is…',opts:['A festival','Security against loan','Government tax'],ans:1},
-      {t:'Compounding means…',opts:['Interest on interest','Penalty on tax','Extra fees'],ans:0},
-      {t:'If margin is low, you can increase profit by…',opts:['Cutting costs','Lowering price a lot','Ignoring records'],ans:0}
     ];
 
-    function renderFinQuiz(){
-      const wrap=document.getElementById('fin-quiz'); wrap.innerHTML='';
-      finQs.forEach((q,i)=>{const div=document.createElement('div');div.className='q';
-        let html=`<strong>Q${i+1}.</strong> ${q.t}`;
-        q.opts.forEach((o,oi)=>{html+=`<label style="display:block;margin-top:6px"><input type="radio" name="fq${i}" value="${oi}"> ${o}</label>`});
-        div.innerHTML=html; wrap.appendChild(div);
-      });
-    }
-    renderFinQuiz();
-
-    // Intake save
-    document.getElementById('btnSaveIntake').onclick=()=>{
-      let score=0; finQs.forEach((q,i)=>{const v=document.querySelector(`input[name=fq${i}]:checked`); if(v && +v.value===q.ans) score++;});
-      const literacy=document.getElementById('literacy').value;
-      const user={literacy,track:'tailoring',finScore:score};
-      localStorage.setItem('sam_user',JSON.stringify(user));
-      toast(`Saved. Literacy score: ${score}/10`);
-      loadDashboard(); go('dashboard');
-    };
-
-    // Dashboard render
-    function loadDashboard(){
-      const list=document.getElementById('moduleList'); list.innerHTML='';
-      const mods=catalog.tailoring.modules;
-      mods.forEach(m=>{
-        const d=document.createElement('details'); d.innerHTML=`<summary>${m.title}</summary>`;
-        m.submodules.forEach(sm=>{
-          const s=document.createElement('details'); s.className='sub'; s.innerHTML=`<summary>${sm.title}</summary>`;
-          sm.lessons.forEach(ls=>{
-            const row=document.createElement('div'); row.className='lesson';
-            row.innerHTML=`<div><strong>${ls.title}</strong><div class=muted>${m.title} • ${sm.title}</div></div><div class=pill>${ls.duration} min</div>`;
-            row.onclick=()=>openLesson(m.id,sm.id,ls.id);
-            s.appendChild(row);
-          });
-          d.appendChild(s);
+    function renderModules(){
+      const host = document.querySelector('#moduleList'); host.innerHTML = '';
+      let total = 0;
+      modules.forEach((mod, idx)=>{
+        total += mod.minutes;
+        const sec = document.createElement('section');
+        sec.className = 'module-sec';
+        sec.innerHTML = `
+          <div class="sec-head">
+            <div>
+              <button class="collapse-btn" data-i="${idx}">▾</button>
+              <span class="sec-title">${idx+1}. ${mod.title}</span>
+            </div>
+            <span class="muted">${mod.minutes}m</span>
+          </div>
+          <div class="items" id="items-${idx}"></div>
+        `;
+        host.appendChild(sec);
+        const items = sec.querySelector('.items');
+        mod.items.forEach(it=>{
+          const row = document.createElement('div');
+          row.className = 'item-row';
+          row.innerHTML = `
+            <div class="left">
+              <span class="ic">${it.type==='video'?'▶':'📄'}</span>
+              <div class="it-title">${it.title}</div>
+            </div>
+            <div class="right">
+              <span class="muted">${it.mins}m</span>
+              <button class="ghost-icon" title="Move">☰</button>
+              <button class="ghost-icon" title="Edit">✎</button>
+            </div>
+          `;
+          items.appendChild(row);
         });
-        list.appendChild(d);
       });
-      document.getElementById('statWatch').textContent=(+(localStorage.getItem('watchMins')||0)/60).toFixed(1)+'h';
-      document.getElementById('statDone').textContent=localStorage.getItem('lessonsDone')||0;
-      document.getElementById('statScore').textContent=localStorage.getItem('avgScore')||'–';
-
-      // self-tests summary
-      document.getElementById('testStatus').innerHTML = `<span class="test-chip">✅ Ready (offline mode)</span>`;
-    }
-
-    // Lesson open + quiz/sim
-    function findLesson(mid,sid,lid){
-      const m=catalog.tailoring.modules.find(x=>x.id===mid); if(!m) return {};
-      const s=m.submodules.find(x=>x.id===sid); if(!s) return {};
-      const l=s.lessons.find(x=>x.id===lid)||null;
-      return {m,s,l};
-    }
-    let current={m:null,s:null,l:null};
-    function openLesson(mid,sid,lid){
-      const {m,s,l}=findLesson(mid,sid,lid); if(!l) return;
-      current={m,s,l};
-      document.getElementById('lessonTitle').textContent=l.title;
-      document.getElementById('lessonDuration').textContent=l.duration+' min';
-      // YouTube embed (may not load offline, but doesn't throw app errors)
-      document.getElementById('lessonVideo').src=`https://www.youtube.com/embed/${l.yt}`;
-      const qWrap=document.getElementById('lessonQuiz'); qWrap.innerHTML='';
-      (l.quiz||[]).forEach((q,qi)=>{const d=document.createElement('div'); d.className='q';
-        let html=`<strong>Q${qi+1}.</strong> ${q.text}`;
-        q.opts.forEach((o,oi)=>{html+=`<label style='display:block;margin-top:6px'><input type='radio' name='lq${qi}' value='${oi}'> ${o}</label>`});
-        d.innerHTML=html; qWrap.appendChild(d);
-      });
-      const sWrap=document.getElementById('simForm'); sWrap.innerHTML='';
-      if(l.sim){
-        l.sim.inputs.forEach(inp=>{
-          const d=document.createElement('div'); d.style.margin='6px 0';
-          d.innerHTML=`<label>${inp.label}</label><input type='number' id='sim-${inp.k}' value='${inp.v}' />`;
-          sWrap.appendChild(d);
-        });
-        const btn=document.createElement('button'); btn.className='btn'; btn.textContent='Run Simulation'; btn.onclick=runSim; sWrap.appendChild(btn);
-      } else {
-        sWrap.innerHTML='<div class="muted">No simulation for this lesson.</div>';
-      }
-      go('lesson');
-    }
-
-    document.getElementById('btnSubmitQuiz').onclick=()=>{
-      const l=current.l; if(!l||!l.quiz) return;
-      let correct=0; l.quiz.forEach((q,qi)=>{const v=document.querySelector(`input[name=lq${qi}]:checked`); if(v&&+v.value===q.ans) correct++;});
-      const score=Math.round((correct/(l.quiz.length||1))*100);
-      toast(`Quiz score: ${score}%`);
-      const done=+(localStorage.getItem('lessonsDone')||0)+1; localStorage.setItem('lessonsDone',done);
-      const prev=+(localStorage.getItem('avgScore')||0); const avg=prev?Math.round((prev+score)/2):score; localStorage.setItem('avgScore',avg);
-    };
-
-    function runSim(){
-      const l=current.l; if(!l||!l.sim) return;
-      const get=k=>+document.getElementById('sim-'+k).value||0;
-      const fabricCost=get('fabricCost'); const timeMins=get('timeMins'); const laborPerHr=get('laborPerHr'); const price=get('price'); const dailyOrders=get('dailyOrders');
-      const laborPerItem=(laborPerHr*timeMins)/60; const unitCost=fabricCost+laborPerItem; const margin=price-unitCost; const dailyProfit=margin*dailyOrders; const be=margin>0?Math.ceil(unitCost/margin):'–';
-      document.getElementById('simOut').innerHTML=`<strong>Unit cost:</strong> ₹${unitCost.toFixed(2)}<br/><strong>Unit margin:</strong> ₹${margin.toFixed(2)}<br/><strong>Daily profit:</strong> ₹${dailyProfit.toFixed(0)}<br/><strong>Break-even orders:</strong> ${be}`;
-    }
-
-    // ===== Toolkit (localStorage) =====
-    async function loadToolkit(){
-      const tb=document.querySelector('#tkTable tbody'); tb.innerHTML='';
-      const rows=JSON.parse(localStorage.getItem('tk_rows')||'[]');
-      rows.forEach(r=>{
-        const tr=document.createElement('tr');
-        tr.innerHTML=`<td>${r.date}</td><td>${r.type}</td><td>${r.amount}</td><td>${r.note||''}</td>`;
-        tb.appendChild(tr);
+      document.querySelector('#totalLen').textContent = total + 'm';
+      document.querySelectorAll('.collapse-btn').forEach(btn=>{
+        btn.onclick = (e)=>{
+          const i = e.currentTarget.getAttribute('data-i');
+          const box = document.querySelector('#items-'+i);
+          box.classList.toggle('hidden');
+          btn.textContent = box.classList.contains('hidden') ? '▸' : '▾';
+        };
       });
     }
+    renderModules();
 
-    document.getElementById('btnAddTk').onclick=async ()=>{
-      const type=document.getElementById('tkType').value;
-      const amount=+document.getElementById('tkAmount').value||0;
-      const note=document.getElementById('tkNote').value;
-      const today=new Date().toISOString().slice(0,10);
-      const rows=JSON.parse(localStorage.getItem('tk_rows')||'[]');
-      rows.push({date:today,type,amount,note});
-      localStorage.setItem('tk_rows',JSON.stringify(rows));
-      document.getElementById('tkAmount').value='';
-      document.getElementById('tkNote').value='';
-      await loadToolkit();
-      toast('Entry added');
-    };
-
-    function buildToolkitCSV(rows){
-      const header='Date,Type,Amount,Note';
-      const body=rows.map(r=>`${r.date},${r.type},${r.amount},"${(r.note||'').replace(/"/g,'""')}"`).join('\n');
-      return body?header+'\n'+body:header;
+    // --- Banking calc (quarterly compounding) ---
+    function calcMaturity(principal, ratePct, months){
+      const qRate = ratePct/100/4;
+      const years = months/12;
+      const A = principal * Math.pow(1 + qRate, 4*years);
+      return Math.round(A);
     }
-    function buildTemplateCSV(kind){
-      if(kind==='cashbook') return 'Date,Description,Income,Expense,Balance\n2025-09-01,Opening Balance,0,0,0';
-      if(kind==='inventory')return 'Item,Quantity,Unit Cost,Total\nCotton Fabric (m),50,90,4500';
-      if(kind==='pricelist')return 'Product,Cost,Margin %,Selling Price\nBlouse Stitching,180,40,252';
-      return '';
+    function updateFacts(){
+      const parts = document.querySelector('#tenurePick').value.split('|').map(Number);
+      const months = parts[0]; const rate = parts[1];
+      const amt = Number(document.querySelector('#invAmount').value||0);
+      document.querySelector('#fInv').textContent = '₹' + amt.toLocaleString('en-IN');
+      document.querySelector('#fRate').textContent = rate + '%';
+      document.querySelector('#fTenure').textContent = (months/12) + 'Y';
+      const mat = calcMaturity(amt, rate, months);
+      document.querySelector('#fMaturity').textContent = '₹' + mat.toLocaleString('en-IN');
     }
-    document.getElementById('btnExportTk').onclick=()=>{const rows=JSON.parse(localStorage.getItem('tk_rows')||'[]'); const csv=buildToolkitCSV(rows); triggerDownload('samriddhi_toolkit.csv',csv);};
-    function downloadCSV(kind){const csv=buildTemplateCSV(kind); triggerDownload(`samriddhi_${kind}.csv`,csv);}
-    function triggerDownload(filename,text){const blob=new Blob([text],{type:'text/csv;charset=utf-8;'}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download=filename; a.click(); setTimeout(()=>URL.revokeObjectURL(url),500);}
+    document.querySelector('#tenurePick').onchange = updateFacts;
+    document.querySelector('#invAmount').oninput = updateFacts;
+    updateFacts();
 
-    // ===== Nav & observers =====
-    document.getElementById('navDashboard').onclick=(e)=>{e.preventDefault(); loadDashboard(); go('dashboard');};
-    const obs=new MutationObserver(()=>{ if(!document.getElementById('page-toolkit').classList.contains('hidden')) loadToolkit(); });
-    obs.observe(document.querySelector('main'),{subtree:true,attributes:true,attributeFilter:['class']});
-
-    // ===== Auth-like toggles (offline stubs) =====
-    document.getElementById('tabLogin').onclick=()=>{document.getElementById('loginForm').classList.remove('hidden');document.getElementById('signupForm').classList.add('hidden');};
-    document.getElementById('tabSignup').onclick=()=>{document.getElementById('signupForm').classList.remove('hidden');document.getElementById('loginForm').classList.add('hidden');};
-
-    document.getElementById('btnSignup').onclick=()=>{toast('Demo signup complete'); go('intake');};
-    document.getElementById('btnLogin').onclick=()=>{toast('Demo login successful'); go('intake');};
+    // Initial route
+    if(!location.hash) show('home'); else show(location.hash.replace('#/',''));
   </script>
 </body>
 </html>
