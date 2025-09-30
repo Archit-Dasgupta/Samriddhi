@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Samriddhi</title>
   <link rel="stylesheet" href="styles.css"/>
+  <style>
+    /* Minimal inline styles for new UI bits (dropdown & badges) */
+    .dropdown { position: relative; }
+    .dropdown-toggle { cursor:pointer; display:inline-flex; align-items:center; gap:6px; }
+    .dropdown-menu {
+      position:absolute; top:36px; right:0; background:#fff; border:1px solid var(--border);
+      border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,.08); min-width:220px; padding:6px; display:none; z-index:50;
+    }
+    .dropdown.open .dropdown-menu { display:block; }
+    .dropdown-item { display:flex; gap:8px; align-items:center; padding:10px 12px; border-radius:10px; text-decoration:none; color:var(--text); }
+    .dropdown-item:hover { background:#f9fafb; }
+    .badge { font-size:11px; padding:2px 6px; border:1px solid var(--border); border-radius:8px; margin-left:6px; background:#f1f5f9; }
+    .pill { display:inline-block; background:#ecfdf5; color:#065f46; padding:2px 8px; border-radius:999px; font-size:12px; border:1px solid #a7f3d0; }
+    .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+    .quiz-card h3 { margin-top:0; }
+    .quiz-q { border:1px solid var(--border); padding:10px; border-radius:12px; }
+    .quiz-actions { display:flex; gap:8px; align-items:center; }
+    .ok { color:#166534; font-weight:700; }
+    .err { color:#b91c1c; font-weight:700; }
+    .nav-right a, .nav-right button { white-space:nowrap; }
+    @media (max-width: 680px){
+      .grid3{grid-template-columns:1fr}
+      .dropdown-menu{right:auto; left:0;}
+    }
+  </style>
 </head>
 <body>
   <!-- NAV -->
@@ -16,10 +40,17 @@
         <div class="brand-text"><span class="brand-strong">Samriddhi</span></div>
       </div>
       <nav class="nav-right">
-        <a class="nav-link" href="#/modules">Programs</a>
+        <div class="dropdown" id="programsDropdown">
+          <span class="nav-link dropdown-toggle">Programs ▾</span>
+          <div class="dropdown-menu" aria-label="Programs menu">
+            <a class="dropdown-item" href="#/modules">📚 All programs</a>
+            <a class="dropdown-item" href="#/modules#quiz">📝 Take a quiz <span class="badge">new</span></a>
+          </div>
+        </div>
         <a class="nav-link" href="#/banking">Banking <span class="chip-new">NEW</span></a>
         <a class="nav-link" href="#/dashboard">Toolkit</a>
         <button id="btnOpenLogin" class="btn login-pill">Login/Register</button>
+        <a id="navProfile" class="nav-link hidden" href="#/profile">Profile</a>
       </nav>
     </div>
   </header>
@@ -43,15 +74,15 @@
     <section class="features">
       <div class="feature card">
         <h3>Learn by doing</h3>
-        <p class="muted">Short, structured lessons in local languages with hands‑on activities.</p>
+        <p class="muted">Short, structured lessons in local languages with hands-on activities.</p>
       </div>
       <div class="feature card">
         <h3>Bank with ease</h3>
-        <p class="muted">Open accounts and explore loans with our small‑finance bank partners.</p>
+        <p class="muted">Open accounts and explore loans with our small-finance bank partners.</p>
       </div>
       <div class="feature card">
         <h3>Operate smart</h3>
-        <p class="muted">Track costs, set prices, and plan profit using built‑in tools.</p>
+        <p class="muted">Track costs, set prices, and plan profit using built-in tools.</p>
       </div>
     </section>
   </main>
@@ -67,7 +98,7 @@
       </div>
       <p class="tiny muted">By proceeding, you agree to <a href="#">T&amp;C</a> &amp; <a href="#">Privacy Policy</a></p>
       <button id="btnProceedPhone" class="btn primary wide">Proceed</button>
-      <p class="tiny muted">Demo mode: any 10‑digit number will continue.</p>
+      <p class="tiny muted">Demo mode: any 10-digit number will continue.</p>
     </section>
   </main>
 
@@ -84,6 +115,9 @@
           <li class="active">Review recommended content</li>
         </ol>
         <button class="btn ghost small" id="btnExitGuide">Go to Dashboard</button>
+        <div style="margin-top:12px">
+          <span class="pill">Now with Quiz</span>
+        </div>
       </aside>
       <section class="recos card">
         <div class="recos-head">
@@ -91,6 +125,18 @@
           <div class="save-indicator">Saved • Total length: <span id="totalLen">0m</span></div>
         </div>
         <div id="moduleList" class="module-sections"></div>
+
+        <!-- QUIZ -->
+        <section id="quiz" class="quiz-card card" style="margin-top:12px">
+          <h3>Quick quiz: Basics of Tailoring Business</h3>
+          <p class="muted">Answer 3 questions to check your understanding.</p>
+          <div id="quizBox" class="grid3"></div>
+          <div class="quiz-actions" style="margin-top:10px">
+            <button id="submitQuiz" class="btn primary">Submit quiz</button>
+            <button id="resetQuiz" class="btn ghost">Reset</button>
+            <span id="quizResult" class="muted"></span>
+          </div>
+        </section>
       </section>
     </section>
   </main>
@@ -122,8 +168,67 @@
             <div class="fact"><span>FD tenure</span><strong id="fTenure">5Y</strong></div>
             <div class="fact"><span>Maturity amount</span><strong id="fMaturity">₹—</strong></div>
           </div>
-          <button id="btnOpenAcc" class="btn primary wide">Open account (demo)</button>
+          <div class="grid2" style="margin-top:8px">
+            <a class="btn ghost" href="#/open-account">Open an account</a>
+            <a class="btn primary" href="#/loan">Apply for a loan</a>
+          </div>
         </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- OPEN ACCOUNT (demo form) -->
+  <main class="container hidden" id="page-open-account">
+    <section class="card">
+      <h2>Open an Account (Demo)</h2>
+      <p class="muted">Fill the basic details and submit to proceed. This is a demo flow; no data is stored on a server.</p>
+      <div class="grid3" style="gap:8px">
+        <label>Full name<input id="acc_name" placeholder="e.g., Sita Devi"/></label>
+        <label>Village / City<input id="acc_city" placeholder="e.g., Murbad"/></label>
+        <label>PAN (optional)<input id="acc_pan" placeholder="ABCDE1234F"/></label>
+      </div>
+      <div class="grid2" style="gap:8px; margin-top:8px">
+        <label>Initial deposit (₹)<input id="acc_amt" type="number" value="5000"/></label>
+        <label>Account type
+          <select id="acc_type"><option>Basic Savings</option><option>Regular Savings</option></select>
+        </label>
+      </div>
+      <div style="margin-top:12px; display:flex; gap:8px">
+        <button id="acc_submit" class="btn primary">Submit</button>
+        <a class="btn ghost" href="#/banking">Back to Banking</a>
+        <span id="acc_msg" class="muted"></span>
+      </div>
+    </section>
+  </main>
+
+  <!-- LOAN (demo form) -->
+  <main class="container hidden" id="page-loan">
+    <section class="card">
+      <h2>Apply for a Micro-Loan (Demo)</h2>
+      <p class="muted">Enter loan request details. Demo flow approves if inputs are valid.</p>
+      <div class="grid3" style="gap:8px">
+        <label>Loan amount (₹)<input id="loan_amt" type="number" value="25000"/></label>
+        <label>Purpose
+          <select id="loan_purpose">
+            <option>Sewing Machine</option>
+            <option>Shop Renovation</option>
+            <option>Working Capital</option>
+          </select>
+        </label>
+        <label>Tenure (months)
+          <select id="loan_tenure">
+            <option>12</option><option>18</option><option>24</option>
+          </select>
+        </label>
+      </div>
+      <div class="grid2" style="gap:8px; margin-top:8px">
+        <label>Monthly income (₹)<input id="loan_income" type="number" value="15000"/></label>
+        <label>Existing EMIs (₹)<input id="loan_emi" type="number" value="0"/></label>
+      </div>
+      <div style="margin-top:12px; display:flex; gap:8px">
+        <button id="loan_submit" class="btn primary">Check Eligibility</button>
+        <a class="btn ghost" href="#/banking">Back to Banking</a>
+        <span id="loan_msg" class="muted"></span>
       </div>
     </section>
   </main>
@@ -136,6 +241,30 @@
     </section>
   </main>
 
+  <!-- PROFILE -->
+  <main class="container hidden" id="page-profile">
+    <section class="card">
+      <h2>Your Profile</h2>
+      <p class="muted">Manage your details. This is stored in your browser only (demo).</p>
+      <div class="grid3" style="gap:8px">
+        <label>Phone (read-only)<input id="prof_phone" disabled/></label>
+        <label>Name<input id="prof_name" placeholder="Your name"/></label>
+        <label>Village / City<input id="prof_city" placeholder="Your town"/></label>
+      </div>
+      <div class="grid2" style="gap:8px; margin-top:8px">
+        <label>Occupation<input id="prof_job" placeholder="e.g., Tailor"/></label>
+        <label>Language
+          <select id="prof_lang"><option>English</option><option>Hindi</option><option>Marathi</option><option>Bengali</option></select>
+        </label>
+      </div>
+      <div style="margin-top:12px; display:flex; gap:8px; align-items:center">
+        <button id="prof_save" class="btn primary">Save</button>
+        <button id="prof_logout" class="btn ghost">Log out</button>
+        <span id="prof_msg" class="muted"></span>
+      </div>
+    </section>
+  </main>
+
   <footer class="tiny muted center">© Samriddhi</footer>
 
   <script>
@@ -144,31 +273,49 @@
     const $$ = (s)=>document.querySelectorAll(s);
 
     // Client-side routes
-    const pages = ['home','login','modules','banking','dashboard'];
+    const pages = ['home','login','modules','banking','dashboard','open-account','loan','profile'];
     function show(page){
       pages.forEach(p=>document.querySelector('#page-'+p)?.classList.add('hidden'));
       document.querySelector('#page-'+page)?.classList.remove('hidden');
-      window.location.hash = '#/'+page;
+      const newHash = '#/'+page;
+      if(location.hash !== newHash) window.location.hash = newHash;
     }
     window.addEventListener('hashchange', ()=>{
-      const p = location.hash.replace('#/','') || 'home';
+      const hash = location.hash;
+      const raw = hash.replace('#/','') || 'home';
+      const parts = raw.split('#');
+      const p = parts[0];
+      const frag = parts[1];
       if(pages.includes(p)) show(p);
+      if(p==='modules' && frag==='quiz'){
+        setTimeout(()=>document.getElementById('quiz')?.scrollIntoView({behavior:'smooth'}),0);
+      }
+    });
+
+    // Dropdown menu behavior
+    const dd = $('#programsDropdown');
+    dd.querySelector('.dropdown-toggle').addEventListener('click', ()=> dd.classList.toggle('open'));
+    document.addEventListener('click', (e)=>{
+      if(!dd.contains(e.target)) dd.classList.remove('open');
     });
 
     // CTA -> Phone login
-    document.querySelector('#btnStart').onclick = ()=> show('login');
-    document.querySelector('#btnOpenLogin').onclick = ()=> show('login');
+    $('#btnStart').onclick = ()=> show('login');
+    $('#btnOpenLogin').onclick = ()=> show('login');
 
     // Phone-only login (demo)
-    document.querySelector('#btnProceedPhone').onclick = ()=>{
-      const ph = (document.querySelector('#phoneNumber').value || '').replace(/\D/g,'');
+    $('#btnProceedPhone').onclick = ()=>{
+      const ph = ($('#phoneNumber').value || '').replace(/\D/g,'');
       if(ph.length !== 10){ alert('Enter a valid 10-digit mobile number'); return; }
-      localStorage.setItem('sam_session', JSON.stringify({ phone: ph }));
+      const profile = JSON.parse(localStorage.getItem('sam_profile')||'{}');
+      const session = { phone: ph, ...profile };
+      localStorage.setItem('sam_session', JSON.stringify(session));
+      $('#navProfile').classList.remove('hidden');
       show('modules');
     };
 
     // Exit guide button -> Dashboard
-    document.querySelector('#btnExitGuide').onclick = ()=> show('dashboard');
+    $('#btnExitGuide').onclick = ()=> show('dashboard');
 
     // --- Modules (recommendation-style UI) ---
     const modules = [
@@ -188,7 +335,7 @@
     ];
 
     function renderModules(){
-      const host = document.querySelector('#moduleList'); host.innerHTML = '';
+      const host = $('#moduleList'); host.innerHTML='';
       let total = 0;
       modules.forEach((mod, idx)=>{
         total += mod.minutes;
@@ -197,12 +344,12 @@
         sec.innerHTML = `
           <div class="sec-head">
             <div>
-              <button class="collapse-btn" data-i="${idx}">▾</button>
+              <button class="collapse-btn" data-i="${idx}" aria-expanded="false" aria-controls="items-${idx}">▸</button>
               <span class="sec-title">${idx+1}. ${mod.title}</span>
             </div>
             <span class="muted">${mod.minutes}m</span>
           </div>
-          <div class="items" id="items-${idx}"></div>
+          <div class="items hidden" id="items-${idx}"></div>
         `;
         host.appendChild(sec);
         const items = sec.querySelector('.items');
@@ -223,17 +370,56 @@
           items.appendChild(row);
         });
       });
-      document.querySelector('#totalLen').textContent = total + 'm';
-      document.querySelectorAll('.collapse-btn').forEach(btn=>{
+      $('#totalLen').textContent = total + 'm';
+      $$('.collapse-btn').forEach(btn=>{
         btn.onclick = (e)=>{
           const i = e.currentTarget.getAttribute('data-i');
           const box = document.querySelector('#items-'+i);
-          box.classList.toggle('hidden');
-          btn.textContent = box.classList.contains('hidden') ? '▸' : '▾';
+          const isHidden = box.classList.toggle('hidden');
+          e.currentTarget.textContent = isHidden ? '▸' : '▾';
+          e.currentTarget.setAttribute('aria-expanded', String(!isHidden));
         };
       });
     }
     renderModules();
+
+    // --- Quiz ---
+    const quizQ = [
+      { q:'What is the best way to record daily cash?', opts:['Memory','Cashbook','Bank passbook'], ans:1 },
+      { q:'Which cost should be included in blouse price?', opts:['Thread only','Fabric only','All materials & time'], ans:2 },
+      { q:'How often to service machine?', opts:['Never','When broken','Regularly as per manual'], ans:2 }
+    ];
+    function renderQuiz(){
+      const box = $('#quizBox'); box.innerHTML='';
+      quizQ.forEach((it, i)=>{
+        const card = document.createElement('div');
+        card.className='quiz-q';
+        card.innerHTML = `
+          <div style="font-weight:700;margin-bottom:6px">${i+1}. ${it.q}</div>
+          ${it.opts.map((o, j)=>`
+            <label style="display:flex;gap:8px;align-items:center;margin:4px 0">
+              <input type="radio" name="q${i}" value="${j}"/> <span>${o}</span>
+            </label>
+          `).join('')}
+        `;
+        box.appendChild(card);
+      });
+    }
+    renderQuiz();
+
+    $('#submitQuiz').onclick = ()=>{
+      let score = 0;
+      quizQ.forEach((it, i)=>{
+        const sel = document.querySelector('input[name="q'+i+'"]:checked');
+        if(sel && Number(sel.value) === it.ans) score++;
+      });
+      const res = $('#quizResult');
+      res.innerHTML = (score===quizQ.length)
+        ? '<span class="ok">Perfect! '+score+'/'+quizQ.length+'</span>'
+        : '<span class="err">Score: '+score+'/'+quizQ.length+' — review and try again.</span>';
+      localStorage.setItem('sam_quiz_score', String(score));
+    };
+    $('#resetQuiz').onclick = ()=>{ renderQuiz(); $('#quizResult').textContent=''; localStorage.removeItem('sam_quiz_score'); };
 
     // --- Banking calc (quarterly compounding) ---
     function calcMaturity(principal, ratePct, months){
@@ -243,21 +429,90 @@
       return Math.round(A);
     }
     function updateFacts(){
-      const parts = document.querySelector('#tenurePick').value.split('|').map(Number);
+      const parts = $('#tenurePick').value.split('|').map(Number);
       const months = parts[0]; const rate = parts[1];
-      const amt = Number(document.querySelector('#invAmount').value||0);
-      document.querySelector('#fInv').textContent = '₹' + amt.toLocaleString('en-IN');
-      document.querySelector('#fRate').textContent = rate + '%';
-      document.querySelector('#fTenure').textContent = (months/12) + 'Y';
+      const amt = Number($('#invAmount').value||0);
+      $('#fInv').textContent = '₹' + amt.toLocaleString('en-IN');
+      $('#fRate').textContent = rate + '%';
+      $('#fTenure').textContent = (months/12) + 'Y';
       const mat = calcMaturity(amt, rate, months);
-      document.querySelector('#fMaturity').textContent = '₹' + mat.toLocaleString('en-IN');
+      $('#fMaturity').textContent = '₹' + mat.toLocaleString('en-IN');
     }
-    document.querySelector('#tenurePick').onchange = updateFacts;
-    document.querySelector('#invAmount').oninput = updateFacts;
+    $('#tenurePick').onchange = updateFacts;
+    $('#invAmount').oninput = updateFacts;
     updateFacts();
 
-    // Initial route
-    if(!location.hash) show('home'); else show(location.hash.replace('#/',''));
+    // --- Open Account (demo) ---
+    $('#acc_submit').onclick = ()=>{
+      const name=$('#acc_name').value.trim();
+      const city=$('#acc_city').value.trim();
+      const amt=Number($('#acc_amt').value||0);
+      if(!name || !city || amt<0){ $('#acc_msg').textContent='Please fill all required details.'; return; }
+      $('#acc_msg').innerHTML='<span class="ok">Account request submitted. Ref: ACC'+Math.floor(Math.random()*99999)+'</span>';
+      setTimeout(()=> show('dashboard'), 900);
+    };
+
+    // --- Loan (demo) ---
+    $('#loan_submit').onclick = ()=>{
+      const A=Number($('#loan_amt').value||0);
+      const I=Number($('#loan_income').value||0);
+      const E=Number($('#loan_emi').value||0);
+      if(A<1000 || I<=0 || E<0){ $('#loan_msg').textContent='Check numbers and try again.'; return; }
+      // Simple eligibility rule: EMI <= 35% of income
+      const r = 0.20/12; // demo nominal rate 20% p.a.
+      const n = Number($('#loan_tenure').value);
+      const emi = A * r * Math.pow(1+r, n) / (Math.pow(1+r, n)-1);
+      const ok = (emi + E) <= 0.35 * I;
+      $('#loan_msg').innerHTML = ok
+        ? '<span class="ok">Eligible. Est. EMI ₹'+Math.round(emi).toLocaleString('en-IN')+'. Reference LOAN'+Math.floor(Math.random()*99999)+'</span>'
+        : '<span class="err">Not eligible at current income/EMIs. Try lower amount or longer tenure.</span>';
+      if(ok) setTimeout(()=> show('dashboard'), 1200);
+    };
+
+    // --- Profile ---
+    function loadProfileUI(){
+      const sess = JSON.parse(localStorage.getItem('sam_session')||'{}');
+      $('#prof_phone').value = sess.phone || '';
+      $('#prof_name').value = sess.name || '';
+      $('#prof_city').value = sess.city || '';
+      $('#prof_job').value = sess.job || '';
+      $('#prof_lang').value = sess.lang || 'English';
+    }
+    $('#prof_save').onclick = ()=>{
+      const sess = JSON.parse(localStorage.getItem('sam_session')||'{}');
+      const updated = {
+        ...sess,
+        name: $('#prof_name').value.trim(),
+        city: $('#prof_city').value.trim(),
+        job: $('#prof_job').value.trim(),
+        lang: $('#prof_lang').value
+      };
+      localStorage.setItem('sam_session', JSON.stringify(updated));
+      localStorage.setItem('sam_profile', JSON.stringify(updated));
+      $('#prof_msg').innerHTML = '<span class="ok">Saved.</span>';
+    };
+    $('#prof_logout').onclick = ()=>{
+      localStorage.removeItem('sam_session');
+      $('#navProfile').classList.add('hidden');
+      show('home');
+    };
+
+    // Initial route & nav state
+    function init(){
+      if(localStorage.getItem('sam_session')){
+        $('#navProfile').classList.remove('hidden');
+      }
+      const raw = location.hash.replace('#/','') || 'home';
+      const p = raw.split('#')[0];
+      show(pages.includes(p) ? p : 'home');
+    }
+    init();
+
+    // When entering profile route, populate fields
+    const ro = new MutationObserver(()=>{
+      if(!$('#page-profile').classList.contains('hidden')) loadProfileUI();
+    });
+    ro.observe(document.body, {subtree:true, attributes:true, attributeFilter:['class']});
   </script>
 </body>
 </html>
