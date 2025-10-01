@@ -1,4 +1,3 @@
-
 :root{
   --bg:#f6f7f9; --card:#ffffff; --text:#0f172a; --muted:#64748b;
   --brand:#166534; --brand-2:#22c55e; --accent:#e8f7ee;
@@ -77,3 +76,34 @@ input, select{border:1px solid var(--border);border-radius:10px;padding:10px;bac
 
 /* Misc */
 .muted{color:var(--muted)}
+
+/* ===== Responsive Flex Tweaks ===== */
+@media (max-width: 768px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+  }
+  .hero-art {
+    width: 100%;
+    height: 180px;
+    margin-top: 12px;
+  }
+
+  .features {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modules-grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bank-hero {
+    display: flex;
+    flex-direction: column;
+  }
+  .bank-img {
+    height: 200px;
+  }
+}
