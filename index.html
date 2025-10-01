@@ -6,6 +6,7 @@
   <title>Samriddhi</title>
   <link rel="stylesheet" href="styles.css"/>
   <style>
+    /* --- Only flex-based tweaks for nav + small helpers --- */
     .dropdown { position: relative; }
     .dropdown-toggle { cursor:pointer; display:inline-flex; align-items:center; gap:6px; }
     .dropdown-menu {
@@ -23,18 +24,33 @@
     .quiz-actions { display:flex; gap:8px; align-items:center; }
     .ok { color:#166534; font-weight:700; }
     .err { color:#b91c1c; font-weight:700; }
-    .nav-right a, .nav-right button { white-space:nowrap; }
-    /* Item expand styles */
+    .nav-right a, .nav-right button { white-space:nowrap; line-height:1; }
+
     .item-details { display:none; margin:10px 0 0 40px; }
     .item-details.open { display:block; }
     .yt { width:100%; aspect-ratio:16/9; border:0; border-radius:12px; }
+    .play-btn { min-width:28px; }
+
+    /* Nav wrap fix for smaller widths using flex only */
+    @media (max-width: 980px){
+      .topbar-inner{display:flex; flex-wrap:wrap; row-gap:8px;}
+      .brand-left{display:flex; align-items:center; gap:10px; flex:0 1 auto;}
+      .nav-right{display:flex; flex-wrap:wrap; gap:14px; justify-content:flex-end; flex:1 1 100%;}
+    }
     @media (max-width: 680px){
       .grid3{grid-template-columns:1fr}
       .dropdown-menu{right:auto; left:0;}
+      .brand-strong{font-size:20px}
     }
+
+    /* Home info cards */
+    .info { display:flex; gap:16px; flex-wrap:wrap; margin-top:16px; }
+    .info .card { flex:1 1 280px; }
+    .bullets { display:flex; flex-direction:column; gap:8px; margin:0; padding-left:18px; }
   </style>
 </head>
 <body>
+  <!-- NAV -->
   <header class="topbar">
     <div class="topbar-inner">
       <div class="brand-left" onclick="location.hash='#/home'">
@@ -46,7 +62,6 @@
           <span class="nav-link dropdown-toggle">Programs ▾</span>
           <div class="dropdown-menu" aria-label="Programs menu">
             <a class="dropdown-item" href="#/modules">📚 All programs</a>
-            <a class="dropdown-item" href="#/modules#quiz">📝 Take a quiz <span class="badge">new</span></a>
           </div>
         </div>
         <a class="nav-link" href="#/banking">Banking <span class="chip-new">NEW</span></a>
@@ -57,6 +72,7 @@
     </div>
   </header>
 
+  <!-- HOME -->
   <main class="container" id="page-home">
     <section class="hero card">
       <div class="hero-text">
@@ -72,36 +88,87 @@
       </div>
       <div class="hero-art"></div>
     </section>
-    <section class="features">
-      <div class="feature card">
-        <h3>Learn by doing</h3>
-        <p class="muted">Short, structured lessons in local languages with hands-on activities.</p>
-      </div>
-      <div class="feature card">
-        <h3>Bank with ease</h3>
-        <p class="muted">Open accounts and explore loans with our small-finance bank partners.</p>
-      </div>
-      <div class="feature card">
-        <h3>Operate smart</h3>
-        <p class="muted">Track costs, set prices, and plan profit using built-in tools.</p>
-      </div>
+
+    <!-- New: What we do / How we help -->
+    <section class="info">
+      <article class="card">
+        <h3>What we do</h3>
+        <p class="muted">We make business skills simple and practical for home‑based and small‑shop tailors.</p>
+        <ul class="bullets">
+          <li>Short, phone‑friendly video lessons</li>
+          <li>Tools to price work and track cash</li>
+          <li>Guidance to access bank products safely</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h3>How Samriddhi helps</h3>
+        <ul class="bullets">
+          <li>✔️ Learn the right way to price blouses and alterations</li>
+          <li>✔️ Keep a daily cashbook and avoid missed expenses</li>
+          <li>✔️ Use calculators to plan FDs and micro‑loans you can afford</li>
+          <li>✔️ Build steady income with repeat customers</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h3>Get started in minutes</h3>
+        <p class="muted">No email needed. Log in with your phone number, finish your profile, and start your recommended course.</p>
+        <div><a class="btn primary" href="#/login">Login with phone</a></div>
+      </article>
     </section>
   </main>
 
+  <!-- LOGIN: STEP 1 (phone) -->
   <main class="container hidden" id="page-login">
     <section class="login card">
-      <h2>What's your mobile number?</h2>
-      <p class="muted">Please enter your Aadhaar-linked mobile number</p>
+      <h2>Login or Register</h2>
+      <p class="muted">Enter your mobile number to continue</p>
       <div class="phone-input">
         <div class="phone-cc">+91</div>
         <input id="phoneNumber" inputmode="numeric" pattern="[0-9]*" maxlength="10" placeholder="0000000000"/>
       </div>
-      <p class="tiny muted">By proceeding, you agree to <a href="#">T&amp;C</a> &amp; <a href="#">Privacy Policy</a></p>
-      <button id="btnProceedPhone" class="btn primary wide">Proceed</button>
-      <p class="tiny muted">Demo mode: any 10-digit number will continue.</p>
+      <button id="btnProceedPhone" class="btn primary wide">Continue</button>
+      <p class="tiny muted">Demo: any 10-digit number works.</p>
+      <div id="login_msg" class="tiny muted"></div>
     </section>
   </main>
 
+  <!-- LOGIN: STEP 2 EXISTING (password) -->
+  <main class="container hidden" id="page-password">
+    <section class="card">
+      <h2>Enter password</h2>
+      <p class="muted">We found your account. Enter password to continue.</p>
+      <input id="login_pass" type="password" placeholder="Password"/>
+      <div style="margin-top:10px;display:flex;gap:8px;align-items:center">
+        <button id="btnLogin" class="btn primary">Login</button>
+        <a href="#/login" class="btn ghost">Back</a>
+        <span id="pass_msg" class="tiny muted"></span>
+      </div>
+    </section>
+  </main>
+
+  <!-- ACCOUNT CREATION (set password) -->
+  <main class="container hidden" id="page-create">
+    <section class="card">
+      <h2>Create your account</h2>
+      <p class="muted">Finish setting up your profile and choose a password.</p>
+      <div class="grid3" style="gap:8px">
+        <label>Phone (read-only)<input id="create_phone" disabled/></label>
+        <label>Name<input id="create_name" placeholder="Your name"/></label>
+        <label>Village / City<input id="create_city" placeholder="Your town"/></label>
+      </div>
+      <div class="grid2" style="gap:8px;margin-top:8px">
+        <label>Password<input id="create_pw" type="password" placeholder="At least 4 characters"/></label>
+        <label>Confirm password<input id="create_cpw" type="password"/></label>
+      </div>
+      <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
+        <button id="btnCreate" class="btn primary">Create account</button>
+        <a href="#/login" class="btn ghost">Back</a>
+        <span id="create_msg" class="muted tiny"></span>
+      </div>
+    </section>
+  </main>
+
+  <!-- PROGRAMS / MODULES -->
   <main class="container hidden" id="page-modules">
     <section class="modules-grid">
       <aside class="left-rail card">
@@ -111,12 +178,9 @@
         <ol class="steps">
           <li class="done">Pick a track</li>
           <li class="done">Set your goals</li>
-          <li class="active">Review recommended content</li>
+          <li class="active">Review content</li>
         </ol>
         <button class="btn ghost small" id="btnExitGuide">Go to Dashboard</button>
-        <div style="margin-top:12px">
-          <span class="pill">Now with Quiz</span>
-        </div>
       </aside>
       <section class="recos card">
         <div class="recos-head">
@@ -124,21 +188,11 @@
           <div class="save-indicator">Saved • Total length: <span id="totalLen">0m</span></div>
         </div>
         <div id="moduleList" class="module-sections"></div>
-
-        <section id="quiz" class="quiz-card card" style="margin-top:12px">
-          <h3>Quick quiz: Basics of Tailoring Business</h3>
-          <p class="muted">Answer 3 questions to check your understanding.</p>
-          <div id="quizBox" class="grid3"></div>
-          <div class="quiz-actions" style="margin-top:10px">
-            <button id="submitQuiz" class="btn primary">Submit quiz</button>
-            <button id="resetQuiz" class="btn ghost">Reset</button>
-            <span id="quizResult" class="muted"></span>
-          </div>
-        </section>
       </section>
     </section>
   </main>
 
+  <!-- BANKING -->
   <main class="container hidden" id="page-banking">
     <section class="bank-wrap">
       <div class="bank-hero card">
@@ -174,10 +228,10 @@
     </section>
   </main>
 
+  <!-- OPEN ACCOUNT (demo) -->
   <main class="container hidden" id="page-open-account">
     <section class="card">
       <h2>Open an Account (Demo)</h2>
-      <p class="muted">Fill the basic details and submit to proceed. This is a demo flow; no data is stored on a server.</p>
       <div class="grid3" style="gap:8px">
         <label>Full name<input id="acc_name" placeholder="e.g., Sita Devi"/></label>
         <label>Village / City<input id="acc_city" placeholder="e.g., Murbad"/></label>
@@ -197,10 +251,10 @@
     </section>
   </main>
 
+  <!-- LOAN (demo) -->
   <main class="container hidden" id="page-loan">
     <section class="card">
       <h2>Apply for a Micro-Loan (Demo)</h2>
-      <p class="muted">Enter loan request details. Demo flow approves if inputs are valid.</p>
       <div class="grid3" style="gap:8px">
         <label>Loan amount (₹)<input id="loan_amt" type="number" value="25000"/></label>
         <label>Purpose
@@ -228,6 +282,7 @@
     </section>
   </main>
 
+  <!-- DASHBOARD -->
   <main class="container hidden" id="page-dashboard">
     <section class="card">
       <h2>Welcome to your dashboard</h2>
@@ -235,10 +290,11 @@
     </section>
   </main>
 
+  <!-- PROFILE -->
   <main class="container hidden" id="page-profile">
     <section class="card">
       <h2>Your Profile</h2>
-      <p class="muted">Manage your details. This is stored in your browser only (demo).</p>
+      <p class="muted">Manage your details. Stored in your browser for demo purposes.</p>
       <div class="grid3" style="gap:8px">
         <label>Phone (read-only)<input id="prof_phone" disabled/></label>
         <label>Name<input id="prof_name" placeholder="Your name"/></label>
@@ -261,109 +317,79 @@
   <footer class="tiny muted center">© Samriddhi</footer>
 
   <script>
+    // ====== Helpers & Storage ======
     const $ = (s)=>document.querySelector(s);
     const $$ = (s)=>document.querySelectorAll(s);
 
-    const pages = ['home','login','modules','banking','dashboard','open-account','loan','profile'];
+    const PAGES = ['home','login','password','create','modules','banking','open-account','loan','dashboard','profile'];
     function show(page){
-      pages.forEach(p=>document.querySelector('#page-'+p)?.classList.add('hidden'));
-      document.querySelector('#page-'+page)?.classList.remove('hidden');
+      PAGES.forEach(p=>$('#page-'+p)?.classList.add('hidden'));
+      $('#page-'+page)?.classList.remove('hidden');
       const newHash = '#/'+page;
       if(location.hash !== newHash) window.location.hash = newHash;
     }
     window.addEventListener('hashchange', ()=>{
-      const hash = location.hash;
-      const raw = hash.replace('#/','') || 'home';
-      const parts = raw.split('#');
-      const p = parts[0];
-      const frag = parts[1];
-      if(pages.includes(p)) show(p);
-      if(p==='modules' && frag==='quiz'){
-        setTimeout(()=>document.getElementById('quiz')?.scrollIntoView({behavior:'smooth'}),0);
-      }
+      const raw = location.hash.replace('#/','') || 'home';
+      show(PAGES.includes(raw) ? raw : 'home');
     });
 
-    const dd = $('#programsDropdown');
-    dd.querySelector('.dropdown-toggle').addEventListener('click', ()=> dd.classList.toggle('open'));
-    document.addEventListener('click', (e)=>{ if(!dd.contains(e.target)) dd.classList.remove('open'); });
+    const ACC_KEY = 'sam_accounts';
+    const SESS_KEY = 'sam_session';
+    function getAccounts(){ return JSON.parse(localStorage.getItem(ACC_KEY) || '{}'); }
+    function setAccounts(obj){ localStorage.setItem(ACC_KEY, JSON.stringify(obj)); }
+    function setSession(obj){ localStorage.setItem(SESS_KEY, JSON.stringify(obj)); }
+    function getSession(){ return JSON.parse(localStorage.getItem(SESS_KEY) || 'null'); }
+    function clearSession(){ localStorage.removeItem(SESS_KEY); }
 
-    $('#btnStart').onclick = ()=> show('login');
-    $('#btnOpenLogin').onclick = ()=> show('login');
+    // very light demo hash (NOT secure, just to avoid storing plain text)
+    const DEMO_SALT = 'samriddhi';
+    const hash = (s)=> btoa(unescape(encodeURIComponent(DEMO_SALT + '|' + s)));
 
-    $('#btnProceedPhone').onclick = ()=>{
-      const ph = ($('#phoneNumber').value || '').replace(/\D/g,'');
-      if(ph.length !== 10){ alert('Enter a valid 10-digit mobile number'); return; }
-      const profile = JSON.parse(localStorage.getItem('sam_profile')||'{}');
-      const session = { phone: ph, ...profile };
-      localStorage.setItem('sam_session', JSON.stringify(session));
-      $('#navProfile').classList.remove('hidden');
-      show('modules');
+    // ====== Modules (with interleaved quizzes) ======
+    const YT_EMBED = 'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1&playsinline=1';
+
+    const quizBanks = {
+      q1: [
+        { q:'Best way to record daily cash?', opts:['Memory','Cashbook','Bank passbook'], ans:1 },
+        { q:'What goes into blouse price?', opts:['Thread only','Fabric only','All materials & time'], ans:2 },
+        { q:'Service the machine?', opts:['Never','When broken','Regularly as per manual'], ans:2 }
+      ],
+      q2: [
+        { q:'Why keep a cashbook?', opts:['Decoration','Track income & expense','Only to show bank'], ans:1 },
+        { q:'Working capital example?', opts:['Daily cash for orders','Buying a shop','Buying land'], ans:0 },
+        { q:'If income ₹15k, safe EMI share ~', opts:['10%','35%','80%'], ans:1 }
+      ]
     };
 
-    $('#btnExitGuide').onclick = ()=> show('dashboard');
-
-    const YT_URL = 'https://www.youtube-nocookie.com/embed/tgbNymZ7vqY?rel=0&modestbranding=1&playsinline=1';
-
     const modules = [
-      {title: 'Introduction to Tailoring', minutes: 60, items: [
+      {title: 'Introduction to Tailoring', minutes: 65, items: [
         { type:'video', title:'Welcome & safety', mins:6 },
         { type:'video', title:'Understanding your machine', mins:12 },
+        { type:'quiz',  title:'Checkpoint Quiz 1', mins:5, quizId:'q1' },
         { type:'video', title:'Threads & needles', mins:10 },
         { type:'reading', title:'Finding fabric locally', mins:6 },
         { type:'video', title:'Your first stitch', mins:10 },
         { type:'video', title:'Care & maintenance', mins:16 }
       ]},
-      {title: 'Business Basics', minutes: 30, items: [
+      {title: 'Business Basics', minutes: 35, items: [
         { type:'video', title:'Pricing a blouse', mins:12 },
+        { type:'quiz',  title:'Checkpoint Quiz 2', mins:5, quizId:'q2' },
         { type:'video', title:'Managing orders', mins:8 },
         { type:'reading', title:'Keeping a cashbook', mins:10 }
       ]}
     ];
 
-    function closeAllVideos(except=null){
+    function closeAllDetails(){
       $$('.item-details.open').forEach(d=>{
-        if(except && d===except) return;
         d.classList.remove('open');
-        const iframe = d.querySelector('iframe');
-        if(iframe){ iframe.src='about:blank'; iframe.remove(); }
+        const ifr = d.querySelector('iframe');
+        if(ifr){ ifr.src='about:blank'; ifr.remove(); }
       });
-    }
-
-    function toggleItem(row){
-      const details = row.nextElementSibling;
-      const isOpen = details.classList.contains('open');
-      if(isOpen){
-        details.classList.remove('open');
-        const iframe = details.querySelector('iframe');
-        if(iframe){ iframe.src='about:blank'; iframe.remove(); } // stop playback
-        return;
-      }
-      // open
-      closeAllVideos(details);
-      details.classList.add('open');
-      const kind = row.dataset.type;
-      const holder = details.querySelector('.holder');
-      holder.innerHTML = '';
-      if(kind === 'video'){
-        const iframe = document.createElement('iframe');
-        iframe.className = 'yt';
-        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-        iframe.allowFullscreen = true;
-        iframe.src = YT_URL;
-        holder.appendChild(iframe);
-        const a=document.createElement('div');
-        a.className='tiny muted';
-        a.innerHTML='<a target="_blank" href="https://www.youtube.com/watch?v=tgbNymZ7vqY">Open on YouTube</a>';
-        holder.appendChild(a);
-      }else{
-        holder.innerHTML = '<div class="muted">Reading: short tips and checklists (placeholder).</div>';
-      }
-      details.scrollIntoView({behavior:'smooth', block:'center'});
     }
 
     function renderModules(){
       const host = $('#moduleList'); host.innerHTML='';
-      let total = 0;
+      let total=0;
       modules.forEach((mod, idx)=>{
         total += mod.minutes;
         const sec = document.createElement('section');
@@ -380,13 +406,14 @@
         `;
         host.appendChild(sec);
         const items = sec.querySelector('.items');
-        mod.items.forEach((it, j)=>{
+        mod.items.forEach((it)=>{
           const row = document.createElement('div');
           row.className = 'item-row';
           row.dataset.type = it.type;
+          if(it.quizId) row.dataset.quizid = it.quizId;
           row.innerHTML = `
             <div class="left">
-              <button class="play-btn ghost-icon" title="Play">${it.type==='video'?'▶':'📄'}</button>
+              <button class="play-btn ghost-icon" title="Open">${it.type==='video'?'▶':(it.type==='quiz'?'📝':'📄')}</button>
               <div class="it-title">${it.title}</div>
             </div>
             <div class="right">
@@ -401,12 +428,10 @@
           items.appendChild(row);
           items.appendChild(details);
 
-          // click on row left or play button toggles
-          row.querySelector('.left').addEventListener('click', (e)=>{
-            if(e.target.closest('.ghost-icon')){ /* ignore other icons */ }
+          row.addEventListener('click', (e)=>{
+            if(e.target.closest('.ghost-icon') && !e.target.classList.contains('play-btn')) return; // ignore other icons
             toggleItem(row);
           });
-          row.querySelector('.play-btn').addEventListener('click', (e)=>{ e.stopPropagation(); toggleItem(row); });
         });
       });
       $('#totalLen').textContent = total + 'm';
@@ -417,49 +442,64 @@
           const isHidden = box.classList.toggle('hidden');
           e.currentTarget.textContent = isHidden ? '▸' : '▾';
           e.currentTarget.setAttribute('aria-expanded', String(!isHidden));
-          if(isHidden){ closeAllVideos(); }
+          if(isHidden) closeAllDetails();
         };
       });
     }
-    renderModules();
 
-    const quizQ = [
-      { q:'What is the best way to record daily cash?', opts:['Memory','Cashbook','Bank passbook'], ans:1 },
-      { q:'Which cost should be included in blouse price?', opts:['Thread only','Fabric only','All materials & time'], ans:2 },
-      { q:'How often to service machine?', opts:['Never','When broken','Regularly as per manual'], ans:2 }
-    ];
-    function renderQuiz(){
-      const box = $('#quizBox'); box.innerHTML='';
-      quizQ.forEach((it, i)=>{
-        const card = document.createElement('div');
-        card.className='quiz-q';
-        card.innerHTML = `
-          <div style="font-weight:700;margin-bottom:6px">${i+1}. ${it.q}</div>
-          ${it.opts.map((o, j)=>`
-            <label style="display:flex;gap:8px;align-items:center;margin:4px 0">
-              <input type="radio" name="q${i}" value="${j}"/> <span>${o}</span>
-            </label>
-          `).join('')}
-        `;
-        box.appendChild(card);
-      });
+    function toggleItem(row){
+      const details = row.nextElementSibling;
+      const open = details.classList.contains('open');
+      if(open){
+        details.classList.remove('open');
+        const ifr = details.querySelector('iframe');
+        if(ifr){ ifr.src='about:blank'; ifr.remove(); }
+        return;
+      }
+      closeAllDetails();
+      details.classList.add('open');
+      const holder = details.querySelector('.holder'); holder.innerHTML='';
+      const kind = row.dataset.type;
+      if(kind==='video'){
+        const iframe = document.createElement('iframe');
+        iframe.className = 'yt';
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.allowFullscreen = true;
+        iframe.src = YT_EMBED;
+        holder.appendChild(iframe);
+        const link = document.createElement('div');
+        link.className='tiny muted'; link.innerHTML='<a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Open on YouTube</a>';
+        holder.appendChild(link);
+      } else if(kind==='quiz'){
+        const id = row.dataset.quizid;
+        const qs = quizBanks[id] || [];
+        const form = document.createElement('div');
+        form.innerHTML = qs.map((it, i)=>`
+          <div class='quiz-q' style='margin:8px 0'>
+            <div style='font-weight:700;margin-bottom:6px'>${i+1}. ${it.q}</div>
+            ${it.opts.map((o,j)=>`<label style="display:flex;gap:8px;align-items:center;margin:4px 0"><input type="radio" name="${id}_q${i}" value="${j}"/> <span>${o}</span></label>`).join('')}
+          </div>
+        `).join('');
+        const actions = document.createElement('div');
+        actions.className='quiz-actions'; actions.style.marginTop='8px';
+        const submit=document.createElement('button'); submit.className='btn primary'; submit.textContent='Submit quiz';
+        const reset=document.createElement('button'); reset.className='btn ghost'; reset.textContent='Reset';
+        const result=document.createElement('span'); result.className='muted'; result.style.marginLeft='8px';
+        actions.appendChild(submit); actions.appendChild(reset); actions.appendChild(result);
+        holder.appendChild(form); holder.appendChild(actions);
+        submit.onclick=()=>{
+          let score=0; qs.forEach((qq,i)=>{ const sel = holder.querySelector(`input[name='${id}_q${i}']:checked`); if(sel && Number(sel.value)===qq.ans) score++; });
+          result.innerHTML = (score===qs.length) ? `<span class='ok'>Perfect! ${score}/${qs.length}</span>` : `<span class='err'>Score: ${score}/${qs.length}</span>`;
+          localStorage.setItem('sam_quiz_'+id, String(score));
+        };
+        reset.onclick=()=>{ holder.querySelectorAll(`input[name^='${id}_q']`).forEach(r=>r.checked=false); result.textContent=''; localStorage.removeItem('sam_quiz_'+id); };
+      } else {
+        holder.innerHTML = '<div class="muted">Reading: short tips and checklists (placeholder).</div>';
+      }
+      details.scrollIntoView({behavior:'smooth', block:'center'});
     }
-    renderQuiz();
 
-    $('#submitQuiz').onclick = ()=>{
-      let score = 0;
-      quizQ.forEach((it, i)=>{
-        const sel = document.querySelector('input[name="q'+i+'"]:checked');
-        if(sel && Number(sel.value) === it.ans) score++;
-      });
-      const res = $('#quizResult');
-      res.innerHTML = (score===quizQ.length)
-        ? '<span class="ok">Perfect! '+score+'/'+quizQ.length+'</span>'
-        : '<span class="err">Score: '+score+'/'+quizQ.length+' — review and try again.</span>';
-      localStorage.setItem('sam_quiz_score', String(score));
-    };
-    $('#resetQuiz').onclick = ()=>{ renderQuiz(); $('#quizResult').textContent=''; localStorage.removeItem('sam_quiz_score'); };
-
+    // ====== Banking calc ======
     function calcMaturity(principal, ratePct, months){
       const qRate = ratePct/100/4;
       const years = months/12;
@@ -476,36 +516,59 @@
       const mat = calcMaturity(amt, rate, months);
       $('#fMaturity').textContent = '₹' + mat.toLocaleString('en-IN');
     }
-    $('#tenurePick').onchange = updateFacts;
-    $('#invAmount').oninput = updateFacts;
-    updateFacts();
 
-    $('#acc_submit').onclick = ()=>{
-      const name=$('#acc_name').value.trim();
-      const city=$('#acc_city').value.trim();
-      const amt=Number($('#acc_amt').value||0);
-      if(!name || !city || amt<0){ $('#acc_msg').textContent='Please fill all required details.'; return; }
-      $('#acc_msg').innerHTML='<span class="ok">Account request submitted. Ref: ACC'+Math.floor(Math.random()*99999)+'</span>';
-      setTimeout(()=> show('dashboard'), 900);
+    // ====== Auth Flow ======
+    $('#btnStart').onclick = ()=> show('login');
+    $('#btnOpenLogin').onclick = ()=> show('login');
+
+    // Step 1: enter phone
+    $('#btnProceedPhone').onclick = ()=>{
+      const ph = ($('#phoneNumber').value || '').replace(/\D/g,'');
+      if(ph.length !== 10){ $('#login_msg').textContent = 'Enter a valid 10-digit number.'; return; }
+      localStorage.setItem('sam_tmp_phone', ph);
+      const accounts = getAccounts();
+      if(accounts[ph]){
+        show('password');
+      }else{
+        $('#create_phone').value = ph;
+        show('create');
+      }
     };
 
-    $('#loan_submit').onclick = ()=>{
-      const A=Number($('#loan_amt').value||0);
-      const I=Number($('#loan_income').value||0);
-      const E=Number($('#loan_emi').value||0);
-      if(A<1000 || I<=0 || E<0){ $('#loan_msg').textContent='Check numbers and try again.'; return; }
-      const r = 0.20/12;
-      const n = Number($('#loan_tenure').value);
-      const emi = A * r * Math.pow(1+r, n) / (Math.pow(1+r, n)-1);
-      const ok = (emi + E) <= 0.35 * I;
-      $('#loan_msg').innerHTML = ok
-        ? '<span class="ok">Eligible. Est. EMI ₹'+Math.round(emi).toLocaleString('en-IN')+'. Reference LOAN'+Math.floor(Math.random()*99999)+'</span>'
-        : '<span class="err">Not eligible at current income/EMIs. Try lower amount or longer tenure.</span>';
-      if(ok) setTimeout(()=> show('dashboard'), 1200);
+    // Existing user: password step
+    $('#btnLogin').onclick = ()=>{
+      const ph = localStorage.getItem('sam_tmp_phone') || '';
+      const pw = $('#login_pass').value;
+      const accs = getAccounts();
+      if(!accs[ph]){ $('#pass_msg').textContent='Account not found.'; return; }
+      if(accs[ph].pw !== hash(pw)){ $('#pass_msg').textContent='Wrong password.'; return; }
+      const sess = { phone: ph, name: accs[ph].name || '', city: accs[ph].city || '' };
+      setSession(sess);
+      $('#btnOpenLogin').classList.add('hidden'); $('#navProfile').classList.remove('hidden');
+      show('modules');
     };
 
+    // New user: create account
+    $('#btnCreate').onclick = ()=>{
+      const ph = localStorage.getItem('sam_tmp_phone') || '';
+      const name = $('#create_name').value.trim();
+      const city = $('#create_city').value.trim();
+      const pw = $('#create_pw').value;
+      const cpw = $('#create_cpw').value;
+      if(pw.length < 4){ $('#create_msg').textContent='Password too short.'; return; }
+      if(pw !== cpw){ $('#create_msg').textContent='Passwords do not match.'; return; }
+      const accs = getAccounts();
+      accs[ph] = { name, city, pw: hash(pw) };
+      setAccounts(accs);
+      const sess = { phone: ph, name, city };
+      setSession(sess);
+      $('#btnOpenLogin').classList.add('hidden'); $('#navProfile').classList.remove('hidden');
+      show('modules');
+    };
+
+    // Profile & logout
     function loadProfileUI(){
-      const sess = JSON.parse(localStorage.getItem('sam_session')||'{}');
+      const sess = getSession() || {};
       $('#prof_phone').value = sess.phone || '';
       $('#prof_name').value = sess.name || '';
       $('#prof_city').value = sess.city || '';
@@ -513,37 +576,64 @@
       $('#prof_lang').value = sess.lang || 'English';
     }
     $('#prof_save').onclick = ()=>{
-      const sess = JSON.parse(localStorage.getItem('sam_session')||'{}');
+      const sess = getSession() || {};
+      const accs = getAccounts();
+      const ph = sess.phone;
       const updated = {
-        ...sess,
+        ...accs[ph],
         name: $('#prof_name').value.trim(),
         city: $('#prof_city').value.trim(),
         job: $('#prof_job').value.trim(),
         lang: $('#prof_lang').value
       };
-      localStorage.setItem('sam_session', JSON.stringify(updated));
-      localStorage.setItem('sam_profile', JSON.stringify(updated));
+      accs[ph] = updated; setAccounts(accs);
+      setSession({ ...sess, ...updated });
       $('#prof_msg').innerHTML = '<span class="ok">Saved.</span>';
     };
     $('#prof_logout').onclick = ()=>{
-      localStorage.removeItem('sam_session');
+      clearSession();
       $('#navProfile').classList.add('hidden');
+      $('#btnOpenLogin').classList.remove('hidden');
       show('home');
     };
 
+    // Banking links
+    $('#acc_submit').onclick = ()=>{ $('#acc_msg').innerHTML='<span class="ok">Account request submitted. Ref: ACC'+Math.floor(Math.random()*99999)+'</span>'; setTimeout(()=>show('dashboard'), 900); };
+    $('#loan_submit').onclick = ()=>{
+      const A=Number($('#loan_amt').value||0);
+      const I=Number($('#loan_income').value||0);
+      const E=Number($('#loan_emi').value||0);
+      if(A<1000 || I<=0 || E<0){ $('#loan_msg').textContent='Check numbers and try again.'; return; }
+      const r = 0.20/12, n = Number($('#loan_tenure').value);
+      const emi = A * r * Math.pow(1+r, n) / (Math.pow(1+r, n)-1);
+      const ok = (emi + E) <= 0.35 * I;
+      $('#loan_msg').innerHTML = ok
+        ? '<span class="ok">Eligible. Est. EMI ₹'+Math.round(emi).toLocaleString('en-IN')+'</span>'
+        : '<span class="err">Not eligible at current income/EMIs.</span>';
+      if(ok) setTimeout(()=>show('dashboard'), 1200);
+    };
+
+    // Misc
+    $('#btnExitGuide').onclick = ()=> show('dashboard');
+    $('#tenurePick').onchange = updateFacts; $('#invAmount').oninput = updateFacts; updateFacts();
+
+    // Dropdown
+    const dd = $('#programsDropdown');
+    dd.querySelector('.dropdown-toggle').addEventListener('click', ()=> dd.classList.toggle('open'));
+    document.addEventListener('click', (e)=>{ if(!dd.contains(e.target)) dd.classList.remove('open'); });
+
+    // Init
     function init(){
-      if(localStorage.getItem('sam_session')){
-        $('#navProfile').classList.remove('hidden');
-      }
+      const sess = getSession();
+      if(sess){ $('#navProfile').classList.remove('hidden'); $('#btnOpenLogin').classList.add('hidden'); }
+      renderModules();
       const raw = location.hash.replace('#/','') || 'home';
-      const p = raw.split('#')[0];
-      show(pages.includes(p) ? p : 'home');
+      show(PAGES.includes(raw) ? raw : 'home');
     }
     init();
 
-    const ro = new MutationObserver(()=>{
-      if(!$('#page-profile').classList.contains('hidden')) loadProfileUI();
-    });
+    // Observe route changes to load profile UI
+    const ro = new MutationObserver(()=>{ if(!$('#page-profile').classList.contains('hidden')) loadProfileUI(); });
     ro.observe(document.body, {subtree:true, attributes:true, attributeFilter:['class']});
   </script>
 </body>
