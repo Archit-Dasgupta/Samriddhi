@@ -5,115 +5,72 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Samriddhi</title>
   <link rel="stylesheet" href="styles.css"/>
-  <style>
-    /* --- Only flex-based tweaks for nav + small helpers --- */
-    .dropdown { position: relative; }
-    .dropdown-toggle { cursor:pointer; display:inline-flex; align-items:center; gap:6px; }
-    .dropdown-menu {
-      position:absolute; top:36px; right:0; background:#fff; border:1px solid var(--border);
-      border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,.08); min-width:220px; padding:6px; display:none; z-index:50;
-    }
-    .dropdown.open .dropdown-menu { display:block; }
-    .dropdown-item { display:flex; gap:8px; align-items:center; padding:10px 12px; border-radius:10px; text-decoration:none; color:var(--text); }
-    .dropdown-item:hover { background:#f9fafb; }
-    .badge { font-size:11px; padding:2px 6px; border:1px solid var(--border); border-radius:8px; margin-left:6px; background:#f1f5f9; }
-    .pill { display:inline-block; background:#ecfdf5; color:#065f46; padding:2px 8px; border-radius:999px; font-size:12px; border:1px solid #a7f3d0; }
-    .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
-    .quiz-card h3 { margin-top:0; }
-    .quiz-q { border:1px solid var(--border); padding:10px; border-radius:12px; }
-    .quiz-actions { display:flex; gap:8px; align-items:center; }
-    .ok { color:#166534; font-weight:700; }
-    .err { color:#b91c1c; font-weight:700; }
-    .nav-right a, .nav-right button { white-space:nowrap; line-height:1; }
-
-    .item-details { display:none; margin:10px 0 0 40px; }
-    .item-details.open { display:block; }
-    .yt { width:100%; aspect-ratio:16/9; border:0; border-radius:12px; }
-    .play-btn { min-width:28px; }
-
-    /* Nav wrap fix for smaller widths using flex only */
-    @media (max-width: 980px){
-      .topbar-inner{display:flex; flex-wrap:wrap; row-gap:8px;}
-      .brand-left{display:flex; align-items:center; gap:10px; flex:0 1 auto;}
-      .nav-right{display:flex; flex-wrap:wrap; gap:14px; justify-content:flex-end; flex:1 1 100%;}
-    }
-    @media (max-width: 680px){
-      .grid3{grid-template-columns:1fr}
-      .dropdown-menu{right:auto; left:0;}
-      .brand-strong{font-size:20px}
-    }
-
-    /* Home info cards */
-    .info { display:flex; gap:16px; flex-wrap:wrap; margin-top:16px; }
-    .info .card { flex:1 1 280px; }
-    .bullets { display:flex; flex-direction:column; gap:8px; margin:0; padding-left:18px; }
-  </style>
 </head>
 <body>
   <!-- NAV -->
   <header class="topbar">
     <div class="topbar-inner">
+      <button class="hamb" id="hamb" aria-label="Menu" aria-expanded="false">☰</button>
       <div class="brand-left" onclick="location.hash='#/home'">
         <div class="logo-square"><span>◴</span></div>
         <div class="brand-text"><span class="brand-strong">Samriddhi</span></div>
       </div>
-      <nav class="nav-right">
-        <div class="dropdown" id="programsDropdown">
-          <span class="nav-link dropdown-toggle">Programs ▾</span>
-          <div class="dropdown-menu" aria-label="Programs menu">
-            <a class="dropdown-item" href="#/modules">📚 All programs</a>
-          </div>
-        </div>
-        <a class="nav-link" href="#/banking">Banking <span class="chip-new">NEW</span></a>
-        <a class="nav-link" href="#/dashboard">Toolkit</a>
+      <nav class="nav-right" id="navRight">
+        <a class="nav-link" data-route="home" href="#/home">Home</a>
+        <a class="nav-link" data-route="modules" href="#/modules">Programs</a>
+        <a class="nav-link" data-route="banking" href="#/banking">Banking <span class="chip-new">NEW</span></a>
+        <a class="nav-link" data-route="toolkits" href="#/toolkits">Toolkit</a>
         <button id="btnOpenLogin" class="btn login-pill">Login/Register</button>
-        <a id="navProfile" class="nav-link hidden" href="#/profile">Profile</a>
+        <a id="navProfile" class="nav-link hidden" data-route="profile" href="#/profile">Profile</a>
       </nav>
     </div>
   </header>
 
   <!-- HOME -->
-  <main class="container" id="page-home">
+  <main class="container" id="page-home" role="main">
     <section class="hero card">
       <div class="hero-text">
         <h1>Grow your tailoring business with confidence</h1>
         <p class="muted">
-          Samriddhi offers practical video lessons, simple calculators and access to partner
-          banking products—designed for women entrepreneurs in small towns and villages.
+          Practical video lessons, simple calculators and access to partner banking products—designed for women entrepreneurs in small towns and villages.
         </p>
-        <div class="row gap">
-          <button class="btn primary" id="btnStart">Get Started</button>
+        <div class="row gap" style="display:flex;gap:8px;align-items:center">
+          <button class="btn primary" id="btnStart">Login / Register</button>
           <a class="btn ghost" href="#/modules">Browse Programs</a>
         </div>
       </div>
       <div class="hero-art"></div>
     </section>
 
-    <!-- New: What we do / How we help -->
+    <!-- Value Proposition / Why / Testimonials -->
     <section class="info">
       <article class="card">
-        <h3>What we do</h3>
-        <p class="muted">We make business skills simple and practical for home‑based and small‑shop tailors.</p>
+        <h3>Value Proposition</h3>
         <ul class="bullets">
-          <li>Short, phone‑friendly video lessons</li>
-          <li>Tools to price work and track cash</li>
-          <li>Guidance to access bank products safely</li>
+          <li>Phone-first learning in your language</li>
+          <li>Fair pricing & cashbook tools for tailors</li>
+          <li>Safe access to partner banking products</li>
         </ul>
       </article>
       <article class="card">
-        <h3>How Samriddhi helps</h3>
+        <h3>Why Samriddhi</h3>
         <ul class="bullets">
-          <li>✔️ Learn the right way to price blouses and alterations</li>
-          <li>✔️ Keep a daily cashbook and avoid missed expenses</li>
-          <li>✔️ Use calculators to plan FDs and micro‑loans you can afford</li>
-          <li>✔️ Build steady income with repeat customers</li>
+          <li>Built for small towns & home businesses</li>
+          <li>Short, practical videos (5–10 minutes)</li>
+          <li>Trusted guidance on loans, FDs, RDs</li>
         </ul>
       </article>
       <article class="card">
         <h3>Get started in minutes</h3>
-        <p class="muted">No email needed. Log in with your phone number, finish your profile, and start your recommended course.</p>
+        <p class="muted">No email needed. Use your phone number and start learning today.</p>
         <div><a class="btn primary" href="#/login">Login with phone</a></div>
       </article>
+    </section>
+
+    <section class="testimonials">
+      <div class="card"><strong>Asha, Murbad</strong><p class="muted">“I learned to price blouses properly and doubled my monthly income.”</p></div>
+      <div class="card"><strong>Rekha, Jalgaon</strong><p class="muted">“The FD calculator helped me plan my savings without guesswork.”</p></div>
+      <div class="card"><strong>Farida, Osmanabad</strong><p class="muted">“Videos are short and clear—I learn between customer orders.”</p></div>
     </section>
   </main>
 
@@ -124,11 +81,11 @@
       <p class="muted">Enter your mobile number to continue</p>
       <div class="phone-input">
         <div class="phone-cc">+91</div>
-        <input id="phoneNumber" inputmode="numeric" pattern="[0-9]*" maxlength="10" placeholder="0000000000"/>
+        <input id="phoneNumber" inputmode="numeric" pattern="[0-9]*" maxlength="10" placeholder="0000000000" aria-label="Phone number"/>
       </div>
       <button id="btnProceedPhone" class="btn primary wide">Continue</button>
       <p class="tiny muted">Demo: any 10-digit number works.</p>
-      <div id="login_msg" class="tiny muted"></div>
+      <div id="login_msg" class="tiny muted" role="alert"></div>
     </section>
   </main>
 
@@ -137,33 +94,71 @@
     <section class="card">
       <h2>Enter password</h2>
       <p class="muted">We found your account. Enter password to continue.</p>
-      <input id="login_pass" type="password" placeholder="Password"/>
+      <input id="login_pass" type="password" placeholder="Password" aria-label="Password"/>
       <div style="margin-top:10px;display:flex;gap:8px;align-items:center">
         <button id="btnLogin" class="btn primary">Login</button>
         <a href="#/login" class="btn ghost">Back</a>
-        <span id="pass_msg" class="tiny muted"></span>
+        <span id="pass_msg" class="tiny muted" role="alert"></span>
       </div>
     </section>
   </main>
 
-  <!-- ACCOUNT CREATION (set password) -->
+  <!-- ACCOUNT CREATION (info + password) -->
   <main class="container hidden" id="page-create">
     <section class="card">
       <h2>Create your account</h2>
       <p class="muted">Finish setting up your profile and choose a password.</p>
-      <div class="grid3" style="gap:8px">
+      <div class="grid2" style="gap:8px">
         <label>Phone (read-only)<input id="create_phone" disabled/></label>
         <label>Name<input id="create_name" placeholder="Your name"/></label>
         <label>Village / City<input id="create_city" placeholder="Your town"/></label>
-      </div>
-      <div class="grid2" style="gap:8px;margin-top:8px">
+        <label>Language
+          <select id="create_lang"><option>English</option><option>Hindi</option><option>Marathi</option></select>
+        </label>
+        <label>Occupation<input id="create_job" placeholder="e.g., Tailor"/></label>
         <label>Password<input id="create_pw" type="password" placeholder="At least 4 characters"/></label>
         <label>Confirm password<input id="create_cpw" type="password"/></label>
       </div>
       <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
         <button id="btnCreate" class="btn primary">Create account</button>
         <a href="#/login" class="btn ghost">Back</a>
-        <span id="create_msg" class="muted tiny"></span>
+        <span id="create_msg" class="muted tiny" role="alert"></span>
+      </div>
+    </section>
+  </main>
+
+  <!-- DASHBOARD -->
+  <main class="container hidden" id="page-dashboard">
+    <section class="card">
+      <h2>Welcome to your dashboard</h2>
+      <p class="muted" id="dash_sub">Let’s build steady income with the right skills and safer finance.</p>
+
+      <div class="progress" aria-label="Course progress" title="Course progress">
+        <span id="progBar" style="width:0%"></span>
+      </div>
+      <p class="tiny muted">Progress: <span id="progPct">0%</span> • Literacy: <span id="litLevel">—</span> (<span id="litScore">0</span>/10)</p>
+
+      <div class="quick-actions" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:8px">
+        <button id="btnTakeTest" class="btn ghost">Take Financial Literacy Test</button>
+        <button id="btnResume" class="btn primary">Resume Course</button>
+        <a class="btn ghost" href="#/modules" id="btnExplorePrograms">Explore Programs</a>
+        <a class="btn ghost" href="#/banking">Banking</a>
+        <a class="btn ghost" href="#/toolkits">Toolkits</a>
+      </div>
+      <p id="lockMsg" class="muted tiny" style="margin-top:8px"></p>
+    </section>
+  </main>
+
+  <!-- FINANCIAL LITERACY TEST -->
+  <main class="container hidden" id="page-lit">
+    <section class="card">
+      <h2>Financial Literacy Test</h2>
+      <p class="muted">10 quick questions on savings, interest and borrowing. For demo only.</p>
+      <div id="litForm"></div>
+      <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
+        <button id="litSubmit" class="btn primary">Submit</button>
+        <button id="litReset" class="btn ghost">Reset</button>
+        <span id="litMsg" class="muted"></span>
       </div>
     </section>
   </main>
@@ -196,9 +191,9 @@
   <main class="container hidden" id="page-banking">
     <section class="bank-wrap">
       <div class="bank-hero card">
-        <img class="bank-img" alt="Bank" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjYwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB4Mj0iMSIgeTE9IjAiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzE2YTM0YSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMyMmM1NWUiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0idXJsKCNnKSIvPgogIDxnIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmaWxsPSIjZmZmZmZmIiBmb250LXNpemU9IjY0Ij4KICAgIDx0ZXh0IHg9IjYwIiB5PSIxMTAiPlNBTVJJRERISSBCQU5LSU5HPC90ZXh0PgogIDwvZz4KICA8ZyBmaWxsPSIjZmZmZmZmIj4KICAgIDxyZWN0IHg9IjcwIiB5PSIxNjAiIHdpZHRoPSI0MjAiIGhlaWdodD0iMzAwIiByeD0iMTYiIG9wYWNpdHk9IjAuMTUiLz4KICAgIDxyZWN0IHg9IjUyMCIgeT0iMTYwIiB3aWR0aD0iNDIwIiBoZWlnaHQ9IjMwMCIgcng9IjE2IiBvcGFjaXR5PSIwLjE1Ii8+CiAgICA8cmVjdCB4PSI5NzAiIHk9IjE2MCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIzMDAiIHJ4PSIxNiIgb3BhY2l0eT0iMC4xNSIvPgogIDwvZz4KPC9zdmc+"/>
+        <img class="bank-img" alt="Bank" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjYwMCI+PHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iNjAwIiBmaWxsPSJ1cmwoI2cpIi8+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iMCIgeDI9IjEiIHkxPSIwIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzE2NjUzNCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzIyYzU1ZSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjwvc3ZnPg=="/>
         <aside class="calc card">
-          <h3 class="calc-title">Fixed Deposit Calculator</h3>
+          <h3 class="calc-title">Fixed Deposit (FD) Calculator</h3>
           <div class="grid2">
             <label>Amount (₹)<input id="invAmount" type="number" value="100000"/></label>
             <label>Sr. Citizen
@@ -219,6 +214,26 @@
             <div class="fact"><span>FD tenure</span><strong id="fTenure">5Y</strong></div>
             <div class="fact"><span>Maturity amount</span><strong id="fMaturity">₹—</strong></div>
           </div>
+
+          <h3 style="margin-top:16px">Recurring Deposit (RD) Calculator</h3>
+          <div class="grid2">
+            <label>Monthly deposit (₹)<input id="rd_amt" type="number" value="2000"/></label>
+            <label>Tenure (months)<input id="rd_months" type="number" value="24"/></label>
+          </div>
+          <div class="fact"><span>Estimated maturity</span><strong id="rd_out">₹—</strong></div>
+
+          <h3 style="margin-top:16px">Loan EMI Calculator</h3>
+          <div class="grid2">
+            <label>Loan amount (₹)<input id="loan_amt" type="number" value="25000"/></label>
+            <label>Tenure (months)<input id="loan_tenure" type="number" value="12"/></label>
+          </div>
+          <div class="grid2">
+            <label>Rate p.a. (%)<input id="loan_rate" type="number" value="20"/></label>
+            <label>Monthly income (₹)<input id="loan_income" type="number" value="15000"/></label>
+          </div>
+          <label>Existing EMIs (₹)<input id="loan_emi" type="number" value="0"/></label>
+          <div class="fact"><span>Estimated EMI</span><strong id="emi_out">₹—</strong></div>
+          <div class="tiny muted">For demo only, not financial advice.</div>
           <div class="grid2" style="margin-top:8px">
             <a class="btn ghost" href="#/open-account">Open an account</a>
             <a class="btn primary" href="#/loan">Apply for a loan</a>
@@ -232,12 +247,10 @@
   <main class="container hidden" id="page-open-account">
     <section class="card">
       <h2>Open an Account (Demo)</h2>
-      <div class="grid3" style="gap:8px">
+      <div class="grid2" style="gap:8px">
         <label>Full name<input id="acc_name" placeholder="e.g., Sita Devi"/></label>
         <label>Village / City<input id="acc_city" placeholder="e.g., Murbad"/></label>
         <label>PAN (optional)<input id="acc_pan" placeholder="ABCDE1234F"/></label>
-      </div>
-      <div class="grid2" style="gap:8px; margin-top:8px">
         <label>Initial deposit (₹)<input id="acc_amt" type="number" value="5000"/></label>
         <label>Account type
           <select id="acc_type"><option>Basic Savings</option><option>Regular Savings</option></select>
@@ -255,25 +268,7 @@
   <main class="container hidden" id="page-loan">
     <section class="card">
       <h2>Apply for a Micro-Loan (Demo)</h2>
-      <div class="grid3" style="gap:8px">
-        <label>Loan amount (₹)<input id="loan_amt" type="number" value="25000"/></label>
-        <label>Purpose
-          <select id="loan_purpose">
-            <option>Sewing Machine</option>
-            <option>Shop Renovation</option>
-            <option>Working Capital</option>
-          </select>
-        </label>
-        <label>Tenure (months)
-          <select id="loan_tenure">
-            <option>12</option><option>18</option><option>24</option>
-          </select>
-        </label>
-      </div>
-      <div class="grid2" style="gap:8px; margin-top:8px">
-        <label>Monthly income (₹)<input id="loan_income" type="number" value="15000"/></label>
-        <label>Existing EMIs (₹)<input id="loan_emi" type="number" value="0"/></label>
-      </div>
+      <p class="tiny muted">For demo only.</p>
       <div style="margin-top:12px; display:flex; gap:8px">
         <button id="loan_submit" class="btn primary">Check Eligibility</button>
         <a class="btn ghost" href="#/banking">Back to Banking</a>
@@ -282,11 +277,28 @@
     </section>
   </main>
 
-  <!-- DASHBOARD -->
-  <main class="container hidden" id="page-dashboard">
+  <!-- TOOLKITS -->
+  <main class="container hidden" id="page-toolkits">
     <section class="card">
-      <h2>Welcome to your dashboard</h2>
-      <p class="muted">You're logged in (demo session). Explore <a href="#/modules">programs</a> or go to <a href="#/banking">banking</a>.</p>
+      <h2>Toolkits</h2>
+      <p class="muted">Download simple templates to track your business.</p>
+      <div class="tool-grid">
+        <div class="card">
+          <h3>Cashbook (XLSX)</h3>
+          <p class="tiny muted">Daily income & expense tracker.</p>
+          <button class="btn primary" data-dl="cashbook.xlsx">Download</button>
+        </div>
+        <div class="card">
+          <h3>Pricing Calculator (XLSX)</h3>
+          <p class="tiny muted">Estimate blouse/alteration prices.</p>
+          <button class="btn primary" data-dl="pricing.xlsx">Download</button>
+        </div>
+        <div class="card">
+          <h3>Daily Tracker (CSV)</h3>
+          <p class="tiny muted">Track orders and status.</p>
+          <button class="btn primary" data-dl="tracker.csv">Download</button>
+        </div>
+      </div>
     </section>
   </main>
 
@@ -295,17 +307,17 @@
     <section class="card">
       <h2>Your Profile</h2>
       <p class="muted">Manage your details. Stored in your browser for demo purposes.</p>
-      <div class="grid3" style="gap:8px">
+      <div class="grid2" style="gap:8px">
         <label>Phone (read-only)<input id="prof_phone" disabled/></label>
         <label>Name<input id="prof_name" placeholder="Your name"/></label>
         <label>Village / City<input id="prof_city" placeholder="Your town"/></label>
-      </div>
-      <div class="grid2" style="gap:8px; margin-top:8px">
         <label>Occupation<input id="prof_job" placeholder="e.g., Tailor"/></label>
         <label>Language
-          <select id="prof_lang"><option>English</option><option>Hindi</option><option>Marathi</option><option>Bengali</option></select>
+          <select id="prof_lang"><option>English</option><option>Hindi</option><option>Marathi</option></select>
         </label>
+        <label>Change password<input id="prof_pw" type="password" placeholder="New password"/></label>
       </div>
+      <div class="tiny muted">Literacy: <span id="prof_lit">—</span> • Course progress: <span id="prof_prog">0%</span></div>
       <div style="margin-top:12px; display:flex; gap:8px; align-items:center">
         <button id="prof_save" class="btn primary">Save</button>
         <button id="prof_logout" class="btn ghost">Log out</button>
@@ -321,46 +333,161 @@
     const $ = (s)=>document.querySelector(s);
     const $$ = (s)=>document.querySelectorAll(s);
 
-    const PAGES = ['home','login','password','create','modules','banking','open-account','loan','dashboard','profile'];
+    const PAGES = ['home','login','password','create','dashboard','lit','modules','banking','open-account','loan','toolkits','profile'];
     function show(page){
       PAGES.forEach(p=>$('#page-'+p)?.classList.add('hidden'));
       $('#page-'+page)?.classList.remove('hidden');
       const newHash = '#/'+page;
       if(location.hash !== newHash) window.location.hash = newHash;
+      setActiveNav(page);
     }
     window.addEventListener('hashchange', ()=>{
       const raw = location.hash.replace('#/','') || 'home';
       show(PAGES.includes(raw) ? raw : 'home');
     });
 
+    // nav active + hamburger
+    const hamb = $('#hamb'); const navRight = $('#navRight');
+    hamb.onclick = ()=>{
+      const open = navRight.classList.toggle('open');
+      hamb.setAttribute('aria-expanded', String(open));
+    };
+    function setActiveNav(route){
+      $$('#navRight .nav-link').forEach(a=>{
+        a.classList.toggle('active', a.dataset.route===route);
+      });
+      if(window.innerWidth<=600){ navRight.classList.remove('open'); hamb.setAttribute('aria-expanded','false'); }
+    }
+
     const ACC_KEY = 'sam_accounts';
     const SESS_KEY = 'sam_session';
+    const LIT_SCORE = 'sam_fin_score';
+    const LIT_LEVEL = 'sam_fin_level';
+    const COURSE_STATE = 'sam_course_state';
+    const COURSE_PROGRESS = 'sam_course_progress';
+
     function getAccounts(){ return JSON.parse(localStorage.getItem(ACC_KEY) || '{}'); }
     function setAccounts(obj){ localStorage.setItem(ACC_KEY, JSON.stringify(obj)); }
     function setSession(obj){ localStorage.setItem(SESS_KEY, JSON.stringify(obj)); }
     function getSession(){ return JSON.parse(localStorage.getItem(SESS_KEY) || 'null'); }
     function clearSession(){ localStorage.removeItem(SESS_KEY); }
 
-    // very light demo hash (NOT secure, just to avoid storing plain text)
-    const DEMO_SALT = 'samriddhi';
+    const DEMO_SALT = 'samriddhi'; // demo-only
     const hash = (s)=> btoa(unescape(encodeURIComponent(DEMO_SALT + '|' + s)));
 
-    // ====== Modules (with interleaved quizzes) ======
-    const YT_EMBED = 'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1&playsinline=1';
+    // ====== Home
+    $('#btnStart').onclick = ()=> show('login');
+    $('#btnOpenLogin').onclick = ()=> show('login');
 
-    const quizBanks = {
-      q1: [
-        { q:'Best way to record daily cash?', opts:['Memory','Cashbook','Bank passbook'], ans:1 },
-        { q:'What goes into blouse price?', opts:['Thread only','Fabric only','All materials & time'], ans:2 },
-        { q:'Service the machine?', opts:['Never','When broken','Regularly as per manual'], ans:2 }
-      ],
-      q2: [
-        { q:'Why keep a cashbook?', opts:['Decoration','Track income & expense','Only to show bank'], ans:1 },
-        { q:'Working capital example?', opts:['Daily cash for orders','Buying a shop','Buying land'], ans:0 },
-        { q:'If income ₹15k, safe EMI share ~', opts:['10%','35%','80%'], ans:1 }
-      ]
+    // ====== Login step 1
+    $('#btnProceedPhone').onclick = ()=>{
+      const ph = ($('#phoneNumber').value || '').replace(/\D/g,'');
+      if(ph.length !== 10){ $('#login_msg').textContent = 'Enter a valid 10-digit number.'; return; }
+      localStorage.setItem('sam_tmp_phone', ph);
+      const accounts = getAccounts();
+      if(accounts[ph]){
+        show('password');
+      }else{
+        $('#create_phone').value = ph;
+        show('create');
+      }
     };
 
+    // ====== Existing user: password
+    $('#btnLogin').onclick = ()=>{
+      const ph = localStorage.getItem('sam_tmp_phone') || '';
+      const pw = $('#login_pass').value;
+      const accs = getAccounts();
+      if(!accs[ph]){ $('#pass_msg').textContent='Account not found.'; return; }
+      if(accs[ph].pw !== hash(pw)){ $('#pass_msg').textContent='Wrong password.'; return; }
+      const sess = { phone: ph, name: accs[ph].name || '', city: accs[ph].city || '', lang: accs[ph].lang || 'English', job: accs[ph].job || '' };
+      setSession(sess);
+      $('#btnOpenLogin').classList.add('hidden'); $('#navProfile').classList.remove('hidden');
+      show('dashboard');
+      refreshDashboard();
+    };
+
+    // ====== New user: create
+    $('#btnCreate').onclick = ()=>{
+      const ph = localStorage.getItem('sam_tmp_phone') || '';
+      const name = $('#create_name').value.trim();
+      const city = $('#create_city').value.trim();
+      const lang = $('#create_lang').value;
+      const job = $('#create_job').value.trim();
+      const pw = $('#create_pw').value;
+      const cpw = $('#create_cpw').value;
+      if(pw.length < 4){ $('#create_msg').textContent='Password too short.'; return; }
+      if(pw !== cpw){ $('#create_msg').textContent='Passwords do not match.'; return; }
+      const accs = getAccounts();
+      accs[ph] = { name, city, lang, job, pw: hash(pw) };
+      setAccounts(accs);
+      const sess = { phone: ph, name, city, lang, job };
+      setSession(sess);
+      $('#btnOpenLogin').classList.add('hidden'); $('#navProfile').classList.remove('hidden');
+      show('dashboard');
+      refreshDashboard(true); // first-time
+    };
+
+    // ====== Dashboard state
+    function refreshDashboard(isNew=false){
+      const score = Number(localStorage.getItem(LIT_SCORE) || 0);
+      const level = localStorage.getItem(LIT_LEVEL) || '—';
+      const prog = Math.round((Number(localStorage.getItem(COURSE_PROGRESS) || 0))*100);
+      $('#progBar').style.width = prog + '%';
+      $('#progPct').textContent = prog + '%';
+      $('#litLevel').textContent = level;
+      $('#litScore').textContent = isNaN(score) ? '0' : String(score);
+
+      const mustTest = isNew || !localStorage.getItem(LIT_LEVEL);
+      $('#btnResume').classList.toggle('locked', mustTest);
+      $('#btnExplorePrograms').classList.toggle('locked', mustTest);
+      $('#lockMsg').textContent = mustTest ? 'Complete the Financial Literacy Test to unlock Programs.' : '';
+
+      $('#btnTakeTest').onclick = ()=> show('lit');
+      $('#btnResume').onclick = ()=> resumeCourse();
+    }
+
+    // ====== Literacy test
+    const litQs = [
+      ['If you deposit ₹100 at 8% yearly, about how much after 1 year?', ['₹108','₹118','₹180'], 0],
+      ['Which is safer place to keep savings?', ['Under mattress','Bank savings account','Friend'], 1],
+      ['EMI should be at most what % of monthly income (rule of thumb)?', ['35%','60%','90%'], 0],
+      ['What does FD stand for?', ['Fixed Deposit','Fast Deposit','Fund Deposit'], 0],
+      ['RD means…', ['Recurring Deposit','Rate Deposit','Ready Deposit'], 0],
+      ['Higher interest always better, regardless of risk?', ['True','False'], 1],
+      ['Late EMI payment affects credit score?', ['Yes','No'], 0],
+      ['Compound interest means…', ['Interest on interest','Interest only on principal','Daily bank charges'], 0],
+      ['To grow a shop, which is working capital?', ['Daily cash for orders','Buying land','Gold jewellery'], 0],
+      ['Best way to track expenses?', ['Memory','Cashbook','Borrowing'], 1],
+    ];
+    function renderLit(){
+      const host = $('#litForm'); host.innerHTML='';
+      litQs.forEach((q,qi)=>{
+        const box = document.createElement('div'); box.className='card'; box.style.margin='8px 0';
+        box.innerHTML = `<strong>${qi+1}. ${q[0]}</strong>` + q[1].map((o,oi)=>`
+          <label style="display:flex;gap:8px;align-items:center;margin:6px 0">
+            <input type="radio" name="lit_${qi}" value="${oi}"/> <span>${o}</span>
+          </label>
+        `).join('');
+        host.appendChild(box);
+      });
+    }
+    $('#litSubmit').onclick = ()=>{
+      let score=0;
+      litQs.forEach((q,qi)=>{
+        const sel = document.querySelector(`input[name='lit_${qi}']:checked`);
+        if(sel && Number(sel.value)===q[2]) score++;
+      });
+      let level='Beginner'; if(score>=8) level='Advanced'; else if(score>=5) level='Intermediate';
+      localStorage.setItem(LIT_SCORE, String(score));
+      localStorage.setItem(LIT_LEVEL, level);
+      $('#litMsg').innerHTML = `<span class="ok">Score ${score}/10 • Level: ${level}</span>`;
+      setTimeout(()=>{ show('dashboard'); refreshDashboard(); }, 800);
+    };
+    $('#litReset').onclick = ()=>{ localStorage.removeItem(LIT_SCORE); localStorage.removeItem(LIT_LEVEL); $('#litMsg').textContent=''; $$("input[name^='lit_']").forEach(i=>i.checked=false); };
+
+    // ====== Programs (modules demo)
+    const YT_EMBED = 'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1&playsinline=1';
     const modules = [
       {title: 'Introduction to Tailoring', minutes: 65, items: [
         { type:'video', title:'Welcome & safety', mins:6 },
@@ -378,6 +505,18 @@
         { type:'reading', title:'Keeping a cashbook', mins:10 }
       ]}
     ];
+    const quizBanks = {
+      q1: [
+        { q:'Best way to record daily cash?', opts:['Memory','Cashbook','Bank passbook'], ans:1 },
+        { q:'What goes into blouse price?', opts:['Thread only','Fabric only','All materials & time'], ans:2 },
+        { q:'Service the machine?', opts:['Never','When broken','Regularly as per manual'], ans:2 }
+      ],
+      q2: [
+        { q:'Why keep a cashbook?', opts:['Decoration','Track income & expense','Only to show bank'], ans:1 },
+        { q:'Working capital example?', opts:['Daily cash for orders','Buying a shop','Buying land'], ans:0 },
+        { q:'If income ₹15k, safe EMI share ~', opts:['10%','35%','80%'], ans:1 }
+      ]
+    };
 
     function closeAllDetails(){
       $$('.item-details.open').forEach(d=>{
@@ -386,30 +525,31 @@
         if(ifr){ ifr.src='about:blank'; ifr.remove(); }
       });
     }
-
     function renderModules(){
-      const host = $('#moduleList'); host.innerHTML='';
-      let total=0;
-      modules.forEach((mod, idx)=>{
+      const host = $('#moduleList'); if(!host) return; host.innerHTML='';
+      let total=0; let doneCount=0; 
+      const state = JSON.parse(localStorage.getItem(COURSE_STATE) || '{"moduleIndex":0,"itemIndex":0}');
+      modules.forEach((mod, mi)=>{
         total += mod.minutes;
         const sec = document.createElement('section');
         sec.className = 'module-sec';
         sec.innerHTML = `
           <div class="sec-head">
             <div>
-              <button class="collapse-btn" data-i="${idx}" aria-expanded="true" aria-controls="items-${idx}">▾</button>
-              <span class="sec-title">${idx+1}. ${mod.title}</span>
+              <button class="collapse-btn" data-i="${mi}" aria-expanded="true" aria-controls="items-${mi}">▾</button>
+              <span class="sec-title">${mi+1}. ${mod.title}</span>
             </div>
             <span class="muted">${mod.minutes}m</span>
           </div>
-          <div class="items" id="items-${idx}"></div>
+          <div class="items" id="items-${mi}"></div>
         `;
         host.appendChild(sec);
         const items = sec.querySelector('.items');
-        mod.items.forEach((it)=>{
+        mod.items.forEach((it, ii)=>{
           const row = document.createElement('div');
           row.className = 'item-row';
           row.dataset.type = it.type;
+          row.dataset.mi = mi; row.dataset.ii = ii;
           if(it.quizId) row.dataset.quizid = it.quizId;
           row.innerHTML = `
             <div class="left">
@@ -418,20 +558,20 @@
             </div>
             <div class="right">
               <span class="muted">${it.mins}m</span>
-              <button class="ghost-icon" title="Move">☰</button>
-              <button class="ghost-icon" title="Edit">✎</button>
             </div>
           `;
           const details = document.createElement('div');
           details.className = 'item-details';
           details.innerHTML = `<div class="holder"></div>`;
-          items.appendChild(row);
-          items.appendChild(details);
+          items.appendChild(row); items.appendChild(details);
 
           row.addEventListener('click', (e)=>{
-            if(e.target.closest('.ghost-icon') && !e.target.classList.contains('play-btn')) return; // ignore other icons
+            if(e.target.closest('.ghost-icon') && !e.target.classList.contains('play-btn')) return;
             toggleItem(row);
           });
+
+          // progress calc: items before current state are considered done
+          if(mi < state.moduleIndex || (mi===state.moduleIndex && ii < state.itemIndex)) doneCount++;
         });
       });
       $('#totalLen').textContent = total + 'm';
@@ -445,8 +585,10 @@
           if(isHidden) closeAllDetails();
         };
       });
+      const totalItems = modules.reduce((a,m)=>a+m.items.length,0);
+      const pct = Math.min(1, doneCount/totalItems);
+      localStorage.setItem(COURSE_PROGRESS, String(pct));
     }
-
     function toggleItem(row){
       const details = row.nextElementSibling;
       const open = details.classList.contains('open');
@@ -460,6 +602,9 @@
       details.classList.add('open');
       const holder = details.querySelector('.holder'); holder.innerHTML='';
       const kind = row.dataset.type;
+      const mi = Number(row.dataset.mi), ii = Number(row.dataset.ii);
+      localStorage.setItem(COURSE_STATE, JSON.stringify({moduleIndex:mi,itemIndex:ii}));
+
       if(kind==='video'){
         const iframe = document.createElement('iframe');
         iframe.className = 'yt';
@@ -467,106 +612,85 @@
         iframe.allowFullscreen = true;
         iframe.src = YT_EMBED;
         holder.appendChild(iframe);
-        const link = document.createElement('div');
-        link.className='tiny muted'; link.innerHTML='<a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Open on YouTube</a>';
-        holder.appendChild(link);
       } else if(kind==='quiz'){
         const id = row.dataset.quizid;
         const qs = quizBanks[id] || [];
         const form = document.createElement('div');
         form.innerHTML = qs.map((it, i)=>`
-          <div class='quiz-q' style='margin:8px 0'>
+          <div class='card' style='margin:8px 0'>
             <div style='font-weight:700;margin-bottom:6px'>${i+1}. ${it.q}</div>
             ${it.opts.map((o,j)=>`<label style="display:flex;gap:8px;align-items:center;margin:4px 0"><input type="radio" name="${id}_q${i}" value="${j}"/> <span>${o}</span></label>`).join('')}
           </div>
         `).join('');
-        const actions = document.createElement('div');
-        actions.className='quiz-actions'; actions.style.marginTop='8px';
         const submit=document.createElement('button'); submit.className='btn primary'; submit.textContent='Submit quiz';
-        const reset=document.createElement('button'); reset.className='btn ghost'; reset.textContent='Reset';
         const result=document.createElement('span'); result.className='muted'; result.style.marginLeft='8px';
-        actions.appendChild(submit); actions.appendChild(reset); actions.appendChild(result);
-        holder.appendChild(form); holder.appendChild(actions);
+        holder.appendChild(form); holder.appendChild(submit); holder.appendChild(result);
         submit.onclick=()=>{
           let score=0; qs.forEach((qq,i)=>{ const sel = holder.querySelector(`input[name='${id}_q${i}']:checked`); if(sel && Number(sel.value)===qq.ans) score++; });
           result.innerHTML = (score===qs.length) ? `<span class='ok'>Perfect! ${score}/${qs.length}</span>` : `<span class='err'>Score: ${score}/${qs.length}</span>`;
           localStorage.setItem('sam_quiz_'+id, String(score));
         };
-        reset.onclick=()=>{ holder.querySelectorAll(`input[name^='${id}_q']`).forEach(r=>r.checked=false); result.textContent=''; localStorage.removeItem('sam_quiz_'+id); };
       } else {
         holder.innerHTML = '<div class="muted">Reading: short tips and checklists (placeholder).</div>';
       }
       details.scrollIntoView({behavior:'smooth', block:'center'});
     }
+    function resumeCourse(){
+      const state = JSON.parse(localStorage.getItem(COURSE_STATE) || 'null');
+      show('modules'); renderModules();
+      if(!state) return;
+      const row = document.querySelector(`[data-mi='${state.moduleIndex}'][data-ii='${state.itemIndex}']`);
+      if(row) toggleItem(row);
+    }
 
-    // ====== Banking calc ======
-    function calcMaturity(principal, ratePct, months){
+    // ====== Banking formulas
+    function calcFD(principal, ratePct, months){
       const qRate = ratePct/100/4;
       const years = months/12;
-      const A = principal * Math.pow(1 + qRate, 4*years);
-      return Math.round(A);
+      return Math.round(principal * Math.pow(1 + qRate, 4*years));
     }
-    function updateFacts(){
+    function calcRD(monthly, ratePct, months){
+      const r = ratePct/100/12;
+      return Math.round(monthly * (((Math.pow(1+r, months)-1)/r) * (1+r)));
+    }
+    function calcEMI(P, ratePct, n){
+      const r = ratePct/100/12;
+      return P * r * Math.pow(1+r, n) / (Math.pow(1+r, n)-1);
+    }
+
+    // ====== Banking wiring
+    function updateFD(){
       const parts = $('#tenurePick').value.split('|').map(Number);
       const months = parts[0]; const rate = parts[1];
       const amt = Number($('#invAmount').value||0);
       $('#fInv').textContent = '₹' + amt.toLocaleString('en-IN');
       $('#fRate').textContent = rate + '%';
       $('#fTenure').textContent = (months/12) + 'Y';
-      const mat = calcMaturity(amt, rate, months);
+      const mat = calcFD(amt, rate, months);
       $('#fMaturity').textContent = '₹' + mat.toLocaleString('en-IN');
     }
-
-    // ====== Auth Flow ======
-    $('#btnStart').onclick = ()=> show('login');
-    $('#btnOpenLogin').onclick = ()=> show('login');
-
-    // Step 1: enter phone
-    $('#btnProceedPhone').onclick = ()=>{
-      const ph = ($('#phoneNumber').value || '').replace(/\D/g,'');
-      if(ph.length !== 10){ $('#login_msg').textContent = 'Enter a valid 10-digit number.'; return; }
-      localStorage.setItem('sam_tmp_phone', ph);
-      const accounts = getAccounts();
-      if(accounts[ph]){
-        show('password');
-      }else{
-        $('#create_phone').value = ph;
-        show('create');
+    function updateRD(){
+      const A = Number($('#rd_amt').value||0);
+      const M = Number($('#rd_months').value||0);
+      const r = 7.5; // demo rate
+      const out = calcRD(A, r, M);
+      $('#rd_out').textContent = '₹' + out.toLocaleString('en-IN');
+    }
+    function updateEMI(){
+      const P = Number($('#loan_amt').value||0);
+      const n = Number($('#loan_tenure').value||0);
+      const rate = Number($('#loan_rate').value||0);
+      const I = Number($('#loan_income').value||0);
+      const E = Number($('#loan_emi').value||0);
+      if(P>0 && n>0 && rate>0){
+        const emi = calcEMI(P, rate, n);
+        $('#emi_out').textContent = '₹' + Math.round(emi).toLocaleString('en-IN');
+        const ok = (emi + E) <= 0.35 * I;
+        $('#emi_out').style.color = ok ? '#166534' : '#b91c1c';
       }
-    };
+    }
 
-    // Existing user: password step
-    $('#btnLogin').onclick = ()=>{
-      const ph = localStorage.getItem('sam_tmp_phone') || '';
-      const pw = $('#login_pass').value;
-      const accs = getAccounts();
-      if(!accs[ph]){ $('#pass_msg').textContent='Account not found.'; return; }
-      if(accs[ph].pw !== hash(pw)){ $('#pass_msg').textContent='Wrong password.'; return; }
-      const sess = { phone: ph, name: accs[ph].name || '', city: accs[ph].city || '' };
-      setSession(sess);
-      $('#btnOpenLogin').classList.add('hidden'); $('#navProfile').classList.remove('hidden');
-      show('modules');
-    };
-
-    // New user: create account
-    $('#btnCreate').onclick = ()=>{
-      const ph = localStorage.getItem('sam_tmp_phone') || '';
-      const name = $('#create_name').value.trim();
-      const city = $('#create_city').value.trim();
-      const pw = $('#create_pw').value;
-      const cpw = $('#create_cpw').value;
-      if(pw.length < 4){ $('#create_msg').textContent='Password too short.'; return; }
-      if(pw !== cpw){ $('#create_msg').textContent='Passwords do not match.'; return; }
-      const accs = getAccounts();
-      accs[ph] = { name, city, pw: hash(pw) };
-      setAccounts(accs);
-      const sess = { phone: ph, name, city };
-      setSession(sess);
-      $('#btnOpenLogin').classList.add('hidden'); $('#navProfile').classList.remove('hidden');
-      show('modules');
-    };
-
-    // Profile & logout
+    // ====== Profile & logout
     function loadProfileUI(){
       const sess = getSession() || {};
       $('#prof_phone').value = sess.phone || '';
@@ -574,6 +698,11 @@
       $('#prof_city').value = sess.city || '';
       $('#prof_job').value = sess.job || '';
       $('#prof_lang').value = sess.lang || 'English';
+      const sc = localStorage.getItem(LIT_SCORE)||'0';
+      const lv = localStorage.getItem(LIT_LEVEL)||'—';
+      $('#prof_lit').textContent = lv + ' ('+sc+'/10)';
+      const pct = Math.round((Number(localStorage.getItem(COURSE_PROGRESS)||0))*100);
+      $('#prof_prog').textContent = pct + '%';
     }
     $('#prof_save').onclick = ()=>{
       const sess = getSession() || {};
@@ -584,10 +713,12 @@
         name: $('#prof_name').value.trim(),
         city: $('#prof_city').value.trim(),
         job: $('#prof_job').value.trim(),
-        lang: $('#prof_lang').value
+        lang: $('#prof_lang').value,
+        pw: $('#prof_pw').value ? hash($('#prof_pw').value) : accs[ph]?.pw
       };
       accs[ph] = updated; setAccounts(accs);
-      setSession({ ...sess, ...updated });
+      setSession({ ...sess, ...updated, pw: undefined });
+      $('#prof_pw').value='';
       $('#prof_msg').innerHTML = '<span class="ok">Saved.</span>';
     };
     $('#prof_logout').onclick = ()=>{
@@ -597,43 +728,44 @@
       show('home');
     };
 
-    // Banking links
-    $('#acc_submit').onclick = ()=>{ $('#acc_msg').innerHTML='<span class="ok">Account request submitted. Ref: ACC'+Math.floor(Math.random()*99999)+'</span>'; setTimeout(()=>show('dashboard'), 900); };
-    $('#loan_submit').onclick = ()=>{
-      const A=Number($('#loan_amt').value||0);
-      const I=Number($('#loan_income').value||0);
-      const E=Number($('#loan_emi').value||0);
-      if(A<1000 || I<=0 || E<0){ $('#loan_msg').textContent='Check numbers and try again.'; return; }
-      const r = 0.20/12, n = Number($('#loan_tenure').value);
-      const emi = A * r * Math.pow(1+r, n) / (Math.pow(1+r, n)-1);
-      const ok = (emi + E) <= 0.35 * I;
-      $('#loan_msg').innerHTML = ok
-        ? '<span class="ok">Eligible. Est. EMI ₹'+Math.round(emi).toLocaleString('en-IN')+'</span>'
-        : '<span class="err">Not eligible at current income/EMIs.</span>';
-      if(ok) setTimeout(()=>show('dashboard'), 1200);
-    };
+    // ====== Toolkits: generate dummy files
+    function makeBlob(name){
+      let mime = 'text/plain';
+      if(name.endsWith('.xlsx')) mime = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+      if(name.endsWith('.csv')) mime = 'text/csv';
+      const data = 'Samriddhi Toolkit - ' + name + '\nSample data';
+      const url = URL.createObjectURL(new Blob([data], {type:mime}));
+      return url;
+    }
+    function wireToolkits(){
+      $$('#page-toolkits [data-dl]').forEach(btn=>{
+        btn.onclick = ()=>{
+          const name = btn.getAttribute('data-dl');
+          const a = document.createElement('a'); a.href = makeBlob(name); a.download = name; a.click();
+        };
+      });
+    }
 
-    // Misc
-    $('#btnExitGuide').onclick = ()=> show('dashboard');
-    $('#tenurePick').onchange = updateFacts; $('#invAmount').oninput = updateFacts; updateFacts();
-
-    // Dropdown
-    const dd = $('#programsDropdown');
-    dd.querySelector('.dropdown-toggle').addEventListener('click', ()=> dd.classList.toggle('open'));
-    document.addEventListener('click', (e)=>{ if(!dd.contains(e.target)) dd.classList.remove('open'); });
-
-    // Init
+    // ====== Init
     function init(){
+      renderLit();
+      renderModules();
+      updateFD(); updateRD(); updateEMI();
+      $('#tenurePick').onchange = updateFD; $('#invAmount').oninput = updateFD;
+      $('#rd_amt').oninput = updateRD; $('#rd_months').oninput = updateRD;
+      ['loan_amt','loan_tenure','loan_rate','loan_income','loan_emi'].forEach(id=> $('#'+id).oninput = updateEMI);
+
       const sess = getSession();
       if(sess){ $('#navProfile').classList.remove('hidden'); $('#btnOpenLogin').classList.add('hidden'); }
-      renderModules();
       const raw = location.hash.replace('#/','') || 'home';
       show(PAGES.includes(raw) ? raw : 'home');
+      refreshDashboard();
+      wireToolkits();
     }
     init();
 
-    // Observe route changes to load profile UI
-    const ro = new MutationObserver(()=>{ if(!$('#page-profile').classList.contains('hidden')) loadProfileUI(); });
+    // Observe route changes to load profile UI lazily
+    const ro = new MutationObserver(()=>{ if(!$('#page-profile').classList.contains('hidden')) loadProfileUI(); if(!$('#page-dashboard').classList.contains('hidden')) refreshDashboard(); });
     ro.observe(document.body, {subtree:true, attributes:true, attributeFilter:['class']});
   </script>
 </body>
