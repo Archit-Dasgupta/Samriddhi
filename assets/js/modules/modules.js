@@ -88,18 +88,49 @@ const toggleItem = (row) => {
   localStorage.setItem(COURSE_STATE, JSON.stringify({ moduleIndex, itemIndex }));
 
   if (kind === 'video') {
-    const iframe = document.createElement('iframe');
-    iframe.className = 'yt';
-    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-    iframe.allowFullscreen = true;
-    iframe.title = `${itemData?.title || 'Course'} video lesson`;
     const src = buildVideoSrc(itemData);
     if (src) {
+      const shell = document.createElement('div');
+      shell.className = 'video-shell';
+
+      const iframe = document.createElement('iframe');
+      iframe.className = 'yt';
+      iframe.setAttribute('allow', 'autoplay; fullscreen; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.title = `${itemData?.title || 'Course'} video lesson`;
       iframe.src = src;
-      holder.appendChild(iframe);
+
+      const controls = document.createElement('div');
+      controls.className = 'video-controls';
+
+      const fsBtn = document.createElement('button');
+      fsBtn.type = 'button';
+      fsBtn.className = 'video-control';
+      fsBtn.innerHTML = '<span aria-hidden="true">⤢</span><span class="label">Full screen</span>';
+      fsBtn.addEventListener('click', () => {
+        if (iframe.requestFullscreen) {
+          iframe.requestFullscreen().catch(() => {
+            if (shell.requestFullscreen) shell.requestFullscreen().catch(() => {});
+          });
+        } else if (shell.requestFullscreen) {
+          shell.requestFullscreen().catch(() => {});
+        }
+      });
+
+      controls.appendChild(fsBtn);
+
+      const autoplayHint = document.createElement('span');
+      autoplayHint.className = 'video-hint';
+      autoplayHint.textContent = 'Playing automatically — unmute if you need sound.';
+      controls.appendChild(autoplayHint);
+
+      shell.appendChild(iframe);
+      shell.appendChild(controls);
+      holder.appendChild(shell);
+
       const note = document.createElement('p');
       note.className = 'video-note';
-      note.textContent = 'Tap the speaker icon to hear the instructor clearly and sit comfortably before you start sewing.';
+      note.textContent = 'Find a quiet spot, keep your phone steady, and pause to practice each step before continuing.';
       holder.appendChild(note);
     } else {
       holder.innerHTML = '<div class="reading-card">This video will be available soon. Meanwhile, review the safety checklist in your notes.</div>';
@@ -110,8 +141,10 @@ const toggleItem = (row) => {
     holder.innerHTML = `<div class="reading-card">${copy}</div>`;
   }
 
-  details.style.maxHeight = `${details.scrollHeight}px`;
-  requestAnimationFrame(refreshSectionHeights);
+  requestAnimationFrame(() => {
+    details.style.maxHeight = `${details.scrollHeight}px`;
+    refreshSectionHeights();
+  });
   details.scrollIntoView({ behavior: 'smooth', block: 'center' });
 };
 
