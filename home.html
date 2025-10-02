@@ -9,88 +9,132 @@
 <body data-page="home">
   <div id="header-placeholder"></div>
 
-  <main class="container" id="page-home" role="main">
-    <section class="hero card hero-accent">
-      <div class="hero-copy">
-        <span class="eyebrow">Built for women tailoring entrepreneurs</span>
-        <h1>Grow with practical lessons, tools &amp; trusted finance partners.</h1>
-        <p class="muted hero-support">
-          Learn at your own pace with short video lessons and smart calculators tailored for tailoring entrepreneurs.
-        </p>
-        <p class="muted hero-support">
-          Access curated partner offers that help you price, save and invest confidently without leaving your shop.
-        </p>
-        <div class="hero-ctas">
-          <button class="btn primary" id="btnStart">Login / Register</button>
-          <a class="btn ghost" href="modules.html">Browse Programs</a>
+  <main id="page-home" role="main">
+    <section class="hero hero-accent">
+      <div class="container hero-content">
+        <div class="hero-copy">
+          <div class="seasonal-hook">
+            <span class="badge warm">Festive spotlight</span>
+            <p class="muted subtle">This Diwali season, never miss an order – line up every delivery with confident pricing and cashflow.</p>
+          </div>
+          <h1>Samriddhi unites training, tools and finance to grow your tailoring business.</h1>
+          <p class="muted hero-support">
+            Join 25,000+ boutique owners using Samriddhi to master pricing, manage working capital and stay fully booked without stress.
+          </p>
+          <div class="hero-ctas">
+            <div class="cta-stack">
+              <button class="btn primary" id="btnStart">Start your free trial</button>
+              <p class="cta-note">No card required. Cancel anytime.</p>
+            </div>
+            <a class="btn accent" href="modules.html">Preview festive programs</a>
+          </div>
+          <div class="module-highlight">
+            <span class="badge">Diwali playbook</span>
+            <div class="module-text">
+              <h3>Plan your festive season orders</h3>
+              <p class="muted subtle">Premium strategies from master trainers to deliver every outfit on time and on budget.</p>
+            </div>
+            <ul class="module-points">
+              <li>Set profitable blouse and lehenga rates</li>
+              <li>Forecast fabric &amp; staffing week by week</li>
+              <li>Offer savings plans loyal clients love</li>
+            </ul>
+          </div>
+          <dl class="hero-stats">
+            <div>
+              <dt>25k+</dt>
+              <dd class="muted">Lessons completed by tailors like you</dd>
+            </div>
+            <div>
+              <dt>4.8/5</dt>
+              <dd class="muted">Average rating for program quality</dd>
+            </div>
+            <div>
+              <dt>7 mins</dt>
+              <dd class="muted">Average time to finish a video</dd>
+            </div>
+          </dl>
         </div>
-        <dl class="hero-stats">
-          <div>
-            <dt>25k+</dt>
-            <dd class="muted">Lessons completed by tailors like you</dd>
-          </div>
-          <div>
-            <dt>4.8/5</dt>
-            <dd class="muted">Average rating for program quality</dd>
-          </div>
-          <div>
-            <dt>7 mins</dt>
-            <dd class="muted">Average time to finish a video</dd>
-          </div>
-        </dl>
+        <div class="hero-visual" aria-hidden="true">
+          <figure class="hero-scene">
+            <div class="scene-thread scene-thread-one"></div>
+            <div class="scene-thread scene-thread-two"></div>
+            <img class="hero-photo" src="img/img1.png" alt="" role="presentation">
+            <div class="scene-badge">Tailor at work</div>
+            <div class="scene-card scene-before">
+              <span class="scene-label">Before Samriddhi</span>
+              <strong>Festive chaos</strong>
+              <p>8 late orders each month</p>
+            </div>
+            <div class="scene-card scene-after">
+              <span class="scene-label">After Samriddhi</span>
+              <strong>Fully booked</strong>
+              <p>2× repeat clients this season</p>
+            </div>
+          </figure>
+        </div>
       </div>
-      <div class="hero-visual" aria-hidden="true">
-        <div class="hero-glass">
-          <span class="badge">New module</span>
-          <h3>Plan your festive season orders</h3>
-          <ul class="bullets">
-            <li>Set the right blouse price</li>
-            <li>Track fabric usage &amp; profits</li>
-            <li>Offer installment savings</li>
+    </section>
+
+    <section class="accent-slab banking-spotlight" aria-labelledby="bankingSpotlight">
+      <div class="container banking-inner">
+        <div class="banking-copy">
+          <span class="eyebrow">Now with trusted finance partners</span>
+          <h2 id="bankingSpotlight">Banking NEW: compare loans, insurance &amp; savings inside Samriddhi.</h2>
+          <p class="muted">Get curated offers from women-friendly banks and NBFCs, guided onboarding, and repayment reminders—all in-app.</p>
+          <div class="banking-ctas">
+            <a class="btn primary" href="banking.html">Explore the banking hub</a>
+            <p class="cta-note">Partnered with Mahila Co-op Bank, Nari Finance Trust &amp; more.</p>
+          </div>
+        </div>
+        <div class="banking-card" role="presentation">
+          <div class="banking-pill">Loan matches in 48 hrs</div>
+          <ul class="banking-points">
+            <li>Side-by-side rate comparisons</li>
+            <li>Verified paperwork checklists</li>
+            <li>Dedicated coach to review your application</li>
           </ul>
-          <div class="mini-card">
-            <strong>Bonus:</strong>
-            <p class="muted">Download the cashbook template loved by 5k tailors.</p>
-          </div>
         </div>
-        <img class="hero-art" src="img/img2.png" alt="" role="presentation">
       </div>
     </section>
 
-    <section class="benefits">
+    <section class="container benefits">
       <article class="card feature-card">
-        <div class="icon-bubble" aria-hidden="true">🎥</div>
+        <div class="icon-bubble" aria-hidden="true">
+          <svg viewBox="0 0 24 24" role="img" aria-label="Scissors"><path d="M9.8 4.2c.8.8.8 2.1 0 2.9L8 8.9l2.7 2.7 1.6-1.6c.8-.8 2.1-.8 2.9 0l5.4 5.4c.4.4.4 1.1 0 1.5l-1.1 1.1c-.4.4-1.1.4-1.5 0l-5.4-5.4-1.5 1.5 2.5 2.5c.8.8.8 2.1 0 2.9-.8.8-2.1.8-2.9 0l-2.4-2.4-2.4 2.4c-.8.8-2.1.8-2.9 0-.8-.8-.8-2.1 0-2.9l2.4-2.4-2.4-2.4c-.8-.8-.8-2.1 0-2.9.8-.8 2.1-.8 2.9 0l2.4 2.4 2.5-2.5-1.6-1.6c-.8-.8-.8-2.1 0-2.9 .8-.8 2.1-.8 2.9 0Z"/></svg>
+        </div>
         <h3>Learn what matters</h3>
-        <p class="muted">Phone-first lessons in Marathi, Hindi and English so you can learn between customer orders.</p>
-        <ul class="bullets">
-          <li>Short, practical how-to videos</li>
-          <li>Audio transcripts for quick revision</li>
-          <li>Downloadable checklists</li>
+        <p class="muted">Phone-first lessons in Marathi, Hindi and English that slot between customer orders.</p>
+        <ul class="feature-points">
+          <li>Video playbooks under 7 minutes</li>
+          <li>Printable cutting guides</li>
         </ul>
       </article>
       <article class="card feature-card">
-        <div class="icon-bubble" aria-hidden="true">📈</div>
+        <div class="icon-bubble" aria-hidden="true">
+          <svg viewBox="0 0 24 24" role="img" aria-label="Calculator"><path d="M6 3h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm0 2v4h12V5H6Zm12 6H6v8h12v-8Zm-9.5 2a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm4 0h-1a1 1 0 1 1 0-2h1a1 1 0 1 1 0 2Zm0 3h-1a1 1 0 1 1 0-2h1a1 1 0 1 1 0 2Zm-8 2a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm4 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm4 0h-1a1 1 0 1 1 0-2h1a1 1 0 1 1 0 2Z"/></svg>
+        </div>
         <h3>Run your business smoothly</h3>
-        <p class="muted">Use simple calculators and templates to price your work, manage cash flow and plan raw material purchases.</p>
-        <ul class="bullets">
-          <li>Fair pricing calculator</li>
-          <li>Fabric &amp; trim planner</li>
-          <li>Cashbook with reminders</li>
+        <p class="muted">Use premium calculators and templates to price work, track fabric and manage cash flow.</p>
+        <ul class="feature-points">
+          <li>Smart pricing + profit calculator</li>
+          <li>Cashbook with auto reminders</li>
         </ul>
       </article>
       <article class="card feature-card">
-        <div class="icon-bubble" aria-hidden="true">🤝</div>
+        <div class="icon-bubble" aria-hidden="true">
+          <svg viewBox="0 0 24 24" role="img" aria-label="Rupee shield"><path d="M12 2 3 6v6c0 5 3.8 9.7 9 10 5.2-.3 9-5 9-10V6l-9-4Zm0 2.2 6.8 3.1v4.7c0 3.9-2.9 7.5-6.8 7.8-3.9-.3-6.8-3.9-6.8-7.8V7.3L12 4.2Zm-3 4.8h3.4c.5 0 .9.3 1 .8H9c0 .6.4 1 1 1h2.8a2.2 2.2 0 0 1-1.8 1H9v1.5h1.7l-2.2 2.8h2L12 13h.3c1.6 0 3-1 3.5-2.5h1.2V9.1H14A2.2 2.2 0 0 0 11.6 7H9v.9Z"/></svg>
+        </div>
         <h3>Trustworthy finance partners</h3>
-        <p class="muted">Understand savings, insurance and loan products made for micro businesses with safe, guided onboarding.</p>
-        <ul class="bullets">
-          <li>Explain-it-simple guides</li>
-          <li>Compare offers in one view</li>
-          <li>Support from real coaches</li>
+        <p class="muted">Understand savings, insurance and loan products built for micro businesses with guided onboarding.</p>
+        <ul class="feature-points">
+          <li>Compare curated partner offers</li>
+          <li>Coach handholding until approval</li>
         </ul>
       </article>
     </section>
 
-    <section class="snapshot card">
+    <section class="container snapshot card">
       <div>
         <span class="eyebrow">Your business partner in one app</span>
         <h2>Plan, learn and access capital without leaving your shop.</h2>
@@ -121,11 +165,11 @@
       </div>
     </section>
 
-    <section class="testimonials card" aria-label="Learner testimonials">
+    <section class="container testimonials card" aria-label="Learner testimonials">
       <div class="testimonials-head">
         <div>
           <span class="eyebrow">Learners who trust Samriddhi</span>
-          <h2>Stories from tailoring entrepreneurs</h2>
+          <h2>Before &amp; after stories from tailoring entrepreneurs</h2>
         </div>
         <div class="testimonial-controls" aria-controls="testimonialCarousel">
           <button class="carousel-btn" data-dir="prev" aria-label="Previous testimonial">
@@ -139,28 +183,92 @@
       <div class="testimonial-window" id="testimonialCarousel">
         <div class="testimonial-track">
           <article class="testimonial-card">
+            <div class="testimonial-person">
+              <span class="avatar" aria-hidden="true" data-initial="AP" style="--avatar-bg:linear-gradient(135deg,#f97316,#facc15);"></span>
+              <div>
+                <strong>Asha Patil</strong>
+                <span class="muted location">Murbad, Maharashtra</span>
+              </div>
+            </div>
             <blockquote>
-              “I learned to price blouses properly and doubled my monthly income.”
+              “The festive planner helped me lock blouse prices ahead of Diwali rush. Clients now book two months early.”
             </blockquote>
-            <cite>Asha, Murbad</cite>
+            <dl class="impact-metrics">
+              <div>
+                <dt>Before</dt>
+                <dd>8 late deliveries / month</dd>
+              </div>
+              <div>
+                <dt>After</dt>
+                <dd>0 missed deadlines</dd>
+              </div>
+            </dl>
           </article>
           <article class="testimonial-card">
+            <div class="testimonial-person">
+              <span class="avatar" aria-hidden="true" data-initial="RS" style="--avatar-bg:linear-gradient(135deg,#0ea5e9,#22d3ee);"></span>
+              <div>
+                <strong>Rekha Soni</strong>
+                <span class="muted location">Jalgaon, Maharashtra</span>
+              </div>
+            </div>
             <blockquote>
-              “The FD calculator helped me plan my savings without guesswork.”
+              “Smart calculators showed me how much to save weekly. I cleared my fabric loan before Navratri.”
             </blockquote>
-            <cite>Rekha, Jalgaon</cite>
+            <dl class="impact-metrics">
+              <div>
+                <dt>Before</dt>
+                <dd>₹18k high-interest debt</dd>
+              </div>
+              <div>
+                <dt>After</dt>
+                <dd>Debt-free in 10 weeks</dd>
+              </div>
+            </dl>
           </article>
           <article class="testimonial-card">
+            <div class="testimonial-person">
+              <span class="avatar" aria-hidden="true" data-initial="FA" style="--avatar-bg:linear-gradient(135deg,#a855f7,#ec4899);"></span>
+              <div>
+                <strong>Farida Ansari</strong>
+                <span class="muted location">Osmanabad, Maharashtra</span>
+              </div>
+            </div>
             <blockquote>
-              “Videos are short and clear—I learn between customer orders.”
+              “Short Marathi videos make learning easy between fittings. I upsell festive bundles confidently now.”
             </blockquote>
-            <cite>Farida, Osmanabad</cite>
+            <dl class="impact-metrics">
+              <div>
+                <dt>Before</dt>
+                <dd>₹1.2k average order</dd>
+              </div>
+              <div>
+                <dt>After</dt>
+                <dd>₹2.1k average order</dd>
+              </div>
+            </dl>
           </article>
           <article class="testimonial-card">
+            <div class="testimonial-person">
+              <span class="avatar" aria-hidden="true" data-initial="SP" style="--avatar-bg:linear-gradient(135deg,#10b981,#14b8a6);"></span>
+              <div>
+                <strong>Shilpa Pawar</strong>
+                <span class="muted location">Ahmednagar, Maharashtra</span>
+              </div>
+            </div>
             <blockquote>
-              “Coach nudges on WhatsApp remind me to finish lessons every week.”
+              “Coach nudges on WhatsApp keep my team accountable. We finish lessons together every Friday.”
             </blockquote>
-            <cite>Shilpa, Ahmednagar</cite>
+            <dl class="impact-metrics">
+              <div>
+                <dt>Before</dt>
+                <dd>2/5 staff certified</dd>
+              </div>
+              <div>
+                <dt>After</dt>
+                <dd>5/5 staff certified</dd>
+              </div>
+            </dl>
           </article>
         </div>
       </div>
@@ -168,6 +276,17 @@
     </section>
   </main>
 
+  <section class="trust-band" aria-label="Partner trust">
+    <div class="container trust-inner">
+      <p class="muted">Partnered with organisations empowering women-led businesses</p>
+      <ul class="trust-logos" role="list">
+        <li><span>Mahila Co-op Bank</span></li>
+        <li><span>Nari Finance Trust</span></li>
+        <li><span>Sakhi Savings Circle</span></li>
+        <li><span>Udyam Stree Network</span></li>
+      </ul>
+    </div>
+  </section>
   <div id="footer-placeholder"></div>
   <script type="module" src="assets/js/app.js"></script>
 </body>
