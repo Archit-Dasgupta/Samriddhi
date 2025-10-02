@@ -7,6 +7,7 @@ import { initModules } from './modules/modules.js';
 import { initBanking } from './modules/banking.js';
 import { initToolkits } from './modules/toolkits.js';
 import { initProfile } from './modules/profile.js';
+import { initQuiz } from './modules/quiz.js';
 
 const partialFallbacks = {
   'partials/header.html': `
@@ -109,6 +110,9 @@ const initializePage = (page) => {
       break;
     case 'profile':
       initProfile();
+      break;
+    case 'quiz':
+      initQuiz();
       break;
     default:
       break;
