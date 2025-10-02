@@ -30,6 +30,12 @@ export const initHome = () => {
   let autoTimer;
   let scrollTimer;
 
+  const getTrackPadding = () => {
+    const styles = window.getComputedStyle(track);
+    const paddingLeft = parseFloat(styles.paddingLeft) || 0;
+    return paddingLeft;
+  };
+
   const stopAuto = () => {
     if (autoTimer) {
       window.clearInterval(autoTimer);
@@ -86,7 +92,8 @@ export const initHome = () => {
     if (!card) return;
 
     index = safeIndex;
-    viewport.scrollTo({ left: card.offsetLeft, behavior: smooth ? 'smooth' : 'auto' });
+    const targetLeft = Math.max(0, card.offsetLeft - getTrackPadding());
+    viewport.scrollTo({ left: targetLeft, behavior: smooth ? 'smooth' : 'auto' });
     syncDots();
     syncButtons();
 
@@ -110,10 +117,12 @@ export const initHome = () => {
 
   const updateIndexFromScroll = () => {
     const { scrollLeft } = viewport;
+    const paddingLeft = getTrackPadding();
     let nearestIndex = index;
     let minDistance = Number.POSITIVE_INFINITY;
     cards.forEach((card, cardIndex) => {
-      const distance = Math.abs(card.offsetLeft - scrollLeft);
+      const cardOffset = card.offsetLeft - paddingLeft;
+      const distance = Math.abs(cardOffset - scrollLeft);
       if (distance < minDistance) {
         minDistance = distance;
         nearestIndex = Math.min(cardIndex, maxIndex);
