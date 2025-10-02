@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Samriddhi • Open Account</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body data-page="open-account">
+  <div id="header-placeholder"></div>
+
+  <main class="container" id="page-open-account">
+    <section class="card">
+      <h2>Open an Account (Demo)</h2>
+      <div class="grid2" style="gap:8px">
+        <label>Full name<input id="acc_name" placeholder="e.g., Sita Devi"/></label>
+        <label>Village / City<input id="acc_city" placeholder="e.g., Murbad"/></label>
+        <label>PAN (optional)<input id="acc_pan" placeholder="ABCDE1234F"/></label>
+        <label>Initial deposit (₹)<input id="acc_amt" type="number" value="5000"/></label>
+        <label>Account type
+          <select id="acc_type"><option>Basic Savings</option><option>Regular Savings</option></select>
+        </label>
+      </div>
+      <div style="margin-top:12px; display:flex; gap:8px">
+        <button id="acc_submit" class="btn primary">Submit</button>
+        <a class="btn ghost" href="banking.html">Back to Banking</a>
+        <span id="acc_msg" class="muted"></span>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>

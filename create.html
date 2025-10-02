@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Samriddhi • Create Account</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body data-page="create">
+  <div id="header-placeholder"></div>
+
+  <main class="container" id="page-create">
+    <section class="card">
+      <h2>Create your account</h2>
+      <p class="muted">Finish setting up your profile and choose a password.</p>
+      <div class="grid2" style="gap:8px">
+        <label>Phone (read-only)<input id="create_phone" disabled/></label>
+        <label>Name<input id="create_name" placeholder="Your name"/></label>
+        <label>Village / City<input id="create_city" placeholder="Your town"/></label>
+        <label>Language
+          <select id="create_lang"><option>English</option><option>Hindi</option><option>Marathi</option></select>
+        </label>
+        <label>Occupation<input id="create_job" placeholder="e.g., Tailor"/></label>
+        <label>Password<input id="create_pw" type="password" placeholder="At least 4 characters"/></label>
+        <label>Confirm password<input id="create_cpw" type="password"/></label>
+      </div>
+      <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
+        <button id="btnCreate" class="btn primary">Create account</button>
+        <a href="login.html" class="btn ghost">Back</a>
+        <span id="create_msg" class="muted tiny" role="alert"></span>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>

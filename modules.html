@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Samriddhi • Programs</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body data-page="modules">
+  <div id="header-placeholder"></div>
+
+  <main class="container" id="page-modules">
+    <section class="modules-grid">
+      <aside class="left-rail card">
+        <div class="rail-header">
+          <span class="crumb">Home</span> / <span class="crumb strong">Programs</span>
+        </div>
+        <ol class="steps">
+          <li class="done">Pick a track</li>
+          <li class="done">Set your goals</li>
+          <li class="active">Review content</li>
+        </ol>
+        <a class="btn ghost small" id="btnExitGuide" href="dashboard.html">Go to Dashboard</a>
+      </aside>
+      <section class="recos card">
+        <div class="recos-head">
+          <h2>Recommended course content</h2>
+          <div class="save-indicator">Saved • Total length: <span id="totalLen">0m</span></div>
+        </div>
+        <div id="moduleList" class="module-sections"></div>
+      </section>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>
