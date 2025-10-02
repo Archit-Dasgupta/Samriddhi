@@ -1,12 +1,28 @@
 import { $, $$, COURSE_STATE, COURSE_PROGRESS } from './common.js';
 import { modulesData } from './course-data.js';
 
-const YT_EMBED = 'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1&playsinline=1';
-
 const TYPE_META = {
   video: { icon: '▶', label: 'Short video' },
   reading: { icon: '📘', label: 'Quick tip' },
   quiz: { icon: '📝', label: 'Knowledge check' },
+};
+
+const getItemData = (moduleIndex, itemIndex) => {
+  const module = modulesData[moduleIndex];
+  if (!module) return null;
+  return module.items[itemIndex] || null;
+};
+
+const buildVideoSrc = (item) => {
+  if (!item) return '';
+  if (item.videoUrl) {
+    const joiner = item.videoUrl.includes('?') ? '&' : '?';
+    return `${item.videoUrl}${joiner}autoplay=1&mute=1&rel=0&modestbranding=1&playsinline=1`;
+  }
+  if (item.videoId) {
+    return `https://www.youtube-nocookie.com/embed/${item.videoId}?autoplay=1&mute=1&rel=0&modestbranding=1&playsinline=1`;
+  }
+  return '';
 };
 
 const refreshSectionHeights = () => {
@@ -68,6 +84,7 @@ const toggleItem = (row) => {
   const kind = row.dataset.type;
   const moduleIndex = Number(row.dataset.mi);
   const itemIndex = Number(row.dataset.ii);
+  const itemData = getItemData(moduleIndex, itemIndex);
   localStorage.setItem(COURSE_STATE, JSON.stringify({ moduleIndex, itemIndex }));
 
   if (kind === 'video') {
@@ -75,10 +92,22 @@ const toggleItem = (row) => {
     iframe.className = 'yt';
     iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
     iframe.allowFullscreen = true;
-    iframe.src = YT_EMBED;
-    holder.appendChild(iframe);
+    iframe.title = `${itemData?.title || 'Course'} video lesson`;
+    const src = buildVideoSrc(itemData);
+    if (src) {
+      iframe.src = src;
+      holder.appendChild(iframe);
+      const note = document.createElement('p');
+      note.className = 'video-note';
+      note.textContent = 'Tap the speaker icon to hear the instructor clearly and sit comfortably before you start sewing.';
+      holder.appendChild(note);
+    } else {
+      holder.innerHTML = '<div class="reading-card">This video will be available soon. Meanwhile, review the safety checklist in your notes.</div>';
+    }
   } else {
-    holder.innerHTML = '<div class="reading-card">This short read gives you practical steps you can try today. Keep a notebook handy to write what matters most for your work.</div>';
+    const copy = itemData?.copy
+      || 'This short read gives you practical steps you can try today. Keep a notebook handy to write what matters most for your work.';
+    holder.innerHTML = `<div class="reading-card">${copy}</div>`;
   }
 
   details.style.maxHeight = `${details.scrollHeight}px`;
@@ -111,6 +140,7 @@ const renderModules = () => {
   host.innerHTML = '';
   let totalMinutes = 0;
   let doneCount = 0;
+  let firstAvailableSelector = '';
   const state = JSON.parse(localStorage.getItem(COURSE_STATE) || '{"moduleIndex":0,"itemIndex":0}');
 
   modulesData.forEach((module, moduleIndex) => {
@@ -135,6 +165,21 @@ const renderModules = () => {
     host.appendChild(section);
 
     const itemsContainer = section.querySelector('.items');
+    if (module.highlight && itemsContainer) {
+      const callout = document.createElement('div');
+      callout.className = 'module-callout';
+      callout.setAttribute('role', 'presentation');
+      callout.innerHTML = `
+        <span class="callout-badge">${module.highlight.badge}</span>
+        <div class="callout-body">
+          <p class="callout-text">${module.highlight.text}</p>
+          <ul class="callout-list">
+            ${module.highlight.tips.map((tip) => `<li>${tip}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+      itemsContainer.appendChild(callout);
+    }
     module.items.forEach((item, itemIndex) => {
       const meta = TYPE_META[item.type] || TYPE_META.reading;
       const row = document.createElement('button');
@@ -163,9 +208,14 @@ const renderModules = () => {
         row.classList.add('is-quiz');
       }
 
-      if (moduleIndex < state.moduleIndex || (moduleIndex === state.moduleIndex && itemIndex < state.itemIndex)) {
+      const isCompleted = moduleIndex < state.moduleIndex || (moduleIndex === state.moduleIndex && itemIndex < state.itemIndex);
+      if (isCompleted) {
         doneCount++;
         row.classList.add('completed');
+      }
+
+      if (!isCompleted && !firstAvailableSelector && item.type !== 'quiz') {
+        firstAvailableSelector = `[data-mi='${moduleIndex}'][data-ii='${itemIndex}']`;
       }
 
       if (item.type !== 'quiz') {
@@ -178,6 +228,12 @@ const renderModules = () => {
         details.innerHTML = '<div class="holder"></div>';
         row.setAttribute('aria-expanded', 'false');
         row.setAttribute('aria-controls', detailsId);
+        if (item.videoId) {
+          row.dataset.videoid = item.videoId;
+        }
+        if (item.videoUrl) {
+          row.dataset.videourl = item.videoUrl;
+        }
         itemsContainer.appendChild(row);
         itemsContainer.appendChild(details);
       } else {
@@ -210,6 +266,37 @@ const renderModules = () => {
   const totalItems = modulesData.reduce((acc, module) => acc + module.items.length, 0);
   const pct = Math.min(1, doneCount / totalItems);
   localStorage.setItem(COURSE_PROGRESS, String(pct));
+
+  const progressValue = $('#progressValue');
+  if (progressValue) {
+    progressValue.textContent = `${Math.round(pct * 100)}% complete`;
+  }
+  const progressBar = $('#progressBar');
+  if (progressBar) {
+    const percent = Math.round(pct * 100);
+    progressBar.style.width = `${percent}%`;
+    progressBar.parentElement?.setAttribute('aria-valuenow', String(percent));
+  }
+
+  const resumeBtn = $('#btnResumeLesson');
+  if (resumeBtn) {
+    resumeBtn.addEventListener('click', () => {
+      const stored = JSON.parse(localStorage.getItem(COURSE_STATE) || '{"moduleIndex":0,"itemIndex":0}');
+      let selector = `[data-mi='${stored.moduleIndex}'][data-ii='${stored.itemIndex}']`;
+      let targetRow = document.querySelector(selector);
+      if (!targetRow || targetRow.dataset.type === 'quiz') {
+        selector = firstAvailableSelector;
+        targetRow = selector ? document.querySelector(selector) : host.querySelector('.item-row');
+      }
+      if (!targetRow) return;
+      targetRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (targetRow.dataset.type === 'quiz') {
+        targetRow.click();
+      } else {
+        toggleItem(targetRow);
+      }
+    });
+  }
 
   requestAnimationFrame(() => {
     refreshSectionHeights();

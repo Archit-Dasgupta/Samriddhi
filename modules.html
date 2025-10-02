@@ -10,6 +10,36 @@
   <div id="header-placeholder"></div>
 
   <main class="container" id="page-modules">
+    <section class="modules-hero card">
+      <div class="hero-copy">
+        <p class="eyebrow">Learning Pathway</p>
+        <h1>Tailoring skills that fit into your everyday routine</h1>
+        <p class="hero-lede">Watch short, friendly lessons in your language, practice with simple notes, and come back anytime you need a refresher.</p>
+        <div class="hero-progress">
+          <div class="progress-meta">
+            <span class="progress-label">Your progress</span>
+            <span class="progress-pill" id="progressValue">0% complete</span>
+          </div>
+          <div class="progress-bar" role="progressbar" aria-label="Course completion" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <span class="progress-fill" id="progressBar" style="width:0%"></span>
+          </div>
+        </div>
+        <div class="hero-actions">
+          <button class="btn primary" type="button" id="btnResumeLesson">Resume last lesson</button>
+          <a class="btn soft" href="toolkits.html">Download practice sheets</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <span class="hero-card-badge">Comfort tip</span>
+          <p>Choose a well-lit corner, keep your mobile on a stand, and listen with earphones so your family can join or rest.</p>
+          <div class="hero-card-meta">
+            <span>⏱ Average lesson 10 min</span>
+            <span>📼 Pause and replay anytime</span>
+          </div>
+        </div>
+      </div>
+    </section>
     <section class="modules-grid">
       <aside class="left-rail card">
         <div class="rail-header">
@@ -20,6 +50,14 @@
           <li class="done">Set your goals</li>
           <li class="active">Review content</li>
         </ol>
+        <div class="rail-tip">
+          <h3>Make the most of your lessons</h3>
+          <ul>
+            <li>Download the practice sheets before you begin.</li>
+            <li>Watch with a friend or daughter so you can remind each other.</li>
+            <li>Tap the quiz cards to check your understanding.</li>
+          </ul>
+        </div>
         <a class="btn ghost small" id="btnExitGuide" href="dashboard.html">Go to Dashboard</a>
       </aside>
       <section class="recos card">
