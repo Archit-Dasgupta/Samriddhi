@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Samriddhi • Banking</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body data-page="banking">
+  <div id="header-placeholder"></div>
+
+  <main class="container" id="page-banking">
+    <section class="bank-wrap">
+      <div class="bank-hero card">
+        <img class="bank-img" alt="Bank" src="img/img.png"/>
+        <aside class="calc card">
+          <h3 class="calc-title">Fixed Deposit (FD) Calculator</h3>
+          <div class="grid2">
+            <label>Amount (₹)<input id="invAmount" type="number" value="100000"/></label>
+            <label>Sr. Citizen
+              <select id="srCitizen"><option>No</option><option>Yes</option></select>
+            </label>
+          </div>
+          <label>Interest rate and tenure
+            <select id="tenurePick">
+              <option value="60|8.2">5Y (8.2%)</option>
+              <option value="36|7.6">3Y (7.6%)</option>
+              <option value="12|7.0">1Y (7.0%)</option>
+            </select>
+          </label>
+          <div class="facts">
+            <div class="fact"><span>Investment amount</span><strong id="fInv">₹1,00,000</strong></div>
+            <div class="fact"><span>Compounding</span><strong>Quarterly</strong></div>
+            <div class="fact"><span>FD rate applicable</span><strong id="fRate">8.2%</strong></div>
+            <div class="fact"><span>FD tenure</span><strong id="fTenure">5Y</strong></div>
+            <div class="fact"><span>Maturity amount</span><strong id="fMaturity">₹—</strong></div>
+          </div>
+
+          <h3 style="margin-top:16px">Recurring Deposit (RD) Calculator</h3>
+          <div class="grid2">
+            <label>Monthly deposit (₹)<input id="rd_amt" type="number" value="2000"/></label>
+            <label>Tenure (months)<input id="rd_months" type="number" value="24"/></label>
+          </div>
+          <div class="fact"><span>Estimated maturity</span><strong id="rd_out">₹—</strong></div>
+
+          <h3 style="margin-top:16px">Loan EMI Calculator</h3>
+          <div class="grid2">
+            <label>Loan amount (₹)<input id="loan_amt" type="number" value="25000"/></label>
+            <label>Tenure (months)<input id="loan_tenure" type="number" value="12"/></label>
+          </div>
+          <div class="grid2">
+            <label>Rate p.a. (%)<input id="loan_rate" type="number" value="20"/></label>
+            <label>Monthly income (₹)<input id="loan_income" type="number" value="15000"/></label>
+          </div>
+          <label>Existing EMIs (₹)<input id="loan_emi" type="number" value="0"/></label>
+          <div class="fact"><span>Estimated EMI</span><strong id="emi_out">₹—</strong></div>
+          <div class="tiny muted">For demo only, not financial advice.</div>
+          <div class="grid2" style="margin-top:8px">
+            <a class="btn ghost" href="open-account.html">Open an account</a>
+            <a class="btn primary" href="loan.html">Apply for a loan</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>

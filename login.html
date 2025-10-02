@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Samriddhi • Login</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body data-page="login">
+  <div id="header-placeholder"></div>
+
+  <main class="container" id="page-login">
+    <section class="login card">
+      <h2>Login or Register</h2>
+      <p class="muted">Enter your mobile number to continue</p>
+      <div class="phone-input">
+        <div class="phone-cc">+91</div>
+        <input id="phoneNumber" inputmode="numeric" pattern="[0-9]*" maxlength="10" placeholder="0000000000" aria-label="Phone number"/>
+      </div>
+      <button id="btnProceedPhone" class="btn primary wide">Continue</button>
+      <p class="tiny muted">Demo: any 10-digit number works.</p>
+      <div id="login_msg" class="tiny muted" role="alert"></div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>

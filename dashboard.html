@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Samriddhi • Dashboard</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body data-page="dashboard">
+  <div id="header-placeholder"></div>
+
+  <main class="container" id="page-dashboard">
+    <section class="card">
+      <h2>Welcome to your dashboard</h2>
+      <p class="muted" id="dash_sub">Let’s build steady income with the right skills and safer finance.</p>
+
+      <div class="progress" aria-label="Course progress" title="Course progress">
+        <span id="progBar" style="width:0%"></span>
+      </div>
+      <p class="tiny muted">Progress: <span id="progPct">0%</span> • Literacy: <span id="litLevel">—</span> (<span id="litScore">0</span>/10)</p>
+
+      <div class="quick-actions" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:8px">
+        <button id="btnTakeTest" class="btn ghost">Take Financial Literacy Test</button>
+        <button id="btnResume" class="btn primary">Resume Course</button>
+        <a class="btn ghost" href="modules.html" id="btnExplorePrograms">Explore Programs</a>
+        <a class="btn ghost" href="banking.html">Banking</a>
+        <a class="btn ghost" href="toolkits.html">Toolkits</a>
+      </div>
+      <p id="lockMsg" class="muted tiny" style="margin-top:8px"></p>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>
