@@ -8,6 +8,31 @@ import { initBanking } from './modules/banking.js';
 import { initToolkits } from './modules/toolkits.js';
 import { initProfile } from './modules/profile.js';
 
+const partialFallbacks = {
+  'partials/header.html': `
+<header class="topbar">
+  <div class="topbar-inner">
+    <button class="hamb" id="hamb" aria-label="Menu" aria-expanded="false">☰</button>
+    <a class="brand-left" href="home.html">
+      <div class="logo-square">
+        <img src="img/logo.svg" alt="Samriddhi logo">
+      </div>
+      <div class="brand-text"><span class="brand-strong">Samriddhi</span></div>
+    </a>
+    <nav class="nav-right" id="navRight">
+      <a class="nav-link" data-route="home" href="home.html">Home</a>
+      <a class="nav-link" data-route="modules" href="modules.html">Programs</a>
+      <a class="nav-link" data-route="banking" href="banking.html">Banking <span class="chip-new">NEW</span></a>
+      <a class="nav-link" data-route="toolkits" href="toolkits.html">Toolkit</a>
+      <button id="btnOpenLogin" type="button" class="btn login-pill">Login/Register</button>
+      <a id="navProfile" class="nav-link hidden" data-route="profile" href="profile.html">Profile</a>
+    </nav>
+  </div>
+</header>
+`.trim(),
+  'partials/footer.html': '<footer class="tiny muted center">© Samriddhi</footer>',
+};
+
 const loadPartial = async (selector, url) => {
   const host = document.querySelector(selector);
   if (!host) return;
@@ -17,6 +42,8 @@ const loadPartial = async (selector, url) => {
     host.innerHTML = await response.text();
   } catch (err) {
     console.error(err);
+    const fallback = partialFallbacks[url];
+    if (fallback) host.innerHTML = fallback;
   }
 };
 
