@@ -1,1251 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Samriddhi • Programs</title>
-  <link rel="stylesheet" href="styles.css"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Samriddhi • Green Finance Foundations</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body data-page="modules">
-  <div id="header-placeholder"></div>
-
-  <div class="module-topbar" role="banner">
-    <div class="module-topbar__inner">
-      <div class="module-topbar__course">
-        <span class="module-topbar__label">Programs</span>
-        <span class="module-topbar__title">Green Finance Foundations</span>
-      </div>
-      <div class="module-topbar__progress">
-        <span class="progress-label">Course progress</span>
-        <div class="progress track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="48">
-          <span style="width:48%"></span>
+<body class="course-player" data-page="modules">
+  <header class="course-header" role="banner">
+    <div class="course-header__top">
+      <button class="course-header__menu" type="button" aria-label="Toggle lesson list" aria-expanded="false" aria-controls="lessonList">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="course-header__breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li aria-current="page">Green Finance Foundations</li>
+        </ol>
+      </nav>
+      <div class="course-header__meta">
+        <h1>Green Finance Foundations</h1>
+        <div class="course-header__progress">
+          <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <span class="progress__bar" style="width: 0%"></span>
+          </div>
+          <span class="course-header__progress-label"><strong>0%</strong> complete</span>
         </div>
       </div>
-      <a class="btn primary" href="dashboard.html">Resume lesson</a>
+      <div class="course-header__search">
+        <label for="lessonSearch" class="sr-only">Search lessons</label>
+        <input id="lessonSearch" type="search" placeholder="Search lessons and quizzes" />
+      </div>
     </div>
-  </div>
+  </header>
 
-  <main id="page-modules" class="module-page">
-    <div class="module-shell">
-      <article class="course-hero">
-        <div class="course-hero__grid">
-          <div class="course-hero__header">
-            <p class="course-hero__trail">Home / Programs / <span>Green Finance Foundations</span></p>
-            <h1>Green Finance Foundations</h1>
-            <p>Build the skills you need to champion sustainable banking products and lead climate-first conversations with your customers.</p>
-            <ul class="course-hero__meta">
-              <li>
-                <strong>6 lessons</strong>
-                <span>Three curated modules</span>
-              </li>
-              <li>
-                <strong>2h 45m</strong>
-                <span>Total duration</span>
-              </li>
-              <li>
-                <strong>Sustainable Banking</strong>
-                <span>Learning track</span>
-              </li>
-            </ul>
-            <div class="course-hero__progress">
-              <span class="progress-label">You are 48% complete</span>
-              <div class="progress track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="48">
-                <span style="width:48%"></span>
-              </div>
-            </div>
+  <main class="course-main">
+    <div class="layout" data-layout>
+      <nav id="lessonList" class="lesson-list" aria-label="Lesson list" role="listbox">
+        <header class="lesson-list__header">
+          <div>
+            <h2>Lesson journey</h2>
+            <p class="lesson-list__summary"><span data-progress-count>0</span> of <span data-progress-total>0</span> items complete</p>
           </div>
-          <div class="course-hero__body">
-            <div class="hero-media" role="group" aria-label="Current lesson preview">
-              <div class="hero-media__header">
-                <span class="hero-media__badge" data-hero-module aria-live="polite">Module 1</span>
-                <span class="hero-media__duration" data-hero-duration aria-live="polite">Video • 8 min</span>
-              </div>
-              <div class="hero-media__player" data-hero-player>
-                <iframe
-                  id="heroVideoFrame"
-                  src="https://www.youtube.com/embed/8BzIy2ZSPnw?rel=0&amp;modestbranding=1&amp;playsinline=1"
-                  title="Lesson video player"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowfullscreen
-                  loading="lazy"
-                ></iframe>
-              </div>
-              <p class="hero-media__notice" data-hero-notice hidden aria-live="polite"></p>
-              <div class="hero-media__footer">
-                <h2 class="hero-media__title" data-hero-title aria-live="polite">Welcome to Samriddhi</h2>
-                <p class="hero-media__summary" data-hero-summary aria-live="polite">Meet your instructors and explore how the program is structured to help you lead on sustainable banking.</p>
-                <div class="hero-media__cta" data-hero-cta-wrapper hidden>
-                  <a class="btn outline" href="#" data-hero-cta data-action="link">Open activity</a>
-                </div>
-              </div>
-            </div>
-            <div class="course-hero__footer">
-              <div class="course-hero__instructor">
-                <img src="img/img1.png" alt="Portrait of Rekha Menon" loading="lazy"/>
-                <div>
-                  <strong>Rekha Menon</strong>
-                  <span>Director, Sustainable Banking</span>
-                </div>
-              </div>
-              <div class="course-hero__actions">
-                <a class="btn primary" href="dashboard.html">Resume lesson</a>
-                <a class="btn outline" href="toolkits.html">Download guide</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <nav class="module-tabs" aria-label="Course navigation" data-tablist>
-        <button id="tab-journey" role="tab" aria-controls="journey-panel" aria-selected="true" tabindex="0">Journey</button>
-        <button id="tab-pathway" role="tab" aria-controls="pathway-panel" aria-selected="false" tabindex="-1">Pathway</button>
-        <button id="tab-notes" role="tab" aria-controls="notes-panel" aria-selected="false" tabindex="-1">Notes</button>
-        <button id="tab-resources" role="tab" aria-controls="resources-panel" aria-selected="false" tabindex="-1">Resources</button>
+          <button class="lesson-list__collapse" type="button" data-collapse-all>Collapse all</button>
+        </header>
+        <div class="lesson-list__modules" data-module-container></div>
       </nav>
 
-      <div class="module-grid" data-panel-container>
-        <section id="journey-panel" class="journey-panel" role="tabpanel" aria-labelledby="tab-journey" data-panel="journey">
-          <article class="journey-card">
+      <section id="playerArea" class="player-area" aria-live="polite">
+        <div class="player-card" data-player-card>
+          <div class="player-card__media" data-media-wrapper>
+            <div class="player-card__media-inner">
+              <video id="lessonPlayer" class="player-card__video" controls preload="metadata" playsinline>
+                <source src="" type="video/mp4" />
+                <track id="captionTrack" kind="subtitles" srclang="en" label="English captions" />
+              </video>
+              <div class="player-card__fallback" role="status" hidden>
+                <p>We couldn't load this lesson right now.</p>
+                <button type="button" class="btn" data-retry>Retry</button>
+                <a href="#" class="btn btn--ghost" data-download>Download video</a>
+              </div>
+            </div>
+            <div class="player-card__controls">
+              <button type="button" class="btn" data-toggle-captions>Captions</button>
+              <button type="button" class="btn" data-suggest-next hidden>Play next lesson</button>
+            </div>
+          </div>
+          <div class="player-card__body">
+            <div class="player-card__meta">
+              <span class="chip" data-lesson-type-chip>Video</span>
+              <span class="chip" data-lesson-duration>00:00</span>
+            </div>
+            <h2 class="player-card__title" data-lesson-title>Choose a lesson to get started</h2>
+            <p class="player-card__description" data-lesson-description>Select a lesson from the list to begin your learning journey.</p>
+            <div class="player-card__actions">
+              <button type="button" class="btn" data-mark-complete>Mark complete</button>
+              <button type="button" class="btn btn--ghost" data-watch-later>Watch later</button>
+              <button type="button" class="btn btn--ghost" data-toggle-transcript>Show transcript</button>
+            </div>
+          </div>
+          <div class="player-card__transcript" data-transcript hidden>
             <header>
-              <h2>Lesson journey</h2>
-              <p>Work through each module in order to unlock advanced practice. Expand a module to see individual lessons and formats.</p>
+              <h3>Transcript</h3>
+              <button type="button" class="btn btn--ghost" data-close-transcript>Close</button>
             </header>
-            <div class="journey-accordion" data-accordion role="region" aria-label="Modules list">
-              <div class="journey-module">
-                <button class="accordion-trigger" type="button" id="module-1-trigger" data-accordion-trigger aria-expanded="true" aria-controls="module-1-panel">
-                  <span class="accordion-title">
-                    <span class="module-label">Module 1</span>
-                    <span class="accordion-copy">
-                      <strong>Orientation &amp; foundations</strong>
-                      <span>4 touchpoints • 28 min</span>
-                    </span>
-                  </span>
-                  <span class="accordion-icon" aria-hidden="true">
-                    <svg viewBox="0 0 12 12" role="presentation" focusable="false" aria-hidden="true">
-                      <path d="M4 3l4 3-4 3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                  </span>
-                </button>
-                <div class="accordion-panel" id="module-1-panel" role="region" aria-labelledby="module-1-trigger">
-                  <ul class="lesson-list">
-                    <li>
-                      <button class="lesson-item active" type="button" data-lesson-type="video" data-lesson-title="Welcome to Samriddhi" data-lesson-summary="Meet your instructors and explore how the program is structured to help you lead on sustainable banking." data-lesson-duration="Video • 8 min" data-lesson-module="Module 1" data-video-src="https://www.youtube.com/embed/8BzIy2ZSPnw">
-                        <div>
-                          Welcome to Samriddhi
-                          <span>Video • 8 min</span>
-                        </div>
-                        <span class="lesson-status">In progress</span>
-                      </button>
-                    </li>
-                    <li>
-                      <button class="lesson-item" type="button" data-lesson-type="worksheet" data-lesson-title="Setting your learning goals" data-lesson-summary="Reflect on what you want to achieve and capture the commitments you’ll hold yourself to." data-lesson-duration="Worksheet • 6 min" data-lesson-module="Module 1" data-lesson-link="profile.html">
-                        <div>
-                          Setting your learning goals
-                          <span>Worksheet • 6 min</span>
-                        </div>
-                        <span class="lesson-status">Queued</span>
-                      </button>
-                    </li>
-                    <li>
-                      <button class="lesson-item quiz" type="button" data-lesson-type="quiz" data-lesson-title="Pulse check: Orientation" data-lesson-summary="Confirm your understanding of Samriddhi’s program experience with five quick questions." data-lesson-duration="Quiz • 5 questions" data-lesson-module="Module 1" data-quiz-id="orientation">
-                        <div>
-                          Pulse check: Orientation
-                          <span>Quiz • 5 questions</span>
-                        </div>
-                        <span class="lesson-status">Ready</span>
-                      </button>
-                    </li>
-                    <li>
-                      <button class="lesson-item" type="button" data-lesson-type="podcast" data-lesson-title="Meet the community" data-lesson-summary="Hear from alumni on how the program helped them launch their first climate finance offerings." data-lesson-duration="Podcast • 8 min" data-lesson-module="Module 1" data-lesson-link="home.html">
-                        <div>
-                          Meet the community
-                          <span>Podcast • 8 min</span>
-                        </div>
-                        <span class="lesson-status">Locked</span>
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="journey-module">
-                <button class="accordion-trigger" type="button" id="module-2-trigger" data-accordion-trigger aria-expanded="false" aria-controls="module-2-panel">
-                  <span class="accordion-title">
-                    <span class="module-label">Module 2</span>
-                    <span class="accordion-copy">
-                      <strong>Green finance in action</strong>
-                      <span>5 touchpoints • 43 min</span>
-                    </span>
-                  </span>
-                  <span class="accordion-icon" aria-hidden="true">
-                    <svg viewBox="0 0 12 12" role="presentation" focusable="false" aria-hidden="true">
-                      <path d="M4 3l4 3-4 3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                  </span>
-                </button>
-                <div class="accordion-panel" id="module-2-panel" role="region" aria-labelledby="module-2-trigger" hidden>
-                  <ul class="lesson-list">
-                    <li>
-                      <button class="lesson-item" type="button" data-lesson-type="video" data-lesson-title="Case study: Pragati bank" data-lesson-summary="Watch how Pragati bank transformed its lending playbook through sustainable portfolios." data-lesson-duration="Video • 14 min" data-lesson-module="Module 2" data-video-src="https://www.youtube.com/embed/xvFZjo5PgG0">
-                        <div>
-                          Case study: Pragati bank
-                          <span>Video • 14 min</span>
-                        </div>
-                        <span class="lesson-status">Locked</span>
-                      </button>
-                    </li>
-                    <li>
-                      <button class="lesson-item" type="button" data-lesson-type="interactive" data-lesson-title="Risk signals dashboard" data-lesson-summary="Practice spotting early warning indicators using our sandbox climate-risk dashboard." data-lesson-duration="Interactive • 8 min" data-lesson-module="Module 2" data-lesson-link="dashboard.html">
-                        <div>
-                          Risk signals dashboard
-                          <span>Interactive • 8 min</span>
-                        </div>
-                        <span class="lesson-status">Locked</span>
-                      </button>
-                    </li>
-                    <li>
-                      <button class="lesson-item" type="button" data-lesson-type="download" data-lesson-title="Customer conversations toolkit" data-lesson-summary="Download scripts and cheat sheets for climate conversations with high-value clients." data-lesson-duration="Download • 7 min" data-lesson-module="Module 2" data-lesson-link="toolkits.html">
-                        <div>
-                          Customer conversations toolkit
-                          <span>Download • 7 min</span>
-                        </div>
-                        <span class="lesson-status">Locked</span>
-                      </button>
-                    </li>
-                    <li>
-                      <button class="lesson-item quiz" type="button" data-lesson-type="quiz" data-lesson-title="Scenario quiz: Lending signals" data-lesson-summary="Test your ability to prioritise deals with five branching scenarios and detailed feedback." data-lesson-duration="Quiz • 5 questions" data-lesson-module="Module 2" data-quiz-id="scenario">
-                        <div>
-                          Scenario quiz: Lending signals
-                          <span>Quiz • 5 questions</span>
-                        </div>
-                        <span class="lesson-status">Locked</span>
-                      </button>
-                    </li>
-                    <li>
-                      <button class="lesson-item" type="button" data-lesson-type="worksheet" data-lesson-title="Reflection prompt" data-lesson-summary="Assess your pipeline and note where climate-first underwriting can deliver impact." data-lesson-duration="Worksheet • 6 min" data-lesson-module="Module 2" data-lesson-link="dashboard.html">
-                        <div>
-                          Reflection prompt
-                          <span>Worksheet • 6 min</span>
-                        </div>
-                        <span class="lesson-status">Locked</span>
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="journey-module">
-                <button class="accordion-trigger" type="button" id="module-3-trigger" data-accordion-trigger aria-expanded="false" aria-controls="module-3-panel">
-                  <span class="accordion-title">
-                    <span class="module-label">Module 3</span>
-                    <span class="accordion-copy">
-                      <strong>Designing climate-first products</strong>
-                      <span>6 touchpoints • 52 min</span>
-                    </span>
-                  </span>
-                  <span class="accordion-icon" aria-hidden="true">
-                    <svg viewBox="0 0 12 12" role="presentation" focusable="false" aria-hidden="true">
-                      <path d="M4 3l4 3-4 3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                  </span>
-                </button>
-                <div class="accordion-panel" id="module-3-panel" role="region" aria-labelledby="module-3-trigger" hidden>
-                  <ul class="lesson-list">
-                    <li>
-                      <button class="lesson-item" type="button" data-lesson-type="video" data-lesson-title="Blueprint &amp; scorecards" data-lesson-summary="Study the scorecard structure that top teams use to evaluate climate-first lending portfolios." data-lesson-duration="Video • 16 min" data-lesson-module="Module 3" data-video-src="https://www.youtube.com/embed/ysz5S6PUM-U">
-                        <div>
-                          Blueprint &amp; scorecards
-                          <span>Video • 16 min</span>
-                        </div>
-                        <span class="lesson-status">Locked</span>
-                      </button>
-                    </li>
-                    <li>
-                      <button class="lesson-item" type="button" data-lesson-type="reading" data-lesson-title="Pricing levers" data-lesson-summary="Dive into pricing case studies that balance borrower incentives with portfolio health." data-lesson-duration="Reading • 11 min" data-lesson-module="Module 3" data-lesson-link="lit.html">
-                        <div>
-                          Pricing levers
-                          <span>Reading • 11 min</span>
-                        </div>
-                        <span class="lesson-status">Locked</span>
-                      </button>
-                    </li>
-                    <li>
-                      <button class="lesson-item" type="button" data-lesson-type="exercise" data-lesson-title="Impact measurement lab" data-lesson-summary="Run through a guided worksheet to quantify portfolio impact and risk offsets." data-lesson-duration="Exercise • 9 min" data-lesson-module="Module 3" data-lesson-link="dashboard.html">
-                        <div>
-                          Impact measurement lab
-                          <span>Exercise • 9 min</span>
-                        </div>
-                        <span class="lesson-status">Locked</span>
-                      </button>
-                    </li>
-                    <li>
-                      <button class="lesson-item quiz" type="button" data-lesson-type="quiz" data-lesson-title="Design studio quiz" data-lesson-summary="Check your readiness to recommend new products through a rapid-fire studio challenge." data-lesson-duration="Quiz • 6 questions" data-lesson-module="Module 3" data-quiz-id="design">
-                        <div>
-                          Design studio quiz
-                          <span>Quiz • 6 questions</span>
-                        </div>
-                        <span class="lesson-status">Locked</span>
-                      </button>
-                    </li>
-                    <li>
-                      <button class="lesson-item" type="button" data-lesson-type="audio" data-lesson-title="Policy roundtable" data-lesson-summary="Listen in on experts debating regulatory shifts shaping green finance products." data-lesson-duration="Audio • 8 min" data-lesson-module="Module 3" data-lesson-link="home.html">
-                        <div>
-                          Policy roundtable
-                          <span>Audio • 8 min</span>
-                        </div>
-                        <span class="lesson-status">Locked</span>
-                      </button>
-                    </li>
-                    <li>
-                      <button class="lesson-item" type="button" data-lesson-type="quiz" data-lesson-title="Knowledge recap" data-lesson-summary="Wrap up with a program-wide quiz to cement your key takeaways." data-lesson-duration="Quiz • 4 min" data-lesson-module="Module 3" data-quiz-id="recap">
-                        <div>
-                          Knowledge recap
-                          <span>Quiz • 4 min</span>
-                        </div>
-                        <span class="lesson-status">Locked</span>
-                      </button>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+            <div class="player-card__transcript-body" data-transcript-content>
+              <p>Select a video lesson to see its transcript.</p>
             </div>
-          </article>
+          </div>
+        </div>
+        <section class="quiz-panel" data-quiz-panel hidden aria-label="Quiz panel"></section>
+      </section>
 
-          <article class="knowledge-card">
-            <h2>Knowledge check</h2>
-            <p>Gauge your readiness before moving forward. The short quiz confirms your grasp of risk signals, underwriting, and support tactics.</p>
-            <div class="knowledge-actions">
-              <a class="btn outline" href="dashboard.html">Take quiz</a>
-              <a class="btn outline" href="dashboard.html">Review answers</a>
+      <aside id="rightPanel" class="right-rail">
+        <section class="right-rail__section" data-accordion-section>
+          <button class="right-rail__toggle" type="button" aria-expanded="true">Notes</button>
+          <div class="right-rail__body">
+            <form class="notes-form" data-notes-form>
+              <div class="notes-form__controls">
+                <button type="button" class="btn btn--ghost" data-add-timecode>Add timecode</button>
+              </div>
+              <label for="noteText" class="sr-only">New note</label>
+              <textarea id="noteText" rows="3" placeholder="Capture your takeaways"></textarea>
+              <button type="submit" class="btn">Save note</button>
+            </form>
+            <div class="notes-list" data-notes-list>
+              <p class="notes-list__empty">No notes yet for this lesson.</p>
             </div>
-          </article>
+          </div>
         </section>
-
-        <aside class="secondary-column">
-          <section id="pathway-panel" role="tabpanel" aria-labelledby="tab-pathway" data-panel="pathway">
-            <header class="side-panel__header">
-              <h2>Guided pathway</h2>
-              <button class="panel-toggle" type="button" aria-expanded="true" aria-controls="pathway-body" data-panel-toggle>
-                <span class="visually-hidden">Toggle pathway panel</span>
-                <span class="toggle-icon" aria-hidden="true">
-                  <svg viewBox="0 0 12 12" role="presentation" focusable="false" aria-hidden="true">
-                    <path d="M3 5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-              </button>
-            </header>
-            <div class="side-panel__body" id="pathway-body">
-              <ol class="pathway-steps">
-                <li>
-                  <button class="pathway-step" type="button" data-pathway-action="journey">
-                    <span class="pathway-step__title">Review content</span>
-                    <span class="pathway-step__hint">Jump to your lesson journey</span>
-                  </button>
-                </li>
-                <li>
-                  <button class="pathway-step" type="button" data-pathway-action="resources">
-                    <span class="pathway-step__title">Apply learnings</span>
-                    <span class="pathway-step__hint">Open practice resources</span>
-                  </button>
-                </li>
-                <li>
-                  <button class="pathway-step" type="button" data-pathway-action="share">
-                    <span class="pathway-step__title">Share progress with your coach</span>
-                    <span class="pathway-step__hint">Summarise wins for your next session</span>
-                  </button>
-                </li>
-              </ol>
-              <div class="pathway-feedback" data-pathway-feedback hidden aria-live="polite"></div>
-              <a class="btn outline" href="dashboard.html">View learning plan</a>
-            </div>
-          </section>
-
-          <section id="notes-panel" role="tabpanel" aria-labelledby="tab-notes" data-panel="notes">
-            <header class="side-panel__header">
-              <h2>Notes</h2>
-              <button class="panel-toggle" type="button" aria-expanded="true" aria-controls="notes-body" data-panel-toggle>
-                <span class="visually-hidden">Toggle notes panel</span>
-                <span class="toggle-icon" aria-hidden="true">
-                  <svg viewBox="0 0 12 12" role="presentation" focusable="false" aria-hidden="true">
-                    <path d="M3 5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-              </button>
-            </header>
-            <div class="side-panel__body notes-body" id="notes-body">
-              <p>Capture ideas while you learn. Add prompts, questions, or client anecdotes to revisit during coaching sessions.</p>
-              <div class="notes-actions">
-                <button class="btn outline" type="button" data-notes-open>Add a note</button>
-              </div>
-              <ul class="notes-list" data-notes-list aria-live="polite"></ul>
-            </div>
-          </section>
-
-          <section id="resources-panel" role="tabpanel" aria-labelledby="tab-resources" data-panel="resources">
-            <header class="side-panel__header">
-              <h2>Additional resources</h2>
-              <button class="panel-toggle" type="button" aria-expanded="true" aria-controls="resources-body" data-panel-toggle>
-                <span class="visually-hidden">Toggle resources panel</span>
-                <span class="toggle-icon" aria-hidden="true">
-                  <svg viewBox="0 0 12 12" role="presentation" focusable="false" aria-hidden="true">
-                    <path d="M3 5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
-              </button>
-            </header>
-            <div class="side-panel__body" id="resources-body">
-              <ul class="resource-list">
-                <li class="resource-item">
-                  <strong>Implementation toolkit</strong>
-                  <p>Download the checklists that help teams launch climate-first lending products.</p>
-                  <a href="toolkits.html">View toolkit</a>
-                </li>
-                <li class="resource-item">
-                  <strong>Community success stories</strong>
-                  <p>See how other lenders have introduced green finance products with Samriddhi.</p>
-                  <a href="home.html">Explore stories</a>
-                </li>
-              </ul>
-            </div>
-          </section>
-        </aside>
-      </div>
+        <section class="right-rail__section" data-accordion-section>
+          <button class="right-rail__toggle" type="button" aria-expanded="true">Actions</button>
+          <div class="right-rail__body">
+            <ul class="action-list">
+              <li><button type="button" class="link-button" data-action-complete>Mark complete</button></li>
+              <li><button type="button" class="link-button" data-action-watchlater>Watch later</button></li>
+              <li><button type="button" class="link-button" data-action-next>Play next lesson</button></li>
+            </ul>
+          </div>
+        </section>
+        <section class="right-rail__section" data-accordion-section>
+          <button class="right-rail__toggle" type="button" aria-expanded="true">Downloads &amp; transcript</button>
+          <div class="right-rail__body">
+            <ul class="resource-list">
+              <li><a href="#" data-download-guide>Download learner guide</a></li>
+              <li><a href="#" data-download-transcript>Download transcript</a></li>
+            </ul>
+          </div>
+        </section>
+      </aside>
     </div>
   </main>
 
-  <div id="footer-placeholder"></div>
-
-  <div class="notes-dialog" data-notes-dialog hidden>
-    <div class="notes-dialog__overlay" data-notes-overlay></div>
-    <div class="notes-dialog__content" role="dialog" aria-modal="true" aria-labelledby="notes-dialog-title" tabindex="-1">
-      <div class="notes-dialog__header">
-        <h2 id="notes-dialog-title">Add a note</h2>
-        <p>Capture a quick takeaway or question to revisit during coaching.</p>
-      </div>
-      <form data-notes-form>
-        <label class="notes-dialog__field" for="notes-input">
-          <span class="visually-hidden">Note</span>
-          <textarea id="notes-input" data-notes-input rows="5" maxlength="360" placeholder="What stood out from this lesson?" required></textarea>
-        </label>
-        <div class="notes-dialog__actions">
-          <button class="btn outline" type="button" data-notes-cancel>Cancel</button>
-          <button class="btn primary" type="submit">Save note</button>
-        </div>
-      </form>
+  <div class="mobile-progress" data-mobile-progress>
+    <div>
+      <strong data-mobile-progress-label>0% complete</strong>
+      <span data-mobile-progress-detail>0 of 0 items</span>
     </div>
+    <button type="button" class="btn" data-mobile-primary>Resume lesson</button>
   </div>
 
-  <div class="quiz-modal" data-quiz-modal hidden>
-    <div class="quiz-modal__overlay" data-quiz-overlay></div>
-    <div class="quiz-modal__content" role="dialog" aria-modal="true" aria-labelledby="quiz-modal-title" tabindex="-1">
-      <button class="quiz-modal__close" type="button" data-quiz-close aria-label="Close quiz">
-        <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-          <path d="M4 4l8 8m0-8L4 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-      <div class="quiz-modal__header">
-        <h2 id="quiz-modal-title" data-quiz-title>Quick quiz</h2>
-        <p data-quiz-description></p>
-      </div>
-      <div class="quiz-modal__body">
-        <p class="quiz-modal__progress" data-quiz-progress></p>
-        <form data-quiz-form>
-          <fieldset>
-            <legend data-quiz-question></legend>
-            <div class="quiz-modal__options" data-quiz-options></div>
-          </fieldset>
-          <div class="quiz-modal__actions">
-            <button class="btn primary" type="submit">Submit answer</button>
-          </div>
-        </form>
-        <p class="quiz-modal__feedback" data-quiz-feedback hidden aria-live="polite"></p>
-        <button class="btn outline quiz-modal__next" type="button" data-quiz-next hidden>Next question</button>
-      </div>
-    </div>
-  </div>
+  <footer class="course-footer">
+    <nav aria-label="Footer">
+      <a href="#">Support</a>
+      <a href="#">Terms</a>
+      <a href="#">Privacy</a>
+    </nav>
+  </footer>
 
-  <script type="module" src="assets/js/app.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const headerPlaceholder = document.getElementById('header-placeholder');
-      if (headerPlaceholder) {
-        const updateHeaderState = () => {
-          const hasHeader = headerPlaceholder.children.length > 0;
-          document.body.classList.toggle('has-site-header', hasHeader);
-        };
-        const headerObserver = new MutationObserver(updateHeaderState);
-        headerObserver.observe(headerPlaceholder, { childList: true });
-        updateHeaderState();
-      }
+  <div class="sr-only" aria-live="polite" data-aria-updates></div>
 
-      const accordionGroups = document.querySelectorAll('[data-accordion]');
-      accordionGroups.forEach(group => {
-        group.querySelectorAll('[data-accordion-trigger]').forEach(trigger => {
-          const panelId = trigger.getAttribute('aria-controls');
-          const panel = document.getElementById(panelId);
-          trigger.addEventListener('click', () => {
-            const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
-            trigger.setAttribute('aria-expanded', String(!isExpanded));
-            if (panel) {
-              panel.hidden = isExpanded;
-            }
-          });
-        });
-      });
-
-      const tablist = document.querySelector('[data-tablist]');
-      const tabs = tablist ? Array.from(tablist.querySelectorAll('[role="tab"]')) : [];
-      const panels = Array.from(document.querySelectorAll('[data-panel]'));
-      const mobileQuery = window.matchMedia('(max-width: 900px)');
-
-      function setTabState(selectedId) {
-        tabs.forEach(tab => {
-          const isSelected = tab.id === selectedId;
-          tab.setAttribute('aria-selected', String(isSelected));
-          tab.setAttribute('tabindex', isSelected ? '0' : '-1');
-        });
-      }
-
-      function setPanelVisibility() {
-        const isMobile = mobileQuery.matches;
-        const activeTab = tabs.find(tab => tab.getAttribute('aria-selected') === 'true');
-        const activePanelId = activeTab ? activeTab.getAttribute('aria-controls') : null;
-        panels.forEach(panel => {
-          if (!isMobile) {
-            panel.hidden = false;
-            panel.setAttribute('aria-hidden', 'false');
-          } else {
-            const isActive = panel.id === activePanelId;
-            panel.hidden = !isActive;
-            panel.setAttribute('aria-hidden', String(!isActive));
-          }
-        });
-      }
-
-      function focusTab(tab) {
-        if (tab) {
-          tab.focus();
-        }
-      }
-
-      if (tablist) {
-        tablist.addEventListener('click', event => {
-          const button = event.target.closest('[role="tab"]');
-          if (!button) return;
-          setTabState(button.id);
-          setPanelVisibility();
-        });
-
-        tablist.addEventListener('keydown', event => {
-          const currentIndex = tabs.findIndex(tab => tab.getAttribute('aria-selected') === 'true');
-          if (currentIndex === -1) return;
-          let nextIndex = currentIndex;
-          if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
-            nextIndex = (currentIndex + 1) % tabs.length;
-            event.preventDefault();
-          } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
-            nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
-            event.preventDefault();
-          }
-          if (nextIndex !== currentIndex) {
-            const nextTab = tabs[nextIndex];
-            setTabState(nextTab.id);
-            setPanelVisibility();
-            focusTab(nextTab);
-          }
-        });
-      }
-
-      mobileQuery.addEventListener('change', setPanelVisibility);
-      setPanelVisibility();
-
-      document.querySelectorAll('[data-panel-toggle]').forEach(button => {
-        const targetId = button.getAttribute('aria-controls');
-        const target = document.getElementById(targetId);
-        button.addEventListener('click', () => {
-          const expanded = button.getAttribute('aria-expanded') === 'true';
-          button.setAttribute('aria-expanded', String(!expanded));
-          if (target) {
-            target.hidden = expanded;
-          }
-        });
-      });
-
-      const lessonButtons = Array.from(document.querySelectorAll('.lesson-item'));
-      const heroMedia = document.querySelector('.hero-media');
-      const heroPlayer = document.querySelector('[data-hero-player]');
-      const heroVideoFrame = document.getElementById('heroVideoFrame');
-      const heroModule = document.querySelector('[data-hero-module]');
-      const heroDuration = document.querySelector('[data-hero-duration]');
-      const heroTitle = document.querySelector('[data-hero-title]');
-      const heroSummary = document.querySelector('[data-hero-summary]');
-      const heroNotice = document.querySelector('[data-hero-notice]');
-      const heroCtaWrapper = document.querySelector('[data-hero-cta-wrapper]');
-      const heroCta = document.querySelector('[data-hero-cta]');
-      const moduleTopbar = document.querySelector('.module-topbar');
-      const journeyPanel = document.getElementById('journey-panel');
-      const resourcesPanel = document.getElementById('resources-panel');
-      const notesPanel = document.getElementById('notes-panel');
-      let activeLessonType = '';
-      let activeQuizId = '';
-      const pathwayButtons = document.querySelectorAll('[data-pathway-action]');
-      const pathwayFeedback = document.querySelector('[data-pathway-feedback]');
-      const notesOpenButton = document.querySelector('[data-notes-open]');
-      const notesDialog = document.querySelector('[data-notes-dialog]');
-      const notesOverlay = notesDialog?.querySelector('[data-notes-overlay]');
-      const notesContent = notesDialog?.querySelector('.notes-dialog__content');
-      const notesCancel = notesDialog?.querySelector('[data-notes-cancel]');
-      const notesForm = notesDialog?.querySelector('[data-notes-form]');
-      const notesInput = notesDialog?.querySelector('[data-notes-input]');
-      const notesList = document.querySelector('[data-notes-list]');
-      const NOTES_KEY = 'samriddhi-notes';
-      const quizModal = document.querySelector('[data-quiz-modal]');
-      const quizOverlay = quizModal?.querySelector('[data-quiz-overlay]');
-      const quizClose = quizModal?.querySelector('[data-quiz-close]');
-      const quizContent = quizModal?.querySelector('.quiz-modal__content');
-      const quizTitle = quizModal?.querySelector('[data-quiz-title]');
-      const quizDescription = quizModal?.querySelector('[data-quiz-description]');
-      const quizProgress = quizModal?.querySelector('[data-quiz-progress]');
-      const quizQuestion = quizModal?.querySelector('[data-quiz-question]');
-      const quizOptions = quizModal?.querySelector('[data-quiz-options]');
-      const quizFeedback = quizModal?.querySelector('[data-quiz-feedback]');
-      const quizForm = quizModal?.querySelector('[data-quiz-form]');
-      const quizNext = quizModal?.querySelector('[data-quiz-next]');
-      const quizBank = {
-        orientation: {
-          title: 'Pulse check: Orientation',
-          description: 'Confirm your understanding of how the Samriddhi journey keeps you on track.',
-          questions: [
-            {
-              prompt: 'What does the lesson journey highlight so you always know what comes next?',
-              options: [
-                'The next recommended lesson and its format',
-                'Daily interest rate changes from partner banks',
-                'Upcoming regional holidays to avoid scheduling conflicts'
-              ],
-              answer: 0,
-              rationale: 'Each entry displays the next lesson, its medium, and status so you can keep momentum without guessing.'
-            },
-            {
-              prompt: 'How should you use the notes panel alongside lessons?',
-              options: [
-                'Capture quick reflections or questions to revisit later',
-                'Submit assignments directly to your coach',
-                'Chat in real time with other learners'
-              ],
-              answer: 0,
-              rationale: 'Notes are your private workspace for reflections you can share in coaching conversations when you are ready.'
-            }
-          ]
-        },
-        scenario: {
-          title: 'Scenario quiz: Lending signals',
-          description: 'Pressure test how you identify the right climate-first lending moves.',
-          questions: [
-            {
-              prompt: 'When assessing a potential green lending opportunity, what should you review first?',
-              options: [
-                'The client’s sustainability targets against their current baseline',
-                'Your team’s internal vacation calendar',
-                'Marketing taglines used in last year’s campaign'
-              ],
-              answer: 0,
-              rationale: 'Understanding the client’s stated goals versus current performance helps you gauge the impact your solution can have.'
-            },
-            {
-              prompt: 'How do branching scenarios in this module help you prepare for client conversations?',
-              options: [
-                'They let you practise decisions and see the outcomes before real meetings',
-                'They replace the need for compliance approval entirely',
-                'They automatically update your lending portfolio dashboards'
-              ],
-              answer: 0,
-              rationale: 'The scenarios model consequences in a safe space so you can refine your judgement ahead of real interactions.'
-            }
-          ]
-        },
-        design: {
-          title: 'Design studio quiz',
-          description: 'Check your readiness to recommend new sustainable products.',
-          questions: [
-            {
-              prompt: 'What is the primary aim of the design studio quiz?',
-              options: [
-                'To pressure test the product recommendations you’re preparing',
-                'To measure how quickly you can recite policy acronyms',
-                'To replace a full financial modelling exercise'
-              ],
-              answer: 0,
-              rationale: 'The design studio challenges confirm you can articulate the why behind your recommended offers.'
-            },
-            {
-              prompt: 'Which supporting resource should you revisit while working through the studio challenges?',
-              options: [
-                'The implementation toolkit with scripts and checklists',
-                'A public social media feed',
-                'The customer support ticket backlog'
-              ],
-              answer: 0,
-              rationale: 'The toolkit gives you proven prompts and templates that translate ideas into client-facing material.'
-            }
-          ]
-        },
-        recap: {
-          title: 'Knowledge recap',
-          description: 'Lock in the essentials from across the program.',
-          questions: [
-            {
-              prompt: 'What should you do before starting the program-wide recap quiz?',
-              options: [
-                'Review your saved notes and key resources from each module',
-                'Skip back to the login page and start over',
-                'Disable progress tracking to avoid notifications'
-              ],
-              answer: 0,
-              rationale: 'Scanning your notes and resources refreshes the big ideas so you approach the recap with confidence.'
-            },
-            {
-              prompt: 'How can you share your progress with a coach after completing the recap?',
-              options: [
-                'Summarise wins using your stored notes and quiz outcomes',
-                'Email screenshots of unrelated dashboards',
-                'Wait for the system to send an automatic transcript without context'
-              ],
-              answer: 0,
-              rationale: 'Combining your notes with quiz takeaways gives your coach a clear view of what clicked and where to support you next.'
-            }
-          ]
-        }
-      };
-      let activeQuizData = null;
-      let quizIndex = 0;
-      let quizScore = 0;
-      let quizCompleted = false;
-      let pathwayFeedbackTimeout = 0;
-
-      function setHeroNotice(message = '') {
-        if (!heroNotice) return;
-        if (message) {
-          heroNotice.textContent = message;
-          heroNotice.removeAttribute('hidden');
-        } else {
-          heroNotice.textContent = '';
-          heroNotice.setAttribute('hidden', '');
-        }
-      }
-
-      function setHeroCta({ label = '', link = '', action = '', quizId = '' } = {}) {
-        if (!heroCtaWrapper || !heroCta) return;
-        if (label) {
-          heroCta.textContent = label;
-          heroCtaWrapper.removeAttribute('hidden');
-          if (action) heroCta.dataset.action = action;
-          else delete heroCta.dataset.action;
-          if (quizId) heroCta.dataset.quizId = quizId;
-          else heroCta.removeAttribute('data-quiz-id');
-          if (link) {
-            heroCta.setAttribute('href', link);
-            heroCta.dataset.link = link;
-            if (link.startsWith('http')) {
-              heroCta.setAttribute('target', '_blank');
-              heroCta.setAttribute('rel', 'noopener');
-            } else {
-              heroCta.removeAttribute('target');
-              heroCta.removeAttribute('rel');
-            }
-          } else {
-            heroCta.setAttribute('href', '#');
-            heroCta.removeAttribute('data-link');
-            heroCta.removeAttribute('target');
-            heroCta.removeAttribute('rel');
-          }
-        } else {
-          heroCta.textContent = '';
-          heroCta.setAttribute('href', '#');
-          heroCtaWrapper.setAttribute('hidden', '');
-          heroCta.removeAttribute('data-action');
-          heroCta.removeAttribute('data-quiz-id');
-          heroCta.removeAttribute('data-link');
-          heroCta.removeAttribute('target');
-          heroCta.removeAttribute('rel');
-        }
-      }
-
-      function formatVideoSrc(source, shouldAutoplay = true) {
-        if (!source) return '';
-        try {
-          const url = new URL(source);
-          url.searchParams.set('rel', '0');
-          url.searchParams.set('modestbranding', '1');
-          url.searchParams.set('playsinline', '1');
-          if (shouldAutoplay) {
-            url.searchParams.set('autoplay', '1');
-            url.searchParams.set('mute', '1');
-          } else {
-            url.searchParams.delete('autoplay');
-            url.searchParams.delete('mute');
-          }
-          return url.toString();
-        } catch (error) {
-          if (shouldAutoplay) {
-            return source.includes('?') ? `${source}&autoplay=1&mute=1` : `${source}?autoplay=1&mute=1`;
-          }
-          return source;
-        }
-      }
-
-      function showHeroVideo(source, shouldAutoplay = true) {
-        if (!heroPlayer || !heroVideoFrame) return;
-        heroPlayer.removeAttribute('data-hidden');
-        heroMedia?.classList.remove('hero-media--inactive');
-        setHeroNotice();
-        setHeroCta();
-        heroVideoFrame.dataset.baseSrc = source;
-        heroVideoFrame.setAttribute('src', formatVideoSrc(source, shouldAutoplay));
-      }
-
-      function hideHeroVideo() {
-        if (!heroPlayer || !heroVideoFrame) return;
-        heroPlayer.setAttribute('data-hidden', 'true');
-        heroVideoFrame.setAttribute('src', 'about:blank');
-        heroVideoFrame.removeAttribute('data-base-src');
-      }
-
-      function getNoticeCopy(type) {
-        switch (type) {
-          case 'quiz':
-            return 'This quiz opens in a focused window. Launch it when you’re ready.';
-          case 'worksheet':
-          case 'exercise':
-            return 'This activity opens in your workspace. Set aside a few minutes to complete it.';
-          case 'interactive':
-            return 'This simulation opens in a new tab so you can explore each step hands-on.';
-          case 'download':
-            return 'Download the resource to keep the toolkit handy while you work.';
-          case 'reading':
-            return 'This brief opens as an article so you can read at your own pace.';
-          case 'audio':
-          case 'podcast':
-            return 'This session is audio-led. Plug in and press play when you have a moment.';
-          default:
-            return 'Open the activity to continue your progress.';
-        }
-      }
-
-      function getCtaLabel(type) {
-        const isQuiz = type === 'quiz';
-        const isWorksheet = type === 'worksheet' || type === 'exercise';
-        const isDownload = type === 'download';
-        const isInteractive = type === 'interactive';
-        const isReading = type === 'reading';
-        const isAudio = type === 'audio' || type === 'podcast';
-        if (isQuiz) return 'Start quiz';
-        if (isWorksheet || isInteractive) return 'Start activity';
-        if (isDownload) return 'View download';
-        if (isReading) return 'Open reading';
-        if (isAudio) return 'Play audio';
-        return 'Open activity';
-      }
-
-      function showActivityState(type, link, quizId = '') {
-        hideHeroVideo();
-        heroMedia?.classList.add('hero-media--inactive');
-        setHeroNotice(getNoticeCopy(type));
-        const ctaLabel = getCtaLabel(type);
-        if (type === 'quiz' && quizId) {
-          setHeroCta({ label: ctaLabel, action: 'quiz', quizId });
-        } else if (link) {
-          setHeroCta({ label: ctaLabel, link, action: 'link' });
-        } else {
-          setHeroCta();
-        }
-      }
-
-      function getStickyOffset() {
-        const header = document.querySelector('.topbar');
-        const headerHeight = header ? header.offsetHeight : 0;
-        const topbarHeight = moduleTopbar ? moduleTopbar.offsetHeight : 0;
-        return headerHeight + topbarHeight + 24;
-      }
-
-      function scrollHeroIntoView() {
-        if (!heroMedia) return;
-        const rect = heroMedia.getBoundingClientRect();
-        const target = window.scrollY + rect.top - getStickyOffset();
-        window.scrollTo({ top: Math.max(target, 0), behavior: 'smooth' });
-      }
-
-      function scrollToPanel(panel) {
-        if (!panel) return;
-        const rect = panel.getBoundingClientRect();
-        const target = window.scrollY + rect.top - getStickyOffset();
-        window.scrollTo({ top: Math.max(target, 0), behavior: 'smooth' });
-      }
-
-      function getStoredNotes() {
-        if (typeof localStorage === 'undefined') return [];
-        try {
-          const raw = localStorage.getItem(NOTES_KEY);
-          if (!raw) return [];
-          const parsed = JSON.parse(raw);
-          return Array.isArray(parsed) ? parsed : [];
-        } catch (error) {
-          console.error('Unable to read stored notes', error);
-          return [];
-        }
-      }
-
-      function saveNotes(notes) {
-        if (typeof localStorage === 'undefined') return;
-        try {
-          localStorage.setItem(NOTES_KEY, JSON.stringify(notes));
-        } catch (error) {
-          console.error('Unable to save notes', error);
-        }
-      }
-
-      function renderNotes() {
-        if (!notesList) return;
-        const notes = getStoredNotes();
-        notesList.innerHTML = '';
-        if (!notes.length) {
-          const empty = document.createElement('li');
-          empty.className = 'notes-list__empty';
-          empty.textContent = 'No notes yet. Capture your first insight to see it here.';
-          notesList.appendChild(empty);
-          return;
-        }
-        notes.forEach(note => {
-          const item = document.createElement('li');
-          item.className = 'notes-list__item';
-          const meta = document.createElement('span');
-          meta.className = 'notes-list__time';
-          const timestamp = note.createdAt ? new Date(note.createdAt) : new Date();
-          try {
-            meta.textContent = timestamp.toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' });
-          } catch (error) {
-            meta.textContent = timestamp.toISOString();
-          }
-          const body = document.createElement('p');
-          body.textContent = note.content;
-          item.appendChild(meta);
-          item.appendChild(body);
-          notesList.appendChild(item);
-        });
-      }
-
-      function openNotesDialog() {
-        if (!notesDialog) return;
-        notesDialog.removeAttribute('hidden');
-        notesContent?.focus();
-        notesForm?.reset();
-        if (notesInput) {
-          notesInput.value = '';
-          setTimeout(() => notesInput.focus(), 0);
-        }
-      }
-
-      function closeNotesDialog() {
-        if (!notesDialog) return;
-        notesDialog.setAttribute('hidden', '');
-        notesOpenButton?.focus();
-      }
-
-      function appendNote(content) {
-        const trimmed = content.trim();
-        if (!trimmed) return;
-        const notes = getStoredNotes();
-        notes.unshift({ id: Date.now(), content: trimmed, createdAt: new Date().toISOString() });
-        saveNotes(notes.slice(0, 30));
-        renderNotes();
-      }
-
-      function showPathwayFeedback(message) {
-        if (!pathwayFeedback) return;
-        pathwayFeedback.textContent = message;
-        pathwayFeedback.removeAttribute('hidden');
-        clearTimeout(pathwayFeedbackTimeout);
-        pathwayFeedbackTimeout = window.setTimeout(() => {
-          pathwayFeedback?.setAttribute('hidden', '');
-        }, 3200);
-      }
-
-      function renderQuizQuestion() {
-        if (!activeQuizData || !quizForm || !quizOptions) return;
-        quizCompleted = false;
-        quizForm.removeAttribute('hidden');
-        quizForm.reset();
-        if (quizFeedback) {
-          quizFeedback.setAttribute('hidden', '');
-          quizFeedback.classList.remove('is-correct', 'is-incorrect');
-        }
-        quizNext?.setAttribute('hidden', '');
-        const total = activeQuizData.questions.length;
-        const question = activeQuizData.questions[quizIndex];
-        if (quizProgress) {
-          quizProgress.textContent = `Question ${quizIndex + 1} of ${total}`;
-        }
-        if (quizQuestion) {
-          quizQuestion.textContent = question.prompt;
-        }
-        quizOptions.innerHTML = '';
-        question.options.forEach((option, index) => {
-          const optionId = `quiz-option-${quizIndex}-${index}`;
-          const label = document.createElement('label');
-          label.className = 'quiz-option';
-          const input = document.createElement('input');
-          input.type = 'radio';
-          input.name = 'quiz-option';
-          input.value = String(index);
-          input.id = optionId;
-          const copy = document.createElement('span');
-          copy.textContent = option;
-          label.appendChild(input);
-          label.appendChild(copy);
-          quizOptions.appendChild(label);
-        });
-      }
-
-      function showQuizSummary() {
-        if (!activeQuizData || !quizFeedback) return;
-        quizCompleted = true;
-        quizForm?.setAttribute('hidden', '');
-        const total = activeQuizData.questions.length;
-        quizFeedback.classList.remove('is-correct', 'is-incorrect');
-        quizFeedback.textContent = `You scored ${quizScore} out of ${total}. Review any flagged lessons to keep improving.`;
-        quizFeedback.removeAttribute('hidden');
-        if (quizProgress) {
-          quizProgress.textContent = 'Quiz complete';
-        }
-        if (quizNext) {
-          quizNext.textContent = 'Retake quiz';
-          quizNext.removeAttribute('hidden');
-        }
-      }
-
-      function openQuizModal(quizId) {
-        if (!quizModal) return;
-        const data = quizBank[quizId];
-        if (!data) return;
-        activeQuizId = quizId;
-        activeQuizData = data;
-        quizIndex = 0;
-        quizScore = 0;
-        quizCompleted = false;
-        quizModal.removeAttribute('hidden');
-        if (quizTitle) {
-          quizTitle.textContent = data.title;
-        }
-        if (quizDescription) {
-          quizDescription.textContent = data.description;
-        }
-        renderQuizQuestion();
-        quizContent?.focus();
-      }
-
-      function closeQuizModal() {
-        if (!quizModal) return;
-        quizModal.setAttribute('hidden', '');
-        activeQuizData = null;
-        quizIndex = 0;
-        quizScore = 0;
-        quizCompleted = false;
-        quizForm?.reset();
-        quizFeedback?.setAttribute('hidden', '');
-        quizNext?.setAttribute('hidden', '');
-        heroCta?.focus();
-      }
-
-      function handleQuizSubmit(event) {
-        event.preventDefault();
-        if (!activeQuizData || !quizForm || !quizOptions) return;
-        const selected = quizForm.querySelector('input[name="quiz-option"]:checked');
-        if (!selected) {
-          if (quizFeedback) {
-            quizFeedback.textContent = 'Choose an option before continuing.';
-            quizFeedback.classList.remove('is-correct', 'is-incorrect');
-            quizFeedback.removeAttribute('hidden');
-          }
-          return;
-        }
-        const choice = Number(selected.value);
-        const question = activeQuizData.questions[quizIndex];
-        const isCorrect = choice === question.answer;
-        if (isCorrect) {
-          quizScore += 1;
-        }
-        quizOptions.querySelectorAll('input').forEach(input => {
-          input.disabled = true;
-          const label = input.closest('label');
-          if (!label) return;
-          const value = Number(input.value);
-          label.classList.toggle('is-correct', value === question.answer);
-          label.classList.toggle('is-selected', value === choice);
-        });
-        if (quizFeedback) {
-          quizFeedback.textContent = `${isCorrect ? 'Correct!' : 'Not quite.'} ${question.rationale}`;
-          quizFeedback.classList.toggle('is-correct', isCorrect);
-          quizFeedback.classList.toggle('is-incorrect', !isCorrect);
-          quizFeedback.removeAttribute('hidden');
-        }
-        if (quizNext) {
-          const isLast = quizIndex === activeQuizData.questions.length - 1;
-          quizNext.textContent = isLast ? 'View results' : 'Next question';
-          quizNext.removeAttribute('hidden');
-        }
-      }
-
-      function handleQuizNext() {
-        if (!activeQuizData) return;
-        if (quizCompleted) {
-          openQuizModal(activeQuizId);
-          return;
-        }
-        quizIndex += 1;
-        if (quizIndex >= activeQuizData.questions.length) {
-          showQuizSummary();
-        } else {
-          renderQuizQuestion();
-        }
-      }
-
-      function updateHero(button, shouldAutoplay = true) {
-        if (!button) return;
-        const type = button.dataset.lessonType || '';
-        const summary = button.dataset.lessonSummary || '';
-        const title = button.dataset.lessonTitle || '';
-        const duration = button.dataset.lessonDuration || '';
-        const moduleLabel = button.dataset.lessonModule || '';
-        const videoSrc = button.dataset.videoSrc || '';
-        const lessonLink = button.dataset.lessonLink || '';
-        const quizId = button.dataset.quizId || '';
-
-        if (heroModule) {
-          heroModule.textContent = moduleLabel;
-        }
-        if (heroDuration) {
-          heroDuration.textContent = duration;
-        }
-        if (heroTitle) {
-          heroTitle.textContent = title;
-        }
-        if (heroSummary) {
-          heroSummary.textContent = summary;
-        }
-
-        activeLessonType = type;
-        activeQuizId = quizId;
-
-        if (type === 'video' && videoSrc) {
-          showHeroVideo(videoSrc, shouldAutoplay);
-        } else {
-          showActivityState(type, lessonLink, quizId);
-        }
-      }
-
-      lessonButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          lessonButtons.forEach(item => item.classList.remove('active'));
-          button.classList.add('active');
-          updateHero(button);
-          scrollHeroIntoView();
-        });
-      });
-
-      if (heroCta) {
-        heroCta.addEventListener('click', event => {
-          const action = heroCta.dataset.action;
-          if (action === 'quiz') {
-            event.preventDefault();
-            const quizId = heroCta.dataset.quizId || activeQuizId;
-            if (quizId) {
-              openQuizModal(quizId);
-            }
-          } else if (!heroCta.dataset.link) {
-            event.preventDefault();
-          }
-        });
-      }
-
-      pathwayButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          const action = button.dataset.pathwayAction;
-          if (!action) return;
-          if (action === 'journey') {
-            setTabState('tab-journey');
-            setPanelVisibility();
-            scrollToPanel(journeyPanel);
-            showPathwayFeedback('Lesson journey highlighted.');
-          } else if (action === 'resources') {
-            setTabState('tab-resources');
-            setPanelVisibility();
-            scrollToPanel(resourcesPanel);
-            showPathwayFeedback('Resources opened so you can apply the learning.');
-          } else if (action === 'share') {
-            setTabState('tab-notes');
-            setPanelVisibility();
-            scrollToPanel(notesPanel);
-            openNotesDialog();
-            showPathwayFeedback('Capture a quick update to brief your coach.');
-          }
-        });
-      });
-
-      notesOpenButton?.addEventListener('click', () => {
-        setTabState('tab-notes');
-        setPanelVisibility();
-        scrollToPanel(notesPanel);
-        openNotesDialog();
-      });
-
-      notesCancel?.addEventListener('click', () => {
-        closeNotesDialog();
-      });
-
-      notesOverlay?.addEventListener('click', () => {
-        closeNotesDialog();
-      });
-
-      notesForm?.addEventListener('submit', event => {
-        event.preventDefault();
-        if (!notesInput) return;
-        const value = notesInput.value.trim();
-        if (!value) {
-          notesInput.focus();
-          return;
-        }
-        appendNote(value);
-        closeNotesDialog();
-        showPathwayFeedback('Note saved — share it with your coach next.');
-      });
-
-      quizOverlay?.addEventListener('click', () => {
-        closeQuizModal();
-      });
-
-      quizClose?.addEventListener('click', () => {
-        closeQuizModal();
-      });
-
-      quizForm?.addEventListener('submit', handleQuizSubmit);
-      quizNext?.addEventListener('click', handleQuizNext);
-
-      document.addEventListener('keydown', event => {
-        if (event.key === 'Escape') {
-          if (quizModal && !quizModal.hasAttribute('hidden')) {
-            closeQuizModal();
-          }
-          if (notesDialog && !notesDialog.hasAttribute('hidden')) {
-            closeNotesDialog();
-          }
-        }
-      });
-
-      renderNotes();
-
-      const initialActive = document.querySelector('.lesson-item.active');
-      if (initialActive) {
-        updateHero(initialActive, false);
-      }
-    });
-  </script>
+  <script src="assets/js/course-player.js" type="module"></script>
 </body>
 </html>
