@@ -6,7 +6,26 @@
   <title>Samriddhi • Green Finance Foundations</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="course-player" data-page="modules">
+<body class="course-player has-site-header" data-page="modules">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <button class="hamb" id="hamb" aria-label="Menu" aria-expanded="false">☰</button>
+      <a class="brand-left" href="home.html">
+        <div class="logo-square">
+          <img src="img/logo.svg" alt="Samriddhi logo" />
+        </div>
+        <div class="brand-text"><span class="brand-strong">Samriddhi</span></div>
+      </a>
+      <nav class="nav-right" id="navRight">
+        <a class="nav-link" data-route="home" href="home.html">Home</a>
+        <a class="nav-link active" data-route="modules" href="modules.html" aria-current="page">Programs</a>
+        <a class="nav-link" data-route="banking" href="banking.html">Banking <span class="chip-new">NEW</span></a>
+        <a class="nav-link" data-route="toolkits" href="toolkits.html">Toolkit</a>
+        <button id="btnOpenLogin" type="button" class="btn login-pill">Login/Register</button>
+        <a id="navProfile" class="nav-link hidden" data-route="profile" href="profile.html">Profile</a>
+      </nav>
+    </div>
+  </header>
   <header class="course-header" role="banner">
     <div class="course-header__top">
       <button class="course-header__menu" type="button" aria-label="Toggle lesson list" aria-expanded="false" aria-controls="lessonList">
@@ -27,7 +46,7 @@
           <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
             <span class="progress__bar" style="width: 0%"></span>
           </div>
-          <span class="course-header__progress-label"><strong>0%</strong> complete</span>
+          <span class="course-header__progress-label"><strong>0 of 0</strong> • 0% complete</span>
         </div>
       </div>
       <div class="course-header__search">
@@ -166,6 +185,55 @@
   <div class="sr-only" aria-live="polite" data-aria-updates></div>
   <div class="toast-stack" data-toast-stack aria-live="polite" aria-atomic="true"></div>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const hamb = document.getElementById('hamb');
+      const navRight = document.getElementById('navRight');
+      const loginBtn = document.getElementById('btnOpenLogin');
+
+      const goToLogin = () => {
+        window.location.href = 'login.html';
+      };
+
+      let loginAttached = false;
+
+      if (hamb && navRight) {
+        hamb.addEventListener('click', () => {
+          const open = navRight.classList.toggle('open');
+          hamb.setAttribute('aria-expanded', String(open));
+        });
+
+        const closeMenu = () => {
+          navRight.classList.remove('open');
+          hamb.setAttribute('aria-expanded', 'false');
+        };
+
+        navRight.querySelectorAll('a').forEach((link) => {
+          link.addEventListener('click', () => {
+            closeMenu();
+          });
+        });
+
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape' && navRight.classList.contains('open')) {
+            closeMenu();
+          }
+        });
+
+        if (loginBtn) {
+          loginBtn.addEventListener('click', () => {
+            closeMenu();
+            goToLogin();
+          });
+          loginAttached = true;
+        }
+      }
+
+      if (loginBtn && !loginAttached) {
+        loginBtn.addEventListener('click', goToLogin);
+      }
+    });
+  </script>
   <script src="assets/js/course-player.js" type="module"></script>
 </body>
 </html>
