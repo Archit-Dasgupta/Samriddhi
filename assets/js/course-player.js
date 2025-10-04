@@ -204,12 +204,16 @@ const elements = {
   transcriptPanel: document.querySelector('[data-transcript]'),
   transcriptBody: document.querySelector('[data-transcript-content]'),
   captionsToggle: document.querySelector('[data-toggle-captions]'),
+  upNextCard: document.querySelector('[data-up-next]'),
+  upNextMeta: document.querySelector('[data-up-next-meta]'),
   suggestNext: document.querySelector('[data-suggest-next]'),
   quizPanel: document.querySelector('[data-quiz-panel]'),
   notesForm: document.querySelector('[data-notes-form]'),
   noteTextarea: document.getElementById('noteText'),
   addTimecode: document.querySelector('[data-add-timecode]'),
   notesList: document.querySelector('[data-notes-list]'),
+  notesCount: document.querySelector('[data-notes-count]'),
+  notesStatus: document.querySelector('[data-notes-status]'),
   actionComplete: document.querySelector('[data-action-complete]'),
   actionWatchLater: document.querySelector('[data-action-watchlater]'),
   actionNext: document.querySelector('[data-action-next]'),
@@ -219,8 +223,11 @@ const elements = {
   mobileLabel: document.querySelector('[data-mobile-progress-label]'),
   mobileDetail: document.querySelector('[data-mobile-progress-detail]'),
   mobilePrimary: document.querySelector('[data-mobile-primary]'),
+  mobileList: document.querySelector('[data-mobile-open-list]'),
   menuToggle: document.querySelector('.course-header__menu'),
-  ariaUpdates: document.querySelector('[data-aria-updates]')
+  lessonOverlay: document.querySelector('[data-lesson-overlay]'),
+  ariaUpdates: document.querySelector('[data-aria-updates]'),
+  toastStack: document.querySelector('[data-toast-stack]')
 };
 
 const totalItems = modulesData.reduce((count, module) => count + module.lessons.length, 0);
@@ -232,66 +239,79 @@ const typeTokens = {
 let currentLessonId = null;
 let pendingResumeTime = null;
 let lastSavedTime = 0;
+let noteStatusTimeout = null;
 
+const STORAGE_PREFIX = 'samriddhi.';
 const state = loadState();
 const lessonMap = new Map();
 const orderedLessonIds = [];
+const moduleProgressMap = new Map();
+let focusedLessonId = null;
+
+function storageKey(segment) {
+  return `${STORAGE_PREFIX}${segment}`;
+}
+
+function readJSON(key, fallback) {
+  try {
+    const value = localStorage.getItem(key);
+    return value ? JSON.parse(value) : fallback;
+  } catch (error) {
+    return fallback;
+  }
+}
 
 function loadState() {
-  let watchLater = [];
-  let completedQuizzes = [];
-  try {
-    watchLater = JSON.parse(localStorage.getItem('samriddhi.watchLater') || '[]');
-  } catch (error) {
-    watchLater = [];
-  }
-  try {
-    completedQuizzes = JSON.parse(localStorage.getItem('samriddhi.completedQuizzes') || '[]');
-  } catch (error) {
-    completedQuizzes = [];
-  }
   return {
-    lastLessonId: localStorage.getItem('samriddhi.lastLessonId'),
-    watchLater,
-    completedQuizzes
+    lastLessonId: localStorage.getItem(storageKey('lastLessonId')),
+    watchLater: readJSON(storageKey('watchLater'), []),
+    completedQuizzes: readJSON(storageKey('completedQuizzes'), [])
   };
 }
 
 function saveState(key, value) {
   try {
-    localStorage.setItem(key, JSON.stringify(value));
+    localStorage.setItem(storageKey(key), JSON.stringify(value));
   } catch (error) {
     console.error('Unable to save state', error);
   }
 }
 
+function setPrimitive(key, value) {
+  try {
+    localStorage.setItem(storageKey(key), String(value));
+  } catch (error) {
+    console.error('Unable to save primitive', error);
+  }
+}
+
 function getPlayback(lessonId) {
-  const raw = localStorage.getItem(`samriddhi.playback.${lessonId}`);
+  const raw = localStorage.getItem(storageKey(`playback.${lessonId}`));
   return raw ? Number(raw) : 0;
 }
 
 function savePlayback(lessonId, seconds) {
   try {
-    localStorage.setItem(`samriddhi.playback.${lessonId}`, String(seconds));
+    localStorage.setItem(storageKey(`playback.${lessonId}`), String(seconds));
   } catch (error) {
     console.error('Unable to persist playback', error);
   }
 }
 
 function toggleComplete(lessonId) {
-  const key = `samriddhi.completed.${lessonId}`;
+  const key = storageKey(`completed.${lessonId}`);
   const current = localStorage.getItem(key) === 'true';
   localStorage.setItem(key, String(!current));
   return !current;
 }
 
 function setComplete(lessonId, value) {
-  localStorage.setItem(`samriddhi.completed.${lessonId}`, String(value));
+  localStorage.setItem(storageKey(`completed.${lessonId}`), String(value));
   return value;
 }
 
 function isLessonComplete(lessonId) {
-  return localStorage.getItem(`samriddhi.completed.${lessonId}`) === 'true';
+  return localStorage.getItem(storageKey(`completed.${lessonId}`)) === 'true';
 }
 
 function toggleWatchLater(lessonId) {
@@ -302,35 +322,26 @@ function toggleWatchLater(lessonId) {
     current.add(lessonId);
   }
   state.watchLater = Array.from(current);
-  saveState('samriddhi.watchLater', state.watchLater);
+  saveState('watchLater', state.watchLater);
   return state.watchLater.includes(lessonId);
 }
 
 function saveNote(lessonId, note) {
-  const key = `samriddhi.notes.${lessonId}`;
-  let notes = [];
-  try {
-    notes = JSON.parse(localStorage.getItem(key) || '[]');
-  } catch (error) {
-    notes = [];
-  }
+  const keySegment = `notes.${lessonId}`;
+  const notes = readJSON(storageKey(keySegment), []);
   notes.push(note);
-  saveState(key, notes);
+  saveState(keySegment, notes);
   return notes;
 }
 
 function getNotes(lessonId) {
-  try {
-    return JSON.parse(localStorage.getItem(`samriddhi.notes.${lessonId}`) || '[]');
-  } catch (error) {
-    return [];
-  }
+  return readJSON(storageKey(`notes.${lessonId}`), []);
 }
 
 function markQuizComplete(quizId) {
   if (!state.completedQuizzes.includes(quizId)) {
     state.completedQuizzes.push(quizId);
-    saveState('samriddhi.completedQuizzes', state.completedQuizzes);
+    saveState('completedQuizzes', state.completedQuizzes);
   }
 }
 
@@ -338,20 +349,42 @@ function isQuizComplete(quizId) {
   return state.completedQuizzes.includes(quizId);
 }
 
+function saveQuizAnswers(quizId, answers) {
+  saveState(`answers.${quizId}`, answers);
+}
+
+function getQuizAnswers(quizId) {
+  return readJSON(storageKey(`answers.${quizId}`), []);
+}
+
 function getProgress() {
   let completed = 0;
+  const moduleStats = new Map();
   modulesData.forEach((module) => {
+    let moduleCompleted = 0;
     module.lessons.forEach((lesson) => {
+      let done = false;
       if (lesson.type === 'video' && isLessonComplete(lesson.id)) {
-        completed += 1;
+        done = true;
       }
       if (lesson.type === 'quiz' && isQuizComplete(lesson.quiz.id)) {
+        done = true;
+      }
+      if (done) {
+        moduleCompleted += 1;
         completed += 1;
       }
     });
+    moduleStats.set(module.id, {
+      completed: moduleCompleted,
+      total: module.lessons.length,
+      percent: module.lessons.length
+        ? Math.round((moduleCompleted / module.lessons.length) * 100)
+        : 0
+    });
   });
   const percent = totalItems === 0 ? 0 : Math.round((completed / totalItems) * 100);
-  return { completed, percent };
+  return { completed, total: totalItems, percent, modules: moduleStats };
 }
 
 function mmss(seconds) {
@@ -362,6 +395,12 @@ function mmss(seconds) {
     .toString()
     .padStart(2, '0');
   return `${mins}:${secs}`;
+}
+
+function parseTimecode(value) {
+  const [mins, secs] = value.split(':').map(Number);
+  if (Number.isNaN(mins) || Number.isNaN(secs)) return 0;
+  return mins * 60 + secs;
 }
 
 function renderModules() {
@@ -382,9 +421,20 @@ function renderModules() {
     label.className = 'module-block__label';
     const title = document.createElement('h3');
     title.textContent = module.title;
-    const summary = document.createElement('span');
-    summary.textContent = module.meta;
-    label.append(title, summary);
+    const meta = document.createElement('span');
+    meta.className = 'module-block__meta';
+    meta.textContent = module.meta || `${module.lessons.length} items`;
+    const progressRow = document.createElement('div');
+    progressRow.className = 'module-block__progress';
+    const progressText = document.createElement('span');
+    progressText.textContent = `0 / ${module.lessons.length} complete`;
+    const progressBar = document.createElement('div');
+    progressBar.className = 'module-block__progress-bar';
+    const progressFill = document.createElement('span');
+    progressBar.append(progressFill);
+    progressRow.append(progressText, progressBar);
+    moduleProgressMap.set(module.id, { text: progressText, fill: progressFill });
+    label.append(title, meta, progressRow);
 
     const chevron = document.createElement('span');
     chevron.className = 'module-block__chevron';
@@ -406,40 +456,71 @@ function renderModules() {
       button.dataset.lessonType = lesson.type;
       button.dataset.moduleId = module.id;
       button.dataset.moduleTitle = module.title;
+      button.dataset.lessonTitle = lesson.title;
+      button.dataset.lessonMeta = lesson.durationLabel || '';
       button.dataset.index = `${moduleIndex}-${lessonIndex}`;
-      button.role = 'option';
       button.setAttribute('role', 'option');
       button.setAttribute('aria-selected', 'false');
       button.tabIndex = -1;
 
+      const content = document.createElement('div');
+      content.className = 'lesson-item__content';
+
+      const typeIcon = document.createElement('span');
+      typeIcon.className = 'lesson-item__type';
+      typeIcon.setAttribute('aria-hidden', 'true');
+      typeIcon.textContent = typeTokens[lesson.type]?.icon || '•';
+
       const info = document.createElement('div');
       info.className = 'lesson-item__info';
       const strong = document.createElement('strong');
-      strong.innerHTML = `<span aria-hidden="true">${typeTokens[lesson.type].icon}</span> ${lesson.title}`;
-      const meta = document.createElement('span');
-      meta.textContent = lesson.durationLabel;
-      info.append(strong, meta);
+      strong.textContent = lesson.title;
+      const metaLine = document.createElement('span');
+      metaLine.textContent = lesson.durationLabel || '';
+      info.append(strong, metaLine);
+
+      content.append(typeIcon, info);
 
       const badges = document.createElement('div');
       badges.className = 'lesson-item__badges';
       const typeChip = document.createElement('span');
       typeChip.className = `chip chip--${lesson.type}`;
       typeChip.textContent = `${typeTokens[lesson.type].icon} ${typeTokens[lesson.type].label}`;
-      badges.append(typeChip);
+      const statusComplete = document.createElement('span');
+      statusComplete.className = 'lesson-item__status';
+      statusComplete.hidden = true;
+      statusComplete.dataset.state = 'complete';
+      statusComplete.textContent = '✔';
+      statusComplete.setAttribute('role', 'img');
+      statusComplete.setAttribute('aria-label', 'Completed');
+      const statusLater = document.createElement('span');
+      statusLater.className = 'lesson-item__status';
+      statusLater.hidden = true;
+      statusLater.dataset.state = 'later';
+      statusLater.textContent = '⏱';
+      statusLater.setAttribute('role', 'img');
+      statusLater.setAttribute('aria-label', 'Saved for later');
+      badges.append(typeChip, statusComplete, statusLater);
 
-      button.append(info, badges);
+      button.append(content, badges);
       item.append(button);
       list.append(item);
 
-      lessonMap.set(lesson.id, { lesson, button, moduleBlock, module });
+      lessonMap.set(lesson.id, {
+        lesson,
+        button,
+        moduleBlock,
+        module,
+        statusComplete,
+        statusLater,
+        typeIcon
+      });
       orderedLessonIds.push(lesson.id);
 
       button.addEventListener('click', () => selectLesson(lesson.id, { focus: false, announce: true }));
-      button.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault();
-          selectLesson(lesson.id, { focus: false, announce: true });
-        }
+      button.addEventListener('keydown', handleLessonKeydown);
+      button.addEventListener('focus', () => {
+        focusedLessonId = lesson.id;
       });
     });
 
@@ -472,9 +553,11 @@ function selectLesson(lessonId, options = {}) {
   if (!entry) return;
 
   const { lesson, button, module } = entry;
-  updateActiveLesson(button, options.focus !== false);
   currentLessonId = lessonId;
-  localStorage.setItem('samriddhi.lastLessonId', lessonId);
+  focusedLessonId = lessonId;
+  updateActiveLesson(button, options.focus !== false);
+  ensureLessonVisible(button);
+  setPrimitive('lastLessonId', lessonId);
   if (options.announce) {
     announce(`${lesson.title} from ${module.title}`);
   }
@@ -490,10 +573,10 @@ function selectLesson(lessonId, options = {}) {
   updateLessonBadges(lessonId);
   updateProgressUI();
   updateMobileBar();
+  hideUpNextCard();
 
-  if (window.matchMedia('(max-width: 1024px)').matches) {
-    elements.lessonList.dataset.open = 'false';
-    elements.menuToggle?.setAttribute('aria-expanded', 'false');
+  if (isMobileViewport()) {
+    closeLessonList();
   }
 }
 
@@ -512,6 +595,110 @@ function updateActiveLesson(activeButton, shouldFocus = true) {
   }
 }
 
+function ensureLessonVisible(button) {
+  const container = elements.lessonList;
+  if (!container) return;
+  const { top, bottom } = button.getBoundingClientRect();
+  const containerRect = container.getBoundingClientRect();
+  if (top < containerRect.top || bottom > containerRect.bottom) {
+    button.scrollIntoView({ block: 'nearest' });
+  }
+}
+
+function isMobileViewport() {
+  return window.matchMedia('(max-width: 1024px)').matches;
+}
+
+function openLessonList() {
+  elements.lessonList.dataset.open = 'true';
+  elements.menuToggle?.setAttribute('aria-expanded', 'true');
+  elements.lessonOverlay?.removeAttribute('hidden');
+  document.body.classList.add('body--locked');
+}
+
+function closeLessonList() {
+  elements.lessonList.dataset.open = 'false';
+  elements.menuToggle?.setAttribute('aria-expanded', 'false');
+  elements.lessonOverlay?.setAttribute('hidden', '');
+  document.body.classList.remove('body--locked');
+}
+
+function showUpNextCard(nextLessonId) {
+  const entry = nextLessonId ? lessonMap.get(nextLessonId) : null;
+  if (!entry) {
+    hideUpNextCard();
+    return;
+  }
+  const { lesson } = entry;
+  const detail = lesson.durationLabel || typeTokens[lesson.type]?.label || '';
+  elements.upNextMeta.textContent = detail ? `${lesson.title} • ${detail}` : lesson.title;
+  elements.suggestNext.dataset.nextLesson = nextLessonId;
+  elements.upNextCard.hidden = false;
+}
+
+function hideUpNextCard() {
+  elements.upNextCard.hidden = true;
+  elements.suggestNext.removeAttribute('data-next-lesson');
+}
+
+function showToast(message) {
+  if (!elements.toastStack) return;
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.textContent = message;
+  elements.toastStack.append(toast);
+  const dismiss = () => {
+    toast.style.animation = 'toast-in .25s ease reverse';
+    const removeTimer = setTimeout(() => toast.remove(), 250);
+    toast.addEventListener(
+      'animationend',
+      () => {
+        clearTimeout(removeTimer);
+        toast.remove();
+      },
+      { once: true }
+    );
+  };
+  setTimeout(dismiss, 2200);
+}
+
+function getVisibleLessonButtons() {
+  return Array.from(elements.lessonContainer.querySelectorAll('.lesson-item')).filter((button) => {
+    const listItem = button.closest('li');
+    const moduleBlock = button.closest('.module-block');
+    return !(listItem?.hidden || moduleBlock?.hidden);
+  });
+}
+
+function handleLessonKeydown(event) {
+  const button = event.currentTarget;
+  const lessonId = button.dataset.lessonId;
+  if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+    event.preventDefault();
+    const visibleButtons = getVisibleLessonButtons();
+    const currentIndex = visibleButtons.indexOf(button);
+    if (currentIndex === -1) return;
+    const lastIndex = visibleButtons.length - 1;
+    const nextIndex =
+      event.key === 'ArrowDown'
+        ? currentIndex === lastIndex
+          ? 0
+          : currentIndex + 1
+        : currentIndex === 0
+        ? lastIndex
+        : currentIndex - 1;
+    const nextButton = visibleButtons[nextIndex];
+    if (nextButton) {
+      nextButton.focus();
+      focusedLessonId = nextButton.dataset.lessonId;
+    }
+  }
+  if (event.key === 'Enter' || event.key === ' ') {
+    event.preventDefault();
+    selectLesson(lessonId, { focus: false, announce: true });
+  }
+}
+
 function renderVideoLesson(lesson, shouldScroll = true) {
   elements.quizPanel.hidden = true;
   elements.playerCard.hidden = false;
@@ -521,7 +708,7 @@ function renderVideoLesson(lesson, shouldScroll = true) {
 
   elements.typeChip.textContent = `${typeTokens.video.icon} ${typeTokens.video.label}`;
   elements.typeChip.className = 'chip chip--video';
-  elements.durationChip.textContent = lesson.durationLabel;
+  elements.durationChip.textContent = lesson.durationLabel || '';
   elements.title.textContent = lesson.title;
   elements.description.textContent = lesson.description;
 
@@ -531,11 +718,15 @@ function renderVideoLesson(lesson, shouldScroll = true) {
   pendingResumeTime = getPlayback(lesson.id);
   lastSavedTime = pendingResumeTime || 0;
   elements.captionTrack.src = lesson.video.captions || '';
-  elements.downloadLink.href = lesson.video.download;
+  const downloadHref = lesson.video.download || lesson.video.src || '#';
+  elements.downloadLink.href = downloadHref;
   elements.downloadLink.setAttribute('download', `${lesson.title}.mp4`);
   elements.downloadTranscript.href = lesson.video.captions || '#';
   elements.downloadTranscript.setAttribute('download', `${lesson.title}.vtt`);
-  elements.transcriptBody.textContent = lesson.transcript;
+  renderTranscriptContent(lesson.transcript || 'Transcript not available.');
+  toggleTranscriptPanel(false);
+  elements.captionsToggle.textContent = 'Captions';
+  hideUpNextCard();
 
   elements.player.load();
   elements.player.addEventListener('loadedmetadata', handleLoadedMetadata, { once: true });
@@ -545,17 +736,90 @@ function renderVideoLesson(lesson, shouldScroll = true) {
   }
 }
 
+function renderTranscriptContent(transcript) {
+  elements.transcriptBody.innerHTML = '';
+  const lines = transcript.split('\n').map((line) => line.trim()).filter(Boolean);
+  if (!lines.length) {
+    const empty = document.createElement('p');
+    empty.className = 'transcript-line';
+    empty.textContent = transcript;
+    elements.transcriptBody.append(empty);
+    return;
+  }
+  lines.forEach((line) => {
+    const paragraph = document.createElement('p');
+    paragraph.className = 'transcript-line';
+    const regex = /\[(\d{1,2}:\d{2})\]/g;
+    let lastIndex = 0;
+    let match;
+    let hasMatch = false;
+    while ((match = regex.exec(line)) !== null) {
+      hasMatch = true;
+      const before = line.slice(lastIndex, match.index);
+      if (before) {
+        paragraph.append(document.createTextNode(before));
+      }
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.textContent = `[${match[1]}]`;
+      button.addEventListener('click', () => {
+        if (!elements.playerCard.hidden) {
+          elements.player.currentTime = parseTimecode(match[1]);
+          elements.player.focus();
+        }
+      });
+      paragraph.append(button);
+      lastIndex = regex.lastIndex;
+    }
+    const remaining = line.slice(lastIndex);
+    if (remaining) {
+      paragraph.append(document.createTextNode(remaining));
+    }
+    if (!hasMatch) {
+      paragraph.textContent = line;
+    }
+    elements.transcriptBody.append(paragraph);
+  });
+}
+
+function toggleTranscriptPanel(force) {
+  const isOpen = elements.transcriptPanel.classList.contains('is-open');
+  const shouldOpen = typeof force === 'boolean' ? force : !isOpen;
+  if (shouldOpen) {
+    elements.transcriptPanel.classList.add('is-open');
+    elements.transcriptPanel.setAttribute('aria-hidden', 'false');
+    elements.transcriptToggle.textContent = 'Hide transcript';
+    elements.transcriptToggle.setAttribute('aria-expanded', 'true');
+  } else {
+    elements.transcriptPanel.classList.remove('is-open');
+    elements.transcriptPanel.setAttribute('aria-hidden', 'true');
+    elements.transcriptToggle.textContent = 'Show transcript';
+    elements.transcriptToggle.setAttribute('aria-expanded', 'false');
+  }
+}
+
 function renderQuizLesson(lesson) {
   elements.player.pause();
   elements.playerCard.hidden = true;
   elements.quizPanel.hidden = false;
   elements.addTimecode.disabled = true;
   elements.addTimecode.setAttribute('aria-disabled', 'true');
+  elements.typeChip.textContent = `${typeTokens.quiz.icon} ${typeTokens.quiz.label}`;
+  elements.typeChip.className = 'chip chip--quiz';
+  elements.durationChip.textContent = lesson.durationLabel || '';
+  elements.title.textContent = lesson.title;
+  elements.description.textContent = lesson.description;
+  elements.downloadLink.href = '#';
+  elements.downloadLink.removeAttribute('download');
+  elements.downloadTranscript.href = '#';
+  elements.downloadTranscript.removeAttribute('download');
+  toggleTranscriptPanel(false);
+  hideUpNextCard();
 
   const quizId = lesson.quiz.id;
+  const savedAnswers = getQuizAnswers(quizId);
   const isComplete = isQuizComplete(quizId);
   const container = document.createElement('div');
-  container.innerHTML = '';
   const heading = document.createElement('h2');
   heading.textContent = lesson.title;
   const intro = document.createElement('p');
@@ -590,11 +854,17 @@ function renderQuizLesson(lesson) {
       input.name = question.id;
       input.value = optionIndex;
       input.required = true;
+      if (savedAnswers[index] === optionIndex) {
+        input.checked = true;
+      }
+      if (isComplete) {
+        input.disabled = true;
+      }
       label.append(input, document.createTextNode(option));
       optionsList.append(label);
 
       input.addEventListener('change', () => {
-        updateSubmitState(form, submitButton);
+        updateSubmitState(form, submitButton, lesson.quiz.questions.length);
       });
     });
 
@@ -613,19 +883,31 @@ function renderQuizLesson(lesson) {
   completeButton.type = 'button';
   completeButton.className = 'btn btn--ghost';
   completeButton.textContent = isComplete ? 'Quiz completed' : 'Mark quiz complete';
-  completeButton.disabled = true;
-  completeButton.setAttribute('aria-disabled', 'true');
-  if (isComplete) {
-    completeButton.disabled = true;
-  }
+  completeButton.disabled = !isComplete;
+  completeButton.setAttribute('aria-disabled', String(completeButton.disabled));
   actions.append(completeButton);
+
+  const initialAnswersFilled = savedAnswers.length === lesson.quiz.questions.length;
+  if (initialAnswersFilled) {
+    const results = gradeQuiz(savedAnswers, lesson.quiz.questions);
+    revealQuizFeedback(form, lesson.quiz.questions, savedAnswers, results, { lock: true });
+    submitButton.disabled = isComplete;
+    if (!isComplete) {
+      completeButton.disabled = false;
+      completeButton.removeAttribute('aria-disabled');
+    }
+  }
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
-    const results = gradeQuiz(form, lesson.quiz.questions);
-    revealQuizFeedback(form, lesson.quiz.questions, results);
-    completeButton.disabled = isQuizComplete(quizId);
-    completeButton.setAttribute('aria-disabled', String(completeButton.disabled));
+    const answers = collectQuizAnswers(form, lesson.quiz.questions);
+    if (answers.includes(-1)) return;
+    saveQuizAnswers(quizId, answers);
+    const results = gradeQuiz(answers, lesson.quiz.questions);
+    revealQuizFeedback(form, lesson.quiz.questions, answers, results, { lock: true });
+    submitButton.disabled = true;
+    completeButton.disabled = false;
+    completeButton.removeAttribute('aria-disabled');
     announce('Quiz checked. Review feedback before marking complete.');
   });
 
@@ -638,57 +920,61 @@ function renderQuizLesson(lesson) {
     completeButton.textContent = 'Quiz completed';
     completeButton.disabled = true;
     completeButton.setAttribute('aria-disabled', 'true');
+    showToast('Quiz completed');
     announce('Quiz completed. Moving to the next item.');
-    const nextLesson = getNextLessonId(lesson.id);
-    if (nextLesson) {
-      selectLesson(nextLesson, { focus: true, announce: true });
+    const next = getNextItem(lesson.id);
+    if (next) {
+      selectLesson(next.id, { focus: true, announce: true });
     }
   });
 
   container.append(form, actions);
   elements.quizPanel.replaceChildren(container);
+  updateSubmitState(form, submitButton, lesson.quiz.questions.length);
   document.getElementById('playerArea')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-function updateSubmitState(form, submitButton) {
-  const allAnswered = Array.from(form.querySelectorAll('fieldset')).every((fieldset) =>
+function updateSubmitState(form, submitButton, questionCount) {
+  const answered = Array.from(form.querySelectorAll('fieldset')).filter((fieldset) =>
     fieldset.querySelector('input:checked')
-  );
-  submitButton.disabled = !allAnswered;
+  ).length;
+  submitButton.disabled = answered !== questionCount;
 }
 
-function gradeQuiz(form, questions) {
-  const results = new Map();
-  questions.forEach((question) => {
+function collectQuizAnswers(form, questions) {
+  return questions.map((question) => {
     const selected = form.querySelector(`input[name="${question.id}"]:checked`);
-    const value = selected ? Number(selected.value) : -1;
-    results.set(question.id, value === question.answerIndex);
+    return selected ? Number(selected.value) : -1;
   });
-  return results;
 }
 
-function revealQuizFeedback(form, questions, results) {
-  questions.forEach((question) => {
+function gradeQuiz(answers, questions) {
+  return questions.map((question, index) => answers[index] === question.answerIndex);
+}
+
+function revealQuizFeedback(form, questions, answers, results, options = {}) {
+  const lockInputs = options.lock || false;
+  questions.forEach((question, index) => {
     const fieldset = form.querySelector(`[data-question-id="${question.id}"]`);
-    const selectedValue = Number(
-      (form.querySelector(`input[name="${question.id}"]:checked`) || {}).value
-    );
-    fieldset.querySelectorAll('label').forEach((label) => {
+    const selectedValue = answers[index];
+    fieldset.querySelectorAll('label').forEach((label, optionIndex) => {
       label.dataset.state = '';
-    });
-    const labels = fieldset.querySelectorAll('label');
-    labels.forEach((label, index) => {
-      if (index === question.answerIndex) {
+      const input = label.querySelector('input');
+      if (input) {
+        input.checked = optionIndex === selectedValue;
+        if (lockInputs) {
+          input.disabled = true;
+        }
+      }
+      if (optionIndex === question.answerIndex) {
         label.dataset.state = 'correct';
       }
-      if (index === selectedValue && index !== question.answerIndex) {
+      if (optionIndex === selectedValue && optionIndex !== question.answerIndex) {
         label.dataset.state = 'incorrect';
       }
     });
     const feedback = fieldset.querySelector('.quiz-feedback');
-    feedback.textContent = results.get(question.id)
-      ? 'Great job—this is correct.'
-      : question.explanation;
+    feedback.textContent = results[index] ? 'Great job—this is correct.' : question.explanation;
     feedback.hidden = false;
   });
 }
@@ -707,6 +993,8 @@ function handleLoadedMetadata() {
   clearFallback();
   if (typeof pendingResumeTime === 'number' && pendingResumeTime > 0 && pendingResumeTime < elements.player.duration) {
     elements.player.currentTime = pendingResumeTime;
+    showToast(`Resumed at ${mmss(pendingResumeTime)}`);
+    announce(`Resumed playback at ${mmss(pendingResumeTime)}.`);
   }
   pendingResumeTime = null;
   elements.player.play().catch(() => {
@@ -728,7 +1016,6 @@ function handleTimeUpdate() {
     updateProgressUI();
     updateMobileBar();
     updateActionButtons();
-    elements.suggestNext.hidden = !getNextLessonId(currentLessonId);
   }
 }
 
@@ -739,11 +1026,12 @@ function handleEnded() {
   updateProgressUI();
   updateMobileBar();
   updateActionButtons();
-  const nextLesson = getNextLessonId(currentLessonId);
-  if (nextLesson) {
-    elements.suggestNext.hidden = false;
-    elements.suggestNext.dataset.nextLesson = nextLesson;
+  const next = getNextItem(currentLessonId);
+  if (next) {
+    showUpNextCard(next.id);
   }
+  showToast('Lesson completed');
+  announce('Lesson completed. Choose the next item to continue.');
 }
 
 function handleVideoError() {
@@ -754,42 +1042,54 @@ function handleVideoError() {
 function updateLessonBadges(lessonId) {
   const entry = lessonMap.get(lessonId);
   if (!entry) return;
-  const { button, lesson } = entry;
-  const badges = button.querySelector('.lesson-item__badges');
-  badges.querySelectorAll('.chip--status').forEach((chip) => chip.remove());
+  const { lesson, statusComplete, statusLater } = entry;
+  const complete =
+    (lesson.type === 'video' && isLessonComplete(lesson.id)) ||
+    (lesson.type === 'quiz' && isQuizComplete(lesson.quiz.id));
+  statusComplete.hidden = !complete;
+  if (!complete) {
+    statusComplete.removeAttribute('title');
+  } else {
+    statusComplete.title = 'Completed';
+  }
 
-  if (lesson.type === 'video' && isLessonComplete(lesson.id)) {
-    const chip = document.createElement('span');
-    chip.className = 'chip chip--done chip--status';
-    chip.textContent = '✔ Complete';
-    badges.append(chip);
-  }
-  if (state.watchLater.includes(lesson.id)) {
-    const chip = document.createElement('span');
-    chip.className = 'chip chip--later chip--status';
-    chip.textContent = '⏱ Watch later';
-    badges.append(chip);
-  }
-  if (lesson.type === 'quiz' && isQuizComplete(lesson.quiz.id)) {
-    const chip = document.createElement('span');
-    chip.className = 'chip chip--done chip--status';
-    chip.textContent = '✔ Complete';
-    badges.append(chip);
+  const later = state.watchLater.includes(lesson.id);
+  statusLater.hidden = !later;
+  if (!later) {
+    statusLater.removeAttribute('title');
+  } else {
+    statusLater.title = 'In watch later list';
   }
 }
 
 function updateActionButtons() {
   const entry = currentLessonId ? lessonMap.get(currentLessonId) : null;
-  const lessonType = entry?.lesson.type;
-  const isComplete = currentLessonId && lessonType === 'video' ? isLessonComplete(currentLessonId) : false;
-  const isQuizCompleteState = entry?.lesson.type === 'quiz' ? isQuizComplete(entry.lesson.quiz.id) : false;
+  const lesson = entry?.lesson;
+  const lessonType = lesson?.type;
+  const videoComplete = lessonType === 'video' && lesson ? isLessonComplete(lesson.id) : false;
+  const quizComplete = lessonType === 'quiz' && lesson ? isQuizComplete(lesson.quiz.id) : false;
   const isLater = currentLessonId ? state.watchLater.includes(currentLessonId) : false;
+  const nextItem = lesson ? getNextItem(lesson.id) : null;
+
+  if (!lesson) {
+    elements.markComplete.disabled = true;
+    elements.markComplete.setAttribute('aria-disabled', 'true');
+    elements.actionComplete.disabled = true;
+    elements.actionComplete.setAttribute('aria-disabled', 'true');
+    elements.watchLater.disabled = true;
+    elements.watchLater.setAttribute('aria-disabled', 'true');
+    elements.actionWatchLater.disabled = true;
+    elements.actionWatchLater.setAttribute('aria-disabled', 'true');
+    elements.actionNext.disabled = true;
+    elements.actionNext.setAttribute('aria-disabled', 'true');
+    return;
+  }
 
   if (lessonType === 'quiz') {
-    elements.markComplete.textContent = isQuizCompleteState ? 'Quiz completed' : 'Complete quiz to progress';
+    elements.markComplete.textContent = quizComplete ? 'Quiz completed' : 'Complete quiz to progress';
     elements.markComplete.disabled = true;
-    elements.markComplete.setAttribute('aria-pressed', String(isQuizCompleteState));
     elements.markComplete.setAttribute('aria-disabled', 'true');
+    elements.markComplete.setAttribute('aria-pressed', String(quizComplete));
     elements.actionComplete.textContent = elements.markComplete.textContent;
     elements.actionComplete.disabled = true;
     elements.actionComplete.setAttribute('aria-disabled', 'true');
@@ -798,68 +1098,75 @@ function updateActionButtons() {
     elements.markComplete.removeAttribute('aria-disabled');
     elements.actionComplete.disabled = false;
     elements.actionComplete.removeAttribute('aria-disabled');
-    elements.markComplete.textContent = isComplete ? 'Mark incomplete' : 'Mark complete';
-    elements.markComplete.setAttribute('aria-pressed', String(isComplete));
+    elements.markComplete.textContent = videoComplete ? 'Mark incomplete' : 'Mark complete';
+    elements.markComplete.setAttribute('aria-pressed', String(videoComplete));
     elements.actionComplete.textContent = elements.markComplete.textContent;
   }
 
+  elements.watchLater.disabled = false;
+  elements.watchLater.removeAttribute('aria-disabled');
   elements.watchLater.textContent = isLater ? 'Remove from watch later' : 'Watch later';
   elements.watchLater.setAttribute('aria-pressed', String(isLater));
+  elements.actionWatchLater.disabled = false;
+  elements.actionWatchLater.removeAttribute('aria-disabled');
   elements.actionWatchLater.textContent = elements.watchLater.textContent;
   elements.actionWatchLater.setAttribute('aria-pressed', String(isLater));
-  const nextLessonCandidate = getNextLessonId(currentLessonId);
-  let showNext = false;
-  if (entry) {
-    if (entry.lesson.type === 'video' && isLessonComplete(entry.lesson.id)) {
-      showNext = true;
-    }
-    if (entry.lesson.type === 'quiz' && isQuizComplete(entry.lesson.quiz.id)) {
-      showNext = true;
-    }
-  }
-  const nextLesson = showNext ? nextLessonCandidate : null;
-  elements.suggestNext.hidden = !nextLesson;
-  if (nextLesson) {
-    elements.suggestNext.dataset.nextLesson = nextLesson;
+
+  if (nextItem) {
     elements.actionNext.disabled = false;
     elements.actionNext.removeAttribute('aria-disabled');
+    elements.actionNext.textContent = `Play next: ${nextItem.lesson?.title ?? 'Next item'}`;
+    elements.actionNext.dataset.nextLesson = nextItem.id;
   } else {
     elements.actionNext.disabled = true;
     elements.actionNext.setAttribute('aria-disabled', 'true');
+    elements.actionNext.textContent = 'No next item';
+    elements.actionNext.removeAttribute('data-next-lesson');
   }
 }
 
 function updateProgressUI() {
-  const { completed, percent } = getProgress();
+  const { completed, total, percent, modules } = getProgress();
   elements.headerProgressBar.style.width = `${percent}%`;
   elements.headerProgressContainer?.setAttribute('aria-valuenow', String(percent));
   elements.headerProgressContainer?.setAttribute('aria-valuetext', `${percent}% complete`);
-  elements.headerProgressText.innerHTML = `<strong>${percent}%</strong> complete`;
+  elements.headerProgressText.innerHTML = `<strong>${completed} of ${total}</strong> • ${percent}% complete`;
   elements.progressCount.textContent = completed;
-  elements.progressTotal.textContent = totalItems;
+  elements.progressTotal.textContent = total;
   elements.mobileLabel.textContent = `${percent}% complete`;
-  elements.mobileDetail.textContent = `${completed} of ${totalItems} items`;
+  elements.mobileDetail.textContent = `${completed} of ${total} items`;
+
+  moduleProgressMap.forEach((refs, moduleId) => {
+    const stat = modules.get(moduleId);
+    if (!stat) return;
+    refs.text.textContent = `${stat.completed} / ${stat.total} complete`;
+    const width = stat.total ? Math.round((stat.completed / stat.total) * 100) : 0;
+    refs.fill.style.width = `${width}%`;
+  });
 }
 
 function updateMobileBar() {
   const entry = currentLessonId ? lessonMap.get(currentLessonId) : null;
-  let showNext = false;
-  if (entry) {
-    if (entry.lesson.type === 'video' && isLessonComplete(entry.lesson.id)) {
-      showNext = true;
+  const lesson = entry?.lesson;
+  const isComplete = lesson
+    ? lesson.type === 'video'
+      ? isLessonComplete(lesson.id)
+      : lesson.type === 'quiz'
+        ? isQuizComplete(lesson.quiz.id)
+        : false
+    : false;
+  const nextItem = lesson ? getNextItem(lesson.id) : null;
+
+  if (isComplete && nextItem) {
+    elements.mobilePrimary.textContent = `Next: ${nextItem.lesson?.title ?? 'Next item'}`;
+    elements.mobilePrimary.dataset.nextLesson = nextItem.id;
+  } else if (lesson) {
+    elements.mobilePrimary.textContent = `${isComplete ? 'Review' : 'Resume'}: ${lesson.title}`;
+    if (isComplete && nextItem) {
+      elements.mobilePrimary.dataset.nextLesson = nextItem.id;
+    } else {
+      elements.mobilePrimary.removeAttribute('data-next-lesson');
     }
-    if (entry.lesson.type === 'quiz' && isQuizComplete(entry.lesson.quiz.id)) {
-      showNext = true;
-    }
-  }
-  const nextLesson = showNext ? getNextLessonId(currentLessonId) : null;
-  if (nextLesson) {
-    const nextEntry = lessonMap.get(nextLesson);
-    elements.mobilePrimary.textContent = `Next: ${nextEntry.lesson.title}`;
-    elements.mobilePrimary.dataset.nextLesson = nextLesson;
-  } else if (currentLessonId && entry) {
-    elements.mobilePrimary.textContent = `Resume: ${entry.lesson.title}`;
-    elements.mobilePrimary.removeAttribute('data-next-lesson');
   } else {
     elements.mobilePrimary.textContent = 'Resume lesson';
     elements.mobilePrimary.removeAttribute('data-next-lesson');
@@ -869,10 +1176,14 @@ function updateMobileBar() {
 function loadNotesForLesson(lessonId) {
   const notes = getNotes(lessonId);
   renderNotes(notes);
+  if (elements.notesStatus) {
+    elements.notesStatus.hidden = true;
+  }
 }
 
 function renderNotes(notes) {
   elements.notesList.innerHTML = '';
+  elements.notesCount.textContent = notes.length;
   if (!notes.length) {
     const empty = document.createElement('p');
     empty.className = 'notes-list__empty';
@@ -885,9 +1196,10 @@ function renderNotes(notes) {
     card.className = 'note-card';
     const button = document.createElement('button');
     button.type = 'button';
-    button.textContent = note.time ? `[${note.time}] Jump to time` : 'View note';
+    button.textContent = note.time ? `[${note.time}]` : 'View note';
     button.dataset.seek = note.seconds ?? '';
-    button.disabled = !note.seconds;
+    button.disabled = note.seconds == null || Number.isNaN(note.seconds);
+    button.setAttribute('aria-label', note.time ? `Jump to ${note.time}` : 'View note');
     const text = document.createElement('p');
     text.textContent = note.text;
     card.append(button, text);
@@ -916,6 +1228,16 @@ function addNote(event) {
   const notes = saveNote(currentLessonId, note);
   elements.noteTextarea.value = '';
   renderNotes(notes);
+  if (elements.notesStatus) {
+    elements.notesStatus.hidden = false;
+    elements.notesStatus.textContent = 'Saved';
+    clearTimeout(noteStatusTimeout);
+    noteStatusTimeout = setTimeout(() => {
+      elements.notesStatus.hidden = true;
+    }, 1000);
+  }
+  showToast('Note saved');
+  announce('Note saved');
 }
 
 function insertTimecode() {
@@ -925,22 +1247,32 @@ function insertTimecode() {
   elements.noteTextarea.focus();
 }
 
+function getNextItem(lessonId) {
+  if (!orderedLessonIds.length) return null;
+  const index = lessonId ? orderedLessonIds.indexOf(lessonId) : -1;
+  const nextIndex = index >= 0 && index < orderedLessonIds.length - 1 ? index + 1 : index === -1 ? 0 : null;
+  if (nextIndex == null) return null;
+  const nextId = orderedLessonIds[nextIndex];
+  return { id: nextId, lesson: lessonMap.get(nextId)?.lesson || null };
+}
+
+function getPreviousItem(lessonId) {
+  if (!orderedLessonIds.length) return null;
+  const index = lessonId ? orderedLessonIds.indexOf(lessonId) : 0;
+  const prevIndex = index > 0 ? index - 1 : null;
+  if (prevIndex == null) return null;
+  const prevId = orderedLessonIds[prevIndex];
+  return { id: prevId, lesson: lessonMap.get(prevId)?.lesson || null };
+}
+
 function getNextLessonId(lessonId) {
-  if (!lessonId) return orderedLessonIds[0];
-  const index = orderedLessonIds.indexOf(lessonId);
-  if (index >= 0 && index < orderedLessonIds.length - 1) {
-    return orderedLessonIds[index + 1];
-  }
-  return null;
+  const next = getNextItem(lessonId);
+  return next ? next.id : null;
 }
 
 function getPreviousLessonId(lessonId) {
-  if (!lessonId) return orderedLessonIds[0];
-  const index = orderedLessonIds.indexOf(lessonId);
-  if (index > 0) {
-    return orderedLessonIds[index - 1];
-  }
-  return null;
+  const prev = getPreviousItem(lessonId);
+  return prev ? prev.id : null;
 }
 
 function announce(message) {
@@ -954,31 +1286,53 @@ function announce(message) {
 
 function filterLessons(term) {
   const query = term.trim().toLowerCase();
+  let firstMatch = null;
   elements.lessonContainer.querySelectorAll('.module-block').forEach((moduleBlock) => {
     const buttons = Array.from(moduleBlock.querySelectorAll('.lesson-item'));
+    const trigger = moduleBlock.querySelector('.module-block__trigger');
+    const list = moduleBlock.querySelector('ul');
     let hasMatch = false;
     buttons.forEach((button) => {
-      const lessonId = button.dataset.lessonId;
-      const entry = lessonMap.get(lessonId);
-      const text = `${entry.lesson.title} ${entry.lesson.durationLabel} ${entry.lesson.type}`.toLowerCase();
-      const match = !query || text.includes(query);
+      const entry = lessonMap.get(button.dataset.lessonId);
+      const haystack = [
+        entry?.lesson.title || '',
+        entry?.lesson.durationLabel || '',
+        entry?.lesson.type || '',
+        typeTokens[entry?.lesson.type || 'video']?.label || ''
+      ]
+        .join(' ')
+        .toLowerCase();
+      const match = !query || haystack.includes(query);
       button.closest('li').hidden = !match;
       if (match) {
         hasMatch = true;
+        if (!firstMatch) {
+          firstMatch = button;
+        }
       }
     });
-    moduleBlock.hidden = !hasMatch;
-    if (query && hasMatch) {
-      const trigger = moduleBlock.querySelector('.module-block__trigger');
-      const list = moduleBlock.querySelector('ul');
-      moduleBlock.setAttribute('aria-expanded', 'true');
-      trigger?.setAttribute('aria-expanded', 'true');
-      if (list) list.hidden = false;
-    }
-    if (!query) {
+    if (query) {
+      moduleBlock.hidden = !hasMatch;
+      if (hasMatch) {
+        moduleBlock.setAttribute('aria-expanded', 'true');
+        trigger?.setAttribute('aria-expanded', 'true');
+        if (list) list.hidden = false;
+      } else {
+        moduleBlock.setAttribute('aria-expanded', 'false');
+        trigger?.setAttribute('aria-expanded', 'false');
+        if (list) list.hidden = true;
+      }
+    } else {
       moduleBlock.hidden = false;
+      const expanded = moduleBlock.getAttribute('aria-expanded') === 'true';
+      if (list) list.hidden = !expanded;
     }
   });
+
+  if (query && firstMatch) {
+    firstMatch.focus();
+    focusedLessonId = firstMatch.dataset.lessonId;
+  }
 }
 
 function collapseAllModules() {
@@ -1019,7 +1373,16 @@ function handleMarkComplete() {
   updateActionButtons();
   updateProgressUI();
   updateMobileBar();
+  showToast(completed ? 'Lesson marked complete' : 'Lesson marked incomplete');
   announce(completed ? 'Lesson marked complete' : 'Lesson marked incomplete');
+  if (completed) {
+    const next = getNextItem(currentLessonId);
+    if (next) {
+      showUpNextCard(next.id);
+    }
+  } else {
+    hideUpNextCard();
+  }
 }
 
 function handleWatchLater() {
@@ -1027,6 +1390,7 @@ function handleWatchLater() {
   const inWatchLater = toggleWatchLater(currentLessonId);
   updateLessonBadges(currentLessonId);
   updateActionButtons();
+  showToast(inWatchLater ? 'Added to watch later' : 'Removed from watch later');
   announce(inWatchLater ? 'Added to watch later list' : 'Removed from watch later list');
 }
 
@@ -1069,30 +1433,33 @@ function handleKeyboardShortcuts(event) {
     }
   }
   if (event.key === 'n' || event.key === 'N') {
-    const next = getNextLessonId(currentLessonId);
+    const next = getNextItem(currentLessonId);
     if (next) {
-      selectLesson(next, { focus: true, announce: true });
+      selectLesson(next.id, { focus: true, announce: true });
     }
   }
   if (event.key === 'p' || event.key === 'P') {
-    const previous = getPreviousLessonId(currentLessonId);
+    const previous = getPreviousItem(currentLessonId);
     if (previous) {
-      selectLesson(previous, { focus: true, announce: true });
+      selectLesson(previous.id, { focus: true, announce: true });
     }
+  }
+  if (event.key === 't' || event.key === 'T') {
+    event.preventDefault();
+    toggleTranscriptPanel();
+  }
+  if (event.key === '/') {
+    event.preventDefault();
+    elements.search.focus();
   }
 }
 
 function initTranscriptControls() {
   elements.transcriptToggle.addEventListener('click', () => {
-    const isHidden = elements.transcriptPanel.hasAttribute('hidden');
-    if (isHidden) {
-      elements.transcriptPanel.removeAttribute('hidden');
-    } else {
-      elements.transcriptPanel.setAttribute('hidden', '');
-    }
+    toggleTranscriptPanel();
   });
   elements.transcriptClose.addEventListener('click', () => {
-    elements.transcriptPanel.setAttribute('hidden', '');
+    toggleTranscriptPanel(false);
   });
 }
 
@@ -1109,11 +1476,30 @@ function initAccordionSections() {
 }
 
 function initMenuToggle() {
-  if (!elements.menuToggle) return;
-  elements.menuToggle.addEventListener('click', () => {
-    const expanded = elements.menuToggle.getAttribute('aria-expanded') === 'true';
-    elements.menuToggle.setAttribute('aria-expanded', String(!expanded));
-    elements.lessonList.dataset.open = String(!expanded);
+  if (elements.menuToggle) {
+    elements.menuToggle.addEventListener('click', () => {
+      const expanded = elements.menuToggle.getAttribute('aria-expanded') === 'true';
+      if (expanded) {
+        closeLessonList();
+      } else {
+        openLessonList();
+      }
+    });
+  }
+  if (elements.mobileList) {
+    elements.mobileList.addEventListener('click', () => {
+      openLessonList();
+    });
+  }
+  if (elements.lessonOverlay) {
+    elements.lessonOverlay.addEventListener('click', () => {
+      closeLessonList();
+    });
+  }
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && elements.lessonList.dataset.open === 'true') {
+      closeLessonList();
+    }
   });
 }
 
@@ -1139,6 +1525,9 @@ function init() {
   initCaptionsToggle();
   initDownloadLinks();
 
+  elements.lessonList.dataset.open = elements.lessonList.dataset.open || 'false';
+  elements.lessonOverlay?.setAttribute('hidden', '');
+
   elements.player.addEventListener('timeupdate', handleTimeUpdate);
   elements.player.addEventListener('ended', handleEnded);
   elements.player.addEventListener('error', handleVideoError);
@@ -1156,8 +1545,8 @@ function init() {
   elements.actionComplete.addEventListener('click', handleMarkComplete);
   elements.actionWatchLater.addEventListener('click', handleWatchLater);
   elements.actionNext.addEventListener('click', () => {
-    const next = getNextLessonId(currentLessonId);
-    if (next) selectLesson(next, { focus: true, announce: true });
+    const next = getNextItem(currentLessonId);
+    if (next) selectLesson(next.id, { focus: true, announce: true });
   });
   elements.suggestNext.addEventListener('click', handleSuggestNext);
   elements.mobilePrimary.addEventListener('click', handleMobilePrimary);
@@ -1187,4 +1576,4 @@ if (document.readyState !== 'loading') {
   document.addEventListener('DOMContentLoaded', init);
 }
 
-export { loadState, saveState, toggleComplete, toggleWatchLater, saveNote, getProgress };
+export { loadState, saveState, toggleComplete, toggleWatchLater, saveNote, getProgress, getNextItem };

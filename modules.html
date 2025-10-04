@@ -39,6 +39,7 @@
 
   <main class="course-main">
     <div class="layout" data-layout>
+      <div class="lesson-list__overlay" data-lesson-overlay hidden></div>
       <nav id="lessonList" class="lesson-list" aria-label="Lesson list" role="listbox">
         <header class="lesson-list__header">
           <div>
@@ -59,6 +60,7 @@
                 <track id="captionTrack" kind="subtitles" srclang="en" label="English captions" />
               </video>
               <div class="player-card__fallback" role="status" hidden>
+                <div class="player-card__fallback-illustration" aria-hidden="true"></div>
                 <p>We couldn't load this lesson right now.</p>
                 <button type="button" class="btn" data-retry>Retry</button>
                 <a href="#" class="btn btn--ghost" data-download>Download video</a>
@@ -66,7 +68,13 @@
             </div>
             <div class="player-card__controls">
               <button type="button" class="btn" data-toggle-captions>Captions</button>
-              <button type="button" class="btn" data-suggest-next hidden>Play next lesson</button>
+              <div class="player-card__upnext" data-up-next hidden>
+                <div class="player-card__upnext-text">
+                  <strong>Up next</strong>
+                  <span data-up-next-meta></span>
+                </div>
+                <button type="button" class="btn" data-suggest-next>Play next</button>
+              </div>
             </div>
           </div>
           <div class="player-card__body">
@@ -82,7 +90,7 @@
               <button type="button" class="btn btn--ghost" data-toggle-transcript>Show transcript</button>
             </div>
           </div>
-          <div class="player-card__transcript" data-transcript hidden>
+          <div class="player-card__transcript" data-transcript aria-hidden="true">
             <header>
               <h3>Transcript</h3>
               <button type="button" class="btn btn--ghost" data-close-transcript>Close</button>
@@ -97,7 +105,7 @@
 
       <aside id="rightPanel" class="right-rail">
         <section class="right-rail__section" data-accordion-section>
-          <button class="right-rail__toggle" type="button" aria-expanded="true">Notes</button>
+          <button class="right-rail__toggle" type="button" aria-expanded="true">Notes <span class="badge" data-notes-count>0</span></button>
           <div class="right-rail__body">
             <form class="notes-form" data-notes-form>
               <div class="notes-form__controls">
@@ -105,7 +113,10 @@
               </div>
               <label for="noteText" class="sr-only">New note</label>
               <textarea id="noteText" rows="3" placeholder="Capture your takeaways"></textarea>
-              <button type="submit" class="btn">Save note</button>
+              <div class="notes-form__actions">
+                <button type="submit" class="btn">Save note</button>
+                <span class="notes-form__status" data-notes-status aria-live="polite" hidden>Saved</span>
+              </div>
             </form>
             <div class="notes-list" data-notes-list>
               <p class="notes-list__empty">No notes yet for this lesson.</p>
@@ -136,9 +147,10 @@
   </main>
 
   <div class="mobile-progress" data-mobile-progress>
-    <div>
-      <strong data-mobile-progress-label>0% complete</strong>
-      <span data-mobile-progress-detail>0 of 0 items</span>
+    <button type="button" class="mobile-progress__list" data-mobile-open-list aria-label="Open lesson list">Lessons</button>
+    <div class="mobile-progress__meta">
+      <span class="mobile-progress__pill" data-mobile-progress-label>0% complete</span>
+      <span class="mobile-progress__detail" data-mobile-progress-detail>0 of 0 items</span>
     </div>
     <button type="button" class="btn" data-mobile-primary>Resume lesson</button>
   </div>
@@ -152,6 +164,7 @@
   </footer>
 
   <div class="sr-only" aria-live="polite" data-aria-updates></div>
+  <div class="toast-stack" data-toast-stack aria-live="polite" aria-atomic="true"></div>
 
   <script src="assets/js/course-player.js" type="module"></script>
 </body>
