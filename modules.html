@@ -6,7 +6,7 @@
   <title>Samriddhi • Green Finance Foundations</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="course-player has-site-header" data-page="modules">
+<body class="course-player" data-page="modules">
   <header class="topbar">
     <div class="topbar-inner">
       <button class="hamb" id="hamb" aria-label="Menu" aria-expanded="false">☰</button>
@@ -26,164 +26,107 @@
       </nav>
     </div>
   </header>
-  <header class="course-header" role="banner">
-    <div class="course-header__top">
-      <button class="course-header__menu" type="button" aria-label="Toggle lesson list" aria-expanded="false" aria-controls="lessonList">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <nav class="course-header__breadcrumb" aria-label="Breadcrumb">
+
+  <main class="program-page" id="mainContent">
+    <header class="program-page__header" role="banner">
+      <nav class="program-page__breadcrumb" aria-label="Breadcrumb">
         <ol>
           <li><a href="index.html">Home</a></li>
-          <li><a href="programs.html">Programs</a></li>
+          <li><a href="home.html">Programs</a></li>
           <li aria-current="page">Green Finance Foundations</li>
         </ol>
       </nav>
-      <div class="course-header__meta">
+      <div class="program-page__intro">
         <h1>Green Finance Foundations</h1>
-        <div class="course-header__progress">
-          <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-            <span class="progress__bar" style="width: 0%"></span>
-          </div>
-          <span class="course-header__progress-label"><strong>0 of 0</strong> • 0% complete</span>
-        </div>
+        <p>Build climate-ready capabilities through applied videos and pulse quizzes.</p>
       </div>
-      <div class="course-header__search">
-        <label for="lessonSearch" class="sr-only">Search lessons</label>
-        <input id="lessonSearch" type="search" placeholder="Search lessons and quizzes" />
+      <div class="program-page__overall" data-overall-progress>
+        <strong data-overall-progress-count>0 of 24</strong>
+        <span>items complete</span>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <main class="course-main">
-    <div class="layout" data-layout>
-      <div class="lesson-list__overlay" data-lesson-overlay hidden></div>
-      <nav id="lessonList" class="lesson-list" aria-label="Lesson list" role="listbox">
-        <header class="lesson-list__header">
-          <div>
-            <h2>Lesson journey</h2>
-            <p class="lesson-list__summary"><span data-progress-count>0</span> of <span data-progress-total>0</span> items complete</p>
+    <div class="program-layout" data-layout>
+      <aside class="modules-panel" data-modules-panel>
+        <div class="modules-panel__inner">
+          <div class="modules-panel__search">
+            <label for="lessonSearch">Search lessons and quizzes</label>
+            <input id="lessonSearch" type="search" placeholder="Search lessons and quizzes" autocomplete="off" />
           </div>
-          <button class="lesson-list__collapse" type="button" data-collapse-all>Collapse all</button>
-        </header>
-        <div class="lesson-list__modules" data-module-container></div>
-      </nav>
-
-      <section id="playerArea" class="player-area" aria-live="polite">
-        <div class="player-card" data-player-card>
-          <div class="player-card__media" data-media-wrapper>
-            <div class="player-card__media-inner">
-              <video id="lessonPlayer" class="player-card__video" controls preload="metadata" playsinline>
-                <source src="" type="video/mp4" />
-                <track id="captionTrack" kind="subtitles" srclang="en" label="English captions" />
-              </video>
-              <div class="player-card__fallback" role="status" hidden>
-                <div class="player-card__fallback-illustration" aria-hidden="true"></div>
-                <p>We couldn't load this lesson right now.</p>
-                <button type="button" class="btn" data-retry>Retry</button>
-                <a href="#" class="btn btn--ghost" data-download>Download video</a>
-              </div>
-            </div>
-            <div class="player-card__controls">
-              <button type="button" class="btn" data-toggle-captions>Captions</button>
-              <div class="player-card__upnext" data-up-next hidden>
-                <div class="player-card__upnext-text">
-                  <strong>Up next</strong>
-                  <span data-up-next-meta></span>
-                </div>
-                <button type="button" class="btn" data-suggest-next>Play next</button>
-              </div>
-            </div>
-          </div>
-          <div class="player-card__body">
-            <div class="player-card__meta">
-              <span class="chip" data-lesson-type-chip>Video</span>
-              <span class="chip" data-lesson-duration>00:00</span>
-            </div>
-            <h2 class="player-card__title" data-lesson-title>Choose a lesson to get started</h2>
-            <p class="player-card__description" data-lesson-description>Select a lesson from the list to begin your learning journey.</p>
-            <div class="player-card__actions">
-              <button type="button" class="btn" data-mark-complete>Mark complete</button>
-              <button type="button" class="btn btn--ghost" data-watch-later>Watch later</button>
-              <button type="button" class="btn btn--ghost" data-toggle-transcript>Show transcript</button>
-            </div>
-          </div>
-          <div class="player-card__transcript" data-transcript aria-hidden="true">
-            <header>
-              <h3>Transcript</h3>
-              <button type="button" class="btn btn--ghost" data-close-transcript>Close</button>
-            </header>
-            <div class="player-card__transcript-body" data-transcript-content>
-              <p>Select a video lesson to see its transcript.</p>
-            </div>
-          </div>
+          <div class="modules-panel__list" role="listbox" aria-label="Lesson journey" data-module-list></div>
         </div>
-        <section class="quiz-panel" data-quiz-panel hidden aria-label="Quiz panel"></section>
-      </section>
-
-      <aside id="rightPanel" class="right-rail">
-        <section class="right-rail__section" data-accordion-section>
-          <button class="right-rail__toggle" type="button" aria-expanded="true">Notes <span class="badge" data-notes-count>0</span></button>
-          <div class="right-rail__body">
-            <form class="notes-form" data-notes-form>
-              <div class="notes-form__controls">
-                <button type="button" class="btn btn--ghost" data-add-timecode>Add timecode</button>
-              </div>
-              <label for="noteText" class="sr-only">New note</label>
-              <textarea id="noteText" rows="3" placeholder="Capture your takeaways"></textarea>
-              <div class="notes-form__actions">
-                <button type="submit" class="btn">Save note</button>
-                <span class="notes-form__status" data-notes-status aria-live="polite" hidden>Saved</span>
-              </div>
-            </form>
-            <div class="notes-list" data-notes-list>
-              <p class="notes-list__empty">No notes yet for this lesson.</p>
-            </div>
-          </div>
-        </section>
-        <section class="right-rail__section" data-accordion-section>
-          <button class="right-rail__toggle" type="button" aria-expanded="true">Actions</button>
-          <div class="right-rail__body">
-            <ul class="action-list">
-              <li><button type="button" class="link-button" data-action-complete>Mark complete</button></li>
-              <li><button type="button" class="link-button" data-action-watchlater>Watch later</button></li>
-              <li><button type="button" class="link-button" data-action-next>Play next lesson</button></li>
-            </ul>
-          </div>
-        </section>
-        <section class="right-rail__section" data-accordion-section>
-          <button class="right-rail__toggle" type="button" aria-expanded="true">Downloads &amp; transcript</button>
-          <div class="right-rail__body">
-            <ul class="resource-list">
-              <li><a href="#" data-download-guide>Download learner guide</a></li>
-              <li><a href="#" data-download-transcript>Download transcript</a></li>
-            </ul>
-          </div>
-        </section>
       </aside>
+
+      <section class="player-column" aria-live="polite">
+        <div class="player-column__header">
+          <button type="button" class="modules-toggle" data-toggle-modules aria-expanded="false">Modules</button>
+          <div class="player-column__summary">
+            <span class="player-column__summary-count"><strong data-progress-count>0</strong> of <span data-progress-total>24</span> complete</span>
+            <div class="player-column__summary-bar" role="progressbar" aria-valuemin="0" aria-valuemax="24" aria-valuenow="0">
+              <span class="player-column__summary-bar-fill" data-summary-bar></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="player-shell">
+          <div class="player-surface" data-player-surface>
+            <div class="player-surface__media" data-player-stage>
+              <div class="player-surface__placeholder">
+                <p>Select a lesson to begin.</p>
+              </div>
+            </div>
+            <div class="player-surface__overlay" data-complete-overlay hidden>
+              <button type="button" class="btn" data-overlay-complete>Mark as complete</button>
+            </div>
+            <div class="player-surface__error" data-player-error hidden>
+              <p>We couldn’t load this lesson right now.</p>
+              <button type="button" class="btn" data-retry-item>Retry</button>
+            </div>
+          </div>
+          <div class="player-shell__controls" role="group" aria-label="Player controls">
+            <button type="button" class="btn btn--ghost" data-toggle-captions aria-pressed="false">Captions</button>
+            <button type="button" class="btn btn--ghost" data-download-video>Download video</button>
+            <button type="button" class="btn" data-mark-complete hidden>Mark as complete</button>
+          </div>
+        </div>
+
+        <div class="player-details">
+          <div class="player-details__meta">
+            <span class="chip" data-item-type>—</span>
+            <span class="chip chip--muted" data-item-meta>00:00</span>
+          </div>
+          <h2 data-item-title>Choose a lesson to get started</h2>
+          <p data-item-description>Use the module list to begin watching or practising.</p>
+        </div>
+
+        <div class="player-toast" data-autoplay-toast hidden>
+          <span data-toast-text></span>
+          <button type="button" class="btn btn--ghost" data-toast-cancel>Cancel</button>
+        </div>
+
+        <section class="notes-panel" aria-label="Notes">
+          <header class="notes-panel__header">
+            <h3>Notes</h3>
+            <span class="notes-panel__count" data-notes-count>0</span>
+          </header>
+          <form class="notes-form" data-notes-form>
+            <div class="notes-form__controls">
+              <button type="button" class="btn btn--ghost" data-add-timecode>Add timecode</button>
+            </div>
+            <label for="noteText" class="sr-only">New note</label>
+            <textarea id="noteText" rows="3" placeholder="Capture your takeaways…"></textarea>
+            <div class="notes-form__actions">
+              <button type="submit" class="btn">Save note</button>
+              <span class="notes-form__status" data-notes-status aria-live="polite" hidden>Saved</span>
+            </div>
+          </form>
+          <div class="notes-list" data-notes-list>
+            <p class="notes-list__empty">No notes yet for this item.</p>
+          </div>
+        </section>
+      </section>
     </div>
   </main>
-
-  <div class="mobile-progress" data-mobile-progress>
-    <button type="button" class="mobile-progress__list" data-mobile-open-list aria-label="Open lesson list">Lessons</button>
-    <div class="mobile-progress__meta">
-      <span class="mobile-progress__pill" data-mobile-progress-label>0% complete</span>
-      <span class="mobile-progress__detail" data-mobile-progress-detail>0 of 0 items</span>
-    </div>
-    <button type="button" class="btn" data-mobile-primary>Resume lesson</button>
-  </div>
-
-  <footer class="course-footer">
-    <nav aria-label="Footer">
-      <a href="#">Support</a>
-      <a href="#">Terms</a>
-      <a href="#">Privacy</a>
-    </nav>
-  </footer>
-
-  <div class="sr-only" aria-live="polite" data-aria-updates></div>
-  <div class="toast-stack" data-toast-stack aria-live="polite" aria-atomic="true"></div>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -195,45 +138,34 @@
         window.location.href = 'login.html';
       };
 
-      let loginAttached = false;
+      const closeMenu = () => {
+        if (!navRight) return;
+        navRight.classList.remove('open');
+        hamb?.setAttribute('aria-expanded', 'false');
+      };
 
-      if (hamb && navRight) {
-        hamb.addEventListener('click', () => {
-          const open = navRight.classList.toggle('open');
-          hamb.setAttribute('aria-expanded', String(open));
-        });
+      hamb?.addEventListener('click', () => {
+        if (!navRight) return;
+        const isOpen = navRight.classList.toggle('open');
+        hamb.setAttribute('aria-expanded', String(isOpen));
+      });
 
-        const closeMenu = () => {
-          navRight.classList.remove('open');
-          hamb.setAttribute('aria-expanded', 'false');
-        };
+      navRight?.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', closeMenu);
+      });
 
-        navRight.querySelectorAll('a').forEach((link) => {
-          link.addEventListener('click', () => {
-            closeMenu();
-          });
-        });
-
-        document.addEventListener('keydown', (event) => {
-          if (event.key === 'Escape' && navRight.classList.contains('open')) {
-            closeMenu();
-          }
-        });
-
-        if (loginBtn) {
-          loginBtn.addEventListener('click', () => {
-            closeMenu();
-            goToLogin();
-          });
-          loginAttached = true;
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeMenu();
         }
-      }
+      });
 
-      if (loginBtn && !loginAttached) {
-        loginBtn.addEventListener('click', goToLogin);
-      }
+      loginBtn?.addEventListener('click', () => {
+        closeMenu();
+        goToLogin();
+      });
     });
   </script>
-  <script src="assets/js/course-player.js" type="module"></script>
+  <script type="module" src="assets/js/course-player.js"></script>
 </body>
 </html>
