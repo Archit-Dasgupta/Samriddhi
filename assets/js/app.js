@@ -12,20 +12,23 @@ const partialFallbacks = {
   'partials/header.html': `
 <header class="topbar">
   <div class="topbar-inner">
-    <button class="hamb" id="hamb" aria-label="Menu" aria-expanded="false">☰</button>
     <a class="brand-left" href="home.html">
-      <div class="logo-square">
-        <img src="img/logo.svg" alt="Samriddhi logo">
-      </div>
-      <div class="brand-text"><span class="brand-strong">Samriddhi</span></div>
+      <span class="logo-square" aria-hidden="true">
+        <img src="img/logo.svg" alt="">
+      </span>
+      <span class="brand-copy">
+        <span class="brand-strong">Samriddhi</span>
+        <span class="brand-tagline">Prosperity for every tailor</span>
+      </span>
     </a>
+    <button class="hamb" id="hamb" aria-label="Menu" aria-expanded="false">☰</button>
     <nav class="nav-right" id="navRight">
       <a class="nav-link" data-route="home" href="home.html">Home</a>
       <a class="nav-link" data-route="modules" href="modules.html">Programs</a>
       <a class="nav-link" data-route="banking" href="banking.html">Banking <span class="chip-new">NEW</span></a>
       <a class="nav-link" data-route="toolkits" href="toolkits.html">Toolkit</a>
-      <button id="btnOpenLogin" type="button" class="btn login-pill">Login/Register</button>
       <a id="navProfile" class="nav-link hidden" data-route="profile" href="profile.html">Profile</a>
+      <button id="btnOpenLogin" type="button" class="btn login-pill">Login/Register</button>
     </nav>
   </div>
 </header>
@@ -100,6 +103,7 @@ const initializePage = (page) => {
       initModules();
       break;
     case 'banking':
+    case 'deposits':
     case 'open-account':
     case 'loan':
       initBanking(page);
