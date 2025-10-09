@@ -877,13 +877,13 @@ body.course-player .link-button:focus-visible{text-decoration:underline;outline:
 
 .program-layout{display:grid;grid-template-columns:minmax(0,352px) minmax(0,1fr);gap:24px;align-items:start}
 
-.modules-panel{border:1px solid var(--border);border-radius:28px;background:#fff;position:sticky;top:32px;max-height:calc(100vh - 64px);overflow:hidden}
-.modules-panel__inner{display:flex;flex-direction:column;height:100%}
+.modules-panel{border:1px solid var(--border);border-radius:28px;background:#fff;position:sticky;top:32px;max-height:calc(100vh - 64px);overflow:hidden;display:flex;flex-direction:column}
+.modules-panel__inner{display:flex;flex-direction:column;flex:1;min-height:0}
 .modules-panel__search{padding:24px 28px;border-bottom:1px solid var(--border);display:grid;gap:8px}
 .modules-panel__search label{font-size:13px;font-weight:600;color:var(--muted)}
 .modules-panel__search input{width:100%;padding:10px 14px;border:1px solid var(--border);border-radius:999px;font-size:14px}
 .modules-panel__search input:focus{outline:2px solid var(--brand);outline-offset:2px}
-.modules-panel__list{padding:20px 20px 28px;display:grid;gap:16px;overflow:auto}
+.modules-panel__list{padding:20px 20px 28px;display:grid;gap:16px;flex:1;min-height:0;overflow-y:auto;overflow-x:hidden}
 
 .module-card{border:1px solid rgba(15,23,42,.06);border-radius:22px;background:#fff;display:flex;flex-direction:column;gap:0;box-shadow:0 12px 26px rgba(15,23,42,.05)}
 .module-card__header{padding:18px 20px 12px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
@@ -985,7 +985,7 @@ body.course-player .link-button:focus-visible{text-decoration:underline;outline:
   .player-column__summary-bar{width:100%}
   .modules-toggle{display:inline-flex;align-items:center;gap:8px;font-size:14px}
   .modules-panel{position:fixed;inset:0;max-height:none;border-radius:0;border:0;background:rgba(15,23,42,.45);backdrop-filter:blur(6px);z-index:60;display:none}
-  .modules-panel.is-open{display:block}
+  .modules-panel.is-open{display:flex}
   .modules-panel__inner{max-width:360px;height:100%;margin:0 auto;background:#fff;border-radius:28px;box-shadow:0 28px 60px rgba(15,23,42,.22);overflow:hidden}
   .modules-panel__list{max-height:calc(100vh - 220px)}
 }
