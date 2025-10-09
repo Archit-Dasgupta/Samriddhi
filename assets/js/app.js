@@ -13,13 +13,16 @@ const partialFallbacks = {
 <header class="topbar">
   <div class="topbar-inner">
     <button class="hamb" id="hamb" aria-label="Menu" aria-expanded="false">☰</button>
-    <a class="brand-left" href="home.html">
+    <a class="brand-left" href="home.html" aria-label="Samriddhi home">
       <div class="logo-square">
-        <img src="img/logo.svg" alt="Samriddhi logo">
+        <img src="img/logo.svg" alt="Samriddhi sprout logo">
       </div>
-      <div class="brand-text"><span class="brand-strong">Samriddhi</span></div>
+      <div class="brand-text">
+        <span class="brand-strong">Samriddhi</span>
+        <span class="brand-sub">Prosperity for Her</span>
+      </div>
     </a>
-    <nav class="nav-right" id="navRight">
+    <nav class="nav-right open" id="navRight">
       <a class="nav-link" data-route="home" href="home.html">Home</a>
       <a class="nav-link" data-route="modules" href="modules.html">Programs</a>
       <a class="nav-link" data-route="banking" href="banking.html">Banking <span class="chip-new">NEW</span></a>
