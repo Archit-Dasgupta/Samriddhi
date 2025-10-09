@@ -100,6 +100,7 @@ const initializePage = (page) => {
       initModules();
       break;
     case 'banking':
+    case 'deposits':
     case 'open-account':
     case 'loan':
       initBanking(page);

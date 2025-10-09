@@ -95,8 +95,7 @@ const initLoan = () => {
 };
 
 export const initBanking = (page) => {
-  if (page === 'banking') {
-    if (!$('#page-banking')) return;
+  if (page === 'banking' || page === 'deposits') {
     updateFD();
     updateRD();
     updateEMI();
