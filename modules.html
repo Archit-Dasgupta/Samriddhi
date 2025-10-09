@@ -1,38 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Samriddhi • Programs</title>
-  <link rel="stylesheet" href="styles.css"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Samriddhi • Green Finance Foundations</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body data-page="modules">
-  <div id="header-placeholder"></div>
+<body class="course-player" data-page="modules">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <button class="hamb" id="hamb" aria-label="Menu" aria-expanded="false">☰</button>
+      <a class="brand-left" href="home.html">
+        <div class="logo-square">
+          <img src="img/logo.svg" alt="Samriddhi logo" />
+        </div>
+        <div class="brand-text"><span class="brand-strong">Samriddhi</span></div>
+      </a>
+      <nav class="nav-right" id="navRight">
+        <a class="nav-link" data-route="home" href="home.html">Home</a>
+        <a class="nav-link active" data-route="modules" href="modules.html" aria-current="page">Programs</a>
+        <a class="nav-link" data-route="banking" href="banking.html">Banking <span class="chip-new">NEW</span></a>
+        <a class="nav-link" data-route="toolkits" href="toolkits.html">Toolkit</a>
+        <button id="btnOpenLogin" type="button" class="btn login-pill">Login/Register</button>
+        <a id="navProfile" class="nav-link hidden" data-route="profile" href="profile.html">Profile</a>
+      </nav>
+    </div>
+  </header>
 
-  <main class="container" id="page-modules">
-    <section class="modules-grid">
-      <aside class="left-rail card">
-        <div class="rail-header">
-          <span class="crumb">Home</span> / <span class="crumb strong">Programs</span>
-        </div>
-        <ol class="steps">
-          <li class="done">Pick a track</li>
-          <li class="done">Set your goals</li>
-          <li class="active">Review content</li>
+  <main class="program-page" id="mainContent">
+    <header class="program-page__header" role="banner">
+      <nav class="program-page__breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="home.html">Programs</a></li>
+          <li aria-current="page">Green Finance Foundations</li>
         </ol>
-        <a class="btn ghost small" id="btnExitGuide" href="dashboard.html">Go to Dashboard</a>
-      </aside>
-      <section class="recos card">
-        <div class="recos-head">
-          <h2>Recommended course content</h2>
-          <div class="save-indicator">Saved • Total length: <span id="totalLen">0m</span></div>
+      </nav>
+      <div class="program-page__intro">
+        <h1>Green Finance Foundations</h1>
+        <p>Build climate-ready capabilities through applied videos and pulse quizzes.</p>
+      </div>
+      <div class="program-page__overall" data-overall-progress>
+        <strong data-overall-progress-count>0 of 24</strong>
+        <span>items complete</span>
+      </div>
+    </header>
+
+    <div class="program-layout" data-layout>
+      <aside class="modules-panel" data-modules-panel>
+        <div class="modules-panel__inner">
+          <div class="modules-panel__search">
+            <label for="lessonSearch">Search lessons and quizzes</label>
+            <input id="lessonSearch" type="search" placeholder="Search lessons and quizzes" autocomplete="off" />
+          </div>
+          <div class="modules-panel__list" role="listbox" aria-label="Lesson journey" data-module-list></div>
         </div>
-        <div id="moduleList" class="module-sections"></div>
+      </aside>
+
+      <section class="player-column" aria-live="polite">
+        <div class="player-column__header">
+          <button type="button" class="modules-toggle" data-toggle-modules aria-expanded="false">Modules</button>
+          <div class="player-column__summary">
+            <span class="player-column__summary-count"><strong data-progress-count>0</strong> of <span data-progress-total>24</span> complete</span>
+            <div class="player-column__summary-bar" role="progressbar" aria-valuemin="0" aria-valuemax="24" aria-valuenow="0">
+              <span class="player-column__summary-bar-fill" data-summary-bar></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="player-shell">
+          <div class="player-surface" data-player-surface>
+            <div class="player-surface__media" data-player-stage>
+              <div class="player-surface__placeholder">
+                <p>Select a lesson to begin.</p>
+              </div>
+            </div>
+            <div class="player-surface__overlay" data-complete-overlay hidden>
+              <button type="button" class="btn" data-overlay-complete>Mark as complete</button>
+            </div>
+            <div class="player-surface__error" data-player-error hidden>
+              <p>We couldn’t load this lesson right now.</p>
+              <button type="button" class="btn" data-retry-item>Retry</button>
+            </div>
+          </div>
+          <div class="player-shell__controls" role="group" aria-label="Player controls">
+            <button type="button" class="btn btn--ghost" data-toggle-captions aria-pressed="false">Captions</button>
+            <button type="button" class="btn btn--ghost" data-download-video>Download video</button>
+            <button type="button" class="btn" data-mark-complete hidden>Mark as complete</button>
+          </div>
+        </div>
+
+        <div class="player-details">
+          <div class="player-details__meta">
+            <span class="chip" data-item-type>—</span>
+            <span class="chip chip--muted" data-item-meta>00:00</span>
+          </div>
+          <h2 data-item-title>Choose a lesson to get started</h2>
+          <p data-item-description>Use the module list to begin watching or practising.</p>
+        </div>
+
+        <div class="player-toast" data-autoplay-toast hidden>
+          <span data-toast-text></span>
+          <button type="button" class="btn btn--ghost" data-toast-cancel>Cancel</button>
+        </div>
+
+        <section class="notes-panel" aria-label="Notes">
+          <header class="notes-panel__header">
+            <h3>Notes</h3>
+            <span class="notes-panel__count" data-notes-count>0</span>
+          </header>
+          <form class="notes-form" data-notes-form>
+            <div class="notes-form__controls">
+              <button type="button" class="btn btn--ghost" data-add-timecode>Add timecode</button>
+            </div>
+            <label for="noteText" class="sr-only">New note</label>
+            <textarea id="noteText" rows="3" placeholder="Capture your takeaways…"></textarea>
+            <div class="notes-form__actions">
+              <button type="submit" class="btn">Save note</button>
+              <span class="notes-form__status" data-notes-status aria-live="polite" hidden>Saved</span>
+            </div>
+          </form>
+          <div class="notes-list" data-notes-list>
+            <p class="notes-list__empty">No notes yet for this item.</p>
+          </div>
+        </section>
       </section>
-    </section>
+    </div>
   </main>
 
-  <div id="footer-placeholder"></div>
-  <script type="module" src="assets/js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const hamb = document.getElementById('hamb');
+      const navRight = document.getElementById('navRight');
+      const loginBtn = document.getElementById('btnOpenLogin');
+
+      const goToLogin = () => {
+        window.location.href = 'login.html';
+      };
+
+      const closeMenu = () => {
+        if (!navRight) return;
+        navRight.classList.remove('open');
+        hamb?.setAttribute('aria-expanded', 'false');
+      };
+
+      hamb?.addEventListener('click', () => {
+        if (!navRight) return;
+        const isOpen = navRight.classList.toggle('open');
+        hamb.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      navRight?.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', closeMenu);
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeMenu();
+        }
+      });
+
+      loginBtn?.addEventListener('click', () => {
+        closeMenu();
+        goToLogin();
+      });
+    });
+  </script>
+  <script type="module" src="assets/js/course-player.js"></script>
 </body>
 </html>
