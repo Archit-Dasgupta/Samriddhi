@@ -10,56 +10,261 @@
   <div id="header-placeholder"></div>
 
   <main class="container" id="page-banking">
-    <section class="bank-wrap">
-      <div class="bank-hero card">
-        <img class="bank-img" alt="Bank" src="img/img.png"/>
-        <aside class="calc card">
-          <h3 class="calc-title">Fixed Deposit (FD) Calculator</h3>
-          <div class="grid2">
+    <section class="banking-intro card">
+      <div class="intro-head">
+        <div>
+          <p class="eyebrow">Banking</p>
+          <h1>Your money, organised for every milestone</h1>
+        </div>
+        <p class="intro-copy">Choose the product that fits your goals and explore tailored calculators, benefits and quick actions without leaving the page.</p>
+      </div>
+      <div class="product-grid">
+        <a class="product-card" href="#fd-section">
+          <span class="product-icon">📈</span>
+          <strong>Fixed Deposits (FD)</strong>
+          <p>Lock-in savings with assured returns and top-up interest for senior citizens.</p>
+        </a>
+        <a class="product-card" href="#rd-section">
+          <span class="product-icon">🔁</span>
+          <strong>Recurring Deposits (RD)</strong>
+          <p>Build a disciplined savings habit with monthly contributions and predictable growth.</p>
+        </a>
+        <a class="product-card" href="#savings-section">
+          <span class="product-icon">💼</span>
+          <strong>Savings Accounts</strong>
+          <p>Compare everyday, premium and salary accounts with benefits curated for you.</p>
+        </a>
+        <a class="product-card" href="#loans-section">
+          <span class="product-icon">🧾</span>
+          <strong>Loans</strong>
+          <p>Review loan choices, indicative rates and ask our team to reach out instantly.</p>
+        </a>
+      </div>
+    </section>
+
+    <section id="fd-section" class="banking-section card">
+      <header class="section-head">
+        <div>
+          <p class="eyebrow">Fixed Deposits</p>
+          <h2>Assured returns with flexible tenures</h2>
+        </div>
+        <p class="muted">Estimate your payout instantly and explore popular tenure slabs offered by partner banks.</p>
+      </header>
+      <div class="section-columns">
+        <div class="calc-block">
+          <h3>FD calculator</h3>
+          <div class="field-grid">
             <label>Amount (₹)<input id="invAmount" type="number" value="100000"/></label>
             <label>Sr. Citizen
-              <select id="srCitizen"><option>No</option><option>Yes</option></select>
+              <select id="srCitizen">
+                <option>No</option>
+                <option>Yes</option>
+              </select>
             </label>
           </div>
-          <label>Interest rate and tenure
+          <label>Interest rate &amp; tenure
             <select id="tenurePick">
-              <option value="60|8.2">5Y (8.2%)</option>
-              <option value="36|7.6">3Y (7.6%)</option>
-              <option value="12|7.0">1Y (7.0%)</option>
+              <option value="60|8.2">60 months • 8.2% p.a.</option>
+              <option value="36|7.6">36 months • 7.6% p.a.</option>
+              <option value="24|7.3">24 months • 7.3% p.a.</option>
+              <option value="12|7.0">12 months • 7.0% p.a.</option>
             </select>
           </label>
-          <div class="facts">
-            <div class="fact"><span>Investment amount</span><strong id="fInv">₹1,00,000</strong></div>
-            <div class="fact"><span>Compounding</span><strong>Quarterly</strong></div>
-            <div class="fact"><span>FD rate applicable</span><strong id="fRate">8.2%</strong></div>
-            <div class="fact"><span>FD tenure</span><strong id="fTenure">5Y</strong></div>
-            <div class="fact"><span>Maturity amount</span><strong id="fMaturity">₹—</strong></div>
+          <div class="summary-grid">
+            <div>
+              <span class="muted">Investment amount</span>
+              <strong id="fInv">₹1,00,000</strong>
+            </div>
+            <div>
+              <span class="muted">FD rate applicable</span>
+              <strong id="fRate">8.2%</strong>
+            </div>
+            <div>
+              <span class="muted">Tenure selected</span>
+              <strong id="fTenure">5Y</strong>
+            </div>
+            <div>
+              <span class="muted">Maturity amount</span>
+              <strong id="fMaturity">₹—</strong>
+            </div>
           </div>
+        </div>
+        <div class="info-block">
+          <h3>Popular FD slabs</h3>
+          <table class="rate-table">
+            <thead>
+              <tr><th>Tenure</th><th>General rate</th><th>Sr. citizen rate</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>12 months</td><td>7.00%</td><td>7.50%</td></tr>
+              <tr><td>24 months</td><td>7.30%</td><td>7.80%</td></tr>
+              <tr><td>36 months</td><td>7.60%</td><td>8.10%</td></tr>
+              <tr><td>60 months</td><td>8.20%</td><td>8.70%</td></tr>
+            </tbody>
+          </table>
+          <p class="tiny muted">Rates shown are indicative of leading partner banks and may vary slightly at the time of booking.</p>
+        </div>
+      </div>
+    </section>
 
-          <h3 style="margin-top:16px">Recurring Deposit (RD) Calculator</h3>
-          <div class="grid2">
+    <section id="rd-section" class="banking-section card">
+      <header class="section-head">
+        <div>
+          <p class="eyebrow">Recurring Deposits</p>
+          <h2>Grow savings month-on-month</h2>
+        </div>
+        <p class="muted">Set up a recurring plan and project the corpus you build over time.</p>
+      </header>
+      <div class="section-columns">
+        <div class="calc-block">
+          <h3>RD calculator</h3>
+          <div class="field-grid">
             <label>Monthly deposit (₹)<input id="rd_amt" type="number" value="2000"/></label>
             <label>Tenure (months)<input id="rd_months" type="number" value="24"/></label>
           </div>
-          <div class="fact"><span>Estimated maturity</span><strong id="rd_out">₹—</strong></div>
+          <div class="highlight-box">
+            <span class="muted">Estimated maturity</span>
+            <strong id="rd_out">₹—</strong>
+          </div>
+        </div>
+        <div class="info-block">
+          <h3>Why customers prefer our RD plans</h3>
+          <ul class="bullet-grid">
+            <li>Auto-debit setup keeps your savings on track.</li>
+            <li>Preferential rates on tenures beyond 24 months.</li>
+            <li>Break RD partially without losing full interest.</li>
+            <li>Nomination and overdraft linkage in a single click.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-          <h3 style="margin-top:16px">Loan EMI Calculator</h3>
-          <div class="grid2">
-            <label>Loan amount (₹)<input id="loan_amt" type="number" value="25000"/></label>
-            <label>Tenure (months)<input id="loan_tenure" type="number" value="12"/></label>
+    <section id="savings-section" class="banking-section card">
+      <header class="section-head">
+        <div>
+          <p class="eyebrow">Savings accounts</p>
+          <h2>Everyday banking that matches your lifestyle</h2>
+        </div>
+        <p class="muted">Compare features side-by-side and pick the account that works best for you.</p>
+      </header>
+      <div class="account-grid">
+        <article class="account-card">
+          <h3>Smart Saver</h3>
+          <p class="muted">Best for first-time savers looking for digital convenience.</p>
+          <ul>
+            <li>Zero balance requirement up to 12 months</li>
+            <li>UPI, IMPS &amp; NEFT at no additional charge</li>
+            <li>Complimentary virtual debit card</li>
+          </ul>
+        </article>
+        <article class="account-card">
+          <h3>Prime Plus</h3>
+          <p class="muted">Ideal for families with bundled benefits and higher yields.</p>
+          <ul>
+            <li>Quarterly average balance of ₹25,000</li>
+            <li>3 complimentary family add-on debit cards</li>
+            <li>Free locker waitlist priority</li>
+          </ul>
+        </article>
+        <article class="account-card">
+          <h3>Salary Edge</h3>
+          <p class="muted">Designed for salaried professionals with instant overdraft.</p>
+          <ul>
+            <li>No balance requirement while salary credit continues</li>
+            <li>Overdraft up to 2x net salary at 11.75% p.a.</li>
+            <li>Airport lounge access 2 times per quarter</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="loans-section" class="banking-section card">
+      <header class="section-head">
+        <div>
+          <p class="eyebrow">Loans</p>
+          <h2>Finance the big moves with confidence</h2>
+        </div>
+        <p class="muted">Review indicative rates across loan categories and request a quick callback.</p>
+      </header>
+      <div class="section-columns loans-layout">
+        <div class="info-block">
+          <h3>Loan highlights</h3>
+          <table class="rate-table">
+            <thead>
+              <tr><th>Loan type</th><th>Interest rate (p.a.)</th><th>Max tenure</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Home Loan</td><td>8.40% – 9.10%</td><td>30 years</td></tr>
+              <tr><td>Personal Loan</td><td>11.25% – 16.50%</td><td>5 years</td></tr>
+              <tr><td>Two Wheeler Loan</td><td>9.75% – 12.10%</td><td>4 years</td></tr>
+              <tr><td>Education Loan</td><td>10.25% – 12.60%</td><td>8 years</td></tr>
+            </tbody>
+          </table>
+          <p class="tiny muted">Eligibility, rate and tenure are finalised after verification of income and documentation.</p>
+        </div>
+        <div class="form-stack">
+          <form class="call-form card-soft" id="loan-call" action="javascript:void(0);" novalidate>
+            <h3>Request a call</h3>
+            <p class="muted">Share your details and our loan specialists will connect within one business day.</p>
+            <label>Full name<input type="text" placeholder="e.g. Aisha Khan" required/></label>
+            <label>Preferred contact number<input type="tel" placeholder="10-digit mobile" required/></label>
+            <label>Loan requirement<select required>
+              <option value="">Select loan type</option>
+              <option>Home Loan</option>
+              <option>Personal Loan</option>
+              <option>Vehicle Loan</option>
+              <option>Education Loan</option>
+            </select></label>
+            <label>City<input type="text" placeholder="City"/></label>
+            <button class="btn primary" type="submit">Submit request</button>
+            <div class="tiny muted">Our team will only use your information to contact you about this enquiry.</div>
+          </form>
+          <div class="calc-block card-soft">
+            <h3>Quick EMI sense-check</h3>
+            <div class="field-grid">
+              <label>Loan amount (₹)<input id="loan_amt" type="number" value="25000"/></label>
+              <label>Tenure (months)<input id="loan_tenure" type="number" value="12"/></label>
+            </div>
+            <div class="field-grid">
+              <label>Rate p.a. (%)<input id="loan_rate" type="number" value="20"/></label>
+              <label>Monthly income (₹)<input id="loan_income" type="number" value="15000"/></label>
+            </div>
+            <label>Existing EMIs (₹)<input id="loan_emi" type="number" value="0"/></label>
+            <div class="highlight-box">
+              <span class="muted">Estimated EMI</span>
+              <strong id="emi_out">₹—</strong>
+            </div>
+            <div class="tiny muted">Keep your total EMIs within 35% of monthly income for healthy finances.</div>
           </div>
-          <div class="grid2">
-            <label>Rate p.a. (%)<input id="loan_rate" type="number" value="20"/></label>
-            <label>Monthly income (₹)<input id="loan_income" type="number" value="15000"/></label>
-          </div>
-          <label>Existing EMIs (₹)<input id="loan_emi" type="number" value="0"/></label>
-          <div class="fact"><span>Estimated EMI</span><strong id="emi_out">₹—</strong></div>
-          <div class="tiny muted">For demo only, not financial advice.</div>
-          <div class="grid2" style="margin-top:8px">
-            <a class="btn ghost" href="open-account.html">Open an account</a>
-            <a class="btn primary" href="loan.html">Apply for a loan</a>
-          </div>
-        </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="banking-section card" id="banking-faq">
+      <header class="section-head">
+        <div>
+          <p class="eyebrow">FAQs</p>
+          <h2>Frequently asked questions</h2>
+        </div>
+        <p class="muted">Find quick answers to the most common banking queries.</p>
+      </header>
+      <div class="faq-list">
+        <details open>
+          <summary>How soon will my FD be activated after booking?</summary>
+          <p>Fixed Deposits are generally activated within 2 business hours after we receive your confirmation and funds. A digital receipt is sent to your registered email immediately.</p>
+        </details>
+        <details>
+          <summary>Can I modify the amount for my Recurring Deposit later?</summary>
+          <p>Yes. You can enhance or reduce the monthly RD contribution twice during the tenure. The maturity amount will be recalculated instantly based on the revised contribution.</p>
+        </details>
+        <details>
+          <summary>What documents do I need to open a new savings account?</summary>
+          <p>A valid photo ID (Aadhaar, Passport or PAN), proof of address, and a recent passport-sized photograph are required. For salary accounts, an employer introduction letter or salary slip is also requested.</p>
+        </details>
+        <details>
+          <summary>How long does a loan approval take?</summary>
+          <p>For pre-approved customers, approvals are often completed within 24 hours. New-to-bank customers may take 2-4 working days post document submission and verification.</p>
+        </details>
       </div>
     </section>
   </main>
