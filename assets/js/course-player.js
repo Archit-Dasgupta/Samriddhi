@@ -1,7 +1,6 @@
 import { $, COURSE_STATE } from './modules/common.js';
 
 const VIDEO_ID = 'eqrSpQ_80-I';
-const ITEMS_PER_MODULE = 6;
 const AUTOPLAY_DELAY = 5000;
 const STORAGE_VERSION = 'v2';
 
@@ -9,167 +8,84 @@ const modulesData = [
   {
     id: 'module-1',
     number: 1,
-    title: 'Setting the agenda',
+    title: 'Introduction, Initial investment & Costing',
     items: [
       {
         id: 'module-1-video-1',
         type: 'video',
-        title: 'Video 1 · Why green finance now?',
+        title: 'Video 1 · Introduction to business',
         meta: '5 min',
         durationSeconds: 300,
         description:
-          'Explore the market signals and regulatory shifts accelerating the transition to sustainable banking.',
+          'Walk through the foundational concepts that define a resilient business and the role finance plays in its early decisions.',
         transcript:
-          'Leaders across the industry are signalling that climate-positive finance is the new baseline. Use this lesson to anchor why the transformation is urgent and commercially vital.',
-        videoId: VIDEO_ID
+          'This lesson covers what makes a business model work, how to frame value propositions, and which early actions set teams up for sustainable growth.',
+        videoId: 'fZkAlgF77ak'
       },
       {
         id: 'module-1-quiz-1',
         type: 'quiz',
-        title: 'Quiz 1 · Key motivations',
+        title: 'Quiz 1 · Business Basics',
         meta: '5 Qs',
-        description: 'Check that you can articulate the drivers behind climate-aligned finance.',
+        description: 'Check that you can articulate core business concepts before moving into investments.',
         questions: [
           {
             id: 'm1q1',
-            prompt: 'What is the biggest commercial reason banks are investing in green finance capabilities?',
-            options: [
-              'Clients increasingly expect sustainable products and advice',
-              'It is only mandated by regulators with heavy fines',
-              'It has no direct link to client expectations'
-            ],
-            answerIndex: 0,
-            explanation: 'Commercial advantage comes from meeting client expectations for climate-aligned solutions.'
+            prompt: 'If you stitch clothes only for your family, is it a business?',
+            options: ['Yes', 'No'],
+            answerIndex: 1,
+            explanation: 'A business provides goods or services to customers beyond your household in exchange for value.'
           },
           {
             id: 'm1q2',
-            prompt: 'Which combination best summarises the pressure for climate action?',
-            options: [
-              'Regulation, client demand, investor scrutiny',
-              'Technology, internal marketing, staff rotations',
-              'Branch network growth, customer delight, expense cuts'
-            ],
-            answerIndex: 0,
-            explanation: 'Regulators, clients, and investors collectively raise the standard for sustainable banking.'
-          },
-          {
-            id: 'm1q3',
-            prompt: 'Why does Samriddhi emphasise early wins in this module?',
-            options: [
-              'To build momentum and belief in a longer transition journey',
-              'Because the rest of the program is optional',
-              'To replace the need for executive sponsorship'
-            ],
-            answerIndex: 0,
-            explanation: 'Early momentum keeps teams invested and unlocks deeper strategic change later.'
-          },
-          {
-            id: 'm1q4',
-            prompt: 'How should bankers talk about climate opportunity with clients?',
-            options: [
-              'Connect risk mitigation with commercial upside',
-              'Focus on regulation only',
-              'Avoid mentioning climate unless asked'
-            ],
-            answerIndex: 0,
-            explanation: 'Linking risk and upside keeps the conversation practical and client-focused.'
-          },
-          {
-            id: 'm1q5',
-            prompt: 'What role do personal notes play in this program?',
-            options: [
-              'They surface insights to coaches and leaders',
-              'They are optional and not reviewed',
-              'They replace assessments'
-            ],
-            answerIndex: 0,
-            explanation: 'Notes help you capture ideas to review with coaches and leadership.'
+            prompt: 'What is one important rule in business?',
+            options: ['Spend more than you earn', 'Earn more than you spend'],
+            answerIndex: 1,
+            explanation: 'Earning more than you spend keeps the business sustainable and profitable.'
           }
         ]
       },
       {
         id: 'module-1-video-2',
         type: 'video',
-        title: 'Video 2 · Principles of sustainable lending',
+        title: 'Video 2 · Investment & Costing',
         meta: '6 min',
         durationSeconds: 360,
         description:
-          'Understand how to evaluate sustainability credentials inside core credit workflows.',
+          'Learn how to evaluate investment options, compare costing scenarios, and select approaches that keep ventures viable.',
         transcript:
-          'This lesson breaks down practical screening tools that integrate sustainability into credit decisions and client conversations.',
-        videoId: VIDEO_ID
+          'We unpack techniques for forecasting investment needs, weighing cost structures, and balancing short-term spends against long-term value.',
+        videoId: '_9WYaBH-8CY'
       },
       {
         id: 'module-1-quiz-2',
         type: 'quiz',
-        title: 'Quiz 2 · Responsible lending check',
-        meta: '4 Qs',
-        description: 'Apply the credit-screening principles to realistic client scenarios.',
+        title: 'Quiz 2 · Investment & Costing Basics',
+        meta: '2 Qs',
+        description: 'Apply the investment and costing concepts to practical business scenarios.',
         questions: [
           {
             id: 'm1q2-1',
-            prompt: 'Which factor is most important when assessing a client’s transition plan?',
-            options: [
-              'Clear interim targets tied to capital deployment',
-              'Number of pages in the sustainability report',
-              'Marketing commitments without metrics'
-            ],
+            prompt: 'Which of these is a fixed cost?',
+            options: ['Sewing machine', 'Cloth'],
             answerIndex: 0,
-            explanation: 'Targets that link to capital allocation signal credible transition plans.'
+            explanation: 'A sewing machine is a one-time purchase that does not change with the number of garments you stitch.'
           },
           {
             id: 'm1q2-2',
-            prompt: 'How should green finance teams partner with risk teams?',
-            options: [
-              'Share playbooks and review material exposures together',
-              'Work independently to avoid slowing deals',
-              'Wait for annual reviews to collaborate'
-            ],
-            answerIndex: 0,
-            explanation: 'Joint reviews help align risk appetite with climate ambition in real time.'
-          },
-          {
-            id: 'm1q2-3',
-            prompt: 'What is the best next step when a client lacks emissions data?',
-            options: [
-              'Offer tools or partners to help establish a baseline',
-              'Decline the relationship immediately',
-              'Ignore the data gap until regulation forces disclosure'
-            ],
-            answerIndex: 0,
-            explanation: 'Supporting clients with baselining positions you as a partner in their transition.'
-          },
-          {
-            id: 'm1q2-4',
-            prompt: 'When should a deal be flagged for enhanced review?',
-            options: [
-              'When exposure to high-risk sectors is material and lacks mitigation',
-              'Whenever a client mentions climate strategy',
-              'Only if the loan is over a certain ticket size'
-            ],
-            answerIndex: 0,
-            explanation: 'High-risk sectors without mitigation warrant additional scrutiny regardless of ticket size.'
+            prompt: 'If Meena buys a sewing machine for ₹10,000 and spends ₹2,000 on cloth, what is her total cost?',
+            options: ['₹8,000', '₹12,000'],
+            answerIndex: 1,
+            explanation: 'Adding the fixed cost (₹10,000) and the variable cost (₹2,000) gives a total cost of ₹12,000.'
           }
         ]
       },
       {
-        id: 'module-1-video-3',
-        type: 'video',
-        title: 'Video 3 · Building internal alignment',
-        meta: '7 min',
-        durationSeconds: 420,
-        description:
-          'Learn how to mobilise credit, coverage, and sustainability teams around one transition narrative.',
-        transcript:
-          'Alignment comes from shared scorecards, common language, and transparent decision pathways. Use this to secure buy-in across teams.',
-        videoId: VIDEO_ID
-      },
-      {
         id: 'module-1-quiz-3',
         type: 'quiz',
-        title: 'Quiz 3 · Alignment readiness',
+        title: 'Quiz 3 · Module 1 Knowledge Test',
         meta: '5 Qs',
-        description: 'Ensure you can translate the alignment playbook into daily routines.',
+        description: 'Ensure you can translate Module 1’s key concepts into daily routines.',
         questions: [
           {
             id: 'm1q3-1',
@@ -233,183 +149,219 @@ const modulesData = [
   {
     id: 'module-2',
     number: 2,
-    title: 'Designing transition-ready portfolios',
+    title: 'Money Basics',
     items: [
       {
         id: 'module-2-video-1',
         type: 'video',
-        title: 'Video 1 · Mapping portfolio emissions',
-        meta: '6 min',
-        durationSeconds: 360,
+        title: 'Video 1 · Revenue, Cost & Profit',
+        meta: '5 min',
+        durationSeconds: 300,
         description:
-          'Learn how to identify hotspots in your lending book and set realistic decarbonisation goals.',
+          'Understand how revenue, cost, and profit connect so you can measure whether tailoring services are viable.',
         transcript:
-          'You will assess financed emissions, prioritise segments, and use data to guide strategic action.',
-        videoId: VIDEO_ID
+          'We break down basic income statements, highlight common tailoring expenses, and show how to calculate profit for small enterprises.',
+        videoId: 'zavQK5y5mgM'
       },
       {
         id: 'module-2-quiz-1',
         type: 'quiz',
-        title: 'Quiz 1 · Emissions focus',
+        title: 'Quiz 1 · Revenue, Cost & Profit Basics',
         meta: '4 Qs',
-        description: 'Validate your approach to measuring portfolio emissions.',
+        description: 'Check that you can compute revenue, costs, and profit for tailoring businesses.',
         questions: [
           {
             id: 'm2q1-1',
-            prompt: 'Which metric shows improvement when emissions intensity reduces?',
-            options: ['Emissions per financed rupee', 'Total number of branches', 'Employee satisfaction scores'],
+            prompt: 'If a tailor earns ₹5000 in sales and spends ₹3200 on materials and rent, what is the profit?',
+            options: ['₹1800', '₹3200', '₹5000'],
             answerIndex: 0,
-            explanation: 'Intensity measures allow fair comparison even as the book grows.'
+            explanation: 'Profit equals revenue minus total costs: 5000 - 3200 = 1800.'
           },
           {
             id: 'm2q1-2',
-            prompt: 'What is the first step after identifying a high-emitting sector?',
-            options: [
-              'Engage clients with transition pathways and financing options',
-              'Exit the sector immediately',
-              'Wait for regulatory guidance'
-            ],
+            prompt: 'Which of these is considered a fixed cost for a tailoring shop?',
+            options: ['Monthly shop rent', 'Thread used for each garment', 'Buttons per shirt'],
             answerIndex: 0,
-            explanation: 'Engagement turns insight into commercial opportunity.'
+            explanation: 'Rent does not change with the number of garments produced, so it is fixed.'
           },
           {
             id: 'm2q1-3',
-            prompt: 'Why track financed emissions annually?',
+            prompt: 'Why is tracking daily expenses important for tailors?',
             options: [
-              'To monitor progress and adjust capital allocation',
-              'Because spreadsheets require yearly updates',
-              'It is optional for climate strategies'
+              'It reveals if costs are eating into profit',
+              'It replaces the need to speak with customers',
+              'It increases fabric waste'
             ],
             answerIndex: 0,
-            explanation: 'Regular tracking keeps the portfolio aligned to climate commitments.'
+            explanation: 'Tracking expenses shows whether profits stay healthy and where savings are possible.'
           },
           {
             id: 'm2q1-4',
-            prompt: 'What data builds client trust?',
+            prompt: 'Which formula correctly calculates gross profit?',
             options: [
-              'Evidence-based benchmarking and scenario analysis',
-              'Unofficial market rumours',
-              'Generic marketing copy'
+              'Revenue – Cost of goods sold',
+              'Cost of goods sold – Revenue',
+              'Revenue + Operating expenses'
             ],
             answerIndex: 0,
-            explanation: 'Robust benchmarking demonstrates credibility and partnership.'
+            explanation: 'Gross profit is calculated as revenue minus the cost of goods sold.'
           }
         ]
       },
       {
         id: 'module-2-video-2',
         type: 'video',
-        title: 'Video 2 · Transition planning with clients',
-        meta: '7 min',
-        durationSeconds: 420,
+        title: 'Video 2 · Pricing & Managing Costs',
+        meta: '6 min',
+        durationSeconds: 360,
         description:
-          'Translate emissions insights into practical client roadmaps and financing structures.',
+          'Discover techniques tailors use to price garments competitively while controlling material and labour costs.',
         transcript:
-          'We review client archetypes, supportive instruments, and coaching tactics that move conversations forward.',
-        videoId: VIDEO_ID
+          'The lesson explores pricing formulas, negotiating with suppliers, and building cushions for seasonal demand.',
+        videoId: '0ye7zuSeuO8'
       },
       {
         id: 'module-2-quiz-2',
         type: 'quiz',
-        title: 'Quiz 2 · Client planning scenarios',
+        title: 'Quiz 2 · Pricing & Managing Costs Basics',
         meta: '5 Qs',
-        description: 'Practise advising clients on the next steps in their transition plans.',
+        description: 'Practise setting profitable prices and managing expenses in tailoring businesses.',
         questions: [
           {
             id: 'm2q2-1',
-            prompt: 'When a client hesitates due to cost, what should you do first?',
-            options: [
-              'Model blended finance options with clear payback',
-              'Suggest delaying action until regulation tightens',
-              'Shift the topic away from climate'
-            ],
+            prompt: 'A blouse costs ₹300 in fabric and ₹150 in labour. You want a 40% markup on cost. What selling price should you choose?',
+            options: ['₹630', '₹450', '₹180'],
             answerIndex: 0,
-            explanation: 'Showing blended options helps clients see commercial value.'
+            explanation: 'Total cost is 450. A 40% markup adds 180, making the price 630.'
           },
           {
             id: 'm2q2-2',
-            prompt: 'Who should own the transition scorecard?',
-            options: ['The client and banker jointly', 'Only the sustainability team', 'External consultants exclusively'],
+            prompt: 'Which action best controls variable costs?',
+            options: ['Buying thread in bulk to get discounts', 'Leaving machines on overnight', 'Ignoring supplier invoices'],
             answerIndex: 0,
-            explanation: 'Shared ownership keeps accountability clear and collaborative.'
+            explanation: 'Bulk purchasing at negotiated rates reduces variable cost per garment.'
           },
           {
             id: 'm2q2-3',
-            prompt: 'What unlocks faster approvals?',
-            options: ['Early engagement with risk partners', 'Submitting requests without context', 'Escalating after deals stall'],
+            prompt: 'Why is it important to include labour time in your pricing?',
+            options: [
+              'It ensures you pay yourself and staff fairly',
+              'It has no impact on profitability',
+              'It only matters for wholesale orders'
+            ],
             answerIndex: 0,
-            explanation: 'Risk partners need context early to support climate-forward deals.'
+            explanation: 'Pricing that ignores labour underestimates true costs and reduces profit.'
           },
           {
             id: 'm2q2-4',
-            prompt: 'How do you keep momentum between meetings?',
-            options: ['Capture actions and blockers in shared notes', 'Wait for clients to reach out', 'Pause until the next review'],
+            prompt: 'How can tailors respond to seasonal drops in demand?',
+            options: ['Offer promotions or diversify products', 'Increase rent payments', 'Ignore the trend until it passes'],
             answerIndex: 0,
-            explanation: 'Shared notes maintain continuity and accountability.'
+            explanation: 'Promotions or new products help sustain cash flow when demand dips.'
           },
           {
             id: 'm2q2-5',
-            prompt: 'What indicates a client is ready for transition finance?',
-            options: [
-              'They have defined metrics, investments, and executive sponsorship',
-              'They only asked for marketing collateral',
-              'They prefer to delay commitments indefinitely'
-            ],
+            prompt: 'Which of these is an example of managing overhead costs?',
+            options: ['Sharing workspace with another tailor', 'Buying unnecessary accessories', 'Ignoring electricity bills'],
             answerIndex: 0,
-            explanation: 'Clear metrics and sponsorship show readiness for financing support.'
+            explanation: 'Sharing workspace spreads rent and utilities, reducing overhead per business.'
           }
         ]
       },
       {
         id: 'module-2-video-3',
         type: 'video',
-        title: 'Video 3 · Tracking climate impact with clients',
+        title: 'Video 3 · Introduction to Bookkeeping',
         meta: '6 min',
         durationSeconds: 360,
         description:
-          'Design scorecards that keep clients motivated and demonstrate tangible climate impact.',
+          'Learn the basics of recording tailoring transactions so you can track cash flow with confidence.',
         transcript:
-          'Use impact scorecards to keep stakeholders aligned and highlight both risk reduction and opportunity creation.',
-        videoId: VIDEO_ID
+          'We cover simple record-keeping tools, daily cash logs, and tips for separating business and personal expenses.',
+        videoId: 'aARw7kw7daA'
       },
       {
         id: 'module-2-quiz-3',
         type: 'quiz',
-        title: 'Quiz 3 · Impact measurement',
+        title: 'Quiz 3 · Bookkeeping Basics',
         meta: '4 Qs',
-        description: 'Show that you can measure impact and coach clients through the data.',
+        description: 'Confirm that you can record tailoring transactions accurately and stay organised.',
         questions: [
           {
             id: 'm2q3-1',
-            prompt: 'What should every impact scorecard include?',
-            options: [
-              'Baseline, target, and actual performance metrics',
-              'Only qualitative stories',
-              'A summary of marketing campaigns'
-            ],
+            prompt: 'Which book should track every sale and expense each day?',
+            options: ['Cash book', 'Guest book', 'Inventory only'],
             answerIndex: 0,
-            explanation: 'Clear metrics prove progress and reveal gaps.'
+            explanation: 'A cash book records daily cash inflows and outflows.'
           },
           {
             id: 'm2q3-2',
-            prompt: 'How often should you review client impact data?',
-            options: ['At agreed intervals aligned to financing milestones', 'Once at the end of the year', 'Only when regulators request it'],
+            prompt: 'Why should business and personal expenses be recorded separately?',
+            options: [
+              'It shows the true performance of the business',
+              'It doubles tax payments',
+              'It hides profits'
+            ],
             answerIndex: 0,
-            explanation: 'Regular reviews keep financing aligned to outcomes.'
+            explanation: 'Separating expenses clarifies business profitability and simplifies reporting.'
           },
           {
             id: 'm2q3-3',
-            prompt: 'What signals a need to recalibrate support?',
-            options: ['Falling behind on targets or unexpected risks', 'A successful marketing campaign', 'A new branch opening'],
+            prompt: 'What document summarises assets, liabilities, and owner’s equity?',
+            options: ['Balance sheet', 'Income statement', 'Marketing plan'],
             answerIndex: 0,
-            explanation: 'Target slippage or new risks need action to stay on track.'
+            explanation: 'The balance sheet captures what the business owns and owes at a point in time.'
           },
           {
             id: 'm2q3-4',
-            prompt: 'How do you celebrate progress?',
-            options: ['Share stories and data across client and internal teams', 'Keep results private', 'Wait for formal awards'],
+            prompt: 'What helps avoid forgetting to record sales later?',
+            options: ['Writing entries immediately after each transaction', 'Only recording weekly totals', 'Keeping receipts in pockets'],
             answerIndex: 0,
-            explanation: 'Celebrating progress sustains motivation and visibility.'
+            explanation: 'Timely entries ensure accurate records and reduce errors.'
+          }
+        ]
+      },
+      {
+        id: 'module-2-quiz-4',
+        type: 'quiz',
+        title: 'Quiz 4 · Module 2 Test',
+        meta: '5 Qs',
+        description: 'Review all Module 2 concepts with a short knowledge check covering money basics.',
+        questions: [
+          {
+            id: 'm2q4-1',
+            prompt: 'Which statement best defines profit?',
+            options: ['Money left after paying all business expenses', 'Total cash collected from customers', 'Loans taken from the bank'],
+            answerIndex: 0,
+            explanation: 'Profit is the amount remaining after covering every expense.'
+          },
+          {
+            id: 'm2q4-2',
+            prompt: 'What is the primary reason to set aside money for savings each month?',
+            options: ['To handle emergencies or invest in growth', 'To increase fabric waste', 'To reduce recorded revenue'],
+            answerIndex: 0,
+            explanation: 'Savings provide a buffer for emergencies and future investments.'
+          },
+          {
+            id: 'm2q4-3',
+            prompt: 'When reviewing prices, which number should you compare against costs?',
+            options: ['Selling price per item', 'Number of employees', 'Shop size'],
+            answerIndex: 0,
+            explanation: 'Comparing selling price to total cost shows if each item earns a profit.'
+          },
+          {
+            id: 'm2q4-4',
+            prompt: 'Why is keeping receipts important for bookkeeping?',
+            options: ['They support expense records during reviews', 'They increase clutter only', 'They replace invoices entirely'],
+            answerIndex: 0,
+            explanation: 'Receipts verify entries and make audits or reviews easier.'
+          },
+          {
+            id: 'm2q4-5',
+            prompt: 'A tailor negotiates lower fabric prices. Which financial metric improves if sales stay the same?',
+            options: ['Profit margin', 'Number of customers', 'Shop location'],
+            answerIndex: 0,
+            explanation: 'Lower costs with steady sales increase the profit margin.'
           }
         ]
       }
@@ -418,164 +370,241 @@ const modulesData = [
   {
     id: 'module-3',
     number: 3,
-    title: 'Financing innovation and partnerships',
+    title: 'Saving, Planning & Growth',
     items: [
       {
         id: 'module-3-video-1',
         type: 'video',
-        title: 'Video 1 · Catalysing blended finance',
-        meta: '7 min',
-        durationSeconds: 420,
-        description: 'See how public and private capital work together to unlock transition projects.',
-        transcript: 'We unpack blended finance structures and how to position them with clients and partners.',
-        videoId: VIDEO_ID
+        title: 'Video 1 · Importance of Savings',
+        meta: '5 min',
+        durationSeconds: 300,
+        description:
+          'Discover why disciplined savings keep tailoring businesses resilient during slow seasons and ready for new orders.',
+        transcript:
+          'We walk through setting a savings target, separating cash from daily spending, and building habits that protect your shop when demand drops.',
+        videoId: 'CrFgC_qAMiw'
       },
       {
         id: 'module-3-quiz-1',
         type: 'quiz',
-        title: 'Quiz 1 · Blended finance toolkit',
+        title: 'Quiz 1 · Savings Basics',
         meta: '5 Qs',
-        description: 'Assess your readiness to advise on blended finance structures.',
+        description: 'Check that you can build and protect a savings cushion for your tailoring business.',
         questions: [
           {
             id: 'm3q1-1',
-            prompt: 'What makes blended finance attractive to clients?',
+            prompt: 'Why should a tailoring business set aside money every month?',
             options: [
-              'Risk-sharing that accelerates climate investments',
-              'It replaces the need for diligence',
-              'It removes all regulatory requirements'
+              'To handle emergencies or slow seasons without panic',
+              'To pay unnecessary bank fees',
+              'To avoid recording expenses'
             ],
             answerIndex: 0,
-            explanation: 'Risk-sharing mechanisms unlock projects that otherwise stall.'
+            explanation: 'Savings soften the impact of quiet periods and unexpected costs.'
           },
           {
             id: 'm3q1-2',
-            prompt: 'Who are key partners in blended transactions?',
-            options: ['Development banks and impact investors', 'Only internal teams', 'Marketing agencies'],
+            prompt: 'Where is the safest place to store business savings?',
+            options: [
+              'In a separate bank or mobile money account for the business',
+              'Mixed with personal cash in a wallet',
+              'Hidden inside fabric cupboards'
+            ],
             answerIndex: 0,
-            explanation: 'External partners bring catalytic capital and expertise.'
+            explanation: 'Separate accounts keep savings secure and visible.'
           },
           {
             id: 'm3q1-3',
-            prompt: 'What should you clarify early with partners?',
-            options: ['Risk appetite, impact goals, and timelines', 'Logo placement', 'Travel itineraries'],
+            prompt: 'What is a practical first savings goal for a small shop?',
+            options: ['Cover at least one month of operating costs', 'Buy luxury décor', 'Double the rent payment'],
             answerIndex: 0,
-            explanation: 'Alignment on goals and risk appetite keeps structures efficient.'
+            explanation: 'Covering a month of costs creates a strong safety net.'
           },
           {
             id: 'm3q1-4',
-            prompt: 'How do you position Samriddhi in blended finance?',
-            options: ['As a convenor that brings the right partners together', 'As a passive observer', 'As a marketing channel only'],
+            prompt: 'How often should you review your savings progress?',
+            options: ['Weekly or monthly during bookkeeping', 'Only once a year', 'Never, if sales are steady'],
             answerIndex: 0,
-            explanation: 'Samriddhi convenes expertise, capital, and execution support.'
+            explanation: 'Regular reviews keep savings on track and encourage discipline.'
           },
           {
             id: 'm3q1-5',
-            prompt: 'When should you capture lessons learned?',
-            options: ['Throughout the deal cycle', 'Only after financial close', 'Only during annual reviews'],
+            prompt: 'Which habit makes saving automatic?',
+            options: [
+              'Moving a set percentage of each sale into savings',
+              'Waiting until the year ends to save',
+              'Borrowing money just to store it'
+            ],
             answerIndex: 0,
-            explanation: 'Continuous learning improves speed and quality for future deals.'
+            explanation: 'Automatic transfers ensure savings grow consistently.'
           }
         ]
       },
       {
         id: 'module-3-video-2',
         type: 'video',
-        title: 'Video 2 · Partnering for climate innovation',
+        title: 'Video 2 · Reinvestment & Growth',
         meta: '6 min',
         durationSeconds: 360,
-        description: 'Discover how to co-create solutions with fintechs, corporates, and governments.',
-        transcript: 'Collaborations succeed when incentives are aligned and value is shared across partners.',
-        videoId: VIDEO_ID
+        description:
+          'Learn how to reinvest profits into better tools, people, and marketing so your tailoring enterprise can grow steadily.',
+        transcript:
+          'We cover choosing smart upgrades, timing investments after analysing cash flow, and tracking the impact of each improvement.',
+        videoId: 'nyHq3C2gqbE'
       },
       {
         id: 'module-3-quiz-2',
         type: 'quiz',
-        title: 'Quiz 2 · Partnership design',
-        meta: '4 Qs',
-        description: 'Evaluate which partnership model fits each climate opportunity.',
+        title: 'Quiz 2 · Reinvestment & Growth Basics',
+        meta: '5 Qs',
+        description: 'Test how you plan reinvestment and growth activities using profits from tailoring services.',
         questions: [
           {
             id: 'm3q2-1',
-            prompt: 'What is the first step when exploring a partnership?',
-            options: ['Agree on the shared problem to solve', 'Negotiate marketing spend', 'Sign an NDA immediately'],
+            prompt: 'What is the main reason to reinvest profit into the business?',
+            options: [
+              'To improve capacity and future earnings',
+              'To increase personal spending',
+              'To avoid recording income'
+            ],
             answerIndex: 0,
-            explanation: 'Alignment on the problem keeps discussions focused.'
+            explanation: 'Reinvestment strengthens the business and supports long-term income.'
           },
           {
             id: 'm3q2-2',
-            prompt: 'How do you maintain momentum?',
-            options: ['Set short sprints with clear deliverables', 'Wait for annual planning cycles', 'Let partners lead without input'],
+            prompt: 'Which investment will most likely speed up production?',
+            options: ['Buying a faster sewing machine', 'Adding more decorations to the shop', 'Printing extra business cards only'],
             answerIndex: 0,
-            explanation: 'Short sprints keep teams engaged and accountable.'
+            explanation: 'Better equipment can increase output and service more clients.'
           },
           {
             id: 'm3q2-3',
-            prompt: 'What information should be captured in notes?',
-            options: ['Stakeholder commitments and blockers', 'Only successes', 'Only financial metrics'],
+            prompt: 'Before reinvesting, what should you review?',
+            options: ['Cash flow and upcoming expenses', 'Only your social media likes', 'Competitors’ personal lives'],
             answerIndex: 0,
-            explanation: 'Comprehensive notes ensure smooth handovers and learning.'
+            explanation: 'Understanding cash flow ensures you can afford the investment.'
           },
           {
             id: 'm3q2-4',
-            prompt: 'When should you revisit partnership economics?',
-            options: ['When assumptions or external factors shift', 'Never, once agreed', 'Only if the partner requests'],
+            prompt: 'How can you measure whether an investment worked?',
+            options: [
+              'Track changes in revenue, customers, or production speed',
+              'Ignore results once money is spent',
+              'Rely solely on guesses from friends'
+            ],
             answerIndex: 0,
-            explanation: 'Revisiting economics keeps the partnership sustainable.'
+            explanation: 'Measuring impact shows if the investment delivered value.'
+          },
+          {
+            id: 'm3q2-5',
+            prompt: 'Which growth activity often needs reinvestment?',
+            options: ['Training an assistant tailor', 'Cancelling all marketing', 'Closing the shop early every day'],
+            answerIndex: 0,
+            explanation: 'Training staff expands capacity and service quality.'
           }
         ]
       },
       {
         id: 'module-3-video-3',
         type: 'video',
-        title: 'Video 3 · Scaling sustainable products',
-        meta: '7 min',
-        durationSeconds: 420,
-        description: 'Translate pilots into scalable offerings with the right governance.',
-        transcript: 'Scaling requires product-market fit, risk alignment, and robust measurement systems.',
-        videoId: VIDEO_ID
+        title: 'Video 3 · Budget Planning',
+        meta: '6 min',
+        durationSeconds: 360,
+        description:
+          'Build a monthly budget that balances materials, wages, and savings while leaving room for reinvestment.',
+        transcript:
+          'We design a simple tailoring budget, review typical cost categories, and show how to adjust when sales change.',
+        videoId: 'tsxrN71uJ6c'
       },
       {
         id: 'module-3-quiz-3',
         type: 'quiz',
-        title: 'Quiz 3 · Go-to-market pulse',
+        title: 'Quiz 3 · Budgeting Basics',
         meta: '5 Qs',
-        description: 'Confirm that you can structure launches for climate-positive products.',
+        description: 'Confirm you can plan monthly expenses and keep cash flow stable for tailoring operations.',
         questions: [
           {
             id: 'm3q3-1',
-            prompt: 'What unlocks scale after a pilot succeeds?',
-            options: ['Clear governance and resourcing', 'Only marketing investment', 'Waiting for organic growth'],
+            prompt: 'What is the first step in creating a monthly budget?',
+            options: ['List expected income and regular expenses', 'Guess the total profit', 'Copy another business without checking'],
             answerIndex: 0,
-            explanation: 'Governance and resourcing make scale predictable.'
+            explanation: 'Knowing income and expenses helps you plan accurately.'
           },
           {
             id: 'm3q3-2',
-            prompt: 'How do you keep teams engaged post-launch?',
-            options: ['Share performance dashboards and next milestones', 'Let teams disengage until issues arise', 'Stop meetings once the launch is done'],
+            prompt: 'Which expense is variable for a tailor?',
+            options: ['Fabric purchased per order', 'Monthly shop rent', 'Business registration fee'],
             answerIndex: 0,
-            explanation: 'Visibility and milestones sustain energy for scale.'
+            explanation: 'Fabric costs rise or fall with the number of garments produced.'
           },
           {
             id: 'm3q3-3',
-            prompt: 'What should you do when a product underperforms?',
-            options: ['Review feedback, adjust positioning, and coach teams', 'Discontinue immediately', 'Ignore signals until year end'],
+            prompt: 'Why include savings in your budget?',
+            options: ['To make sure you set aside money before it is spent', 'To reduce reported revenue', 'To increase waste'],
             answerIndex: 0,
-            explanation: 'Iterating based on feedback keeps progress moving.'
+            explanation: 'Budgeting for savings keeps the habit consistent.'
           },
           {
             id: 'm3q3-4',
-            prompt: 'Which notes are most valuable to leadership?',
-            options: ['Insights on adoption, blockers, and client sentiment', 'Detailed travel logs', 'Unfiltered raw data only'],
+            prompt: 'How should you respond if expenses are higher than planned?',
+            options: ['Adjust spending or find ways to increase income', 'Ignore the difference', 'Stop tracking costs entirely'],
             answerIndex: 0,
-            explanation: 'Leadership needs actionable insights to guide investment.'
+            explanation: 'Taking action keeps the business on track financially.'
           },
           {
             id: 'm3q3-5',
-            prompt: 'Why link climate KPIs to incentives?',
-            options: ['To reinforce desired behaviours and accountability', 'To create extra admin', 'To signal it is optional'],
+            prompt: 'What tool helps you compare budgeted and actual spending?',
+            options: ['A simple monthly tracking sheet', 'Only a mental note', 'A locked storage trunk'],
             answerIndex: 0,
-            explanation: 'Incentives aligned to KPIs keep focus on climate outcomes.'
+            explanation: 'Tracking sheets provide visibility into performance versus plan.'
+          }
+        ]
+      },
+      {
+        id: 'module-3-quiz-4',
+        type: 'quiz',
+        title: 'Quiz 4 · Module 3 Test',
+        meta: '5 Qs',
+        description: 'Review Module 3 by applying savings, reinvestment, and budgeting concepts together.',
+        questions: [
+          {
+            id: 'm3q4-1',
+            prompt: 'A tailor saves ₹2,000 each month. What benefit does this provide after three slow weeks?',
+            options: ['Cash to cover wages and rent', 'Higher electricity usage', 'Instant profit increases without sales'],
+            answerIndex: 0,
+            explanation: 'Savings keep essential expenses covered when sales dip.'
+          },
+          {
+            id: 'm3q4-2',
+            prompt: 'Before buying a new stitching machine, what should the tailor confirm?',
+            options: ['There is enough saved money and the upgrade will boost output', 'Friends approve the colour', 'Customers will pay less'],
+            answerIndex: 0,
+            explanation: 'Checking affordability and impact prevents cash flow strain.'
+          },
+          {
+            id: 'm3q4-3',
+            prompt: 'Which line should appear in both the budget and bookkeeping records?',
+            options: ['Monthly thread and needle purchases', 'Personal holiday plans', 'Unrelated household gifts'],
+            answerIndex: 0,
+            explanation: 'Business supply costs must be tracked and planned for in both places.'
+          },
+          {
+            id: 'm3q4-4',
+            prompt: 'How can reinvestment and savings work together?',
+            options: [
+              'Use part of profits for savings and part for planned upgrades',
+              'Spend every rupee immediately',
+              'Stop saving when investing'
+            ],
+            answerIndex: 0,
+            explanation: 'Balancing savings and reinvestment keeps the business safe while growing.'
+          },
+          {
+            id: 'm3q4-5',
+            prompt: 'What should you do after comparing your budget with actual results?',
+            options: ['Adjust next month’s plan based on lessons learned', 'Ignore the numbers if profit exists', 'Erase records to start over'],
+            answerIndex: 0,
+            explanation: 'Adjusting plans ensures continuous improvement and control.'
           }
         ]
       }
@@ -853,7 +882,8 @@ function buildModules() {
     progressBar.appendChild(progressFill);
     const progressLabel = document.createElement('span');
     progressLabel.className = 'module-card__progress-label';
-    progressLabel.textContent = `0 / ${ITEMS_PER_MODULE} complete`;
+    const moduleItemCount = module.items.length;
+    progressLabel.textContent = `0 / ${moduleItemCount} complete`;
     progress.appendChild(progressBar);
     progress.appendChild(progressLabel);
     header.appendChild(progress);
@@ -863,7 +893,8 @@ function buildModules() {
     moduleProgressRefs.set(module.id, {
       fill: progressFill,
       label: progressLabel,
-      card
+      card,
+      total: moduleItemCount
     });
 
     const list = document.createElement('ul');
@@ -938,9 +969,10 @@ function updateProgressUI() {
     const progressRef = moduleProgressRefs.get(module.id);
     if (!progressRef) return;
     const moduleCompleted = module.items.filter((item) => state.completed[item.id]).length;
-    const ratio = moduleCompleted / ITEMS_PER_MODULE;
+    const total = progressRef.total || module.items.length || 1;
+    const ratio = moduleCompleted / total;
     progressRef.fill.style.width = `${Math.min(1, ratio) * 100}%`;
-    progressRef.label.textContent = `${moduleCompleted} / ${ITEMS_PER_MODULE} complete`;
+    progressRef.label.textContent = `${moduleCompleted} / ${total} complete`;
   });
 }
 
