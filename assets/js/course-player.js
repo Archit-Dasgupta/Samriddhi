@@ -1,7 +1,6 @@
 import { $, COURSE_STATE } from './modules/common.js';
 
 const VIDEO_ID = 'eqrSpQ_80-I';
-const ITEMS_PER_MODULE = 6;
 const AUTOPLAY_DELAY = 5000;
 const STORAGE_VERSION = 'v2';
 
@@ -97,7 +96,7 @@ const modulesData = [
           'Understand how to evaluate sustainability credentials inside core credit workflows.',
         transcript:
           'This lesson breaks down practical screening tools that integrate sustainability into credit decisions and client conversations.',
-        videoId: VIDEO_ID
+        videoId: '_9WYaBH-8CY'
       },
       {
         id: 'module-1-quiz-2',
@@ -151,18 +150,6 @@ const modulesData = [
             explanation: 'High-risk sectors without mitigation warrant additional scrutiny regardless of ticket size.'
           }
         ]
-      },
-      {
-        id: 'module-1-video-3',
-        type: 'video',
-        title: 'Video 3 · Building internal alignment',
-        meta: '7 min',
-        durationSeconds: 420,
-        description:
-          'Learn how to mobilise credit, coverage, and sustainability teams around one transition narrative.',
-        transcript:
-          'Alignment comes from shared scorecards, common language, and transparent decision pathways. Use this to secure buy-in across teams.',
-        videoId: VIDEO_ID
       },
       {
         id: 'module-1-quiz-3',
@@ -853,7 +840,8 @@ function buildModules() {
     progressBar.appendChild(progressFill);
     const progressLabel = document.createElement('span');
     progressLabel.className = 'module-card__progress-label';
-    progressLabel.textContent = `0 / ${ITEMS_PER_MODULE} complete`;
+    const moduleItemCount = module.items.length;
+    progressLabel.textContent = `0 / ${moduleItemCount} complete`;
     progress.appendChild(progressBar);
     progress.appendChild(progressLabel);
     header.appendChild(progress);
@@ -863,7 +851,8 @@ function buildModules() {
     moduleProgressRefs.set(module.id, {
       fill: progressFill,
       label: progressLabel,
-      card
+      card,
+      total: moduleItemCount
     });
 
     const list = document.createElement('ul');
@@ -938,9 +927,10 @@ function updateProgressUI() {
     const progressRef = moduleProgressRefs.get(module.id);
     if (!progressRef) return;
     const moduleCompleted = module.items.filter((item) => state.completed[item.id]).length;
-    const ratio = moduleCompleted / ITEMS_PER_MODULE;
+    const total = progressRef.total || module.items.length || 1;
+    const ratio = moduleCompleted / total;
     progressRef.fill.style.width = `${Math.min(1, ratio) * 100}%`;
-    progressRef.label.textContent = `${moduleCompleted} / ${ITEMS_PER_MODULE} complete`;
+    progressRef.label.textContent = `${moduleCompleted} / ${total} complete`;
   });
 }
 
