@@ -31,58 +31,17 @@ const modulesData = [
         questions: [
           {
             id: 'm1q1',
-            prompt: 'What is the biggest commercial reason banks are investing in green finance capabilities?',
-            options: [
-              'Clients increasingly expect sustainable products and advice',
-              'It is only mandated by regulators with heavy fines',
-              'It has no direct link to client expectations'
-            ],
-            answerIndex: 0,
-            explanation: 'Commercial advantage comes from meeting client expectations for climate-aligned solutions.'
+            prompt: 'If you stitch clothes only for your family, is it a business?',
+            options: ['Yes', 'No'],
+            answerIndex: 1,
+            explanation: 'A business provides goods or services to customers beyond your household in exchange for value.'
           },
           {
             id: 'm1q2',
-            prompt: 'Which combination best summarises the pressure for climate action?',
-            options: [
-              'Regulation, client demand, investor scrutiny',
-              'Technology, internal marketing, staff rotations',
-              'Branch network growth, customer delight, expense cuts'
-            ],
-            answerIndex: 0,
-            explanation: 'Regulators, clients, and investors collectively raise the standard for sustainable banking.'
-          },
-          {
-            id: 'm1q3',
-            prompt: 'Why does Samriddhi emphasise early wins in this module?',
-            options: [
-              'To build momentum and belief in a longer transition journey',
-              'Because the rest of the program is optional',
-              'To replace the need for executive sponsorship'
-            ],
-            answerIndex: 0,
-            explanation: 'Early momentum keeps teams invested and unlocks deeper strategic change later.'
-          },
-          {
-            id: 'm1q4',
-            prompt: 'How should bankers talk about climate opportunity with clients?',
-            options: [
-              'Connect risk mitigation with commercial upside',
-              'Focus on regulation only',
-              'Avoid mentioning climate unless asked'
-            ],
-            answerIndex: 0,
-            explanation: 'Linking risk and upside keeps the conversation practical and client-focused.'
-          },
-          {
-            id: 'm1q5',
-            prompt: 'What role do personal notes play in this program?',
-            options: [
-              'They surface insights to coaches and leaders',
-              'They are optional and not reviewed',
-              'They replace assessments'
-            ],
-            answerIndex: 0,
-            explanation: 'Notes help you capture ideas to review with coaches and leadership.'
+            prompt: 'What is one important rule in business?',
+            options: ['Spend more than you earn', 'Earn more than you spend'],
+            answerIndex: 1,
+            explanation: 'Earning more than you spend keeps the business sustainable and profitable.'
           }
         ]
       },
