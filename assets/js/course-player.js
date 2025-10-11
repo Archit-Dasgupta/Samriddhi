@@ -8,26 +8,26 @@ const modulesData = [
   {
     id: 'module-1',
     number: 1,
-    title: 'Setting the agenda',
+    title: 'Introduction, Initial investment & Costing',
     items: [
       {
         id: 'module-1-video-1',
         type: 'video',
-        title: 'Video 1 · Why green finance now?',
+        title: 'Video 1 · Introduction to business',
         meta: '5 min',
         durationSeconds: 300,
         description:
-          'Explore the market signals and regulatory shifts accelerating the transition to sustainable banking.',
+          'Walk through the foundational concepts that define a resilient business and the role finance plays in its early decisions.',
         transcript:
-          'Leaders across the industry are signalling that climate-positive finance is the new baseline. Use this lesson to anchor why the transformation is urgent and commercially vital.',
+          'This lesson covers what makes a business model work, how to frame value propositions, and which early actions set teams up for sustainable growth.',
         videoId: 'fZkAlgF77ak'
       },
       {
         id: 'module-1-quiz-1',
         type: 'quiz',
-        title: 'Quiz 1 · Key motivations',
+        title: 'Quiz 1 · Business Basics',
         meta: '5 Qs',
-        description: 'Check that you can articulate the drivers behind climate-aligned finance.',
+        description: 'Check that you can articulate core business concepts before moving into investments.',
         questions: [
           {
             id: 'm1q1',
@@ -89,21 +89,21 @@ const modulesData = [
       {
         id: 'module-1-video-2',
         type: 'video',
-        title: 'Video 2 · Principles of sustainable lending',
+        title: 'Video 2 · Investment & Costing',
         meta: '6 min',
         durationSeconds: 360,
         description:
-          'Understand how to evaluate sustainability credentials inside core credit workflows.',
+          'Learn how to evaluate investment options, compare costing scenarios, and select approaches that keep ventures viable.',
         transcript:
-          'This lesson breaks down practical screening tools that integrate sustainability into credit decisions and client conversations.',
+          'We unpack techniques for forecasting investment needs, weighing cost structures, and balancing short-term spends against long-term value.',
         videoId: '_9WYaBH-8CY'
       },
       {
         id: 'module-1-quiz-2',
         type: 'quiz',
-        title: 'Quiz 2 · Responsible lending check',
+        title: 'Quiz 2 · Investment & Costing Basics',
         meta: '4 Qs',
-        description: 'Apply the credit-screening principles to realistic client scenarios.',
+        description: 'Apply the investment and costing concepts to practical business scenarios.',
         questions: [
           {
             id: 'm1q2-1',
@@ -154,9 +154,9 @@ const modulesData = [
       {
         id: 'module-1-quiz-3',
         type: 'quiz',
-        title: 'Quiz 3 · Alignment readiness',
+        title: 'Quiz 3 · Module 1 Knowledge Test',
         meta: '5 Qs',
-        description: 'Ensure you can translate the alignment playbook into daily routines.',
+        description: 'Ensure you can translate Module 1’s key concepts into daily routines.',
         questions: [
           {
             id: 'm1q3-1',
