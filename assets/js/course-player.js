@@ -21,7 +21,7 @@ const modulesData = [
           'Explore the market signals and regulatory shifts accelerating the transition to sustainable banking.',
         transcript:
           'Leaders across the industry are signalling that climate-positive finance is the new baseline. Use this lesson to anchor why the transformation is urgent and commercially vital.',
-        videoId: VIDEO_ID
+        videoId: 'fZkAlgF77ak'
       },
       {
         id: 'module-1-quiz-1',
