@@ -220,183 +220,219 @@ const modulesData = [
   {
     id: 'module-2',
     number: 2,
-    title: 'Designing transition-ready portfolios',
+    title: 'Money Basics',
     items: [
       {
         id: 'module-2-video-1',
         type: 'video',
-        title: 'Video 1 · Mapping portfolio emissions',
-        meta: '6 min',
-        durationSeconds: 360,
+        title: 'Video 1 · Revenue, Cost & Profit',
+        meta: '5 min',
+        durationSeconds: 300,
         description:
-          'Learn how to identify hotspots in your lending book and set realistic decarbonisation goals.',
+          'Understand how revenue, cost, and profit connect so you can measure whether tailoring services are viable.',
         transcript:
-          'You will assess financed emissions, prioritise segments, and use data to guide strategic action.',
-        videoId: VIDEO_ID
+          'We break down basic income statements, highlight common tailoring expenses, and show how to calculate profit for small enterprises.',
+        videoId: 'zavQK5y5mgM'
       },
       {
         id: 'module-2-quiz-1',
         type: 'quiz',
-        title: 'Quiz 1 · Emissions focus',
+        title: 'Quiz 1 · Revenue, Cost & Profit Basics',
         meta: '4 Qs',
-        description: 'Validate your approach to measuring portfolio emissions.',
+        description: 'Check that you can compute revenue, costs, and profit for tailoring businesses.',
         questions: [
           {
             id: 'm2q1-1',
-            prompt: 'Which metric shows improvement when emissions intensity reduces?',
-            options: ['Emissions per financed rupee', 'Total number of branches', 'Employee satisfaction scores'],
+            prompt: 'If a tailor earns ₹5000 in sales and spends ₹3200 on materials and rent, what is the profit?',
+            options: ['₹1800', '₹3200', '₹5000'],
             answerIndex: 0,
-            explanation: 'Intensity measures allow fair comparison even as the book grows.'
+            explanation: 'Profit equals revenue minus total costs: 5000 - 3200 = 1800.'
           },
           {
             id: 'm2q1-2',
-            prompt: 'What is the first step after identifying a high-emitting sector?',
-            options: [
-              'Engage clients with transition pathways and financing options',
-              'Exit the sector immediately',
-              'Wait for regulatory guidance'
-            ],
+            prompt: 'Which of these is considered a fixed cost for a tailoring shop?',
+            options: ['Monthly shop rent', 'Thread used for each garment', 'Buttons per shirt'],
             answerIndex: 0,
-            explanation: 'Engagement turns insight into commercial opportunity.'
+            explanation: 'Rent does not change with the number of garments produced, so it is fixed.'
           },
           {
             id: 'm2q1-3',
-            prompt: 'Why track financed emissions annually?',
+            prompt: 'Why is tracking daily expenses important for tailors?',
             options: [
-              'To monitor progress and adjust capital allocation',
-              'Because spreadsheets require yearly updates',
-              'It is optional for climate strategies'
+              'It reveals if costs are eating into profit',
+              'It replaces the need to speak with customers',
+              'It increases fabric waste'
             ],
             answerIndex: 0,
-            explanation: 'Regular tracking keeps the portfolio aligned to climate commitments.'
+            explanation: 'Tracking expenses shows whether profits stay healthy and where savings are possible.'
           },
           {
             id: 'm2q1-4',
-            prompt: 'What data builds client trust?',
+            prompt: 'Which formula correctly calculates gross profit?',
             options: [
-              'Evidence-based benchmarking and scenario analysis',
-              'Unofficial market rumours',
-              'Generic marketing copy'
+              'Revenue – Cost of goods sold',
+              'Cost of goods sold – Revenue',
+              'Revenue + Operating expenses'
             ],
             answerIndex: 0,
-            explanation: 'Robust benchmarking demonstrates credibility and partnership.'
+            explanation: 'Gross profit is calculated as revenue minus the cost of goods sold.'
           }
         ]
       },
       {
         id: 'module-2-video-2',
         type: 'video',
-        title: 'Video 2 · Transition planning with clients',
-        meta: '7 min',
-        durationSeconds: 420,
+        title: 'Video 2 · Pricing & Managing Costs',
+        meta: '6 min',
+        durationSeconds: 360,
         description:
-          'Translate emissions insights into practical client roadmaps and financing structures.',
+          'Discover techniques tailors use to price garments competitively while controlling material and labour costs.',
         transcript:
-          'We review client archetypes, supportive instruments, and coaching tactics that move conversations forward.',
-        videoId: VIDEO_ID
+          'The lesson explores pricing formulas, negotiating with suppliers, and building cushions for seasonal demand.',
+        videoId: '0ye7zuSeuO8'
       },
       {
         id: 'module-2-quiz-2',
         type: 'quiz',
-        title: 'Quiz 2 · Client planning scenarios',
+        title: 'Quiz 2 · Pricing & Managing Costs Basics',
         meta: '5 Qs',
-        description: 'Practise advising clients on the next steps in their transition plans.',
+        description: 'Practise setting profitable prices and managing expenses in tailoring businesses.',
         questions: [
           {
             id: 'm2q2-1',
-            prompt: 'When a client hesitates due to cost, what should you do first?',
-            options: [
-              'Model blended finance options with clear payback',
-              'Suggest delaying action until regulation tightens',
-              'Shift the topic away from climate'
-            ],
+            prompt: 'A blouse costs ₹300 in fabric and ₹150 in labour. You want a 40% markup on cost. What selling price should you choose?',
+            options: ['₹630', '₹450', '₹180'],
             answerIndex: 0,
-            explanation: 'Showing blended options helps clients see commercial value.'
+            explanation: 'Total cost is 450. A 40% markup adds 180, making the price 630.'
           },
           {
             id: 'm2q2-2',
-            prompt: 'Who should own the transition scorecard?',
-            options: ['The client and banker jointly', 'Only the sustainability team', 'External consultants exclusively'],
+            prompt: 'Which action best controls variable costs?',
+            options: ['Buying thread in bulk to get discounts', 'Leaving machines on overnight', 'Ignoring supplier invoices'],
             answerIndex: 0,
-            explanation: 'Shared ownership keeps accountability clear and collaborative.'
+            explanation: 'Bulk purchasing at negotiated rates reduces variable cost per garment.'
           },
           {
             id: 'm2q2-3',
-            prompt: 'What unlocks faster approvals?',
-            options: ['Early engagement with risk partners', 'Submitting requests without context', 'Escalating after deals stall'],
+            prompt: 'Why is it important to include labour time in your pricing?',
+            options: [
+              'It ensures you pay yourself and staff fairly',
+              'It has no impact on profitability',
+              'It only matters for wholesale orders'
+            ],
             answerIndex: 0,
-            explanation: 'Risk partners need context early to support climate-forward deals.'
+            explanation: 'Pricing that ignores labour underestimates true costs and reduces profit.'
           },
           {
             id: 'm2q2-4',
-            prompt: 'How do you keep momentum between meetings?',
-            options: ['Capture actions and blockers in shared notes', 'Wait for clients to reach out', 'Pause until the next review'],
+            prompt: 'How can tailors respond to seasonal drops in demand?',
+            options: ['Offer promotions or diversify products', 'Increase rent payments', 'Ignore the trend until it passes'],
             answerIndex: 0,
-            explanation: 'Shared notes maintain continuity and accountability.'
+            explanation: 'Promotions or new products help sustain cash flow when demand dips.'
           },
           {
             id: 'm2q2-5',
-            prompt: 'What indicates a client is ready for transition finance?',
-            options: [
-              'They have defined metrics, investments, and executive sponsorship',
-              'They only asked for marketing collateral',
-              'They prefer to delay commitments indefinitely'
-            ],
+            prompt: 'Which of these is an example of managing overhead costs?',
+            options: ['Sharing workspace with another tailor', 'Buying unnecessary accessories', 'Ignoring electricity bills'],
             answerIndex: 0,
-            explanation: 'Clear metrics and sponsorship show readiness for financing support.'
+            explanation: 'Sharing workspace spreads rent and utilities, reducing overhead per business.'
           }
         ]
       },
       {
         id: 'module-2-video-3',
         type: 'video',
-        title: 'Video 3 · Tracking climate impact with clients',
+        title: 'Video 3 · Introduction to Bookkeeping',
         meta: '6 min',
         durationSeconds: 360,
         description:
-          'Design scorecards that keep clients motivated and demonstrate tangible climate impact.',
+          'Learn the basics of recording tailoring transactions so you can track cash flow with confidence.',
         transcript:
-          'Use impact scorecards to keep stakeholders aligned and highlight both risk reduction and opportunity creation.',
-        videoId: VIDEO_ID
+          'We cover simple record-keeping tools, daily cash logs, and tips for separating business and personal expenses.',
+        videoId: 'aARw7kw7daA'
       },
       {
         id: 'module-2-quiz-3',
         type: 'quiz',
-        title: 'Quiz 3 · Impact measurement',
+        title: 'Quiz 3 · Bookkeeping Basics',
         meta: '4 Qs',
-        description: 'Show that you can measure impact and coach clients through the data.',
+        description: 'Confirm that you can record tailoring transactions accurately and stay organised.',
         questions: [
           {
             id: 'm2q3-1',
-            prompt: 'What should every impact scorecard include?',
-            options: [
-              'Baseline, target, and actual performance metrics',
-              'Only qualitative stories',
-              'A summary of marketing campaigns'
-            ],
+            prompt: 'Which book should track every sale and expense each day?',
+            options: ['Cash book', 'Guest book', 'Inventory only'],
             answerIndex: 0,
-            explanation: 'Clear metrics prove progress and reveal gaps.'
+            explanation: 'A cash book records daily cash inflows and outflows.'
           },
           {
             id: 'm2q3-2',
-            prompt: 'How often should you review client impact data?',
-            options: ['At agreed intervals aligned to financing milestones', 'Once at the end of the year', 'Only when regulators request it'],
+            prompt: 'Why should business and personal expenses be recorded separately?',
+            options: [
+              'It shows the true performance of the business',
+              'It doubles tax payments',
+              'It hides profits'
+            ],
             answerIndex: 0,
-            explanation: 'Regular reviews keep financing aligned to outcomes.'
+            explanation: 'Separating expenses clarifies business profitability and simplifies reporting.'
           },
           {
             id: 'm2q3-3',
-            prompt: 'What signals a need to recalibrate support?',
-            options: ['Falling behind on targets or unexpected risks', 'A successful marketing campaign', 'A new branch opening'],
+            prompt: 'What document summarises assets, liabilities, and owner’s equity?',
+            options: ['Balance sheet', 'Income statement', 'Marketing plan'],
             answerIndex: 0,
-            explanation: 'Target slippage or new risks need action to stay on track.'
+            explanation: 'The balance sheet captures what the business owns and owes at a point in time.'
           },
           {
             id: 'm2q3-4',
-            prompt: 'How do you celebrate progress?',
-            options: ['Share stories and data across client and internal teams', 'Keep results private', 'Wait for formal awards'],
+            prompt: 'What helps avoid forgetting to record sales later?',
+            options: ['Writing entries immediately after each transaction', 'Only recording weekly totals', 'Keeping receipts in pockets'],
             answerIndex: 0,
-            explanation: 'Celebrating progress sustains motivation and visibility.'
+            explanation: 'Timely entries ensure accurate records and reduce errors.'
+          }
+        ]
+      },
+      {
+        id: 'module-2-quiz-4',
+        type: 'quiz',
+        title: 'Quiz 4 · Module 2 Test',
+        meta: '5 Qs',
+        description: 'Review all Module 2 concepts with a short knowledge check covering money basics.',
+        questions: [
+          {
+            id: 'm2q4-1',
+            prompt: 'Which statement best defines profit?',
+            options: ['Money left after paying all business expenses', 'Total cash collected from customers', 'Loans taken from the bank'],
+            answerIndex: 0,
+            explanation: 'Profit is the amount remaining after covering every expense.'
+          },
+          {
+            id: 'm2q4-2',
+            prompt: 'What is the primary reason to set aside money for savings each month?',
+            options: ['To handle emergencies or invest in growth', 'To increase fabric waste', 'To reduce recorded revenue'],
+            answerIndex: 0,
+            explanation: 'Savings provide a buffer for emergencies and future investments.'
+          },
+          {
+            id: 'm2q4-3',
+            prompt: 'When reviewing prices, which number should you compare against costs?',
+            options: ['Selling price per item', 'Number of employees', 'Shop size'],
+            answerIndex: 0,
+            explanation: 'Comparing selling price to total cost shows if each item earns a profit.'
+          },
+          {
+            id: 'm2q4-4',
+            prompt: 'Why is keeping receipts important for bookkeeping?',
+            options: ['They support expense records during reviews', 'They increase clutter only', 'They replace invoices entirely'],
+            answerIndex: 0,
+            explanation: 'Receipts verify entries and make audits or reviews easier.'
+          },
+          {
+            id: 'm2q4-5',
+            prompt: 'A tailor negotiates lower fabric prices. Which financial metric improves if sales stay the same?',
+            options: ['Profit margin', 'Number of customers', 'Shop location'],
+            answerIndex: 0,
+            explanation: 'Lower costs with steady sales increase the profit margin.'
           }
         ]
       }
