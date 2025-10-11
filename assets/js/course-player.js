@@ -61,52 +61,22 @@ const modulesData = [
         id: 'module-1-quiz-2',
         type: 'quiz',
         title: 'Quiz 2 · Investment & Costing Basics',
-        meta: '4 Qs',
+        meta: '2 Qs',
         description: 'Apply the investment and costing concepts to practical business scenarios.',
         questions: [
           {
             id: 'm1q2-1',
-            prompt: 'Which factor is most important when assessing a client’s transition plan?',
-            options: [
-              'Clear interim targets tied to capital deployment',
-              'Number of pages in the sustainability report',
-              'Marketing commitments without metrics'
-            ],
+            prompt: 'Which of these is a fixed cost?',
+            options: ['Sewing machine', 'Cloth'],
             answerIndex: 0,
-            explanation: 'Targets that link to capital allocation signal credible transition plans.'
+            explanation: 'A sewing machine is a one-time purchase that does not change with the number of garments you stitch.'
           },
           {
             id: 'm1q2-2',
-            prompt: 'How should green finance teams partner with risk teams?',
-            options: [
-              'Share playbooks and review material exposures together',
-              'Work independently to avoid slowing deals',
-              'Wait for annual reviews to collaborate'
-            ],
-            answerIndex: 0,
-            explanation: 'Joint reviews help align risk appetite with climate ambition in real time.'
-          },
-          {
-            id: 'm1q2-3',
-            prompt: 'What is the best next step when a client lacks emissions data?',
-            options: [
-              'Offer tools or partners to help establish a baseline',
-              'Decline the relationship immediately',
-              'Ignore the data gap until regulation forces disclosure'
-            ],
-            answerIndex: 0,
-            explanation: 'Supporting clients with baselining positions you as a partner in their transition.'
-          },
-          {
-            id: 'm1q2-4',
-            prompt: 'When should a deal be flagged for enhanced review?',
-            options: [
-              'When exposure to high-risk sectors is material and lacks mitigation',
-              'Whenever a client mentions climate strategy',
-              'Only if the loan is over a certain ticket size'
-            ],
-            answerIndex: 0,
-            explanation: 'High-risk sectors without mitigation warrant additional scrutiny regardless of ticket size.'
+            prompt: 'If Meena buys a sewing machine for ₹10,000 and spends ₹2,000 on cloth, what is her total cost?',
+            options: ['₹8,000', '₹12,000'],
+            answerIndex: 1,
+            explanation: 'Adding the fixed cost (₹10,000) and the variable cost (₹2,000) gives a total cost of ₹12,000.'
           }
         ]
       },
