@@ -9,18 +9,34 @@
 <body data-page="login">
   <div id="header-placeholder"></div>
 
-  <main class="container" id="page-login">
-    <section class="login card">
-      <h2>Login or Register</h2>
-      <p class="muted">Enter your mobile number to continue</p>
-      <div class="phone-input">
-        <div class="phone-cc">+91</div>
-        <input id="phoneNumber" inputmode="numeric" pattern="[0-9]*" maxlength="10" placeholder="0000000000" aria-label="Phone number"/>
-      </div>
-      <button id="btnProceedPhone" class="btn primary wide">Continue</button>
-      <p class="tiny muted">Demo: any 10-digit number works.</p>
-      <div id="login_msg" class="tiny muted" role="alert"></div>
-    </section>
+  <main id="page-login">
+    <div class="container login-shell">
+      <section class="card login-panel" aria-labelledby="loginTitle">
+        <span class="eyebrow">Access Samriddhi</span>
+        <h1 id="loginTitle">Login or register in seconds</h1>
+        <p class="muted">Enter your mobile number and we will tailor lessons, reminders and tools for your boutique.</p>
+        <div class="phone-input">
+          <div class="phone-cc">+91</div>
+          <input id="phoneNumber" inputmode="numeric" pattern="[0-9]*" maxlength="10" placeholder="0000000000" aria-label="Phone number"/>
+        </div>
+        <button id="btnProceedPhone" class="btn primary wide">Continue</button>
+        <p class="tiny muted">Demo: any 10-digit number works.</p>
+        <div id="login_msg" class="tiny muted" role="alert"></div>
+      </section>
+      <aside class="login-aside" aria-labelledby="loginHighlights">
+        <span class="eyebrow">Why founders choose us</span>
+        <h2 id="loginHighlights">Premium support for boutique owners</h2>
+        <ul class="login-perks">
+          <li><strong>Guided onboarding:</strong> Personal coach explains every step over WhatsApp.</li>
+          <li><strong>Business-ready tools:</strong> Pricing, cash flow and fabric planners built for Indian tailors.</li>
+          <li><strong>Banking within reach:</strong> Compare savings, insurance and loans without leaving the app.</li>
+        </ul>
+        <div class="login-quote">
+          “I opened my first overdraft confidently because Samriddhi coached me through the paperwork.”
+          <cite>— Rekha, Jalgaon</cite>
+        </div>
+      </aside>
+    </div>
   </main>
 
   <div id="footer-placeholder"></div>

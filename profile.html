@@ -9,27 +9,46 @@
 <body data-page="profile">
   <div id="header-placeholder"></div>
 
-  <main class="container" id="page-profile">
-    <section class="card">
-      <h2>Your Profile</h2>
-      <p class="muted">Manage your details. Stored in your browser for demo purposes.</p>
-      <div class="grid2" style="gap:8px">
-        <label>Phone (read-only)<input id="prof_phone" disabled/></label>
-        <label>Name<input id="prof_name" placeholder="Your name"/></label>
-        <label>Village / City<input id="prof_city" placeholder="Your town"/></label>
-        <label>Occupation<input id="prof_job" placeholder="e.g., Tailor"/></label>
-        <label>Language
-          <select id="prof_lang"><option>English</option><option>Hindi</option><option>Marathi</option></select>
-        </label>
-        <label>Change password<input id="prof_pw" type="password" placeholder="New password"/></label>
-      </div>
-      <div class="tiny muted">Literacy: <span id="prof_lit">—</span> • Course progress: <span id="prof_prog">0%</span></div>
-      <div style="margin-top:12px; display:flex; gap:8px; align-items:center">
-        <button id="prof_save" class="btn primary">Save</button>
-        <button id="prof_logout" class="btn ghost">Log out</button>
-        <span id="prof_msg" class="muted"></span>
-      </div>
-    </section>
+  <main id="page-profile">
+    <div class="container profile-shell">
+      <header class="card profile-hero" aria-labelledby="profileTitle">
+        <span class="eyebrow">Your account</span>
+        <h1 id="profileTitle">Keep your Samriddhi profile current</h1>
+        <p>Up-to-date details help your coach personalise nudges, financing offers and lesson plans.</p>
+        <div class="profile-metrics">
+          <div class="profile-metric">
+            <span>Literacy level</span>
+            <strong id="prof_lit">—</strong>
+          </div>
+          <div class="profile-metric">
+            <span>Course progress</span>
+            <strong id="prof_prog">0%</strong>
+          </div>
+        </div>
+      </header>
+
+      <section class="card profile-card" aria-labelledby="profileFormTitle">
+        <div class="profile-card__head">
+          <h2 id="profileFormTitle">Profile preferences</h2>
+          <p class="muted">Manage your details. Stored privately in your browser for demo purposes.</p>
+        </div>
+        <div class="profile-grid">
+          <label>Phone (read-only)<input id="prof_phone" disabled/></label>
+          <label>Name<input id="prof_name" placeholder="Your name"/></label>
+          <label>Village / City<input id="prof_city" placeholder="Your town"/></label>
+          <label>Occupation<input id="prof_job" placeholder="e.g., Tailor"/></label>
+          <label>Language
+            <select id="prof_lang"><option>English</option><option>Hindi</option><option>Marathi</option></select>
+          </label>
+          <label>Change password<input id="prof_pw" type="password" placeholder="New password"/></label>
+        </div>
+        <div class="profile-actions">
+          <button id="prof_save" class="btn primary">Save</button>
+          <button id="prof_logout" class="btn ghost">Log out</button>
+          <span id="prof_msg" class="muted profile-feedback"></span>
+        </div>
+      </section>
+    </div>
   </main>
 
   <div id="footer-placeholder"></div>
