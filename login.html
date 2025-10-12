@@ -9,16 +9,26 @@
 <body data-page="login">
   <div id="header-placeholder"></div>
 
-  <main class="container" id="page-login">
-    <section class="login card">
-      <h2>Login or Register</h2>
-      <p class="muted">Enter your mobile number to continue</p>
+  <main class="page-auth" id="page-login">
+    <section class="login card glass-card">
+      <header class="login-head">
+        <span class="eyebrow">Account access</span>
+        <h1>Welcome back to Samriddhi</h1>
+        <p class="muted">Sign in with your mobile number to pick up your lessons and coaching conversations.</p>
+      </header>
       <div class="phone-input">
         <div class="phone-cc">+91</div>
         <input id="phoneNumber" inputmode="numeric" pattern="[0-9]*" maxlength="10" placeholder="0000000000" aria-label="Phone number"/>
       </div>
       <button id="btnProceedPhone" class="btn primary wide">Continue</button>
-      <p class="tiny muted">Demo: any 10-digit number works.</p>
+      <div class="login-foot">
+        <p class="tiny muted">Demo tip: any 10-digit number works for this prototype.</p>
+        <ul class="login-perks">
+          <li>Syncs your progress across devices instantly</li>
+          <li>Unlocks voice support from your Samriddhi coach</li>
+          <li>Personalised tools based on your tailoring goals</li>
+        </ul>
+      </div>
       <div id="login_msg" class="tiny muted" role="alert"></div>
     </section>
   </main>

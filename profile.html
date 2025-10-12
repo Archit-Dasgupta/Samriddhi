@@ -9,25 +9,48 @@
 <body data-page="profile">
   <div id="header-placeholder"></div>
 
-  <main class="container" id="page-profile">
-    <section class="card">
-      <h2>Your Profile</h2>
-      <p class="muted">Manage your details. Stored in your browser for demo purposes.</p>
-      <div class="grid2" style="gap:8px">
-        <label>Phone (read-only)<input id="prof_phone" disabled/></label>
-        <label>Name<input id="prof_name" placeholder="Your name"/></label>
-        <label>Village / City<input id="prof_city" placeholder="Your town"/></label>
-        <label>Occupation<input id="prof_job" placeholder="e.g., Tailor"/></label>
-        <label>Language
-          <select id="prof_lang"><option>English</option><option>Hindi</option><option>Marathi</option></select>
-        </label>
-        <label>Change password<input id="prof_pw" type="password" placeholder="New password"/></label>
-      </div>
-      <div class="tiny muted">Literacy: <span id="prof_lit">—</span> • Course progress: <span id="prof_prog">0%</span></div>
-      <div style="margin-top:12px; display:flex; gap:8px; align-items:center">
-        <button id="prof_save" class="btn primary">Save</button>
-        <button id="prof_logout" class="btn ghost">Log out</button>
-        <span id="prof_msg" class="muted"></span>
+  <main class="page-auth page-profile" id="page-profile">
+    <section class="profile card glass-card">
+      <header class="profile-head">
+        <span class="eyebrow">Personal hub</span>
+        <h1>Tailor your Samriddhi experience</h1>
+        <p class="muted">Refresh your details to keep receiving the right language support, pricing tools and financing suggestions.</p>
+      </header>
+      <div class="profile-body">
+        <div class="profile-form">
+          <div class="profile-grid grid2">
+            <label>Phone (read-only)<input id="prof_phone" disabled/></label>
+            <label>Name<input id="prof_name" placeholder="Your name"/></label>
+            <label>Village / City<input id="prof_city" placeholder="Your town"/></label>
+            <label>Occupation<input id="prof_job" placeholder="e.g., Tailor"/></label>
+            <label>Language
+              <select id="prof_lang"><option>English</option><option>Hindi</option><option>Marathi</option></select>
+            </label>
+            <label>Change password<input id="prof_pw" type="password" placeholder="New password"/></label>
+          </div>
+          <div class="profile-actions">
+            <button id="prof_save" class="btn primary">Save changes</button>
+            <button id="prof_logout" class="btn ghost">Log out</button>
+            <span id="prof_msg" class="muted"></span>
+          </div>
+        </div>
+        <aside class="profile-summary">
+          <div class="profile-summary__card">
+            <span class="profile-chip">Your growth story</span>
+            <h2>Progress snapshot</h2>
+            <p class="muted">Complete your profile to unlock advanced toolkits, bank offers and language specific tips.</p>
+            <ul class="profile-stats">
+              <li>
+                <span>Literacy track</span>
+                <strong id="prof_lit">—</strong>
+              </li>
+              <li>
+                <span>Course progress</span>
+                <strong id="prof_prog">0%</strong>
+              </li>
+            </ul>
+          </div>
+        </aside>
       </div>
     </section>
   </main>
