@@ -91,15 +91,19 @@
             <p data-i18n="banking.fd.calc.copy">Enter amount and pick a plan. Numbers update instantly.</p>
           </div>
           <div class="field-grid">
-            <label data-i18n="banking.fd.calc.amount">Amount (₹)<input id="invAmount" type="number" value="100000"/></label>
-            <label data-i18n="banking.fd.calc.sr">Sr. citizen?
+            <label>
+              <span data-i18n="banking.fd.calc.amount">Amount (₹)</span><input id="invAmount" type="number" value="100000"/>
+            </label>
+            <label>
+              <span data-i18n="banking.fd.calc.sr">Sr. citizen?</span>
               <select id="srCitizen">
                 <option value="No" data-i18n="banking.fd.calc.sr.no">No</option>
                 <option value="Yes" data-i18n="banking.fd.calc.sr.yes">Yes</option>
               </select>
             </label>
           </div>
-          <label data-i18n="banking.fd.calc.plan">Plan (tenure + rate)
+          <label>
+            <span data-i18n="banking.fd.calc.plan">Plan (tenure + rate)</span>
             <select id="tenurePick">
               <option value="60|8.2" data-i18n="banking.fd.calc.option60">5 years • 8.2% p.a.</option>
               <option value="36|7.6" data-i18n="banking.fd.calc.option36">3 years • 7.6% p.a.</option>
@@ -164,8 +168,12 @@
             <p data-i18n="banking.rd.calc.copy">Enter your monthly amount and number of months.</p>
           </div>
           <div class="field-grid">
-            <label data-i18n="banking.rd.calc.amount">Monthly deposit (₹)<input id="rd_amt" type="number" value="2000"/></label>
-            <label data-i18n="banking.rd.calc.tenureInput">Tenure (months)<input id="rd_months" type="number" value="24"/></label>
+            <label>
+              <span data-i18n="banking.rd.calc.amount">Monthly deposit (₹)</span><input id="rd_amt" type="number" value="2000"/>
+            </label>
+            <label>
+              <span data-i18n="banking.rd.calc.tenureInput">Tenure (months)</span><input id="rd_months" type="number" value="24"/>
+            </label>
           </div>
           <div class="highlight-box">
             <span class="muted" data-i18n="banking.rd.calc.output">You receive at the end</span>
@@ -263,30 +271,48 @@
           <form class="call-form card-soft" id="loan-call" action="javascript:void(0);" novalidate>
             <h3 data-i18n="banking.loans.form.title">Request a call</h3>
             <p class="muted" data-i18n="banking.loans.form.copy">Fill these quick fields. We will speak in your preferred language.</p>
-            <label data-i18n="banking.loans.form.name">Full name<input type="text" placeholder="e.g. Aisha Khan" required/></label>
-            <label data-i18n="banking.loans.form.phone">Phone number<input type="tel" placeholder="10-digit mobile" required/></label>
-            <label data-i18n="banking.loans.form.requirement">Loan requirement<select required>
+            <label>
+              <span data-i18n="banking.loans.form.name">Full name</span><input type="text" placeholder="e.g. Aisha Khan" required/>
+            </label>
+            <label>
+              <span data-i18n="banking.loans.form.phone">Phone number</span><input type="tel" placeholder="10-digit mobile" required/>
+            </label>
+            <label>
+              <span data-i18n="banking.loans.form.requirement">Loan requirement</span><select required>
               <option value="" data-i18n="banking.loans.form.optionSelect">Select loan type</option>
               <option data-i18n="banking.loans.table.rowHome">Home improvement</option>
               <option data-i18n="banking.loans.table.rowPersonal">Personal needs</option>
               <option data-i18n="banking.loans.table.rowTwoWheeler">Two wheeler</option>
               <option data-i18n="banking.loans.table.rowEducation">Education</option>
-            </select></label>
-            <label data-i18n="banking.loans.form.city">City or village<input type="text" placeholder="Your location"/></label>
+            </select>
+            </label>
+            <label>
+              <span data-i18n="banking.loans.form.city">City or village</span><input type="text" placeholder="Your location"/>
+            </label>
             <button class="btn primary" type="submit" data-i18n="banking.loans.form.submit">Submit request</button>
             <div class="tiny muted" data-i18n="banking.loans.form.note">We call within one working day and never share your data.</div>
           </form>
           <div class="calc-card card-soft">
             <h3 data-i18n="banking.loans.emi.title">Quick EMI sense-check</h3>
             <div class="field-grid">
-              <label data-i18n="banking.loans.emi.amount">Loan amount (₹)<input id="loan_amt" type="number" value="25000"/></label>
-              <label data-i18n="banking.loans.emi.tenure">Tenure (months)<input id="loan_tenure" type="number" value="12"/></label>
+              <label>
+                <span data-i18n="banking.loans.emi.amount">Loan amount (₹)</span><input id="loan_amt" type="number" value="25000"/>
+              </label>
+              <label>
+                <span data-i18n="banking.loans.emi.tenure">Tenure (months)</span><input id="loan_tenure" type="number" value="12"/>
+              </label>
             </div>
             <div class="field-grid">
-              <label data-i18n="banking.loans.emi.rate">Rate p.a. (%)<input id="loan_rate" type="number" value="20"/></label>
-              <label data-i18n="banking.loans.emi.income">Monthly income (₹)<input id="loan_income" type="number" value="15000"/></label>
+              <label>
+                <span data-i18n="banking.loans.emi.rate">Rate p.a. (%)</span><input id="loan_rate" type="number" value="20"/>
+              </label>
+              <label>
+                <span data-i18n="banking.loans.emi.income">Monthly income (₹)</span><input id="loan_income" type="number" value="15000"/>
+              </label>
             </div>
-            <label data-i18n="banking.loans.emi.current">Existing EMIs (₹)<input id="loan_emi" type="number" value="0"/></label>
+            <label>
+              <span data-i18n="banking.loans.emi.current">Existing EMIs (₹)</span><input id="loan_emi" type="number" value="0"/>
+            </label>
             <div class="highlight-box">
               <span class="muted" data-i18n="banking.loans.emi.output">Estimated EMI</span>
               <strong id="emi_out">₹—</strong>
