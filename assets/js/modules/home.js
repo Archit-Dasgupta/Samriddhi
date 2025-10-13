@@ -67,8 +67,8 @@ const homeTranslations = {
     en: 'Now with trusted finance partners',
   },
   'home.banking.title': {
-    mr: 'बँकिंग नवीन: समृद्धीमध्येच कर्ज, विमा आणि बचत तुलना करा.',
-    en: 'Banking NEW: compare loans, insurance & savings inside Samriddhi.',
+    mr: 'बँकिंग लवकरच येत आहे: समृद्धीमध्येच कर्ज, विमा आणि बचत तुलना करा.',
+    en: 'Banking coming soon: compare loans, insurance & savings inside Samriddhi.',
   },
   'home.banking.copy': {
     mr: 'महिलांसाठी अनुकूल बँका आणि एनबीएफसीकडून निवडक ऑफर्स, सुलभ ऑनबोर्डिंग आणि परतफेड स्मरणपत्रे — हे सर्व अॅपमध्येच मिळवा.',

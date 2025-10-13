@@ -32,7 +32,7 @@ const partialFallbacks = {
     <nav class="nav-right" id="navRight">
       <a class="nav-link" data-route="home" href="home.html" data-i18n="header.nav.home">Home</a>
       <a class="nav-link" data-route="modules" href="modules.html" data-i18n="header.nav.modules">Programs</a>
-      <a class="nav-link" data-route="banking" href="banking.html" data-i18n="header.nav.banking">Banking <span class="chip-new">NEW</span></a>
+      <a class="nav-link" data-route="banking" href="banking.html" data-i18n="header.nav.banking">Banking <span class="chip-new">COMING SOON</span></a>
       <a class="nav-link" data-route="toolkits" href="toolkits.html" data-i18n="header.nav.toolkit">Toolkit</a>
       <a id="navProfile" class="nav-link hidden" data-route="profile" href="profile.html" data-i18n="header.nav.profile">Profile</a>
       <button id="btnToggleLang" type="button" class="btn ghost small" aria-label="Switch language to Marathi" aria-pressed="false" data-active-lang="en" data-i18n="lang.toggle.label">मराठी</button>
@@ -117,8 +117,8 @@ const setupHeader = (page) => {
       en: 'Programs',
     },
     'header.nav.banking': {
-      mr: 'बँकिंग <span class="chip-new">नवीन</span>',
-      en: 'Banking <span class="chip-new">NEW</span>',
+      mr: 'बँकिंग <span class="chip-new">लवकरच येत आहे</span>',
+      en: 'Banking <span class="chip-new">COMING SOON</span>',
     },
     'header.nav.toolkit': {
       mr: 'साधनपेटी',
