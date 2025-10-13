@@ -165,6 +165,7 @@ const initializePage = (page) => {
     case 'deposits':
     case 'open-account':
     case 'loan':
+    case 'savings-guide':
       initBanking(page);
       break;
     case 'toolkits':

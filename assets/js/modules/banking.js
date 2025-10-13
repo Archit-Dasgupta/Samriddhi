@@ -702,6 +702,138 @@ const bankingTranslations = {
     mr: 'ठेवीच्या योजना पाहा',
     en: 'See deposit plans',
   },
+  'savings.hero.eyebrow': {
+    mr: 'बचत खाते',
+    en: 'Savings accounts',
+  },
+  'savings.hero.title': {
+    mr: 'तुमचे खाते उघडण्याची सोपी पावले',
+    en: 'Easy steps to open your account',
+  },
+  'savings.hero.copy': {
+    mr: 'फॉर्म भरण्यापूर्वी हे मार्गदर्शक वापरा. भाषा साधी ठेवतो आणि कुठे अडकलात तर आम्ही फोनवर मदत करतो.',
+    en: 'Use this guide before filling the form. We keep the language simple and support you on call if you get stuck.',
+  },
+  'savings.hero.ctaPrimary': {
+    mr: 'अर्ज फॉर्मकडे जा',
+    en: 'Go to application form',
+  },
+  'savings.hero.ctaSecondary': {
+    mr: 'बँकिंग हबकडे परत जा',
+    en: 'Back to banking hub',
+  },
+  'savings.hero.cardTitle': {
+    mr: 'तुम्हाला काय मिळते',
+    en: 'What you get',
+  },
+  'savings.hero.cardPointOne': {
+    mr: 'पहिल्या ६ महिन्यांसाठी शून्य शिल्लक',
+    en: 'Zero balance for first 6 months',
+  },
+  'savings.hero.cardPointTwo': {
+    mr: 'पासबुक आणि एसएमएस मराठी/हिंदीमध्ये',
+    en: 'Passbook and SMS in Marathi / Hindi',
+  },
+  'savings.hero.cardPointThree': {
+    mr: 'घरपोच कार्ड वितरण',
+    en: 'Doorstep card delivery',
+  },
+  'savings.steps.title': {
+    mr: 'ही तीन सोपी पावले अनुसरा',
+    en: 'Follow these three simple steps',
+  },
+  'savings.steps.one.number': {
+    mr: '१',
+    en: '1',
+  },
+  'savings.steps.one.title': {
+    mr: 'कागदपत्रे तयार ठेवा',
+    en: 'Keep documents ready',
+  },
+  'savings.steps.one.copy': {
+    mr: 'आधार, पॅन (किंवा मतदार ओळखपत्र) आणि एक फोटो. दुकान असल्यास एखाद्या बिल किंवा परवान्याची प्रत ठेवा.',
+    en: 'Aadhaar, PAN (or voter ID) and one photo. For shop owners, carry a bill or license copy.',
+  },
+  'savings.steps.two.number': {
+    mr: '२',
+    en: '2',
+  },
+  'savings.steps.two.title': {
+    mr: 'लहान फॉर्म भरा',
+    en: 'Fill the short form',
+  },
+  'savings.steps.two.copy': {
+    mr: 'तुमचे नाव, गाव, फोन आणि प्रारंभिक ठेव शेअर करा. आमचा कोच पुष्टीसाठी कॉल करतो.',
+    en: 'Share your name, village, phone and initial deposit. Our coach calls to confirm.',
+  },
+  'savings.steps.three.number': {
+    mr: '३',
+    en: '3',
+  },
+  'savings.steps.three.title': {
+    mr: 'कोचसोबत प्रक्रिया पूर्ण करा',
+    en: 'Finish with a coach',
+  },
+  'savings.steps.three.copy': {
+    mr: 'स्वाक्षरी आणि पासबुक देण्यासाठी आम्ही व्हिडिओ किंवा घरपोच भेट ठरवतो.',
+    en: 'We schedule video or doorstep visit to collect signature and deliver passbook.',
+  },
+  'savings.benefits.title': {
+    mr: 'ग्रामीण महिला उद्योजिकांसाठी डिझाइन केलेले फायदे',
+    en: 'Benefits designed for rural women entrepreneurs',
+  },
+  'savings.benefits.pointOne': {
+    mr: 'स्टेटमेंटची ओळीनुसार समजावणारे व्हॉइस नोट्स',
+    en: 'Voice notes explain statements line by line',
+  },
+  'savings.benefits.pointTwo': {
+    mr: 'निवडक गावांमध्ये रोकड उचल सेवा उपलब्ध',
+    en: 'Cash pickup service available in select villages',
+  },
+  'savings.benefits.pointThree': {
+    mr: 'पंधरवड्याला डिजिटल पेमेंटवर गट प्रशिक्षण',
+    en: 'Group training on digital payments every fortnight',
+  },
+  'savings.benefits.noteTitle': {
+    mr: 'अजून वेळ हवा आहे?',
+    en: 'Need more time?',
+  },
+  'savings.benefits.noteCopy': {
+    mr: 'कधीही तुमची प्रगती जतन करा. मराठी किंवा हिंदीत प्रश्न विचारण्यासाठी फॉर्मवरील व्हॉट्सअॅप चिन्हावर टॅप करा.',
+    en: 'Save your progress anytime. Click the WhatsApp icon on the form to ask questions in Marathi or Hindi.',
+  },
+  'savings.faq.title': {
+    mr: 'सामान्य प्रश्न',
+    en: 'Common questions',
+  },
+  'savings.faq.q1': {
+    mr: 'मला शाखेत जावे लागेल का?',
+    en: 'Do I need to visit the branch?',
+  },
+  'savings.faq.a1': {
+    mr: 'नाही. बहुतेक खाते व्हिडिओ केवायसी किंवा भागीदार बँकेच्या घरपोच भेटीतून उघडली जातात.',
+    en: 'No. Most accounts are opened through video KYC or doorstep visit by a partner bank representative.',
+  },
+  'savings.faq.q2': {
+    mr: 'पहिल्यांदा किती ठेव करावी?',
+    en: 'How much should I deposit first?',
+  },
+  'savings.faq.a2': {
+    mr: 'तुम्ही ₹५०० पासून सुरू करू शकता. सक्रिय झाल्यानंतर पहिल्या ६ महिन्यांसाठी शून्य शिल्लक परवानगी आहे.',
+    en: 'You can start with ₹500. Zero balance is allowed for the first 6 months after activation.',
+  },
+  'savings.faq.q3': {
+    mr: 'मी कुटुंबातील सदस्य जोडू शकते का?',
+    en: 'Can I add family members?',
+  },
+  'savings.faq.a3': {
+    mr: 'होय. ३ पर्यंत कुटुंबीयांना विनाशुल्क डेबिट कार्ड मिळू शकतात. त्यांची नावे फॉर्ममध्ये नमूद करा.',
+    en: 'Yes. Up to 3 family members can get debit cards at no extra cost. Mention their names in the form.',
+  },
+  'savings.faq.cta': {
+    mr: 'अर्ज करण्यास तयार',
+    en: 'Ready to apply',
+  },
   'deposits.hero.eyebrow': {
     mr: 'ठेवी',
     en: 'Deposits',

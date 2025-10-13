@@ -12,21 +12,29 @@
   <main class="page-auth" id="page-login">
     <section class="login card glass-card">
       <header class="login-head">
-        <span class="eyebrow">Account access</span>
-        <h1>Welcome back to Samriddhi</h1>
-        <p class="muted">Sign in with your mobile number to pick up your lessons and coaching conversations.</p>
+        <span class="eyebrow" data-i18n="auth.login.eyebrow">Account access</span>
+        <h1 data-i18n="auth.login.title">Welcome back to Samriddhi</h1>
+        <p class="muted" data-i18n="auth.login.copy">Sign in with your mobile number to pick up your lessons and coaching conversations.</p>
       </header>
       <div class="phone-input">
-        <div class="phone-cc">+91</div>
-        <input id="phoneNumber" inputmode="numeric" pattern="[0-9]*" maxlength="10" placeholder="0000000000" aria-label="Phone number"/>
+        <div class="phone-cc" data-i18n="auth.login.cc">+91</div>
+        <input
+          id="phoneNumber"
+          inputmode="numeric"
+          pattern="[0-9]*"
+          maxlength="10"
+          placeholder="0000000000"
+          aria-label="Phone number"
+          data-i18n="auth.login.input"
+        />
       </div>
-      <button id="btnProceedPhone" class="btn primary wide">Continue</button>
+      <button id="btnProceedPhone" class="btn primary wide" data-i18n="auth.login.submit">Continue</button>
       <div class="login-foot">
-        <p class="tiny muted">Demo tip: any 10-digit number works for this prototype.</p>
+        <p class="tiny muted" data-i18n="auth.login.tip">Demo tip: any 10-digit number works for this prototype.</p>
         <ul class="login-perks">
-          <li>Syncs your progress across devices instantly</li>
-          <li>Unlocks voice support from your Samriddhi coach</li>
-          <li>Personalised tools based on your tailoring goals</li>
+          <li data-i18n="auth.login.perkProgress">Syncs your progress across devices instantly</li>
+          <li data-i18n="auth.login.perkCoach">Unlocks voice support from your Samriddhi coach</li>
+          <li data-i18n="auth.login.perkTools">Personalised tools based on your tailoring goals</li>
         </ul>
       </div>
       <div id="login_msg" class="tiny muted" role="alert"></div>

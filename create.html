@@ -11,22 +11,45 @@
 
   <main class="container" id="page-create">
     <section class="card">
-      <h2>Create your account</h2>
-      <p class="muted">Finish setting up your profile and choose a password.</p>
+      <h2 data-i18n="auth.create.title">Create your account</h2>
+      <p class="muted" data-i18n="auth.create.copy">Finish setting up your profile and choose a password.</p>
       <div class="grid2" style="gap:8px">
-        <label>Phone (read-only)<input id="create_phone" disabled/></label>
-        <label>Name<input id="create_name" placeholder="Your name"/></label>
-        <label>Village / City<input id="create_city" placeholder="Your town"/></label>
-        <label>Language
-          <select id="create_lang"><option>English</option><option>Hindi</option><option>Marathi</option></select>
+        <label>
+          <span data-i18n="auth.create.phoneLabel">Phone (read-only)</span>
+          <input id="create_phone" disabled data-i18n="auth.create.phoneValue"/>
         </label>
-        <label>Occupation<input id="create_job" placeholder="e.g., Tailor"/></label>
-        <label>Password<input id="create_pw" type="password" placeholder="At least 4 characters"/></label>
-        <label>Confirm password<input id="create_cpw" type="password"/></label>
+        <label>
+          <span data-i18n="auth.create.nameLabel">Name</span>
+          <input id="create_name" placeholder="Your name" data-i18n="auth.create.nameInput"/>
+        </label>
+        <label>
+          <span data-i18n="auth.create.cityLabel">Village / City</span>
+          <input id="create_city" placeholder="Your town" data-i18n="auth.create.cityInput"/>
+        </label>
+        <label>
+          <span data-i18n="auth.create.languageLabel">Language</span>
+          <select id="create_lang" data-i18n="auth.create.languageSelect">
+            <option data-i18n="auth.create.langEnglish">English</option>
+            <option data-i18n="auth.create.langHindi">Hindi</option>
+            <option data-i18n="auth.create.langMarathi">Marathi</option>
+          </select>
+        </label>
+        <label>
+          <span data-i18n="auth.create.occupationLabel">Occupation</span>
+          <input id="create_job" placeholder="e.g., Tailor" data-i18n="auth.create.occupationInput"/>
+        </label>
+        <label>
+          <span data-i18n="auth.create.passwordLabel">Password</span>
+          <input id="create_pw" type="password" placeholder="At least 4 characters" data-i18n="auth.create.passwordInput"/>
+        </label>
+        <label>
+          <span data-i18n="auth.create.confirmLabel">Confirm password</span>
+          <input id="create_cpw" type="password" data-i18n="auth.create.confirmInput"/>
+        </label>
       </div>
       <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
-        <button id="btnCreate" class="btn primary">Create account</button>
-        <a href="login.html" class="btn ghost">Back</a>
+        <button id="btnCreate" class="btn primary" data-i18n="auth.create.submit">Create account</button>
+        <a href="login.html" class="btn ghost" data-i18n="auth.create.back">Back</a>
         <span id="create_msg" class="muted tiny" role="alert"></span>
       </div>
     </section>
