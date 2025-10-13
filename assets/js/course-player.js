@@ -1254,6 +1254,7 @@ const refs = {
   search: $('#lessonSearch'),
   modulesPanel: $('[data-modules-panel]'),
   modulesToggle: $('[data-toggle-modules]'),
+  modulesClose: $('[data-close-modules]'),
   playerStage: $('[data-player-stage]'),
   playerSurface: $('[data-player-surface]'),
   playerError: $('[data-player-error]'),
@@ -1445,11 +1446,15 @@ function updateProgressUI() {
   });
 }
 
-function closeModulesPanelOnMobile() {
+function closeModulesPanelOnMobile(returnFocus = false) {
   if (!refs.modulesPanel) return;
   refs.modulesPanel.classList.remove('is-open');
+  document.body?.classList.remove('modules-panel-open');
   if (refs.modulesToggle) {
     refs.modulesToggle.setAttribute('aria-expanded', 'false');
+    if (returnFocus) {
+      refs.modulesToggle.focus();
+    }
   }
 }
 
@@ -1969,8 +1974,22 @@ function toggleCaptions() {
 function wireEvents() {
   refs.modulesToggle?.addEventListener('click', () => {
     if (!refs.modulesPanel) return;
-    const isOpen = refs.modulesPanel.classList.toggle('is-open');
-    refs.modulesToggle.setAttribute('aria-expanded', String(isOpen));
+    const willOpen = !refs.modulesPanel.classList.contains('is-open');
+    if (willOpen) {
+      refs.modulesPanel.classList.add('is-open');
+      document.body?.classList.add('modules-panel-open');
+      refs.modulesToggle.setAttribute('aria-expanded', 'true');
+      const focusTarget = refs.modulesPanel.querySelector('input, button, [href]');
+      focusTarget?.focus();
+    } else {
+      closeModulesPanelOnMobile(true);
+    }
+  });
+  refs.modulesClose?.addEventListener('click', () => closeModulesPanelOnMobile(true));
+  refs.modulesPanel?.addEventListener('click', (event) => {
+    if (event.target === refs.modulesPanel && refs.modulesPanel.classList.contains('is-open')) {
+      closeModulesPanelOnMobile(true);
+    }
   });
   refs.search?.addEventListener('input', applySearchFilter);
   refs.markComplete?.addEventListener('click', completeCurrentItem);
@@ -1985,8 +2004,7 @@ function wireEvents() {
     if (event.key === 'Escape') {
       hideToast();
       if (refs.modulesPanel?.classList.contains('is-open')) {
-        refs.modulesPanel.classList.remove('is-open');
-        refs.modulesToggle?.setAttribute('aria-expanded', 'false');
+        closeModulesPanelOnMobile(true);
       }
     }
   });

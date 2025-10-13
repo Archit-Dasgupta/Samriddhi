@@ -77,6 +77,14 @@ const modulesTranslations = {
     mr: 'मॉड्यूल्स',
     en: 'Modules',
   },
+  'programs.modules.subtitle': {
+    mr: 'धडे ब्राउझ करा किंवा तुमची प्रगती तपासा.',
+    en: 'Browse lessons or review your progress.',
+  },
+  'programs.modules.close': {
+    mr: { attrs: { 'aria-label': 'मॉड्यूल सूची बंद करा', title: 'बंद करा' } },
+    en: { attrs: { 'aria-label': 'Close modules list', title: 'Close' } },
+  },
   'programs.summary.count': {
     mr: '<strong data-progress-count>०</strong> पैकी <span data-progress-total>२४</span> पूर्ण',
     en: '<strong data-progress-count>0</strong> of <span data-progress-total>24</span> complete',
