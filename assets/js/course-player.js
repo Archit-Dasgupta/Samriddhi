@@ -1,8 +1,453 @@
 import { $, COURSE_STATE } from './modules/common.js';
+import { getCurrentLanguage, onLanguageChange } from './modules/i18n.js';
 
 const VIDEO_ID = 'eqrSpQ_80-I';
 const AUTOPLAY_DELAY = 5000;
 const STORAGE_VERSION = 'v2';
+
+const mrCopy = {
+  'label.module': 'मॉड्यूल',
+  'label.complete': 'पूर्ण',
+  'label.video': 'व्हिडिओ',
+  'label.quiz': 'प्रश्नमंजुषा',
+  'label.completed': 'पूर्ण झाले',
+  'label.markComplete': 'पूर्ण म्हणून चिन्हांकित करा',
+  'label.nextUp': 'पुढील धडा',
+  'label.saved': 'जतन झाले',
+  'label.submitQuiz': 'प्रश्नमंजुषा सबमिट करा',
+  'label.retry': 'पुन्हा प्रयत्न करा',
+  'label.delete': 'हटवा',
+  'label.passMessage': 'छान काम—तुम्ही तयार असाल तेव्हा ही प्रश्नमंजुषा पूर्ण म्हणून चिन्हांकित करा.',
+  'label.failMessage': 'उत्तीर्ण होण्यासाठी ७०% गुणांची गरज आहे. उत्तरांमध्ये बदल करा आणि पुन्हा प्रयत्न करा.',
+  'label.scorePrefix': 'तुम्हाला {score}% गुण मिळाले ({correct} पैकी {total}).',
+  'toast.nextUp': 'पुढे: {title}',
+  'progress.card': '{done} / {total} पूर्ण',
+  'module-1.title': 'परिचय, प्रारंभिक गुंतवणूक आणि खर्चनिर्धारण',
+  'module-1-video-1.title': 'व्हिडिओ १ · व्यवसायाची ओळख',
+  'module-1-video-1.meta': '५ मिनिटे',
+  'module-1-video-1.description': 'टिकाऊ व्यवसाय उभारण्यासाठी आवश्यक मूलभूत तत्त्वे आणि सुरुवातीच्या निर्णयांमध्ये वित्तीय भूमिकेची ओळख करून घ्या.',
+  'module-1-video-1.transcript': 'हा धडा व्यवसाय मॉडेल कसे कार्य करते, मूल्य प्रस्ताव कसे ठरवायचे आणि दीर्घकालीन वाढीसाठी कोणत्या प्रारंभिक कृती मदत करतात हे स्पष्ट करतो.',
+  'module-1-quiz-1.title': 'प्रश्नमंजुषा १ · व्यवसायाच्या मूलभूत गोष्टी',
+  'module-1-quiz-1.meta': '५ प्रश्न',
+  'module-1-quiz-1.description': 'गुंतवणुकीकडे जाण्यापूर्वी तुम्ही मुख्य व्यवसाय संकल्पना स्पष्ट करू शकता याची खात्री करा.',
+  'm1q1.prompt': 'जर तुम्ही फक्त कुटुंबासाठी कपडे शिवत असाल तर ते व्यवसाय ठरते का?',
+  'm1q1.option0': 'होय',
+  'm1q1.option1': 'नाही',
+  'm1q1.explanation': 'व्यवसाय ग्राहकांना वस्तू किंवा सेवा मूल्याच्या बदल्यात देतो.',
+  'm1q2.prompt': 'व्यवसायातील एक महत्त्वाचे नियम कोणते?',
+  'm1q2.option0': 'कमाईपेक्षा जास्त खर्च करा',
+  'm1q2.option1': 'खर्चापेक्षा अधिक कमाई करा',
+  'm1q2.explanation': 'कमाई खर्चापेक्षा जास्त ठेवली तर व्यवसाय टिकून राहतो.',
+  'module-1-video-2.title': 'व्हिडिओ २ · गुंतवणूक आणि खर्च',
+  'module-1-video-2.meta': '६ मिनिटे',
+  'module-1-video-2.description': 'गुंतवणुकीचे पर्याय कसे तपासायचे, खर्च कसे तुलना करायचे आणि व्यवसाय टिकवणाऱ्या पद्धती कशा निवडायच्या ते शिका.',
+  'module-1-video-2.transcript': 'आम्ही गुंतवणुकीची गरज कशी अंदाजावी, खर्च रचना कशी तोलावी आणि अल्पकालीन खर्च दीर्घकालीन मूल्याशी कसे संतुलित करावे हे पाहतो.',
+  'module-1-quiz-2.title': 'प्रश्नमंजुषा २ · गुंतवणूक आणि खर्च मूलतत्त्वे',
+  'module-1-quiz-2.meta': '२ प्रश्न',
+  'module-1-quiz-2.description': 'गुंतवणूक आणि खर्च संकल्पना प्रत्यक्ष परिदृश्यांवर लागू करा.',
+  'm1q2-1.prompt': 'खालीलपैकी निश्चित खर्च कोणता?',
+  'm1q2-1.option0': 'शिलाई मशीन',
+  'm1q2-1.option1': 'कापड',
+  'm1q2-1.explanation': 'शिलाई मशीन हा एकदाच होणारा खर्च असून ऑर्डर संख्येनुसार बदलत नाही.',
+  'm1q2-2.prompt': 'मीना १०,०००₹ ला मशीन घेते आणि २,०००₹ कापडावर खर्च करते, एकूण खर्च किती?',
+  'm1q2-2.option0': '₹८,०००',
+  'm1q2-2.option1': '₹१२,०००',
+  'm1q2-2.explanation': 'निश्चित खर्च (₹१०,०००) आणि चल खर्च (₹२,०००) मिळून ₹१२,००० होतात.',
+  'module-1-quiz-3.title': 'प्रश्नमंजुषा ३ · मॉड्यूल १ ज्ञान चाचणी',
+  'module-1-quiz-3.meta': '५ प्रश्न',
+  'module-1-quiz-3.description': 'मॉड्यूल १ मधील प्रमुख संकल्पना रोजच्या कामात लागू करता येतात याची खात्री करा.',
+  'm1q3-1.prompt': 'संरेखन कार्यशाळांपूर्वी काय करावे?',
+  'm1q3-1.option0': 'टीपा गोळा करून यशोगाथा आणि अडथळे आधी शेअर करा',
+  'm1q3-1.option1': 'बैठकीतच अभिप्राय गोळा करा',
+  'm1q3-1.option2': 'फक्त सादरीकरणांवर लक्ष द्या',
+  'm1q3-1.explanation': 'पूर्वीच अंतर्दृष्टी शेअर केल्याने समस्यांचे निराकरण करण्याची तयारी होते.',
+  'm1q3-2.prompt': 'कोणते वर्तन संघांमध्ये विश्वास निर्माण करते?',
+  'm1q3-2.option0': 'प्रगतीबद्दल पारदर्शक अद्यतने आणि जबाबदाऱ्या स्पष्ट करणे',
+  'm1q3-2.option1': 'योजना अंतिम होईपर्यंत गुप्त ठेवणे',
+  'm1q3-2.option2': 'संपूर्ण समन्वय बाहेरच्या सल्लागारांकडे देणे',
+  'm1q3-2.explanation': 'पारदर्शकता आणि जबाबदारी प्रक्रियेवर विश्वास ठेवतात.',
+  'm1q3-3.prompt': 'अडथळे कसे उचलावेत?',
+  'm1q3-3.option0': 'टीपांमध्ये कारणे व कृती लिहून जलद पुनरावलोकनासाठी पाठवा',
+  'm1q3-3.option1': 'त्रैमासिक बैठकीची वाट पाहा',
+  'm1q3-3.option2': 'अनेक अपयशांनंतरच उचल करा',
+  'm1q3-3.explanation': 'तत्काळ संदर्भासह उचलल्याने गती राखली जाते.',
+  'm1q3-4.prompt': 'मॉड्यूल पूर्ण झाल्याचे संकेत काय?',
+  'm1q3-4.option0': 'व्हिडिओ पाहणे, प्रश्नमंजुषा उत्तीर्ण होणे आणि नोंदी साठवणे',
+  'm1q3-4.option1': 'फक्त व्हिडिओ पाहणे',
+  'm1q3-4.option2': 'फक्त प्रश्नमंजुषा उत्तीर्ण होणे',
+  'm1q3-4.explanation': 'पूर्णता म्हणजे शिकणे आणि मूल्यमापन दोन्ही.',
+  'm1q3-5.prompt': 'जलद यश साजरे का करावे?',
+  'm1q3-5.option0': 'ते हवामान-केंद्रित विचारांना बळ देतात',
+  'm1q3-5.option1': 'ते फक्त ऐच्छिक आहेत',
+  'm1q3-5.option2': 'ते दीर्घकालीन नियोजनाची जागा घेतात',
+  'm1q3-5.explanation': 'जलद यश प्रोत्साहन देते आणि दीर्घकालीन लक्ष टिकवते.',
+  'module-2.title': 'पैशाच्या मूलभूत गोष्टी',
+  'module-2-video-1.title': 'व्हिडिओ १ · उत्पन्न, खर्च आणि नफा',
+  'module-2-video-1.meta': '५ मिनिटे',
+  'module-2-video-1.description': 'उत्पन्न, खर्च आणि नफा एकमेकांशी कसे जोडलेले आहेत हे समजून घ्या, त्यामुळे तुमच्या शिवण सेवांचा नफा तपासता येईल.',
+  'module-2-video-1.transcript': 'आम्ही प्राथमिक उत्पन्न ताळेबंद समजावतो, शिवण व्यवसायातील सामान्य खर्च दाखवतो आणि लहान उद्योगांसाठी नफा कसा मोजायचा ते शिकवतो.',
+  'module-2-quiz-1.title': 'प्रश्नमंजुषा १ · उत्पन्न, खर्च आणि नफा मूलतत्त्वे',
+  'module-2-quiz-1.meta': '४ प्रश्न',
+  'module-2-quiz-1.description': 'शिवण व्यवसायासाठी उत्पन्न, खर्च आणि नफा काढता येतो याची खात्री करा.',
+  'm2q1-1.prompt': 'शिवणकामातून ₹५००० मिळतात आणि ₹३२०० सामग्री व भाड्यावर खर्च होतात, नफा किती?',
+  'm2q1-1.option0': '₹१८००',
+  'm2q1-1.option1': '₹३२००',
+  'm2q1-1.option2': '₹५०००',
+  'm2q1-1.explanation': 'नफा = उत्पन्न – एकूण खर्च: ५००० – ३२०० = १८००.',
+  'm2q1-2.prompt': 'शिवण दुकानासाठी खालीलपैकी निश्चित खर्च कोणता?',
+  'm2q1-2.option0': 'दुकानाचे मासिक भाडे',
+  'm2q1-2.option1': 'प्रत्येक कपड्यासाठी वापरला जाणारा धागा',
+  'm2q1-2.option2': 'प्रत्येक शर्टचे बटण',
+  'm2q1-2.explanation': 'भाडे ऑर्डर संख्येप्रमाणे बदलत नाही, म्हणून ते निश्चित खर्च आहे.',
+  'm2q1-3.prompt': 'दैनंदिन खर्च लिहून ठेवणे का महत्वाचे?',
+  'm2q1-3.option0': 'खर्चामुळे नफा कमी होतो का हे दिसते',
+  'm2q1-3.option1': 'ग्राहकांशी बोलण्याची गरज संपते',
+  'm2q1-3.option2': 'कापडाची नासाडी वाढते',
+  'm2q1-3.explanation': 'खर्च नोंदविल्याने नफा टिकतो का आणि कुठे बचत शक्य आहे हे कळते.',
+  'm2q1-4.prompt': 'एकूण नफा काढण्यासाठी योग्य सूत्र कोणते?',
+  'm2q1-4.option0': 'उत्पन्न – वस्तूंचा खर्च',
+  'm2q1-4.option1': 'वस्तूंचा खर्च – उत्पन्न',
+  'm2q1-4.option2': 'उत्पन्न + संचालन खर्च',
+  'm2q1-4.explanation': 'एकूण नफा = उत्पन्न – वस्तूंचा खर्च.',
+  'module-2-video-2.title': 'व्हिडिओ २ · किंमत ठरवणे आणि खर्च नियंत्रण',
+  'module-2-video-2.meta': '६ मिनिटे',
+  'module-2-video-2.description': 'कपड्यांना स्पर्धात्मक किंमत लावताना साहित्य आणि मजुरी खर्च कसे नियंत्रणात ठेवायचे ते शिका.',
+  'module-2-video-2.transcript': 'धडा किंमत सूत्रे, पुरवठादारांशी वाटाघाटी आणि हंगामी मागणीसाठी राखीव निधी तयार करणे यावर लक्ष केंद्रित करतो.',
+  'module-2-quiz-2.title': 'प्रश्नमंजुषा २ · किंमत ठरवणे आणि खर्च नियंत्रण',
+  'module-2-quiz-2.meta': '५ प्रश्न',
+  'module-2-quiz-2.description': 'शिवण व्यवसायात नफा देणाऱ्या किंमती आणि खर्च व्यवस्थापनाची सराव करा.',
+  'm2q2-1.prompt': 'एका ब्लाउजवर कापड ₹३०० आणि मजुरी ₹१५० खर्च येतो. तुम्हाला ४०% मार्जिन हवे आहे, विक्री किंमत किती ठरवाल?',
+  'm2q2-1.option0': '₹६३०',
+  'm2q2-1.option1': '₹४५०',
+  'm2q2-1.option2': '₹१८०',
+  'm2q2-1.explanation': 'एकूण खर्च ४५०. ४०% म्हणजे १८० अधिक, त्यामुळे किंमत ₹६३०.',
+  'm2q2-2.prompt': 'चल खर्च सर्वात चांगल्या प्रकारे कोणती कृती नियंत्रित करते?',
+  'm2q2-2.option0': 'सवलतीसाठी धागा मोठ्या प्रमाणात खरेदी करणे',
+  'm2q2-2.option1': 'मशीन रात्रीभर सुरु ठेवणे',
+  'm2q2-2.option2': 'पुरवठादारांची बिले दुर्लक्षित करणे',
+  'm2q2-2.explanation': 'मोठ्या खरेदीवरील सवलतीमुळे प्रति कपडा चल खर्च कमी होतो.',
+  'm2q2-3.prompt': 'किंमत ठरवताना मजुरीचा वेळ समाविष्ट करणे का आवश्यक?',
+  'm2q2-3.option0': 'यामुळे स्वतःला व कर्मचाऱ्यांना योग्य मोबदला मिळतो',
+  'm2q2-3.option1': 'याचा नफ्यावर परिणाम होत नाही',
+  'm2q2-3.option2': 'हे फक्त घाऊक ऑर्डरसाठी महत्वाचे आहे',
+  'm2q2-3.explanation': 'मजुरी वगळल्यास वास्तविक खर्च कमी दाखवला जातो आणि नफा घटतो.',
+  'm2q2-4.prompt': 'मागणी कमी झाल्यावर टेलर काय करू शकतात?',
+  'm2q2-4.option0': 'सवलती द्या किंवा नवीन उत्पादने आणा',
+  'm2q2-4.option1': 'भाडे वाढवा',
+  'm2q2-4.option2': 'कल दुर्लक्षित करा',
+  'm2q2-4.explanation': 'प्रमोशन किंवा नवीन उत्पादने मंदीच्या काळात रोख प्रवाह टिकवतात.',
+  'm2q2-5.prompt': 'ओव्हरहेड खर्च व्यवस्थापनाचे उदाहरण कोणते?',
+  'm2q2-5.option0': 'दुसऱ्या टेलरसोबत कार्यक्षेत्र सामायिक करणे',
+  'm2q2-5.option1': 'नको असलेली सजावट खरेदी करणे',
+  'm2q2-5.option2': 'वीज बिले दुर्लक्षित करणे',
+  'm2q2-5.explanation': 'सामायिक जागेमुळे भाडे व युटिलिटी खर्च कमी होतो.',
+  'module-2-video-3.title': 'व्हिडिओ ३ · हिशेब लिहिण्याची ओळख',
+  'module-2-video-3.meta': '६ मिनिटे',
+  'module-2-video-3.description': 'शिवण व्यवहार नोंदवण्याचे मूलभूत तत्त्वे शिका, त्यामुळे रोख प्रवाह आत्मविश्वासाने ट्रॅक करता येईल.',
+  'module-2-video-3.transcript': 'आपण साधी नोंदणी साधने, दैनंदिन रोकड लॉग आणि व्यवसाय व वैयक्तिक खर्च वेगळे ठेवण्याच्या टिप्स पाहतो.',
+  'module-2-quiz-3.title': 'प्रश्नमंजुषा ३ · हिशेब मूलतत्त्वे',
+  'module-2-quiz-3.meta': '४ प्रश्न',
+  'module-2-quiz-3.description': 'शिवण व्यवहार अचूकपणे नोंदवून संघटित राहता येते याची पुष्टी करा.',
+  'm2q3-1.prompt': 'दररोज प्रत्येक विक्री आणि खर्च कोणत्या वहित नोंदवला पाहिजे?',
+  'm2q3-1.option0': 'रोकड वहि',
+  'm2q3-1.option1': 'अतिथी वहि',
+  'm2q3-1.option2': 'फक्त साठा वहि',
+  'm2q3-1.explanation': 'रोकड वहि दैनंदिन रोकड ये-जा दाखवते.',
+  'm2q3-2.prompt': 'व्यवसाय आणि वैयक्तिक खर्च वेगळे का लिहावेत?',
+  'm2q3-2.option0': 'यामुळे व्यवसायाची खरी कामगिरी दिसते',
+  'm2q3-2.option1': 'कर दुप्पट होतात',
+  'm2q3-2.option2': 'नफा लपतो',
+  'm2q3-2.explanation': 'खर्च वेगळे ठेवल्याने नफा स्पष्ट दिसतो आणि अहवाल सोपे होतात.',
+  'm2q3-3.prompt': 'मालमत्ता, कर्जे आणि मालकाची भांडवल दाखवणारे दस्तऐवज कोणते?',
+  'm2q3-3.option0': 'ताळेबंद',
+  'm2q3-3.option1': 'उत्पन्न पत्रक',
+  'm2q3-3.option2': 'मार्केटिंग योजना',
+  'm2q3-3.explanation': 'ताळेबंद एखाद्या वेळी व्यवसायाचे मालमत्ता व कर्ज दाखवतो.',
+  'm2q3-4.prompt': 'विक्री नोंदवणे विसरू नये यासाठी काय मदत करते?',
+  'm2q3-4.option0': 'प्रत्येक व्यवहारानंतर लगेच नोंद करणे',
+  'm2q3-4.option1': 'फक्त आठवड्याचा सारांश लिहिणे',
+  'm2q3-4.option2': 'पावत्या खिशात ठेवणे',
+  'm2q3-4.explanation': 'वेळीच नोंदी केल्याने अचूकता राहते आणि चुका कमी होतात.',
+  'module-2-quiz-4.title': 'प्रश्नमंजुषा ४ · मॉड्यूल २ चाचणी',
+  'module-2-quiz-4.meta': '५ प्रश्न',
+  'module-2-quiz-4.description': 'मॉड्यूल २ मधील पैशाच्या संकल्पना जलद पुनरावलोकन करा.',
+  'm2q4-1.prompt': 'नफा उत्तम प्रकारे कोणता विधान स्पष्ट करतो?',
+  'm2q4-1.option0': 'सर्व खर्च भरल्यानंतर उरलेले पैसे',
+  'm2q4-1.option1': 'ग्राहकांकडून आलेली एकूण रोकड',
+  'm2q4-1.option2': 'बँकेतून घेतलेली कर्जे',
+  'm2q4-1.explanation': 'सर्व खर्च भरल्यानंतर जे उरते तेच नफा.',
+  'm2q4-2.prompt': 'प्रत्येक महिन्याला बचत बाजूला ठेवण्याचे प्रमुख कारण काय?',
+  'm2q4-2.option0': 'आकस्मिक प्रसंग आणि वाढीमध्ये गुंतवणूक हाताळण्यासाठी',
+  'm2q4-2.option1': 'कापडाची नासाडी वाढवण्यासाठी',
+  'm2q4-2.option2': 'नोंदवलेले उत्पन्न कमी करण्यासाठी',
+  'm2q4-2.explanation': 'बचत आकस्मिकता आणि भविष्यातील गुंतवणुकीसाठी आधार देते.',
+  'm2q4-3.prompt': 'किंमतीचे पुनरावलोकन करताना कोणती संख्या खर्चाशी तुलना करावी?',
+  'm2q4-3.option0': 'प्रत्येक वस्तूची विक्री किंमत',
+  'm2q4-3.option1': 'कर्मचाऱ्यांची संख्या',
+  'm2q4-3.option2': 'दुकानाचे आकारमान',
+  'm2q4-3.explanation': 'विक्री किंमत आणि एकूण खर्च तुलना करून प्रत्येक वस्तू नफा देते का ते कळते.',
+  'm2q4-4.prompt': 'रसीद जपून ठेवणे का महत्वाचे?',
+  'm2q4-4.option0': 'त्या खर्च नोंदींचे पुरावे म्हणून मदत करतात',
+  'm2q4-4.option1': 'त्या फक्त पसारा वाढवतात',
+  'm2q4-4.option2': 'त्या पूर्णपणे बिलेची जागा घेतात',
+  'm2q4-4.explanation': 'रसीद नोंदींची खात्री करतात आणि तपासणी सुलभ करतात.',
+  'm2q4-5.prompt': 'टेलरने कापडाचे दर कमी केले; विक्री जसच्या तसा राहिल्यास कोणता आर्थिक निर्देशक सुधारतो?',
+  'm2q4-5.option0': 'नफा मार्जिन',
+  'm2q4-5.option1': 'ग्राहकांची संख्या',
+  'm2q4-5.option2': 'दुकानाचे ठिकाण',
+  'm2q4-5.explanation': 'खर्च कमी आणि विक्री समान राहिल्यास नफा मार्जिन वाढतो.',
+  'module-3.title': 'बचत, नियोजन आणि वाढ',
+  'module-3-video-1.title': 'व्हिडिओ १ · बचतीचे महत्त्व',
+  'module-3-video-1.meta': '५ मिनिटे',
+  'module-3-video-1.description': 'शिस्तबद्ध बचत कशा प्रकारे शिवण व्यवसायाला मंद हंगामात टिकवून ठेवते आणि नवीन ऑर्डरसाठी तयार ठेवते ते समजून घ्या.',
+  'module-3-video-1.transcript': 'आम्ही बचत लक्ष्य ठरवणे, दैनंदिन खर्चापासून रोकड वेगळी ठेवणे आणि मागणी कमी झाल्यावर दुकानाचे संरक्षण करणाऱ्या सवयी विकसित करणे पाहतो.',
+  'module-3-quiz-1.title': 'प्रश्नमंजुषा १ · बचत मूलतत्त्वे',
+  'module-3-quiz-1.meta': '५ प्रश्न',
+  'module-3-quiz-1.description': 'तुमच्या शिवण व्यवसायासाठी बचत कुशन तयार करून जपता येते याची खात्री करा.',
+  'm3q1-1.prompt': 'शिवण व्यवसायाने दर महिन्याला पैसे बाजूला का ठेवावेत?',
+  'm3q1-1.option0': 'आकस्मिकता किंवा मंद हंगाम शांतपणे हाताळण्यासाठी',
+  'm3q1-1.option1': 'नको असलेली बँक फी भरण्यासाठी',
+  'm3q1-1.option2': 'खर्च नोंदवणे टाळण्यासाठी',
+  'm3q1-1.explanation': 'बचत शांत काळ आणि अनपेक्षित खर्चांचा परिणाम कमी करते.',
+  'm3q1-2.prompt': 'व्यवसायाची बचत साठवण्याचे सुरक्षित ठिकाण कोणते?',
+  'm3q1-2.option0': 'व्यवसायासाठी वेगळे बँक किंवा मोबाईल मनी खाते',
+  'm3q1-2.option1': 'वैयक्तिक रोकडसोबत पाकिटात ठेवणे',
+  'm3q1-2.option2': 'कापडांच्या कपाटात लपवून ठेवणे',
+  'm3q1-2.explanation': 'वेगळी खाती बचत सुरक्षित आणि स्पष्ट ठेवतात.',
+  'm3q1-3.prompt': 'लहान दुकानासाठी पहिला बचत उद्देश काय असावा?',
+  'm3q1-3.option0': 'किमान एका महिन्याचा चालू खर्च झाकणे',
+  'm3q1-3.option1': 'महाग सजावट खरेदी करणे',
+  'm3q1-3.option2': 'भाडे दुप्पट करणे',
+  'm3q1-3.explanation': 'एका महिन्याचा खर्च भागवणारी बचत मजबूत सुरक्षा देते.',
+  'm3q1-4.prompt': 'बचतीची प्रगती किती वेळाने तपासावी?',
+  'm3q1-4.option0': 'बुककीपिंग करताना साप्ताहिक किंवा मासिक',
+  'm3q1-4.option1': 'फक्त वर्षातून एकदा',
+  'm3q1-4.option2': 'विक्री स्थिर असल्यास कधीही नाही',
+  'm3q1-4.explanation': 'नियमित पुनरावलोकन सवय टिकवते आणि लक्ष्य साध्य करते.',
+  'm3q1-5.prompt': 'बचत स्वयंचलित करणारी सवय कोणती?',
+  'm3q1-5.option0': 'प्रत्येक विक्रीचा ठराविक टक्केवारी बचतीत वळवणे',
+  'm3q1-5.option1': 'वर्षाच्या शेवटी बचत सुरू करणे',
+  'm3q1-5.option2': 'बचतीसाठी पैसे उधार घेणे',
+  'm3q1-5.explanation': 'स्वयंचलित हस्तांतरणामुळे बचत सातत्याने वाढते.',
+  'module-3-video-2.title': 'व्हिडिओ २ · पुनर्गुंतवणूक आणि वाढ',
+  'module-3-video-2.meta': '६ मिनिटे',
+  'module-3-video-2.description': 'नफा चांगल्या साधनांमध्ये, लोकांमध्ये आणि मार्केटिंगमध्ये कसा गुंतवायचा ते शिका, त्यामुळे व्यवसाय सातत्याने वाढू शकतो.',
+  'module-3-video-2.transcript': 'आम्ही योग्य सुधारणा निवडणे, रोकड प्रवाह विश्लेषणानंतर गुंतवणूक करणे आणि प्रत्येक बदलाचा परिणाम मोजणे यावर चर्चा करतो.',
+  'module-3-quiz-2.title': 'प्रश्नमंजुषा २ · पुनर्गुंतवणूक आणि वाढ',
+  'module-3-quiz-2.meta': '५ प्रश्न',
+  'module-3-quiz-2.description': 'टेलरिंगमधील नफा वापरून वाढीचे निर्णय कसे घ्याल याचा आढावा घ्या.',
+  'm3q2-1.prompt': 'नफा पुन्हा व्यवसायात गुंतवण्याचे मुख्य कारण काय?',
+  'm3q2-1.option0': 'क्षमता आणि भविष्यातील कमाई वाढवण्यासाठी',
+  'm3q2-1.option1': 'वैयक्तिक खर्च वाढवण्यासाठी',
+  'm3q2-1.option2': 'उत्पन्न नोंदवणे टाळण्यासाठी',
+  'm3q2-1.explanation': 'पुनर्गुंतवणूक व्यवसाय मजबूत करून दीर्घकालीन उत्पन्न वाढवते.',
+  'm3q2-2.prompt': 'कोणती गुंतवणूक उत्पादनाचा वेग वाढवण्याची शक्यता अधिक?',
+  'm3q2-2.option0': 'जलद शिवण मशीन खरेदी करणे',
+  'm3q2-2.option1': 'दुकानात सजावट वाढवणे',
+  'm3q2-2.option2': 'फक्त अतिरिक्त भेटकार्ड छापणे',
+  'm3q2-2.explanation': 'उत्तम उपकरण अधिक ऑर्डर पूर्ण करण्यात मदत करतात.',
+  'm3q2-3.prompt': 'गुंतवणूक करण्यापूर्वी काय तपासावे?',
+  'm3q2-3.option0': 'रोकड प्रवाह आणि येणारे खर्च',
+  'm3q2-3.option1': 'फक्त सोशल मीडियावरील लाईक्स',
+  'm3q2-3.option2': 'स्पर्धकांचे वैयक्तिक जीवन',
+  'm3q2-3.explanation': 'रोकड प्रवाह समजल्यास गुंतवणूक परवडेल का हे कळते.',
+  'm3q2-4.prompt': 'गुंतवणूक यशस्वी झाली का हे कसे मोजाल?',
+  'm3q2-4.option0': 'उत्पन्न, ग्राहक किंवा उत्पादन वेगातील बदल ट्रॅक करा',
+  'm3q2-4.option1': 'पैसे खर्च झाल्यावर निकाल दुर्लक्षित करा',
+  'm3q2-4.option2': 'फक्त मित्रांच्या अंदाजावर अवलंबून राहा',
+  'm3q2-4.explanation': 'मोजमाप केल्याने गुंतवणुकीने मूल्य दिले का हे दिसते.',
+  'm3q2-5.prompt': 'वाढीसाठी वारंवार कोणत्या क्रियेला गुंतवणूक लागते?',
+  'm3q2-5.option0': 'सहायक टेलरला प्रशिक्षण देणे',
+  'm3q2-5.option1': 'सर्व मार्केटिंग रद्द करणे',
+  'm3q2-5.option2': 'दररोज लवकर दुकान बंद करणे',
+  'm3q2-5.explanation': 'कर्मचाऱ्यांना प्रशिक्षण दिल्यास क्षमता आणि सेवा सुधारते.',
+  'module-3-video-3.title': 'व्हिडिओ ३ · बजेट नियोजन',
+  'module-3-video-3.meta': '६ मिनिटे',
+  'module-3-video-3.description': 'साहित्य, वेतन आणि बचत संतुलित करणारे मासिक बजेट तयार करा आणि पुनर्गुंतवणुकीसाठी जागा ठेवा.',
+  'module-3-video-3.transcript': 'आम्ही साधे बजेट तयार करतो, सामान्य खर्च श्रेणी पाहतो आणि विक्री बदलल्यास समायोजन कसे करावे ते दाखवतो.',
+  'module-3-quiz-3.title': 'प्रश्नमंजुषा ३ · बजेट मूलतत्त्वे',
+  'module-3-quiz-3.meta': '५ प्रश्न',
+  'module-3-quiz-3.description': 'मासिक खर्च नियोजन करून रोकड प्रवाह स्थिर ठेवता येतो याची खात्री करा.',
+  'm3q3-1.prompt': 'मासिक बजेट तयार करण्याचा पहिला टप्पा कोणता?',
+  'm3q3-1.option0': 'अपेक्षित उत्पन्न आणि नियमित खर्च सूचीबद्ध करा',
+  'm3q3-1.option1': 'एकूण नफा अंदाजे सांगा',
+  'm3q3-1.option2': 'इतर व्यवसायाची नक्कल करा',
+  'm3q3-1.explanation': 'उत्पन्न आणि खर्च माहित असल्यास योजना अचूक होते.',
+  'm3q3-2.prompt': 'टेलरसाठी कोणता खर्च चल आहे?',
+  'm3q3-2.option0': 'प्रत्येक ऑर्डरसाठी घेतलेले कापड',
+  'm3q3-2.option1': 'मासिक दुकान भाडे',
+  'm3q3-2.option2': 'व्यवसाय नोंदणी शुल्क',
+  'm3q3-2.explanation': 'कापड खर्च वस्तूंच्या संख्येनुसार बदलतो.',
+  'm3q3-3.prompt': 'बजेटमध्ये बचत समाविष्ट का करावी?',
+  'm3q3-3.option0': 'खर्च होण्यापूर्वी पैसे बाजूला ठेवण्यासाठी',
+  'm3q3-3.option1': 'उत्पन्न कमी दाखवण्यासाठी',
+  'm3q3-3.option2': 'नासाडी वाढवण्यासाठी',
+  'm3q3-3.explanation': 'बजेटमध्ये बचत ठेवली तर सवय टिकून राहते.',
+  'm3q3-4.prompt': 'खर्च नियोजितपेक्षा जास्त झाल्यास काय करावे?',
+  'm3q3-4.option0': 'खर्च समायोजित करा किंवा उत्पन्न वाढवण्याचे मार्ग शोधा',
+  'm3q3-4.option1': 'फरक दुर्लक्षित करा',
+  'm3q3-4.option2': 'खर्च ट्रॅक करणे थांबवा',
+  'm3q3-4.explanation': 'कारवाई केल्याने आर्थिक शिस्त राखली जाते.',
+  'm3q3-5.prompt': 'बजेट आणि प्रत्यक्ष खर्च तुलना करण्यास कोणते साधन मदत करते?',
+  'm3q3-5.option0': 'साधी मासिक ट्रॅकिंग शीट',
+  'm3q3-5.option1': 'फक्त मनात ठेवलेला विचार',
+  'm3q3-5.option2': 'कुलूप लावलेली पेटी',
+  'm3q3-5.explanation': 'ट्रॅकिंग शीटने योजनेशी तुलना स्पष्ट दिसते.',
+  'module-3-quiz-4.title': 'प्रश्नमंजुषा ४ · मॉड्यूल ३ चाचणी',
+  'module-3-quiz-4.meta': '५ प्रश्न',
+  'module-3-quiz-4.description': 'बचत, पुनर्गुंतवणूक आणि बजेट संकल्पना एकत्र करून मॉड्यूल ३ चे पुनरावलोकन करा.',
+  'm3q4-1.prompt': 'टेलर दर महिन्याला ₹२,००० बचत करतो. तीन मंद आठवड्यांनंतर याचा काय फायदा?',
+  'm3q4-1.option0': 'वेतन आणि भाडे भरण्यासाठी रोकड तयार',
+  'm3q4-1.option1': 'वीज वापर वाढवण्यासाठी रोकड',
+  'm3q4-1.option2': 'विक्रीशिवाय त्वरित नफा',
+  'm3q4-1.explanation': 'बचत मंद विक्रीच्या काळात आवश्यक खर्च झाकते.',
+  'm3q4-2.prompt': 'नवे शिवण मशीन घेण्यापूर्वी काय खात्री करावी?',
+  'm3q4-2.option0': 'पुरेशी बचत आहे आणि सुधारणा उत्पादन वाढवेल',
+  'm3q4-2.option1': 'मित्रांना रंग आवडतो',
+  'm3q4-2.option2': 'ग्राहक कमी पैसे देतील',
+  'm3q4-2.explanation': 'परवड आणि परिणाम तपासल्याने रोकड प्रवाह सुरक्षित राहतो.',
+  'm3q4-3.prompt': 'कोणती ओळ बजेट आणि हिशेब दोन्हीमध्ये असावी?',
+  'm3q4-3.option0': 'धागा व सुई यांसारखे मासिक साहित्य खर्च',
+  'm3q4-3.option1': 'वैयक्तिक सुट्टीची योजना',
+  'm3q4-3.option2': 'घरातील भेटवस्तू',
+  'm3q4-3.explanation': 'व्यवसाय साहित्य खर्च योजना आणि नोंदी दोन्हीकडे असायला हवेत.',
+  'm3q4-4.prompt': 'बचत आणि पुनर्गुंतवणूक एकत्र कसे काम करू शकतात?',
+  'm3q4-4.option0': 'नफ्याचा काही भाग बचतीसाठी व काही भाग नियोजित सुधारण्यासाठी वापरा',
+  'm3q4-4.option1': 'प्रत्येक रुपया लगेच खर्च करा',
+  'm3q4-4.option2': 'गुंतवणूक करताना बचत थांबवा',
+  'm3q4-4.explanation': 'बचत आणि गुंतवणूक संतुलित केल्यास व्यवसाय सुरक्षित आणि वाढत राहतो.',
+  'm3q4-5.prompt': 'बजेट आणि प्रत्यक्ष निकाल तुलना केल्यानंतर काय करावे?',
+  'm3q4-5.option0': 'शिकलेल्या धड्यांवर पुढील महिन्याची योजना बदल करा',
+  'm3q4-5.option1': 'नफा असेल तर आकडे दुर्लक्षित करा',
+  'm3q4-5.option2': 'नोंदी पुसून पुन्हा सुरुवात करा',
+  'm3q4-5.explanation': 'योजना समायोजित केल्याने सतत सुधारणा आणि नियंत्रण मिळते.',
+  'module-4.title': 'हवामान नेतृत्व अंगीकारणे',
+  'module-4-video-1.title': 'व्हिडिओ १ · हवामान नेत्यांना प्रशिक्षित करा',
+  'module-4-video-1.meta': '६ मिनिटे',
+  'module-4-video-1.description': 'व्यवस्थापकांना हवामान-केंद्रित निर्णयांसाठी संघांना मार्गदर्शन करण्यास तयार करा.',
+  'module-4-video-1.transcript': 'कोचिंग सातत्यपूर्ण वर्तन घडवते आणि संघांना हवामान लक्ष्यांसाठी जबाबदार ठेवते.',
+  'module-4-quiz-1.title': 'प्रश्नमंजुषा १ · कोचिंग मूलतत्त्वे',
+  'module-4-quiz-1.meta': '४ प्रश्न',
+  'module-4-quiz-1.description': 'प्रभावी कोचिंगसाठी आवश्यक वर्तन दृढ करा.',
+  'm4q1-1.prompt': 'कोचिंग संभाषणातील पहिला टप्पा कोणता?',
+  'm4q1-1.option0': 'लक्ष्य आणि अपेक्षित निकाल स्पष्ट करा',
+  'm4q1-1.option1': 'सुरुवातीलाच उपाय सुचवा',
+  'm4q1-1.option2': 'असंबंधित मेट्रिक्स पाहा',
+  'm4q1-1.explanation': 'स्पष्ट लक्ष्य असल्यास कोचिंग केंद्रित राहते.',
+  'm4q1-2.prompt': 'कोचेस जबाबदारी कशी वाढवतात?',
+  'm4q1-2.option0': 'कारवाई आणि फॉलो-अप संयुक्तरित्या ठरवतात',
+  'm4q1-2.option1': 'पुढील पावले निश्चित करत नाहीत',
+  'm4q1-2.option2': 'फक्त वार्षिक पुनरावलोकनावर अवलंबून राहतात',
+  'm4q1-2.explanation': 'एकत्र कृती आणि फॉलो-अप प्रगती कायम ठेवतात.',
+  'm4q1-3.prompt': 'कोचिंग नोट्समध्ये काय नोंदवावे?',
+  'm4q1-3.option0': 'प्रतिबद्धता, अडथळे आणि यश',
+  'm4q1-3.option1': 'कामाशी नसलेल्या वैयक्तिक मते',
+  'm4q1-3.option2': 'प्रवास नियोजन',
+  'm4q1-3.explanation': 'नोट्स वचनबद्धता आणि शिकण्याचे क्षण दर्शवतात.',
+  'm4q1-4.prompt': 'कोचिंगमध्ये हवामान यश साजरे का करावे?',
+  'm4q1-4.option0': 'पुन्हा पुन्हा हवे असलेले वर्तन बळकट होते',
+  'm4q1-4.option1': 'ते फक्त मजेसाठी असते',
+  'm4q1-4.option2': 'ते कामगिरी पुनरावलोकनाची जागा घेते',
+  'm4q1-4.explanation': 'यश साजरे केल्याने संस्कृती बदल बळकट होतो.',
+  'module-4-video-2.title': 'व्हिडिओ २ · हवामान प्रशासन अंमलात आणणे',
+  'module-4-video-2.meta': '७ मिनिटे',
+  'module-4-video-2.description': 'फोरम, स्कोअरकार्ड आणि निर्णयाधिकारांमध्ये हवामान प्राधान्ये गुंफा.',
+  'module-4-video-2.transcript': 'प्रशासन हवामान प्राधान्ये प्रत्येक निर्णयात समाविष्ट करते.',
+  'module-4-quiz-2.title': 'प्रश्नमंजुषा २ · प्रशासन क्षण',
+  'module-4-quiz-2.meta': '५ प्रश्न',
+  'module-4-quiz-2.description': 'हवामान केंद्रस्थानी ठेवणारे प्रशासन डिझाइन करू शकता याची खात्री करा.',
+  'm4q2-1.prompt': 'प्रत्येक प्रशासन मंचात काय असावे?',
+  'm4q2-1.option0': 'स्पष्ट हवामान केपीआय आणि जबाबदाऱ्या',
+  'm4q2-1.option1': 'फक्त आर्थिक मापन',
+  'm4q2-1.option2': 'कार्यसूची नसलेले फेरपालट सदस्य',
+  'm4q2-1.explanation': 'केपीआय आणि जबाबदारी प्रशासनाला प्रभावी बनवतात.',
+  'm4q2-2.prompt': 'हवामान धोका किती वेळाने चर्चिला पाहिजे?',
+  'm4q2-2.option0': 'कार्यसूचीत कायम घटक म्हणून',
+  'm4q2-2.option1': 'फक्त वार्षिक',
+  'm4q2-2.option2': 'फक्त मुद्दे आल्यावर',
+  'm4q2-2.explanation': 'नियमित चर्चा धोका लक्षात ठेवते.',
+  'm4q2-3.prompt': 'जलद निर्णय घेण्यास काय मदत करते?',
+  'm4q2-3.option0': 'पूर्वनियोजित उन्नती मार्ग',
+  'm4q2-3.option1': 'बैठकीनंतर एकमताची प्रतीक्षा',
+  'm4q2-3.option2': 'पुढील तिमाहीपर्यंत विलंब',
+  'm4q2-3.explanation': 'स्पष्ट उन्नती मार्ग गती आणि जबाबदारी राखतात.',
+  'm4q2-4.prompt': 'बोर्डना माहिती ठेवण्यासाठी काय करावे?',
+  'm4q2-4.option0': 'आघाडी सूचकांसह क्यूरेटेड डॅशबोर्ड शेअर करा',
+  'm4q2-4.option1': 'कच्चा डेटा एकदम शेअर करा',
+  'm4q2-4.option2': 'सोयीने अडहॉक अपडेट्स पाठवा',
+  'm4q2-4.explanation': 'क्यूरेटेड डॅशबोर्ड माहितीपूर्ण ठेवतात आणि भार कमी करतात.',
+  'm4q2-5.prompt': 'हवामान लक्ष्य भरपाईत समाविष्ट का करावेत?',
+  'm4q2-5.option0': 'प्रोत्साहन इच्छित निकालाशी संरेखित करण्यासाठी',
+  'm4q2-5.option1': 'फक्त क्लिष्टता वाढवण्यासाठी',
+  'm4q2-5.option2': 'कामगिरीपासून वेगळे ठेवायला हवे',
+  'm4q2-5.explanation': 'प्रोत्साहन हवामान परिणामांवर लक्ष केंद्रित करतात.',
+  'module-4-video-3.title': 'व्हिडिओ ३ · परिवर्तन परिणाम मोजणे',
+  'module-4-video-3.meta': '६ मिनिटे',
+  'module-4-video-3.description': 'परिणाम दाखवा आणि स्पष्ट कथनाने संघांना ऊर्जित ठेवा.',
+  'module-4-video-3.transcript': 'मापन आणि कथा सांगणे एकत्र आल्यास परिवर्तन दृश्यमान आणि साजरे राहते.',
+  'module-4-quiz-3.title': 'प्रश्नमंजुषा ३ · परिणाम कथा सांगणे',
+  'module-4-quiz-3.meta': '४ प्रश्न',
+  'module-4-quiz-3.description': 'हवामान परिणाम विश्वासार्हपणे सांगता येतात याची पुष्टी करा.',
+  'm4q3-1.prompt': 'उत्कृष्ट परिणाम कथा कशाने तयार होते?',
+  'm4q3-1.option0': 'डेटा आणि मानवी परिणाम एकत्र',
+  'm4q3-1.option1': 'फक्त भावनिक उद्धरणे',
+  'm4q3-1.option2': 'संदर्भाशिवाय फक्त आकडे',
+  'm4q3-1.explanation': 'परिणाम कथा पुरावे आणि मानवी अर्थ दोन्ही मागते.',
+  'm4q3-2.prompt': 'परिणाम कथा किती वेळाने शेअर कराव्यात?',
+  'm4q3-2.option0': 'संघ आणि चॅनेलवर नियमितपणे',
+  'm4q3-2.option1': 'फक्त वार्षिक अहवालांमध्ये',
+  'm4q3-2.option2': 'फक्त निकाल परिपूर्ण असल्यास',
+  'm4q3-2.explanation': 'वारंवार कथा सांगितल्याने ऊर्जा आणि लक्ष वाढते.',
+  'm4q3-3.prompt': 'निकाल मागे पडल्यास काय करावे?',
+  'm4q3-3.option0': 'मूळ कारणे आणि पुढील पावले स्पष्ट करा',
+  'm4q3-3.option1': 'डेटा लपवा',
+  'm4q3-3.option2': 'फक्त बाह्य घटकांना दोष द्या',
+  'm4q3-3.explanation': 'प्रामाणिक कथन विश्वास निर्माण करते.',
+  'm4q3-4.prompt': 'कथा सांगण्यात नोट्स कशी मदत करतात?',
+  'm4q3-4.option0': 'त्या उद्धरणे, डेटा पॉईंट आणि ग्राहक पुरावे पकडतात',
+  'm4q3-4.option1': 'त्या परिणाम कथांसाठी अप्रासंगिक असतात',
+  'm4q3-4.option2': 'त्या फक्त कामांची यादी असावी',
+  'm4q3-4.explanation': 'नोट्स कथा सजीव करण्यासाठी तपशील देतात.',
+};
+
+const translate = (key, fallback) => {
+  if (getCurrentLanguage() === 'mr') {
+    return mrCopy[key] ?? fallback;
+  }
+  return fallback;
+};
+
+const localizeNumber = (value) => {
+  const lang = getCurrentLanguage();
+  const text = value.toString();
+  if (lang !== 'mr') return text;
+  return text
+    .replace(/0/g, '०')
+    .replace(/1/g, '१')
+    .replace(/2/g, '२')
+    .replace(/3/g, '३')
+    .replace(/4/g, '४')
+    .replace(/5/g, '५')
+    .replace(/6/g, '६')
+    .replace(/7/g, '७')
+    .replace(/8/g, '८')
+    .replace(/9/g, '९');
+};
+
+const formatQuizFeedback = (score, correct, total) => {
+  const prefixTemplate = translate(
+    'label.scorePrefix',
+    `You scored {score}% ({correct} of {total}).`
+  );
+  const prefix = prefixTemplate
+    .replace('{score}', localizeNumber(score))
+    .replace('{correct}', localizeNumber(correct))
+    .replace('{total}', localizeNumber(total));
+  const suffix = score >= 70
+    ? translate('label.passMessage', 'Great work—mark this quiz complete when you are ready.')
+    : translate('label.failMessage', 'You need 70% to pass. Adjust your answers and retry.');
+  return `${prefix} ${suffix}`;
+};
 
 const modulesData = [
   {
@@ -839,8 +1284,17 @@ const refs = {
 };
 
 refs.progressTotal.textContent = totalItems.toString();
+if (refs.progressTotal) {
+  refs.progressTotal.dataset.value = totalItems.toString();
+}
 if (refs.overallSummary) {
-  refs.overallSummary.textContent = `${Object.keys(state.completed).length} of ${totalItems}`;
+  const completedCount = Object.keys(state.completed).length;
+  refs.overallSummary.dataset.completed = completedCount.toString();
+  refs.overallSummary.dataset.total = totalItems.toString();
+  const summaryTemplate = getCurrentLanguage() === 'mr' ? '{done} पैकी {total}' : '{done} of {total}';
+  refs.overallSummary.textContent = summaryTemplate
+    .replace('{done}', localizeNumber(completedCount))
+    .replace('{total}', localizeNumber(totalItems));
 }
 
 const itemElements = new Map();
@@ -856,11 +1310,15 @@ function persistState() {
 }
 
 function formatModuleTitle(module) {
-  return `Module ${module.number} · ${module.title}`;
+  const label = translate('label.module', 'Module');
+  const title = translate(`${module.id}.title`, module.title);
+  return `${label} ${module.number} · ${title}`;
 }
 
 function buildModules() {
   if (!refs.moduleList) return;
+  itemElements.clear();
+  moduleProgressRefs.clear();
   refs.moduleList.innerHTML = '';
   modulesData.forEach((module) => {
     const card = document.createElement('section');
@@ -883,7 +1341,9 @@ function buildModules() {
     const progressLabel = document.createElement('span');
     progressLabel.className = 'module-card__progress-label';
     const moduleItemCount = module.items.length;
-    progressLabel.textContent = `0 / ${moduleItemCount} complete`;
+    progressLabel.textContent = translate('progress.card', `0 / ${moduleItemCount} complete`)
+      .replace('{done}', localizeNumber(0))
+      .replace('{total}', localizeNumber(moduleItemCount));
     progress.appendChild(progressBar);
     progress.appendChild(progressLabel);
     header.appendChild(progress);
@@ -919,10 +1379,10 @@ function buildModules() {
       content.className = 'lesson-row__content';
       const titleSpan = document.createElement('span');
       titleSpan.className = 'lesson-row__title';
-      titleSpan.textContent = item.title;
+      titleSpan.textContent = translate(`${item.id}.title`, item.title);
       const metaSpan = document.createElement('span');
       metaSpan.className = 'lesson-row__meta';
-      metaSpan.textContent = item.meta;
+      metaSpan.textContent = translate(`${item.id}.meta`, item.meta);
       content.appendChild(titleSpan);
       content.appendChild(metaSpan);
 
@@ -960,10 +1420,16 @@ function getItemById(itemId) {
 function updateProgressUI() {
   const completedCount = Object.keys(state.completed).length;
   refs.progressCount.textContent = completedCount.toString();
+  refs.progressCount.dataset.value = completedCount.toString();
   refs.summaryBar.style.transform = `scaleX(${completedCount / totalItems || 0})`;
   refs.summaryBar.parentElement?.setAttribute('aria-valuenow', completedCount.toString());
   if (refs.overallSummary) {
-    refs.overallSummary.textContent = `${completedCount} of ${totalItems}`;
+    refs.overallSummary.dataset.completed = completedCount.toString();
+    refs.overallSummary.dataset.total = totalItems.toString();
+    const summaryTemplate = getCurrentLanguage() === 'mr' ? '{done} पैकी {total}' : '{done} of {total}';
+    refs.overallSummary.textContent = summaryTemplate
+      .replace('{done}', localizeNumber(completedCount))
+      .replace('{total}', localizeNumber(totalItems));
   }
   modulesData.forEach((module) => {
     const progressRef = moduleProgressRefs.get(module.id);
@@ -972,7 +1438,10 @@ function updateProgressUI() {
     const total = progressRef.total || module.items.length || 1;
     const ratio = moduleCompleted / total;
     progressRef.fill.style.width = `${Math.min(1, ratio) * 100}%`;
-    progressRef.label.textContent = `${moduleCompleted} / ${total} complete`;
+    const progressText = translate('progress.card', `${moduleCompleted} / ${total} complete`)
+      .replace('{done}', localizeNumber(moduleCompleted))
+      .replace('{total}', localizeNumber(total));
+    progressRef.label.textContent = progressText;
   });
 }
 
@@ -1158,9 +1627,9 @@ function renderQuiz(item) {
   body.setAttribute('novalidate', 'true');
 
   const heading = document.createElement('h2');
-  heading.textContent = item.title;
+  heading.textContent = translate(`${item.id}.title`, item.title);
   const description = document.createElement('p');
-  description.textContent = item.description;
+  description.textContent = translate(`${item.id}.description`, item.description);
   const questionsContainer = document.createElement('div');
   questionsContainer.className = 'player-quiz__questions';
 
@@ -1169,7 +1638,8 @@ function renderQuiz(item) {
     fieldset.className = 'player-quiz__question';
     fieldset.dataset.questionId = question.id;
     const legend = document.createElement('legend');
-    legend.textContent = `${index + 1}. ${question.prompt}`;
+    const prompt = translate(`${question.id}.prompt`, question.prompt);
+    legend.textContent = `${localizeNumber(index + 1)}. ${prompt}`;
     fieldset.appendChild(legend);
     const optionsList = document.createElement('div');
     optionsList.className = 'player-quiz__options';
@@ -1183,7 +1653,7 @@ function renderQuiz(item) {
       input.value = optionIndex.toString();
       label.appendChild(input);
       const span = document.createElement('span');
-      span.textContent = option;
+      span.textContent = translate(`${question.id}.option${optionIndex}`, option);
       label.appendChild(span);
       optionsList.appendChild(label);
     });
@@ -1197,11 +1667,11 @@ function renderQuiz(item) {
   const submitButton = document.createElement('button');
   submitButton.type = 'submit';
   submitButton.className = 'btn';
-  submitButton.textContent = 'Submit quiz';
+  submitButton.textContent = translate('label.submitQuiz', 'Submit quiz');
   const retryButton = document.createElement('button');
   retryButton.type = 'button';
   retryButton.className = 'btn btn--ghost';
-  retryButton.textContent = 'Retry';
+  retryButton.textContent = translate('label.retry', 'Retry');
   retryButton.hidden = true;
   const feedback = document.createElement('p');
   feedback.className = 'player-quiz__feedback';
@@ -1247,11 +1717,7 @@ function renderQuiz(item) {
     state.quizScores[item.id] = score;
     persistState();
     feedback.hidden = false;
-    feedback.textContent = `You scored ${score}% (${correct} of ${total}). ${
-      score >= 70
-        ? 'Great work—mark this quiz complete when you are ready.'
-        : 'You need 70% to pass. Adjust your answers and retry.'
-    }`;
+    feedback.textContent = formatQuizFeedback(score, correct, total);
     retryButton.hidden = false;
     if (score >= 70) {
       showCompletionEligibility(item);
@@ -1279,12 +1745,14 @@ function renderCurrentItem() {
 
 function updateDetails() {
   if (!currentItem) return;
-  refs.itemTypeChip.textContent = currentItem.type === 'video' ? 'Video' : 'Quiz';
+  refs.itemTypeChip.textContent = currentItem.type === 'video'
+    ? translate('label.video', 'Video')
+    : translate('label.quiz', 'Quiz');
   refs.itemTypeChip.classList.remove('chip--video', 'chip--quiz');
   refs.itemTypeChip.classList.add(currentItem.type === 'video' ? 'chip--video' : 'chip--quiz');
-  refs.itemMetaChip.textContent = currentItem.meta;
-  refs.itemTitle.textContent = currentItem.title;
-  refs.itemDescription.textContent = currentItem.description;
+  refs.itemMetaChip.textContent = translate(`${currentItem.id}.meta`, currentItem.meta);
+  refs.itemTitle.textContent = translate(`${currentItem.id}.title`, currentItem.title);
+  refs.itemDescription.textContent = translate(`${currentItem.id}.description`, currentItem.description);
 }
 
 function isEligible(itemId) {
@@ -1306,7 +1774,9 @@ function updateCompletionUI() {
   refs.overlay.hidden = !shouldShowOverlay;
   refs.markComplete.hidden = !eligible;
   refs.markComplete.disabled = completed;
-  refs.markComplete.textContent = completed ? 'Completed' : 'Mark as complete';
+  refs.markComplete.textContent = completed
+    ? translate('label.completed', 'Completed')
+    : translate('label.markComplete', 'Mark as complete');
   refs.overlayButton.disabled = completed;
   refs.addTimecode.disabled = currentItem.type !== 'video';
   refs.downloadButton.disabled = currentItem.type !== 'video';
@@ -1322,7 +1792,7 @@ function completeCurrentItem() {
   state.completed[currentItem.id] = true;
   persistState();
   refs.overlay.hidden = true;
-  refs.markComplete.textContent = 'Completed';
+  refs.markComplete.textContent = translate('label.completed', 'Completed');
   refs.markComplete.disabled = true;
   updateCompletionUI();
 }
@@ -1336,7 +1806,8 @@ function getNextItem(itemId) {
 function scheduleAutoAdvance(item) {
   const next = getNextItem(item.id);
   if (!next) return;
-  refs.toastText.textContent = `Next up: ${next.title}`;
+  const nextTitle = translate(`${next.id}.title`, next.title);
+  refs.toastText.textContent = translate('toast.nextUp', `Next up: {title}`).replace('{title}', nextTitle);
   refs.toast.hidden = false;
   if (autoAdvanceTimer) clearTimeout(autoAdvanceTimer);
   autoAdvanceTimer = setTimeout(() => {
@@ -1363,7 +1834,9 @@ function applySearchFilter() {
     module.items.forEach((item) => {
       const element = itemElements.get(item.id);
       if (!element) return;
-      const matches = !term || item.title.toLowerCase().includes(term);
+      const englishTitle = item.title.toLowerCase();
+      const localizedTitle = translate(`${item.id}.title`, item.title).toLowerCase();
+      const matches = !term || englishTitle.includes(term) || localizedTitle.includes(term);
       element.hidden = !matches;
       if (matches) visibleCount += 1;
     });
@@ -1386,7 +1859,7 @@ function handleNotesSubmit(event) {
   state.notes[currentItem.id] = notes;
   refs.noteTextarea.value = '';
   refs.notesStatus.hidden = false;
-  refs.notesStatus.textContent = 'Saved';
+  refs.notesStatus.textContent = translate('label.saved', 'Saved');
   setTimeout(() => {
     refs.notesStatus.hidden = true;
   }, 1500);
@@ -1423,12 +1896,12 @@ function loadNotes() {
     refs.notesStatus.hidden = true;
   }
   const notes = state.notes[currentItem.id] || [];
-  refs.notesCount.textContent = notes.length.toString();
+  refs.notesCount.textContent = localizeNumber(notes.length);
   refs.notesList.innerHTML = '';
   if (!notes.length) {
     const empty = document.createElement('p');
     empty.className = 'notes-list__empty';
-    empty.textContent = 'No notes yet for this item.';
+    empty.textContent = translate('programs.notes.empty', 'No notes yet for this item.');
     refs.notesList.appendChild(empty);
     return;
   }
@@ -1445,7 +1918,7 @@ function loadNotes() {
       actions.className = 'note-card__actions';
       const deleteButton = document.createElement('button');
       deleteButton.type = 'button';
-      deleteButton.textContent = 'Delete';
+      deleteButton.textContent = translate('label.delete', 'Delete');
       deleteButton.addEventListener('click', () => deleteNote(note.id));
       actions.appendChild(deleteButton);
       meta.appendChild(actions);
@@ -1528,3 +2001,15 @@ function init() {
 }
 
 init();
+
+onLanguageChange(() => {
+  if (!allItems.length) return;
+  buildModules();
+  applySearchFilter();
+  updateActiveRow();
+  updateDetails();
+  updateCompletionUI();
+  renderCurrentItem();
+  updateProgressUI();
+  loadNotes();
+});
