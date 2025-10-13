@@ -6,17 +6,26 @@
       </span>
       <span class="brand-copy">
         <span class="brand-strong">Samriddhi</span>
-        <span class="brand-tagline">Prosperity for every tailor</span>
+        <span class="brand-tagline" data-i18n="header.tagline">Prosperity for every tailor</span>
       </span>
     </a>
-    <button class="hamb" id="hamb" aria-label="Menu" aria-expanded="false">☰</button>
+    <button class="hamb" id="hamb" aria-expanded="false" aria-label="Menu" data-i18n="header.menu">☰</button>
     <nav class="nav-right" id="navRight">
-      <a class="nav-link" data-route="home" href="home.html">Home</a>
-      <a class="nav-link" data-route="modules" href="modules.html">Programs</a>
-      <a class="nav-link" data-route="banking" href="banking.html">Banking <span class="chip-new">NEW</span></a>
-      <a class="nav-link" data-route="toolkits" href="toolkits.html">Toolkit</a>
-      <a id="navProfile" class="nav-link hidden" data-route="profile" href="profile.html">Profile</a>
-      <button id="btnOpenLogin" type="button" class="btn login-pill">Login/Register</button>
+      <a class="nav-link" data-route="home" href="home.html" data-i18n="header.nav.home">Home</a>
+      <a class="nav-link" data-route="modules" href="modules.html" data-i18n="header.nav.modules">Programs</a>
+      <a class="nav-link" data-route="banking" href="banking.html" data-i18n="header.nav.banking">Banking <span class="chip-new">NEW</span></a>
+      <a class="nav-link" data-route="toolkits" href="toolkits.html" data-i18n="header.nav.toolkit">Toolkit</a>
+      <a id="navProfile" class="nav-link hidden" data-route="profile" href="profile.html" data-i18n="header.nav.profile">Profile</a>
+      <button
+        id="btnToggleLang"
+        type="button"
+        class="btn ghost small"
+        aria-label="Switch language to Marathi"
+        aria-pressed="false"
+        data-active-lang="en"
+        data-i18n="lang.toggle.label"
+      >मराठी</button>
+      <button id="btnOpenLogin" type="button" class="btn login-pill" data-i18n="header.nav.login">Login / Register</button>
     </nav>
   </div>
 </header>
