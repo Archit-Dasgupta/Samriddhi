@@ -12,40 +12,60 @@
   <main class="page-auth page-profile" id="page-profile">
     <section class="profile card glass-card">
       <header class="profile-head">
-        <span class="eyebrow">Personal hub</span>
-        <h1>Tailor your Samriddhi experience</h1>
-        <p class="muted">Refresh your details to keep receiving the right language support, pricing tools and financing suggestions.</p>
+        <span class="eyebrow" data-i18n="profile.eyebrow">Personal hub</span>
+        <h1 data-i18n="profile.title">Tailor your Samriddhi experience</h1>
+        <p class="muted" data-i18n="profile.copy">Refresh your details to keep receiving the right language support, pricing tools and financing suggestions.</p>
       </header>
       <div class="profile-body">
         <div class="profile-form">
           <div class="profile-grid grid2">
-            <label>Phone (read-only)<input id="prof_phone" disabled/></label>
-            <label>Name<input id="prof_name" placeholder="Your name"/></label>
-            <label>Village / City<input id="prof_city" placeholder="Your town"/></label>
-            <label>Occupation<input id="prof_job" placeholder="e.g., Tailor"/></label>
-            <label>Language
-              <select id="prof_lang"><option>English</option><option>Hindi</option><option>Marathi</option></select>
+            <label>
+              <span data-i18n="profile.phoneLabel">Phone (read-only)</span>
+              <input id="prof_phone" disabled data-i18n="profile.phoneValue"/>
             </label>
-            <label>Change password<input id="prof_pw" type="password" placeholder="New password"/></label>
+            <label>
+              <span data-i18n="profile.nameLabel">Name</span>
+              <input id="prof_name" placeholder="Your name" data-i18n="profile.nameInput"/>
+            </label>
+            <label>
+              <span data-i18n="profile.cityLabel">Village / City</span>
+              <input id="prof_city" placeholder="Your town" data-i18n="profile.cityInput"/>
+            </label>
+            <label>
+              <span data-i18n="profile.occupationLabel">Occupation</span>
+              <input id="prof_job" placeholder="e.g., Tailor" data-i18n="profile.occupationInput"/>
+            </label>
+            <label>
+              <span data-i18n="profile.languageLabel">Language</span>
+              <select id="prof_lang" data-i18n="profile.languageSelect">
+                <option data-i18n="profile.langEnglish">English</option>
+                <option data-i18n="profile.langHindi">Hindi</option>
+                <option data-i18n="profile.langMarathi">Marathi</option>
+              </select>
+            </label>
+            <label>
+              <span data-i18n="profile.passwordLabel">Change password</span>
+              <input id="prof_pw" type="password" placeholder="New password" data-i18n="profile.passwordInput"/>
+            </label>
           </div>
           <div class="profile-actions">
-            <button id="prof_save" class="btn primary">Save changes</button>
-            <button id="prof_logout" class="btn ghost">Log out</button>
+            <button id="prof_save" class="btn primary" data-i18n="profile.save">Save changes</button>
+            <button id="prof_logout" class="btn ghost" data-i18n="profile.logout">Log out</button>
             <span id="prof_msg" class="muted"></span>
           </div>
         </div>
         <aside class="profile-summary">
           <div class="profile-summary__card">
-            <span class="profile-chip">Your growth story</span>
-            <h2>Progress snapshot</h2>
-            <p class="muted">Complete your profile to unlock advanced toolkits, bank offers and language specific tips.</p>
+            <span class="profile-chip" data-i18n="profile.summary.chip">Your growth story</span>
+            <h2 data-i18n="profile.summary.title">Progress snapshot</h2>
+            <p class="muted" data-i18n="profile.summary.copy">Complete your profile to unlock advanced toolkits, bank offers and language specific tips.</p>
             <ul class="profile-stats">
               <li>
-                <span>Literacy track</span>
+                <span data-i18n="profile.summary.literacy">Literacy track</span>
                 <strong id="prof_lit">—</strong>
               </li>
               <li>
-                <span>Course progress</span>
+                <span data-i18n="profile.summary.progress">Course progress</span>
                 <strong id="prof_prog">0%</strong>
               </li>
             </ul>

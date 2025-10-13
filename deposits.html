@@ -12,125 +12,125 @@
   <main class="container" id="page-deposits">
     <section class="card deposit-hero tone-mint">
       <div class="deposit-hero__content">
-        <span class="eyebrow">Deposits</span>
-        <h1>Grow savings safely with FDs and RDs</h1>
-        <p>Choose a plan, check returns in colourful cards and submit details in under 5 minutes. Our women coaches guide you on call.</p>
+        <span class="eyebrow" data-i18n="deposits.hero.eyebrow">Deposits</span>
+        <h1 data-i18n="deposits.hero.title">Grow savings safely with FDs and RDs</h1>
+        <p data-i18n="deposits.hero.copy">Choose a plan, check returns in colourful cards and submit details in under 5 minutes. Our women coaches guide you on call.</p>
         <div class="deposit-steps">
           <div class="deposit-step">
             <span class="step-icon">1</span>
-            <strong>Pick your plan</strong>
-            <p>Decide tenure and amount with the calculator.</p>
+            <strong data-i18n="deposits.hero.stepOne.title">Pick your plan</strong>
+            <p data-i18n="deposits.hero.stepOne.copy">Decide tenure and amount with the calculator.</p>
           </div>
           <div class="deposit-step">
             <span class="step-icon">2</span>
-            <strong>Share documents</strong>
-            <p>Keep Aadhaar, PAN and nominee details ready.</p>
+            <strong data-i18n="deposits.hero.stepTwo.title">Share documents</strong>
+            <p data-i18n="deposits.hero.stepTwo.copy">Keep Aadhaar, PAN and nominee details ready.</p>
           </div>
           <div class="deposit-step">
             <span class="step-icon">3</span>
-            <strong>Confirm on call</strong>
-            <p>Coach books the deposit and sends receipt on WhatsApp.</p>
+            <strong data-i18n="deposits.hero.stepThree.title">Confirm on call</strong>
+            <p data-i18n="deposits.hero.stepThree.copy">Coach books the deposit and sends receipt on WhatsApp.</p>
           </div>
         </div>
         <div class="cta-bar">
-          <a class="btn primary" href="#fd-calc">Calculate FD returns</a>
-          <a class="btn ghost" href="banking.html">Back to banking overview</a>
+          <a class="btn primary" href="#fd-calc" data-i18n="deposits.hero.ctaPrimary">Calculate FD returns</a>
+          <a class="btn ghost" href="banking.html" data-i18n="deposits.hero.ctaSecondary">Back to banking overview</a>
         </div>
       </div>
     </section>
 
     <section class="card deposit-section" id="fd-calc">
-      <h2>Fixed Deposit planner</h2>
-      <p class="muted">See how much you earn at maturity. Senior citizens get extra interest automatically.</p>
+      <h2 data-i18n="deposits.fd.title">Fixed Deposit planner</h2>
+      <p class="muted" data-i18n="deposits.fd.copy">See how much you earn at maturity. Senior citizens get extra interest automatically.</p>
       <div class="deposit-grid">
         <div class="calc-card">
           <div class="calc-card__head">
-            <h3>FD calculator</h3>
-            <p>Change amount or plan to update your return instantly.</p>
+            <h3 data-i18n="deposits.fd.calc.title">FD calculator</h3>
+            <p data-i18n="deposits.fd.calc.copy">Change amount or plan to update your return instantly.</p>
           </div>
           <div class="field-grid">
-            <label>Amount (₹)<input id="invAmount" type="number" value="75000"/></label>
-            <label>Sr. citizen?
+            <label data-i18n="deposits.fd.calc.amount">Amount (₹)<input id="invAmount" type="number" value="75000"/></label>
+            <label data-i18n="deposits.fd.calc.sr">Sr. citizen?
               <select id="srCitizen">
-                <option>No</option>
-                <option>Yes</option>
+                <option value="No" data-i18n="deposits.fd.calc.sr.no">No</option>
+                <option value="Yes" data-i18n="deposits.fd.calc.sr.yes">Yes</option>
               </select>
             </label>
           </div>
-          <label>Choose plan
+          <label data-i18n="deposits.fd.calc.plan">Choose plan
             <select id="tenurePick">
-              <option value="60|8.2">5 years • 8.2% p.a.</option>
-              <option value="36|7.6">3 years • 7.6% p.a.</option>
-              <option value="24|7.3">2 years • 7.3% p.a.</option>
-              <option value="12|7.0">1 year • 7.0% p.a.</option>
+              <option value="60|8.2" data-i18n="deposits.fd.calc.option60">5 years • 8.2% p.a.</option>
+              <option value="36|7.6" data-i18n="deposits.fd.calc.option36">3 years • 7.6% p.a.</option>
+              <option value="24|7.3" data-i18n="deposits.fd.calc.option24">2 years • 7.3% p.a.</option>
+              <option value="12|7.0" data-i18n="deposits.fd.calc.option12">1 year • 7.0% p.a.</option>
             </select>
           </label>
           <div class="summary-grid">
             <div>
-              <span class="muted">You invest</span>
+              <span class="muted" data-i18n="deposits.fd.calc.invest">You invest</span>
               <strong id="fInv">₹75,000</strong>
             </div>
             <div>
-              <span class="muted">Interest applied</span>
+              <span class="muted" data-i18n="deposits.fd.calc.rate">Interest applied</span>
               <strong id="fRate">8.2%</strong>
             </div>
             <div>
-              <span class="muted">Time period</span>
+              <span class="muted" data-i18n="deposits.fd.calc.tenure">Time period</span>
               <strong id="fTenure">5Y</strong>
             </div>
             <div>
-              <span class="muted">Maturity amount</span>
+              <span class="muted" data-i18n="deposits.fd.calc.maturity">Maturity amount</span>
               <strong id="fMaturity">₹—</strong>
             </div>
           </div>
-          <a class="btn primary wide" href="open-account.html#fd">Start FD application</a>
+          <a class="btn primary wide" href="open-account.html#fd" data-i18n="deposits.fd.calc.cta">Start FD application</a>
         </div>
         <div class="info-block">
-          <h3>Checklist before you submit</h3>
+          <h3 data-i18n="deposits.fd.info.title">Checklist before you submit</h3>
           <ul class="bullet-grid deposit-bullets">
-            <li>Aadhaar and PAN photocopies</li>
-            <li>Nominee name and relationship</li>
-            <li>Bank account for maturity credit</li>
-            <li>Initial amount ready for transfer</li>
+            <li data-i18n="deposits.fd.info.point1">Aadhaar and PAN photocopies</li>
+            <li data-i18n="deposits.fd.info.point2">Nominee name and relationship</li>
+            <li data-i18n="deposits.fd.info.point3">Bank account for maturity credit</li>
+            <li data-i18n="deposits.fd.info.point4">Initial amount ready for transfer</li>
           </ul>
           <div class="note-card">
-            <strong>Need help?</strong>
-            <p>Call 1800-266-2233 (9am-7pm) for Marathi or Hindi assistance.</p>
+            <strong data-i18n="deposits.fd.info.noteTitle">Need help?</strong>
+            <p data-i18n="deposits.fd.info.noteCopy">Call 1800-266-2233 (9am-7pm) for Marathi or Hindi assistance.</p>
           </div>
         </div>
       </div>
     </section>
 
     <section class="card deposit-section" id="rd">
-      <h2>Recurring Deposit planner</h2>
-      <p class="muted">Save a small amount every month and build your goal fund. Pause twice in a year without penalty.</p>
+      <h2 data-i18n="deposits.rd.title">Recurring Deposit planner</h2>
+      <p class="muted" data-i18n="deposits.rd.copy">Save a small amount every month and build your goal fund. Pause twice in a year without penalty.</p>
       <div class="deposit-grid">
         <div class="calc-card">
           <div class="calc-card__head">
-            <h3>RD calculator</h3>
-            <p>Enter how much you can save every month and duration.</p>
+            <h3 data-i18n="deposits.rd.calc.title">RD calculator</h3>
+            <p data-i18n="deposits.rd.calc.copy">Enter how much you can save every month and duration.</p>
           </div>
           <div class="field-grid">
-            <label>Monthly deposit (₹)<input id="rd_amt" type="number" value="1500"/></label>
-            <label>Tenure (months)<input id="rd_months" type="number" value="24"/></label>
+            <label data-i18n="deposits.rd.calc.amount">Monthly deposit (₹)<input id="rd_amt" type="number" value="1500"/></label>
+            <label data-i18n="deposits.rd.calc.tenure">Tenure (months)<input id="rd_months" type="number" value="24"/></label>
           </div>
           <div class="highlight-box">
-            <span class="muted">Maturity amount</span>
+            <span class="muted" data-i18n="deposits.rd.calc.output">Maturity amount</span>
             <strong id="rd_out">₹—</strong>
           </div>
-          <a class="btn primary wide" href="open-account.html#rd">Start RD application</a>
+          <a class="btn primary wide" href="open-account.html#rd" data-i18n="deposits.rd.calc.cta">Start RD application</a>
         </div>
         <div class="info-block">
-          <h3>RD benefits with Samriddhi</h3>
+          <h3 data-i18n="deposits.rd.info.title">RD benefits with Samriddhi</h3>
           <ul class="bullet-grid deposit-bullets">
-            <li>Auto-debit from your savings account</li>
-            <li>WhatsApp reminders 3 days before due date</li>
-            <li>Preferential rates above 24 months</li>
-            <li>Passbook entries in Marathi or Hindi</li>
+            <li data-i18n="deposits.rd.info.point1">Auto-debit from your savings account</li>
+            <li data-i18n="deposits.rd.info.point2">WhatsApp reminders 3 days before due date</li>
+            <li data-i18n="deposits.rd.info.point3">Preferential rates above 24 months</li>
+            <li data-i18n="deposits.rd.info.point4">Passbook entries in Marathi or Hindi</li>
           </ul>
           <div class="note-card">
-            <strong>Documents</strong>
-            <p>Same as FD. Add cancelled cheque for auto-debit mandate.</p>
+            <strong data-i18n="deposits.rd.info.noteTitle">Documents</strong>
+            <p data-i18n="deposits.rd.info.noteCopy">Same as FD. Add cancelled cheque for auto-debit mandate.</p>
           </div>
         </div>
       </div>
@@ -138,20 +138,20 @@
 
     <section class="card deposit-support tone-sky">
       <div>
-        <h2>Talk to a deposit coach</h2>
-        <p class="muted">Share your name and phone. A coach calls back within one working day to complete the process.</p>
+        <h2 data-i18n="deposits.support.title">Talk to a deposit coach</h2>
+        <p class="muted" data-i18n="deposits.support.copy">Share your name and phone. A coach calls back within one working day to complete the process.</p>
       </div>
       <form class="call-form" action="javascript:void(0);" novalidate>
-        <label>Your name<input type="text" placeholder="e.g. Sunita Patil" required/></label>
-        <label>Phone number<input type="tel" placeholder="10-digit mobile" required/></label>
-        <label>Preferred language
+        <label data-i18n="deposits.support.name">Your name<input type="text" placeholder="e.g. Sunita Patil" required/></label>
+        <label data-i18n="deposits.support.phone">Phone number<input type="tel" placeholder="10-digit mobile" required/></label>
+        <label data-i18n="deposits.support.language">Preferred language
           <select>
-            <option>Marathi</option>
-            <option>Hindi</option>
-            <option>English</option>
+            <option data-i18n="openAccount.form.langMarathi">Marathi</option>
+            <option data-i18n="openAccount.form.langHindi">Hindi</option>
+            <option data-i18n="openAccount.form.langEnglish">English</option>
           </select>
         </label>
-        <button class="btn primary" type="submit">Request a call</button>
+        <button class="btn primary" type="submit" data-i18n="deposits.support.submit">Request a call</button>
       </form>
     </section>
   </main>

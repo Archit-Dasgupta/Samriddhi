@@ -11,20 +11,27 @@
 
   <main class="container" id="page-dashboard">
     <section class="card">
-      <h2>Welcome to your dashboard</h2>
-      <p class="muted" id="dash_sub">Let’s build steady income with the right skills and safer finance.</p>
+      <h2 data-i18n="dashboard.title">Welcome to your dashboard</h2>
+      <p class="muted" id="dash_sub" data-i18n="dashboard.copy">Let’s build steady income with the right skills and safer finance.</p>
 
-      <div class="progress" aria-label="Course progress" title="Course progress">
+      <div class="progress" aria-label="Course progress" title="Course progress" data-i18n="dashboard.progressBar">
         <span id="progBar" style="width:0%"></span>
       </div>
-      <p class="tiny muted">Progress: <span id="progPct">0%</span> • Literacy: <span id="litLevel">—</span> (<span id="litScore">0</span>/10)</p>
+      <p class="tiny muted" id="dash_stats">
+        <span data-i18n="dashboard.progressLabel">Progress</span>:
+        <span id="progPct">0%</span>
+        <span aria-hidden="true">•</span>
+        <span data-i18n="dashboard.literacyLabel">Literacy</span>:
+        <span id="litLevel">—</span>
+        (<span id="litScore">0</span>/<span data-i18n="dashboard.litDenominator">10</span>)
+      </p>
 
       <div class="quick-actions" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:8px">
-        <button id="btnTakeTest" class="btn ghost">Take Financial Literacy Test</button>
-        <button id="btnResume" class="btn primary">Resume Course</button>
-        <a class="btn ghost" href="modules.html" id="btnExplorePrograms">Explore Programs</a>
-        <a class="btn ghost" href="banking.html">Banking</a>
-        <a class="btn ghost" href="toolkits.html">Toolkits</a>
+        <button id="btnTakeTest" class="btn ghost" data-i18n="dashboard.takeTest">Take Financial Literacy Test</button>
+        <button id="btnResume" class="btn primary" data-i18n="dashboard.resume">Resume Course</button>
+        <a class="btn ghost" href="modules.html" id="btnExplorePrograms" data-i18n="dashboard.explore">Explore Programs</a>
+        <a class="btn ghost" href="banking.html" data-i18n="dashboard.banking">Banking</a>
+        <a class="btn ghost" href="toolkits.html" data-i18n="dashboard.toolkits">Toolkits</a>
       </div>
       <p id="lockMsg" class="muted tiny" style="margin-top:8px"></p>
     </section>
