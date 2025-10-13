@@ -31,6 +31,21 @@
     <div class="program-layout" data-layout>
       <aside class="modules-panel" data-modules-panel>
         <div class="modules-panel__inner">
+          <header class="modules-panel__header">
+            <div class="modules-panel__title">
+              <h2 data-i18n="programs.modules.toggle">मॉड्यूल्स</h2>
+              <p class="modules-panel__subtitle" data-i18n="programs.modules.subtitle">धडे ब्राउझ करा किंवा तुमची प्रगती तपासा.</p>
+            </div>
+            <button
+              type="button"
+              class="modules-panel__close"
+              data-close-modules
+              aria-label="मॉड्यूल सूची बंद करा"
+              data-i18n="programs.modules.close"
+            >
+              <span aria-hidden="true">✕</span>
+            </button>
+          </header>
           <div class="modules-panel__search">
             <label for="lessonSearch" data-i18n="programs.search.label">धडे आणि प्रश्नमंजुषा शोधा</label>
             <input
