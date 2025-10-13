@@ -1,48 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="mr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Samriddhi • Entrepreneurship 101: Tailoring</title>
+  <title>Samriddhi • उद्योजकता १०१: शिवणकाम</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="course-player" data-page="modules">
-  <header class="topbar">
-    <div class="topbar-inner">
-      <button class="hamb" id="hamb" aria-label="Menu" aria-expanded="false">☰</button>
-      <a class="brand-left" href="home.html">
-        <div class="logo-square">
-          <img src="img/logo.svg" alt="Samriddhi logo" />
-        </div>
-        <div class="brand-text"><span class="brand-strong">Samriddhi</span></div>
-      </a>
-      <nav class="nav-right" id="navRight">
-        <a class="nav-link" data-route="home" href="home.html">Home</a>
-        <a class="nav-link active" data-route="modules" href="modules.html" aria-current="page">Programs</a>
-        <a class="nav-link" data-route="banking" href="banking.html">Banking <span class="chip-new">NEW</span></a>
-        <a class="nav-link" data-route="toolkits" href="toolkits.html">Toolkit</a>
-        <button id="btnOpenLogin" type="button" class="btn login-pill">Login/Register</button>
-        <a id="navProfile" class="nav-link hidden" data-route="profile" href="profile.html">Profile</a>
-      </nav>
-    </div>
-  </header>
+  <div id="header-placeholder"></div>
 
-  <main class="program-page" id="mainContent">
+  <main class="program-page" id="page-modules" role="main">
     <header class="program-page__header" role="banner">
       <nav class="program-page__breadcrumb" aria-label="Breadcrumb">
         <ol>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="home.html">Programs</a></li>
-          <li aria-current="page">Entrepreneurship 101: Tailoring</li>
+          <li><a href="index.html" data-i18n="programs.breadcrumb.home">मुख्यपृष्ठ</a></li>
+          <li><a href="home.html" data-i18n="programs.breadcrumb.programs">कार्यक्रम</a></li>
+          <li aria-current="page" data-i18n="programs.breadcrumb.current">उद्योजकता १०१: शिवणकाम</li>
         </ol>
       </nav>
       <div class="program-page__intro">
-        <h1>Entrepreneurship 101: Tailoring</h1>
-        <p>Build tailoring business skills through applied videos and pulse quizzes.</p>
+        <h1 data-i18n="programs.header.title">उद्योजकता १०१: शिवणकाम</h1>
+        <p data-i18n="programs.header.copy">अनुभवाधारित व्हिडिओ आणि जलद प्रश्नमंजुषांद्वारे शिवण व्यवसाय कौशल्ये वाढवा.</p>
       </div>
       <div class="program-page__overall" data-overall-progress>
-        <strong data-overall-progress-count>0 of 24</strong>
-        <span>items complete</span>
+        <strong data-overall-progress-count data-i18n="programs.header.progress">० पैकी २४</strong>
+        <span data-i18n="programs.header.progressLabel">घटक पूर्ण</span>
       </div>
     </header>
 
@@ -50,8 +32,14 @@
       <aside class="modules-panel" data-modules-panel>
         <div class="modules-panel__inner">
           <div class="modules-panel__search">
-            <label for="lessonSearch">Search lessons and quizzes</label>
-            <input id="lessonSearch" type="search" placeholder="Search lessons and quizzes" autocomplete="off" />
+            <label for="lessonSearch" data-i18n="programs.search.label">धडे आणि प्रश्नमंजुषा शोधा</label>
+            <input
+              id="lessonSearch"
+              type="search"
+              placeholder="धडे आणि प्रश्नमंजुषा शोधा"
+              autocomplete="off"
+              data-i18n="programs.search.input"
+            />
           </div>
           <div class="modules-panel__list" role="listbox" aria-label="Lesson journey" data-module-list></div>
         </div>
@@ -59,9 +47,9 @@
 
       <section class="player-column" aria-live="polite">
         <div class="player-column__header">
-          <button type="button" class="modules-toggle" data-toggle-modules aria-expanded="false">Modules</button>
+          <button type="button" class="modules-toggle" data-toggle-modules aria-expanded="false" data-i18n="programs.modules.toggle">मॉड्यूल्स</button>
           <div class="player-column__summary">
-            <span class="player-column__summary-count"><strong data-progress-count>0</strong> of <span data-progress-total>24</span> complete</span>
+            <span class="player-column__summary-count" data-i18n="programs.summary.count"><strong data-progress-count>०</strong> पैकी <span data-progress-total>२४</span> पूर्ण</span>
             <div class="player-column__summary-bar" role="progressbar" aria-valuemin="0" aria-valuemax="24" aria-valuenow="0">
               <span class="player-column__summary-bar-fill" data-summary-bar></span>
             </div>
@@ -72,21 +60,21 @@
           <div class="player-surface" data-player-surface>
             <div class="player-surface__media" data-player-stage>
               <div class="player-surface__placeholder">
-                <p>Select a lesson to begin.</p>
+                <p data-i18n="programs.player.placeholder">सुरू करण्यासाठी धडा निवडा.</p>
               </div>
             </div>
             <div class="player-surface__overlay" data-complete-overlay hidden>
-              <button type="button" class="btn" data-overlay-complete>Mark as complete</button>
+              <button type="button" class="btn" data-overlay-complete data-i18n="programs.player.overlayComplete">पूर्ण म्हणून चिन्हांकित करा</button>
             </div>
             <div class="player-surface__error" data-player-error hidden>
-              <p>We couldn’t load this lesson right now.</p>
-              <button type="button" class="btn" data-retry-item>Retry</button>
+              <p data-i18n="programs.player.error">आम्ही हा धडा सध्या लोड करू शकलो नाही.</p>
+              <button type="button" class="btn" data-retry-item data-i18n="programs.player.retry">पुन्हा प्रयत्न करा</button>
             </div>
           </div>
           <div class="player-shell__controls" role="group" aria-label="Player controls">
-            <button type="button" class="btn btn--ghost" data-toggle-captions aria-pressed="false">Captions</button>
-            <button type="button" class="btn btn--ghost" data-download-video>Download video</button>
-            <button type="button" class="btn" data-mark-complete hidden>Mark as complete</button>
+            <button type="button" class="btn btn--ghost" data-toggle-captions aria-pressed="false" data-i18n="programs.player.captions">उपशीर्षके</button>
+            <button type="button" class="btn btn--ghost" data-download-video data-i18n="programs.player.download">व्हिडिओ डाउनलोड करा</button>
+            <button type="button" class="btn" data-mark-complete hidden data-i18n="programs.player.markComplete">पूर्ण म्हणून चिन्हांकित करा</button>
           </div>
         </div>
 
@@ -95,77 +83,41 @@
             <span class="chip" data-item-type>—</span>
             <span class="chip chip--muted" data-item-meta>00:00</span>
           </div>
-          <h2 data-item-title>Choose a lesson to get started</h2>
-          <p data-item-description>Use the module list to begin watching or practising.</p>
+          <h2 data-item-title data-i18n="programs.details.title">सुरू करण्यासाठी धडा निवडा</h2>
+          <p data-item-description data-i18n="programs.details.copy">पाहणे किंवा सराव सुरू करण्यासाठी मॉड्यूल यादी वापरा.</p>
         </div>
 
         <div class="player-toast" data-autoplay-toast hidden>
           <span data-toast-text></span>
-          <button type="button" class="btn btn--ghost" data-toast-cancel>Cancel</button>
+          <button type="button" class="btn btn--ghost" data-toast-cancel data-i18n="programs.toast.cancel">रद्द करा</button>
         </div>
 
         <section class="notes-panel" aria-label="Notes">
           <header class="notes-panel__header">
-            <h3>Notes</h3>
+            <h3 data-i18n="programs.notes.title">नोंदी</h3>
             <span class="notes-panel__count" data-notes-count>0</span>
           </header>
           <form class="notes-form" data-notes-form>
             <div class="notes-form__controls">
-              <button type="button" class="btn btn--ghost" data-add-timecode>Add timecode</button>
+              <button type="button" class="btn btn--ghost" data-add-timecode data-i18n="programs.notes.timecode">वेळ कोड जोडा</button>
             </div>
-            <label for="noteText" class="sr-only">New note</label>
-            <textarea id="noteText" rows="3" placeholder="Capture your takeaways…"></textarea>
+            <label for="noteText" class="sr-only" data-i18n="programs.notes.label">नवीन नोंद</label>
+            <textarea id="noteText" rows="3" placeholder="आपल्या टिपा लिहून ठेवा…" data-i18n="programs.notes.placeholder"></textarea>
             <div class="notes-form__actions">
-              <button type="submit" class="btn">Save note</button>
-              <span class="notes-form__status" data-notes-status aria-live="polite" hidden>Saved</span>
+              <button type="submit" class="btn" data-i18n="programs.notes.save">नोंद जतन करा</button>
+              <span class="notes-form__status" data-notes-status aria-live="polite" hidden data-i18n="programs.notes.saved">जतन झाले</span>
             </div>
           </form>
           <div class="notes-list" data-notes-list>
-            <p class="notes-list__empty">No notes yet for this item.</p>
+            <p class="notes-list__empty" data-i18n="programs.notes.empty">या घटकासाठी अजून नोंदी नाहीत.</p>
           </div>
         </section>
       </section>
     </div>
   </main>
+  <div id="footer-placeholder"></div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const hamb = document.getElementById('hamb');
-      const navRight = document.getElementById('navRight');
-      const loginBtn = document.getElementById('btnOpenLogin');
-
-      const goToLogin = () => {
-        window.location.href = 'login.html';
-      };
-
-      const closeMenu = () => {
-        if (!navRight) return;
-        navRight.classList.remove('open');
-        hamb?.setAttribute('aria-expanded', 'false');
-      };
-
-      hamb?.addEventListener('click', () => {
-        if (!navRight) return;
-        const isOpen = navRight.classList.toggle('open');
-        hamb.setAttribute('aria-expanded', String(isOpen));
-      });
-
-      navRight?.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', closeMenu);
-      });
-
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') {
-          closeMenu();
-        }
-      });
-
-      loginBtn?.addEventListener('click', () => {
-        closeMenu();
-        goToLogin();
-      });
-    });
-  </script>
+  <script type="module" src="assets/js/app.js"></script>
   <script type="module" src="assets/js/course-player.js"></script>
 </body>
 </html>
