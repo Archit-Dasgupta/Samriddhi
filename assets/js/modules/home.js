@@ -7,16 +7,16 @@ const homeTranslations = {
     en: { attrs: { alt: 'Tailor focusing on measuring fabric at a sewing table' } },
   },
   'home.hero.title': {
-    mr: 'समृद्धी तुमच्या शिवण व्यवसायाच्या वाढीसाठी प्रशिक्षण, साधने आणि वित्त एकत्र आणते.',
-    en: 'Samriddhi unites training, tools and finance to grow your tailoring business.',
+    mr: 'ग्रामीण महिलांना स्वतःचे भविष्य घडवण्यासाठी सक्षम बनवणे',
+    en: 'Empowering Rural Women to Build Their Own Future',
   },
   'home.hero.support': {
-    mr: '२५,०००+ बुटीक मालक समृद्धी वापरून किंमत ठरवणे, कार्यभांडवल व्यवस्थापित करणे आणि तणावाविना सतत बुक राहणे शिकत आहेत; तुम्हीही त्यात सहभागी व्हा.',
-    en: 'Join 25,000+ boutique owners using Samriddhi to master pricing, manage working capital and stay fully booked without stress.',
+    mr: 'आर्थिक साक्षरता आणि उद्योजकता आता सोपी, स्थानिक आणि विश्वासार्ह.',
+    en: 'Financial literacy and entrepreneurship made simple, local, and trusted.',
   },
   'home.hero.start': {
-    mr: 'मोफत कार्यक्रम सुरू करा',
-    en: 'Start free program',
+    mr: 'शिकणे सुरू करा',
+    en: 'Start Learning',
   },
   'home.hero.note': {
     mr: 'कार्डची गरज नाही. कधीही रद्द करा.',
@@ -24,7 +24,7 @@ const homeTranslations = {
   },
   'home.hero.preview': {
     mr: 'कार्यक्रम पाहा',
-    en: 'Preview programs',
+    en: 'Explore Courses',
   },
   'home.actions.eyebrow': {
     mr: 'झटपट कृती',
