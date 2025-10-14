@@ -837,36 +837,6 @@ const modulesData = [
             explanation: 'Lower costs with steady sales increase the profit margin.'
           }
         ]
-      },
-          {
-            id: 'm4q4-2',
-            prompt: 'What should you prepare before meeting local shop owners for partnerships?',
-            options: ['A clear proposal and samples of your work', 'A list of complaints about competitors', 'Nothing—decide in the moment'],
-            answerIndex: 0,
-            explanation: 'Preparation keeps the meeting professional and effective.'
-          },
-          {
-            id: 'm4q4-3',
-            prompt: 'How do you turn first-time buyers into loyal customers?',
-            options: ['Collect feedback and follow up with tailored offers', 'Assume they will return automatically', 'Pressure them immediately for bulk orders'],
-            answerIndex: 0,
-            explanation: 'Listening and personalised follow-up builds loyalty.'
-          },
-          {
-            id: 'm4q4-4',
-            prompt: 'Which record helps you measure marketing success?',
-            options: ['A simple log of enquiries and where they came from', 'Only the total monthly sales', 'Unverified rumours'],
-            answerIndex: 0,
-            explanation: 'Tracking sources shows which channels work.'
-          },
-          {
-            id: 'm4q4-5',
-            prompt: 'Why is consistent quality and communication essential?',
-            options: ['It proves customers can trust you every time', 'It lets you skip after-sales service', 'It replaces the need for marketing'],
-            answerIndex: 0,
-            explanation: 'Consistency builds trust and positive word-of-mouth.'
-          }
-        ]
       }
     ]
   },
