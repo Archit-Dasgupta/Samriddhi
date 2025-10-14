@@ -1561,15 +1561,18 @@ function updateActiveRow(shouldScroll = false) {
     element.classList.toggle('is-active', isActive);
     element.setAttribute('data-complete', state.completed[id] ? 'true' : 'false');
     if (isActive && shouldScroll && !element.hidden && typeof element.scrollIntoView === 'function') {
-      const scrollContainer = element.closest('.modules-panel__body');
-      if (scrollContainer) {
+      const scrollContainer =
+        element.closest('.modules-panel__list') || element.closest('.modules-panel__body');
+      if (scrollContainer instanceof HTMLElement) {
         const containerRect = scrollContainer.getBoundingClientRect();
         const elementRect = element.getBoundingClientRect();
-        if (elementRect.top < containerRect.top || elementRect.bottom > containerRect.bottom) {
-          element.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' });
+        const outOfViewVertical = elementRect.top < containerRect.top || elementRect.bottom > containerRect.bottom;
+        const outOfViewHorizontal = elementRect.left < containerRect.left || elementRect.right > containerRect.right;
+        if (outOfViewVertical || outOfViewHorizontal) {
+          element.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
         }
       } else {
-        element.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' });
+        element.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
       }
     }
   });
@@ -1972,8 +1975,9 @@ function applySearchFilter() {
     });
     progressRef.card.hidden = term && visibleCount === 0;
   });
-  const scrollContainer = refs.moduleList?.closest('.modules-panel__body');
-  scrollContainer?.scrollTo({ top: 0 });
+  const verticalContainer = refs.moduleList?.closest('.modules-panel__body');
+  verticalContainer?.scrollTo({ top: 0 });
+  refs.moduleList?.scrollTo({ left: 0, behavior: 'smooth' });
 }
 
 function handleNotesSubmit(event) {

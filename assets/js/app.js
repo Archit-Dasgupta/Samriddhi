@@ -71,6 +71,7 @@ const setActiveNav = (route) => {
 };
 
 const setupHeader = (page) => {
+  document.body?.classList.add('has-site-header');
   const hamb = document.querySelector('#hamb');
   const navRight = document.querySelector('#navRight');
   hamb?.addEventListener('click', () => {
