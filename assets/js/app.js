@@ -25,7 +25,6 @@ const partialFallbacks = {
       </span>
       <span class="brand-copy">
         <span class="brand-strong">Samriddhi</span>
-        <span class="brand-tagline" data-i18n="header.tagline">Prosperity for every tailor</span>
       </span>
     </a>
     <button class="hamb" id="hamb" aria-expanded="false" aria-label="Menu" data-i18n="header.menu">☰</button>
@@ -100,10 +99,6 @@ const setupHeader = (page) => {
   }
 
   registerTranslations({
-    'header.tagline': {
-      mr: 'प्रत्येक टेलरसाठी समृद्धी',
-      en: 'Prosperity for every tailor',
-    },
     'header.menu': {
       mr: { attrs: { 'aria-label': 'मेन्यू' } },
       en: { attrs: { 'aria-label': 'Menu' } },
