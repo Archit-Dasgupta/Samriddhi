@@ -322,33 +322,33 @@ const mrCopy = {
   'm3q4-5.option2': 'नोंदी पुसून पुन्हा सुरुवात करा',
   'm3q4-5.explanation': 'योजना समायोजित केल्याने सतत सुधारणा आणि नियंत्रण मिळते.',
   'module-4.title': 'हवामान नेतृत्व अंगीकारणे',
-  'module-4-video-1.title': 'व्हिडिओ १ · हवामान नेत्यांना प्रशिक्षित करा',
+  'module-4-video-1.title': 'व्हिडिओ १ · ग्राहकांना समजून घ्या',
   'module-4-video-1.meta': '६ मिनिटे',
-  'module-4-video-1.description': 'व्यवस्थापकांना हवामान-केंद्रित निर्णयांसाठी संघांना मार्गदर्शन करण्यास तयार करा.',
-  'module-4-video-1.transcript': 'कोचिंग सातत्यपूर्ण वर्तन घडवते आणि संघांना हवामान लक्ष्यांसाठी जबाबदार ठेवते.',
-  'module-4-quiz-1.title': 'प्रश्नमंजुषा १ · कोचिंग मूलतत्त्वे',
+  'module-4-video-1.description': 'प्रत्येक कपडा ग्राहकाच्या जीवनशैली, बजेट आणि शैलीला जुळावा यासाठी योग्य प्रश्न कसे विचारावेत ते शिका.',
+  'module-4-video-1.transcript': 'सखोलपणे ऐकणे, ग्राहक पसंती नोंदवणे आणि चांगले शिवण निर्णय घेण्यासाठी नमुने ओळखणे शिका.',
+  'module-4-quiz-1.title': 'प्रश्नमंजुषा १ · ग्राहक समजण्याची मूलतत्त्वे',
   'module-4-quiz-1.meta': '४ प्रश्न',
-  'module-4-quiz-1.description': 'प्रभावी कोचिंगसाठी आवश्यक वर्तन दृढ करा.',
-  'm4q1-1.prompt': 'कोचिंग संभाषणातील पहिला टप्पा कोणता?',
-  'm4q1-1.option0': 'लक्ष्य आणि अपेक्षित निकाल स्पष्ट करा',
-  'm4q1-1.option1': 'सुरुवातीलाच उपाय सुचवा',
-  'm4q1-1.option2': 'असंबंधित मेट्रिक्स पाहा',
-  'm4q1-1.explanation': 'स्पष्ट लक्ष्य असल्यास कोचिंग केंद्रित राहते.',
-  'm4q1-2.prompt': 'कोचेस जबाबदारी कशी वाढवतात?',
-  'm4q1-2.option0': 'कारवाई आणि फॉलो-अप संयुक्तरित्या ठरवतात',
-  'm4q1-2.option1': 'पुढील पावले निश्चित करत नाहीत',
-  'm4q1-2.option2': 'फक्त वार्षिक पुनरावलोकनावर अवलंबून राहतात',
-  'm4q1-2.explanation': 'एकत्र कृती आणि फॉलो-अप प्रगती कायम ठेवतात.',
-  'm4q1-3.prompt': 'कोचिंग नोट्समध्ये काय नोंदवावे?',
-  'm4q1-3.option0': 'प्रतिबद्धता, अडथळे आणि यश',
-  'm4q1-3.option1': 'कामाशी नसलेल्या वैयक्तिक मते',
-  'm4q1-3.option2': 'प्रवास नियोजन',
-  'm4q1-3.explanation': 'नोट्स वचनबद्धता आणि शिकण्याचे क्षण दर्शवतात.',
-  'm4q1-4.prompt': 'कोचिंगमध्ये हवामान यश साजरे का करावे?',
-  'm4q1-4.option0': 'पुन्हा पुन्हा हवे असलेले वर्तन बळकट होते',
-  'm4q1-4.option1': 'ते फक्त मजेसाठी असते',
-  'm4q1-4.option2': 'ते कामगिरी पुनरावलोकनाची जागा घेते',
-  'm4q1-4.explanation': 'यश साजरे केल्याने संस्कृती बदल बळकट होतो.',
+  'module-4-quiz-1.description': 'ग्राहकांच्या गरजा ओळखून त्यांच्या अनुरूप सेवा देण्याची तयारी तपासा.',
+  'm4q1-1.prompt': 'ग्राहक कपडा कसा वापरणार आहे हे विचारणे का उपयुक्त ठरते?',
+  'm4q1-1.option0': 'त्यातून माप आणि कापडाची गरज समजते',
+  'm4q1-1.option1': 'त्यामुळे वेळ वाया जातो',
+  'm4q1-1.option2': 'मोजमाप दुर्लक्षित करता येते',
+  'm4q1-1.explanation': 'प्रसंग आणि वापर समजल्यास योग्य डिझाइन निवडता येते.',
+  'm4q1-2.prompt': 'ग्राहक पूर्वीच्या ऑर्डरबद्दल प्रतिक्रिया देतो तेव्हा काय करावे?',
+  'm4q1-2.option0': 'काळजीपूर्वक ऐकून त्यांना हवे असलेले बदल नोंदवा',
+  'm4q1-2.option1': 'त्यांना प्रतिक्रिया नको असे सांगा',
+  'm4q1-2.option2': 'मध्येच अडथळा आणून इतर ग्राहकांबद्दल बोला',
+  'm4q1-2.explanation': 'प्रतिक्रिया पुढील वेळी सेवा सुधारण्याचे मार्ग दाखवते.',
+  'm4q1-3.prompt': 'साधी ग्राहक प्रोफाइल ठेवण्यामुळे तुमच्या शिवण व्यवसायाला कसा फायदा होतो?',
+  'm4q1-3.option0': 'मोजमाप आणि शैलीची पसंती पटकन आठवते',
+  'm4q1-3.option1': 'फिटिंग सत्रे दुर्लक्षित करता येतात',
+  'm4q1-3.option2': 'खाजगी तपशील इतरांना सांगता येतात',
+  'm4q1-3.explanation': 'नोंदींमुळे पुनरावृत्ती ऑर्डर जलद होतात आणि सेवा वैयक्तिक होते.',
+  'm4q1-4.prompt': 'कोणते चिन्ह तुम्हाला उत्पादन नियोजनासाठी ग्राहकांचा कल दाखवते?',
+  'm4q1-4.option0': 'अनेक ग्राहक एकाच डिझाइनची मागणी करायला लागतात',
+  'm4q1-4.option1': 'एक ग्राहक एकदाच तक्रार करतो',
+  'm4q1-4.option2': 'कोणालाही न विचारता अंदाज लावणे',
+  'm4q1-4.explanation': 'पुन्हा-पुन्हा येणाऱ्या मागण्या तयार राहण्यासारखी गरज दर्शवतात.',
   'module-4-video-2.title': 'व्हिडिओ २ · स्थानिक विपणन',
   'module-4-video-2.meta': '७ मिनिटे',
   'module-4-video-2.description': 'तुमच्या परिसरात तुमची शिवण सेवा कशी प्रचारित करावी आणि नवीन ग्राहक कसे मिळवावेत ते शिका.',
@@ -1091,47 +1091,63 @@ const modulesData = [
       {
         id: 'module-4-video-1',
         type: 'video',
-        title: 'Video 1 · Coaching climate leaders',
+        title: 'Video 1 · Understanding Customers',
         meta: '6 min',
         durationSeconds: 360,
-        description: 'Equip managers to coach teams on climate-first decision making.',
-        transcript: 'Coaching unlocks consistent behaviours and keeps teams accountable to climate goals.',
-        videoId: VIDEO_ID
+        description: 'Learn to ask the right questions so every garment fits your customer’s lifestyle, budget, and style.',
+        transcript: 'Explore how to listen deeply, note customer preferences, and spot patterns that guide better tailoring decisions.',
+        videoId: 'VcS6r_xzVbw'
       },
       {
         id: 'module-4-quiz-1',
         type: 'quiz',
-        title: 'Quiz 1 · Coaching essentials',
+        title: 'Quiz 1 · Understanding Customers Basics',
         meta: '4 Qs',
-        description: 'Reinforce the behaviours that make coaching effective.',
+        description: 'Check that you can uncover customer needs and match your tailoring services to them.',
         questions: [
           {
             id: 'm4q1-1',
-            prompt: 'What is the first step in a coaching conversation?',
-            options: ['Agree on the goal and desired outcome', 'Dive into solutions immediately', 'Review unrelated metrics'],
+            prompt: 'Why is it helpful to ask customers about how they will use a garment?',
+            options: [
+              'It reveals fit and fabric needs',
+              'It wastes time',
+              'It lets you ignore measurements'
+            ],
             answerIndex: 0,
-            explanation: 'Clarity on goals ensures coaching stays targeted.'
+            explanation: 'Knowing the occasion and usage guides the right design choices.'
           },
           {
             id: 'm4q1-2',
-            prompt: 'How do coaches build accountability?',
-            options: ['Co-design actions and follow-ups', 'Leave next steps undefined', 'Rely on annual reviews only'],
+            prompt: 'What should you do when a customer shares feedback about past orders?',
+            options: [
+              'Listen carefully and note the improvements they want',
+              'Tell them feedback is unnecessary',
+              'Interrupt and talk about other customers'
+            ],
             answerIndex: 0,
-            explanation: 'Shared actions and follow-ups keep progress moving.'
+            explanation: 'Feedback shows how to serve them better next time.'
           },
           {
             id: 'm4q1-3',
-            prompt: 'What should notes capture for coaching?',
-            options: ['Commitments, blockers, and wins', 'Personal opinions unrelated to work', 'Travel itineraries'],
+            prompt: 'How does keeping a simple customer profile help your tailoring business?',
+            options: [
+              'You can remember measurements and style preferences quickly',
+              'You can ignore fitting sessions',
+              'You can share private details with others'
+            ],
             answerIndex: 0,
-            explanation: 'Notes focus on commitments and learning moments.'
+            explanation: 'Records speed up repeat orders and personalise service.'
           },
           {
             id: 'm4q1-4',
-            prompt: 'Why celebrate climate wins in coaching?',
-            options: ['They reinforce the behaviours we want repeated', 'It is optional fun only', 'It replaces performance reviews'],
+            prompt: 'Which sign shows a customer trend you can use to plan products?',
+            options: [
+              'Several customers start asking for the same design',
+              'One person complains once',
+              'You guess without asking anyone'
+            ],
             answerIndex: 0,
-            explanation: 'Celebrating wins reinforces culture change.'
+            explanation: 'Repeated requests highlight demand worth preparing for.'
           }
         ]
       },
