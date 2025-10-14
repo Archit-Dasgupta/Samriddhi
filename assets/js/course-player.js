@@ -1976,8 +1976,8 @@ function applySearchFilter() {
     progressRef.card.hidden = term && visibleCount === 0;
   });
   const verticalContainer = refs.moduleList?.closest('.modules-panel__body');
-  verticalContainer?.scrollTo({ top: 0 });
-  refs.moduleList?.scrollTo({ left: 0, behavior: 'smooth' });
+  verticalContainer?.scrollTo({ top: 0, behavior: 'smooth' });
+  refs.moduleList?.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function handleNotesSubmit(event) {
