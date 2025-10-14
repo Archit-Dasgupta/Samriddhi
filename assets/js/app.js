@@ -8,6 +8,8 @@ import { initBanking } from './modules/banking.js';
 import { initToolkits } from './modules/toolkits.js';
 import { initAbout } from './modules/about.js';
 import { initProfile } from './modules/profile.js';
+
+document.documentElement.classList.add('js-ready');
 import {
   initLanguage,
   registerTranslations,
