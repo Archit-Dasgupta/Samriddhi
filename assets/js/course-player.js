@@ -1703,6 +1703,7 @@ function renderQuiz(item) {
   quizWrapper.className = 'player-quiz';
   const body = document.createElement('form');
   body.className = 'player-quiz__body';
+  body.dataset.quizForm = 'true';
   body.setAttribute('novalidate', 'true');
 
   const heading = document.createElement('h2');
@@ -1752,9 +1753,11 @@ function renderQuiz(item) {
   retryButton.className = 'btn btn--ghost';
   retryButton.textContent = translate('label.retry', 'Retry');
   retryButton.hidden = true;
+  retryButton.dataset.quizRetry = 'true';
   const feedback = document.createElement('p');
   feedback.className = 'player-quiz__feedback';
   feedback.hidden = true;
+  feedback.dataset.quizFeedback = 'true';
 
   actions.appendChild(submitButton);
   actions.appendChild(retryButton);
@@ -1887,6 +1890,25 @@ function markCurrentItemIncomplete() {
   if (!currentItem) return;
   if (!state.completed[currentItem.id]) return;
   delete state.completed[currentItem.id];
+  if (currentItem.type === 'quiz') {
+    delete state.quizScores[currentItem.id];
+    const quizForm = refs.playerStage.querySelector('[data-quiz-form]');
+    if (quizForm) {
+      quizForm.reset();
+      quizForm.querySelectorAll('.player-quiz__option').forEach((option) => {
+        option.dataset.state = '';
+      });
+    }
+    const feedback = refs.playerStage.querySelector('[data-quiz-feedback]');
+    if (feedback) {
+      feedback.hidden = true;
+      feedback.textContent = '';
+    }
+    const retryButton = refs.playerStage.querySelector('[data-quiz-retry]');
+    if (retryButton) {
+      retryButton.hidden = true;
+    }
+  }
   persistState();
   updateCompletionUI();
 }
