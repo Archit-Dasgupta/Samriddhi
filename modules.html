@@ -31,6 +31,7 @@
     <div class="program-layout" data-layout>
       <aside class="modules-panel" data-modules-panel>
         <div class="modules-panel__inner">
+          <div class="modules-panel__handle" aria-hidden="true"></div>
           <header class="modules-panel__header">
             <div class="modules-panel__title">
               <h2 data-i18n="programs.modules.toggle">मॉड्यूल्स</h2>
@@ -46,23 +47,38 @@
               <span aria-hidden="true">✕</span>
             </button>
           </header>
-          <div class="modules-panel__search">
-            <label for="lessonSearch" data-i18n="programs.search.label">धडे आणि प्रश्नमंजुषा शोधा</label>
-            <input
-              id="lessonSearch"
-              type="search"
-              placeholder="धडे आणि प्रश्नमंजुषा शोधा"
-              autocomplete="off"
-              data-i18n="programs.search.input"
-            />
+          <div class="modules-panel__body">
+            <div class="modules-panel__search">
+              <label for="lessonSearch" data-i18n="programs.search.label">धडे आणि प्रश्नमंजुषा शोधा</label>
+              <input
+                id="lessonSearch"
+                type="search"
+                placeholder="धडे आणि प्रश्नमंजुषा शोधा"
+                autocomplete="off"
+                data-i18n="programs.search.input"
+              />
+            </div>
+            <div class="modules-panel__list" role="listbox" aria-label="Lesson journey" data-module-list></div>
           </div>
-          <div class="modules-panel__list" role="listbox" aria-label="Lesson journey" data-module-list></div>
         </div>
       </aside>
 
       <section class="player-column" aria-live="polite">
         <div class="player-column__header">
-          <button type="button" class="modules-toggle" data-toggle-modules aria-expanded="false" data-i18n="programs.modules.toggle">मॉड्यूल्स</button>
+          <button type="button" class="modules-toggle" data-toggle-modules aria-expanded="false">
+            <span class="modules-toggle__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="presentation" focusable="false">
+                <rect x="3" y="4" width="18" height="4" rx="1.5" fill="currentColor" opacity="0.72" />
+                <rect x="3" y="10" width="18" height="4" rx="1.5" fill="currentColor" />
+                <rect x="3" y="16" width="12" height="4" rx="1.5" fill="currentColor" opacity="0.5" />
+              </svg>
+            </span>
+            <span class="modules-toggle__text">
+              <span class="modules-toggle__label" data-i18n="programs.modules.toggle">मॉड्यूल्स</span>
+              <span class="modules-toggle__hint" data-i18n="programs.modules.hint">धडे ब्राउझ करा आणि तुमची प्रगती पहा</span>
+            </span>
+            <span class="modules-toggle__chevron" aria-hidden="true">➔</span>
+          </button>
           <div class="player-column__summary">
             <span class="player-column__summary-count" data-i18n="programs.summary.count"><strong data-progress-count>०</strong> पैकी <span data-progress-total>२५</span> पूर्ण</span>
             <div class="player-column__summary-bar" role="progressbar" aria-valuemin="0" aria-valuemax="25" aria-valuenow="0">

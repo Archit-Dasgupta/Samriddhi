@@ -77,6 +77,10 @@ const modulesTranslations = {
     mr: 'मॉड्यूल्स',
     en: 'Modules',
   },
+  'programs.modules.hint': {
+    mr: 'धडे ब्राउझ करा आणि तुमची प्रगती पहा',
+    en: 'Browse lessons and track your progress',
+  },
   'programs.modules.subtitle': {
     mr: 'धडे ब्राउझ करा किंवा तुमची प्रगती तपासा.',
     en: 'Browse lessons or review your progress.',
