@@ -1858,7 +1858,7 @@ function updateCompletionUI() {
     ? translate('label.completed', 'Completed')
     : translate('label.markComplete', 'Mark as complete');
   if (refs.markIncomplete) {
-    const shouldShowMarkIncomplete = isVideo && completed;
+    const shouldShowMarkIncomplete = completed;
     refs.markIncomplete.hidden = !shouldShowMarkIncomplete;
     refs.markIncomplete.disabled = !shouldShowMarkIncomplete;
     refs.markIncomplete.textContent = translate('label.markIncomplete', 'Mark as incomplete');
