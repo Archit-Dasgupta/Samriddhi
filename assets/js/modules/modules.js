@@ -86,8 +86,8 @@ const modulesTranslations = {
     en: { attrs: { 'aria-label': 'Close modules list', title: 'Close' } },
   },
   'programs.summary.count': {
-    mr: '<strong data-progress-count>०</strong> पैकी <span data-progress-total>२४</span> पूर्ण',
-    en: '<strong data-progress-count>0</strong> of <span data-progress-total>24</span> complete',
+    mr: '<strong data-progress-count>०</strong> पैकी <span data-progress-total>२५</span> पूर्ण',
+    en: '<strong data-progress-count>0</strong> of <span data-progress-total>25</span> complete',
   },
   'programs.player.placeholder': {
     mr: 'सुरू करण्यासाठी धडा निवडा.',

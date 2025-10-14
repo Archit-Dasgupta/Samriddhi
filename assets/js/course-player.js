@@ -349,65 +349,93 @@ const mrCopy = {
   'm4q1-4.option1': 'ते फक्त मजेसाठी असते',
   'm4q1-4.option2': 'ते कामगिरी पुनरावलोकनाची जागा घेते',
   'm4q1-4.explanation': 'यश साजरे केल्याने संस्कृती बदल बळकट होतो.',
-  'module-4-video-2.title': 'व्हिडिओ २ · हवामान प्रशासन अंमलात आणणे',
+  'module-4-video-2.title': 'व्हिडिओ २ · स्थानिक विपणन',
   'module-4-video-2.meta': '७ मिनिटे',
-  'module-4-video-2.description': 'फोरम, स्कोअरकार्ड आणि निर्णयाधिकारांमध्ये हवामान प्राधान्ये गुंफा.',
-  'module-4-video-2.transcript': 'प्रशासन हवामान प्राधान्ये प्रत्येक निर्णयात समाविष्ट करते.',
-  'module-4-quiz-2.title': 'प्रश्नमंजुषा २ · प्रशासन क्षण',
+  'module-4-video-2.description': 'तुमच्या परिसरात तुमची शिवण सेवा कशी प्रचारित करावी आणि नवीन ग्राहक कसे मिळवावेत ते शिका.',
+  'module-4-video-2.transcript': 'स्थानिक कार्यक्रम, संदर्भ आणि भागीदारी वापरून तुमचा व्यवसाय ओळखीचा करा.',
+  'module-4-quiz-2.title': 'प्रश्नमंजुषा २ · स्थानिक विपणन मूलतत्त्वे',
   'module-4-quiz-2.meta': '५ प्रश्न',
-  'module-4-quiz-2.description': 'हवामान केंद्रस्थानी ठेवणारे प्रशासन डिझाइन करू शकता याची खात्री करा.',
-  'm4q2-1.prompt': 'प्रत्येक प्रशासन मंचात काय असावे?',
-  'm4q2-1.option0': 'स्पष्ट हवामान केपीआय आणि जबाबदाऱ्या',
-  'm4q2-1.option1': 'फक्त आर्थिक मापन',
-  'm4q2-1.option2': 'कार्यसूची नसलेले फेरपालट सदस्य',
-  'm4q2-1.explanation': 'केपीआय आणि जबाबदारी प्रशासनाला प्रभावी बनवतात.',
-  'm4q2-2.prompt': 'हवामान धोका किती वेळाने चर्चिला पाहिजे?',
-  'm4q2-2.option0': 'कार्यसूचीत कायम घटक म्हणून',
-  'm4q2-2.option1': 'फक्त वार्षिक',
-  'm4q2-2.option2': 'फक्त मुद्दे आल्यावर',
-  'm4q2-2.explanation': 'नियमित चर्चा धोका लक्षात ठेवते.',
-  'm4q2-3.prompt': 'जलद निर्णय घेण्यास काय मदत करते?',
-  'm4q2-3.option0': 'पूर्वनियोजित उन्नती मार्ग',
-  'm4q2-3.option1': 'बैठकीनंतर एकमताची प्रतीक्षा',
-  'm4q2-3.option2': 'पुढील तिमाहीपर्यंत विलंब',
-  'm4q2-3.explanation': 'स्पष्ट उन्नती मार्ग गती आणि जबाबदारी राखतात.',
-  'm4q2-4.prompt': 'बोर्डना माहिती ठेवण्यासाठी काय करावे?',
-  'm4q2-4.option0': 'आघाडी सूचकांसह क्यूरेटेड डॅशबोर्ड शेअर करा',
-  'm4q2-4.option1': 'कच्चा डेटा एकदम शेअर करा',
-  'm4q2-4.option2': 'सोयीने अडहॉक अपडेट्स पाठवा',
-  'm4q2-4.explanation': 'क्यूरेटेड डॅशबोर्ड माहितीपूर्ण ठेवतात आणि भार कमी करतात.',
-  'm4q2-5.prompt': 'हवामान लक्ष्य भरपाईत समाविष्ट का करावेत?',
-  'm4q2-5.option0': 'प्रोत्साहन इच्छित निकालाशी संरेखित करण्यासाठी',
-  'm4q2-5.option1': 'फक्त क्लिष्टता वाढवण्यासाठी',
-  'm4q2-5.option2': 'कामगिरीपासून वेगळे ठेवायला हवे',
-  'm4q2-5.explanation': 'प्रोत्साहन हवामान परिणामांवर लक्ष केंद्रित करतात.',
-  'module-4-video-3.title': 'व्हिडिओ ३ · परिवर्तन परिणाम मोजणे',
+  'module-4-quiz-2.description': 'स्थानिक पातळीवर तुमची सेवा प्रसिद्ध करण्याच्या महत्त्वाच्या पायऱ्या समजून घ्या.',
+  'm4q2-1.prompt': 'तुमची शिवण सेवा लोकांपर्यंत पोहोचवण्याची पहिली उत्तम पायरी कोणती?',
+  'm4q2-1.option0': 'समाधानी ग्राहक आणि शेजाऱ्यांना तुम्हाला सुचवायला सांगा',
+  'm4q2-1.option1': 'महाग राष्ट्रीय टीव्ही जाहिराती खरेदी करा',
+  'm4q2-1.option2': 'लोक ऑनलाइन स्वतः शोधतील याची वाट पहा',
+  'm4q2-1.explanation': 'मौखिक संदर्भ परवडणारे आणि परिणामकारक असतात.',
+  'm4q2-2.prompt': 'प्रत्येक स्थानिक फ्लायर किंवा पोस्टरवर कोणती माहिती असणे आवश्यक आहे?',
+  'm4q2-2.option0': 'स्पष्ट ऑफर आणि संपर्क माहिती',
+  'm4q2-2.option1': 'तुमच्या आयुष्याची लांबलचक कहाणी',
+  'm4q2-2.option2': 'शब्दांशिवाय फक्त चित्रे',
+  'm4q2-2.explanation': 'स्पष्ट ऑफर आणि संपर्क दिल्यास लोकांना त्वरित कृती करता येते.',
+  'm4q2-3.prompt': 'जवळच्या व्यवसायांशी भागीदारी कशी मदत करते?',
+  'm4q2-3.option0': 'त्यांच्याकडे नमुने किंवा संदर्भ कार्ड ठेवणे',
+  'm4q2-3.option1': 'स्पर्धा टाळण्यासाठी त्यांना दुर्लक्षित करणे',
+  'm4q2-3.option2': 'त्यांच्या ग्राहकांना सेवा देऊ नका असे सांगणे',
+  'm4q2-3.explanation': 'भागीदारीने नवीन ग्राहक तुमच्याकडे वळतात.',
+  'm4q2-4.prompt': 'मार्केटिंगमधून कोणत्या कृतीने ग्राहक येतात याचा मागोवा का ठेवावा?',
+  'm4q2-4.option0': 'ज्यामुळे परिणामकारक गोष्टी पुन्हा करता येतात आणि निष्फळ थांबवता येतात',
+  'm4q2-4.option1': 'जास्त वेळ अंदाज बांधण्यात जाईल म्हणून',
+  'm4q2-4.option2': 'इतर व्यवसाय अंधपणे कॉपी करण्यासाठी',
+  'm4q2-4.explanation': 'डेटा पाहिल्यास योग्य माध्यमांवर लक्ष केंद्रित करता येते.',
+  'm4q2-5.prompt': 'समुदाय कार्यक्रमानंतर गती टिकवण्यासाठी काय करणे योग्य?',
+  'm4q2-5.option0': 'जमा केलेल्या संपर्कांना संदेश किंवा ऑफर पाठवा',
+  'm4q2-5.option1': 'काही महिने थांबून नंतर संपर्क करा',
+  'm4q2-5.option2': 'यादी हटवून पुन्हा सुरुवात करा',
+  'm4q2-5.explanation': 'त्वरित फॉलो-अप केल्यास रस विक्रीत बदलतो.',
+  'module-4-video-3.title': 'व्हिडिओ ३ · विश्वास आणि ग्राहक निष्ठा',
   'module-4-video-3.meta': '६ मिनिटे',
-  'module-4-video-3.description': 'परिणाम दाखवा आणि स्पष्ट कथनाने संघांना ऊर्जित ठेवा.',
-  'module-4-video-3.transcript': 'मापन आणि कथा सांगणे एकत्र आल्यास परिवर्तन दृश्यमान आणि साजरे राहते.',
-  'module-4-quiz-3.title': 'प्रश्नमंजुषा ३ · परिणाम कथा सांगणे',
+  'module-4-video-3.description': 'सतत सेवा, पारदर्शकता आणि फॉलो-अपने दीर्घकालीन ग्राहक संबंध बांधा.',
+  'module-4-video-3.transcript': 'समयावर काम देणे, चुका मान्य करून सुधारणे आणि कृतज्ञता व्यक्त करणे विश्वास वाढवते.',
+  'module-4-quiz-3.title': 'प्रश्नमंजुषा ३ · विश्वास आणि निष्ठा मूलतत्त्वे',
   'module-4-quiz-3.meta': '४ प्रश्न',
-  'module-4-quiz-3.description': 'हवामान परिणाम विश्वासार्हपणे सांगता येतात याची पुष्टी करा.',
-  'm4q3-1.prompt': 'उत्कृष्ट परिणाम कथा कशाने तयार होते?',
-  'm4q3-1.option0': 'डेटा आणि मानवी परिणाम एकत्र',
-  'm4q3-1.option1': 'फक्त भावनिक उद्धरणे',
-  'm4q3-1.option2': 'संदर्भाशिवाय फक्त आकडे',
-  'm4q3-1.explanation': 'परिणाम कथा पुरावे आणि मानवी अर्थ दोन्ही मागते.',
-  'm4q3-2.prompt': 'परिणाम कथा किती वेळाने शेअर कराव्यात?',
-  'm4q3-2.option0': 'संघ आणि चॅनेलवर नियमितपणे',
-  'm4q3-2.option1': 'फक्त वार्षिक अहवालांमध्ये',
-  'm4q3-2.option2': 'फक्त निकाल परिपूर्ण असल्यास',
-  'm4q3-2.explanation': 'वारंवार कथा सांगितल्याने ऊर्जा आणि लक्ष वाढते.',
-  'm4q3-3.prompt': 'निकाल मागे पडल्यास काय करावे?',
-  'm4q3-3.option0': 'मूळ कारणे आणि पुढील पावले स्पष्ट करा',
-  'm4q3-3.option1': 'डेटा लपवा',
-  'm4q3-3.option2': 'फक्त बाह्य घटकांना दोष द्या',
-  'm4q3-3.explanation': 'प्रामाणिक कथन विश्वास निर्माण करते.',
-  'm4q3-4.prompt': 'कथा सांगण्यात नोट्स कशी मदत करतात?',
-  'm4q3-4.option0': 'त्या उद्धरणे, डेटा पॉईंट आणि ग्राहक पुरावे पकडतात',
-  'm4q3-4.option1': 'त्या परिणाम कथांसाठी अप्रासंगिक असतात',
-  'm4q3-4.option2': 'त्या फक्त कामांची यादी असावी',
-  'm4q3-4.explanation': 'नोट्स कथा सजीव करण्यासाठी तपशील देतात.',
+  'module-4-quiz-3.description': 'ग्राहकांचा विश्वास जिंकणे आणि पुनरावृत्ती व्यवसाय प्रोत्साहित करणे आपण समजले आहे का ते तपासा.',
+  'm4q3-1.prompt': 'पहिल्या ऑर्डरदरम्यान विश्वास निर्माण करणारी कृती कोणती?',
+  'm4q3-1.option0': 'दिलेल्या वेळेत काम पूर्ण करणे',
+  'm4q3-1.option1': 'अस्पष्ट कालमर्यादा सांगणे',
+  'm4q3-1.option2': 'अपडेट देण्याचे टाळणे',
+  'm4q3-1.explanation': 'वचन पूर्ण केल्यास ग्राहक आत्मविश्वासाने परत येतात.',
+  'm4q3-2.prompt': 'कपड्यात चूक झाल्यास कसे प्रतिसाद द्यावे?',
+  'm4q3-2.option0': 'माफी मागून त्वरित दुरुस्ती करा',
+  'm4q3-2.option1': 'ग्राहकाला दोष द्या',
+  'm4q3-2.option2': 'तक्रार दुर्लक्षित करा',
+  'm4q3-2.explanation': 'त्वरित सुधारणा केल्यास विश्वास टिकतो.',
+  'm4q3-3.prompt': 'ग्राहकांच्या माप आणि पसंतीची वही का ठेवावी?',
+  'm4q3-3.option0': 'सेवा वैयक्तिक करण्यासाठी आणि तपशील लक्षात ठेवण्यासाठी',
+  'm4q3-3.option1': 'ग्राहकांची माहिती सार्वजनिकपणे शेअर करण्यासाठी',
+  'm4q3-3.option2': 'ग्राहकांशी संवादाची गरज कमी करण्यासाठी',
+  'm4q3-3.explanation': 'नोंदींमुळे पुढील ऑर्डर अधिक अचूक बनतात.',
+  'm4q3-4.prompt': 'ग्राहक निष्ठा वाढवणारा साधा संकेत कोणता?',
+  'm4q3-4.option0': 'पुन्हा ऑर्डरनंतर आभार किंवा छोटा बोनस पाठवणे',
+  'm4q3-4.option1': 'सूचना न देता दर वाढवणे',
+  'm4q3-4.option2': 'फक्त विक्रीची गरज असताना संपर्क करणे',
+  'm4q3-4.explanation': 'आभार मानल्याने ग्राहकांना महत्त्व वाटते.',
+  'module-4-quiz-4.title': 'प्रश्नमंजुषा ४ · मॉड्यूल ४ अंतिम चाचणी',
+  'module-4-quiz-4.meta': '५ प्रश्न',
+  'module-4-quiz-4.description': 'स्थानिक विपणन आणि ग्राहक निष्ठा यावरील प्रमुख धडे पुन्हा तपासा.',
+  'm4q4-1.prompt': 'जवळच्या ग्राहकांना आकर्षित करण्यासाठी कोणते संयोजन सर्वोत्तम आहे?',
+  'm4q4-1.option0': 'दृश्यमान फलक आणि तोंडी संदर्भ',
+  'm4q4-1.option1': 'कार्यशाळेचे ठिकाण लपवणे',
+  'm4q4-1.option2': 'अनियमित सोशल मीडिया पोस्टची वाट पाहणे',
+  'm4q4-1.explanation': 'दृश्यता आणि संदर्भ दोन्ही लोकांना तुमच्याकडे आणतात.',
+  'm4q4-2.prompt': 'जवळच्या दुकान मालकांशी भागीदारी करण्यापूर्वी काय तयार असावे?',
+  'm4q4-2.option0': 'स्पष्ट प्रस्ताव आणि तुमच्या कामाचे नमुने',
+  'm4q4-2.option1': 'स्पर्धकांबद्दल तक्रारींची यादी',
+  'm4q4-2.option2': 'काहीही नाही—त्या क्षणी ठरवा',
+  'm4q4-2.explanation': 'तयारीमुळे बैठक व्यावसायिक आणि प्रभावी होते.',
+  'm4q4-3.prompt': 'पहिल्यांदा खरेदी करणाऱ्यांना निष्ठावान ग्राहक कसे बनवाल?',
+  'm4q4-3.option0': 'प्रतिसाद गोळा करून वैयक्तिक ऑफरने फॉलो-अप करा',
+  'm4q4-3.option1': 'ते आपोआप परत येतील असे गृहीत धरा',
+  'm4q4-3.option2': 'ताबडतोब मोठ्या ऑर्डरचा दबाव टाका',
+  'm4q4-3.explanation': 'ऐकून आणि वैयक्तिक संपर्क ठेवल्यास निष्ठा वाढते.',
+  'm4q4-4.prompt': 'मार्केटिंग यश मोजण्यासाठी कोणती नोंद मदत करते?',
+  'm4q4-4.option0': 'प्रत्येक चौकशी आणि ती कुठून आली याची साधी नोंद',
+  'm4q4-4.option1': 'फक्त मासिक एकूण विक्री',
+  'm4q4-4.option2': 'अविश्वसनीय अफवा',
+  'm4q4-4.explanation': 'स्रोत नोंदवल्यास कोणते माध्यम परिणाम देत आहेत ते कळते.',
+  'm4q4-5.prompt': 'गुणवत्ता आणि संवाद सातत्याने राखणे का आवश्यक आहे?',
+  'm4q4-5.option0': 'म्हणजे ग्राहक प्रत्येक वेळी तुमच्यावर विश्वास ठेवू शकतात',
+  'm4q4-5.option1': 'म्हणून विक्रीनंतर सेवा टाळता येते',
+  'm4q4-5.option2': 'म्हणून मार्केटिंगची गरज उरत नाही',
+  'm4q4-5.explanation': 'सातत्यामुळे विश्वास आणि सकारात्मक चर्चा निर्माण होते.',
 };
 
 const translate = (key, fallback) => {
@@ -588,7 +616,7 @@ const modulesData = [
             explanation: 'Quick wins keep motivation high and sustain long-term ambition.'
           }
         ]
-      }
+      },
     ]
   },
   {
@@ -807,6 +835,36 @@ const modulesData = [
             options: ['Profit margin', 'Number of customers', 'Shop location'],
             answerIndex: 0,
             explanation: 'Lower costs with steady sales increase the profit margin.'
+          }
+        ]
+      },
+          {
+            id: 'm4q4-2',
+            prompt: 'What should you prepare before meeting local shop owners for partnerships?',
+            options: ['A clear proposal and samples of your work', 'A list of complaints about competitors', 'Nothing—decide in the moment'],
+            answerIndex: 0,
+            explanation: 'Preparation keeps the meeting professional and effective.'
+          },
+          {
+            id: 'm4q4-3',
+            prompt: 'How do you turn first-time buyers into loyal customers?',
+            options: ['Collect feedback and follow up with tailored offers', 'Assume they will return automatically', 'Pressure them immediately for bulk orders'],
+            answerIndex: 0,
+            explanation: 'Listening and personalised follow-up builds loyalty.'
+          },
+          {
+            id: 'm4q4-4',
+            prompt: 'Which record helps you measure marketing success?',
+            options: ['A simple log of enquiries and where they came from', 'Only the total monthly sales', 'Unverified rumours'],
+            answerIndex: 0,
+            explanation: 'Tracking sources shows which channels work.'
+          },
+          {
+            id: 'm4q4-5',
+            prompt: 'Why is consistent quality and communication essential?',
+            options: ['It proves customers can trust you every time', 'It lets you skip after-sales service', 'It replaces the need for marketing'],
+            answerIndex: 0,
+            explanation: 'Consistency builds trust and positive word-of-mouth.'
           }
         ]
       }
@@ -1110,101 +1168,165 @@ const modulesData = [
       {
         id: 'module-4-video-2',
         type: 'video',
-        title: 'Video 2 · Operationalising climate governance',
+        title: 'Video 2 · Local Marketing',
         meta: '7 min',
         durationSeconds: 420,
-        description: 'Embed climate into forums, scorecards, and decision rights.',
-        transcript: 'Governance ensures climate priorities are embedded in every decision.',
-        videoId: VIDEO_ID
+        description: 'Promote your tailoring business in your neighbourhood and attract new customers.',
+        transcript: 'Use local events, referrals, and partnerships to make your services visible and trusted.',
+        videoId: 'Wdu8OTD7sE8'
       },
       {
         id: 'module-4-quiz-2',
         type: 'quiz',
-        title: 'Quiz 2 · Governance moments',
+        title: 'Quiz 2 · Local Marketing Basics',
         meta: '5 Qs',
-        description: 'Confirm you can design governance that keeps climate front and centre.',
+        description: 'Check your understanding of the essential steps for promoting your services locally.',
         questions: [
           {
             id: 'm4q2-1',
-            prompt: 'What should every governance forum have?',
-            options: ['Clear climate KPIs and ownership', 'Only financial metrics', 'Rotating membership with no agenda'],
+            prompt: 'What is the best first step to spread the word about your tailoring services?',
+            options: [
+              'Ask satisfied customers and neighbours to refer you',
+              'Buy expensive national TV ads',
+              'Wait for people to find you online on their own'
+            ],
             answerIndex: 0,
-            explanation: 'KPIs and ownership make governance effective.'
+            explanation: 'Word-of-mouth from nearby people is affordable and effective.'
           },
           {
             id: 'm4q2-2',
-            prompt: 'How often should climate risk be discussed?',
-            options: ['As a standing agenda item', 'Only annually', 'Only when issues arise'],
+            prompt: 'Which detail must appear on every local flyer or poster?',
+            options: [
+              'A clear offer with contact information',
+              'A long story about your life',
+              'Only pictures without words'
+            ],
             answerIndex: 0,
-            explanation: 'Regular discussion keeps risk on the radar.'
+            explanation: 'Clear offers and contacts help people act immediately.'
           },
           {
             id: 'm4q2-3',
-            prompt: 'What enables fast decisions?',
-            options: ['Pre-agreed escalation paths', 'Waiting for consensus after the meeting', 'Delaying until next quarter'],
+            prompt: 'How can nearby businesses support your marketing?',
+            options: [
+              'Display samples or referral cards at their shops',
+              'Ignore them to avoid competition',
+              'Tell them to stop serving their customers'
+            ],
             answerIndex: 0,
-            explanation: 'Clear escalation keeps momentum and accountability.'
+            explanation: 'Partnerships bring new customers your way.'
           },
           {
             id: 'm4q2-4',
-            prompt: 'How do you keep boards informed?',
-            options: ['Curate dashboards with leading indicators', 'Share raw data dumps', 'Send ad-hoc updates when convenient'],
+            prompt: 'Why should you track which marketing activities bring in new customers?',
+            options: [
+              'So you can repeat what works and stop what does not',
+              'So you can spend more time guessing',
+              'So you can copy other businesses blindly'
+            ],
             answerIndex: 0,
-            explanation: 'Dashboards with leading indicators provide insight without overload.'
+            explanation: 'Looking at the data keeps focus on the right channels.'
           },
           {
             id: 'm4q2-5',
-            prompt: 'Why integrate climate targets into compensation?',
-            options: ['To align incentives with desired outcomes', 'To add complexity only', 'It should stay separate from performance'],
+            prompt: 'After a community event, what follow-up keeps the momentum going?',
+            options: [
+              'Message or share offers with the contacts you collected',
+              'Wait a few months before contacting anyone',
+              'Delete the list and start from zero'
+            ],
             answerIndex: 0,
-            explanation: 'Incentives drive focus on climate performance.'
+            explanation: 'Fast follow-up converts interest into sales.'
           }
         ]
       },
       {
         id: 'module-4-video-3',
         type: 'video',
-        title: 'Video 3 · Measuring transformation impact',
+        title: 'Video 3 · Trust & Customer Loyalty',
         meta: '6 min',
         durationSeconds: 360,
-        description: 'Showcase outcomes and keep teams energised with clear storytelling.',
-        transcript: 'Measurement paired with storytelling keeps transformation visible and celebrated.',
-        videoId: VIDEO_ID
+        description: 'Build long-term customer relationships with consistent service, transparency, and thoughtful follow-up.',
+        transcript: 'Delivering on promises, fixing mistakes quickly, and thanking customers keeps them returning.',
+        videoId: 't1j4bxYNlX4'
       },
       {
         id: 'module-4-quiz-3',
         type: 'quiz',
-        title: 'Quiz 3 · Impact storytelling',
+        title: 'Quiz 3 · Trust & Loyalty Basics',
         meta: '4 Qs',
-        description: 'Validate your ability to communicate climate impact credibly.',
+        description: 'Confirm you know how to win trust and encourage repeat business.',
         questions: [
           {
             id: 'm4q3-1',
-            prompt: 'What makes a great impact story?',
-            options: ['Data plus human outcomes', 'Only emotional quotes', 'Only numbers without context'],
+            prompt: 'Which action builds trust during a customer\'s first order?',
+            options: ['Deliver exactly when promised', 'Give vague timelines', 'Avoid sharing updates'],
             answerIndex: 0,
-            explanation: 'Impact stories need both evidence and human meaning.'
+            explanation: 'Keeping promises helps customers return confidently.'
           },
           {
             id: 'm4q3-2',
-            prompt: 'How often should impact stories be shared?',
-            options: ['Regularly across teams and channels', 'Only during annual reports', 'Only if results are perfect'],
+            prompt: 'How should you respond if there is a mistake with a garment?',
+            options: ['Apologise and fix it quickly', 'Blame the customer', 'Ignore the complaint'],
             answerIndex: 0,
-            explanation: 'Frequent storytelling keeps energy and focus high.'
+            explanation: 'Quick fixes protect trust.'
           },
           {
             id: 'm4q3-3',
-            prompt: 'What should you do when results lag?',
-            options: ['Explain root causes and next actions', 'Hide the data', 'Blame external factors only'],
+            prompt: 'Why maintain a notebook of customer measurements and preferences?',
+            options: ['To personalise service and remember details', 'To share customer data publicly', 'To replace customer conversations'],
             answerIndex: 0,
-            explanation: 'Owning the narrative builds trust even when progress slows.'
+            explanation: 'Records make future orders more accurate.'
           },
           {
             id: 'm4q3-4',
-            prompt: 'How can notes support storytelling?',
-            options: ['They capture quotes, data points, and client proof', 'They are not relevant for impact stories', 'They should only list tasks'],
+            prompt: 'Which simple gesture encourages loyalty?',
+            options: ['Send a thank-you or small bonus after repeat orders', 'Raise prices without notice', 'Contact customers only when you need sales'],
             answerIndex: 0,
-            explanation: 'Notes capture detail that brings stories to life.'
+            explanation: 'Showing appreciation makes customers feel valued.'
+          }
+        ]
+      },
+      {
+        id: 'module-4-quiz-4',
+        type: 'quiz',
+        title: 'Quiz 4 · Module 4 Final Test',
+        meta: '5 Qs',
+        description: 'Review the key marketing and trust lessons from Module 4.',
+        questions: [
+          {
+            id: 'm4q4-1',
+            prompt: 'Which combination best attracts nearby customers?',
+            options: ['Visible signage plus referrals', 'Hiding your workshop location', 'Waiting for random social media posts'],
+            answerIndex: 0,
+            explanation: 'Visibility and referrals draw people to you.'
+          },
+          {
+            id: 'm4q4-2',
+            prompt: 'What should you prepare before meeting local shop owners for partnerships?',
+            options: ['A clear proposal and samples of your work', 'A list of complaints about competitors', 'Nothing—decide in the moment'],
+            answerIndex: 0,
+            explanation: 'Preparation keeps the meeting professional and effective.'
+          },
+          {
+            id: 'm4q4-3',
+            prompt: 'How do you turn first-time buyers into loyal customers?',
+            options: ['Collect feedback and follow up with tailored offers', 'Assume they will return automatically', 'Pressure them immediately for bulk orders'],
+            answerIndex: 0,
+            explanation: 'Listening and personalised follow-up builds loyalty.'
+          },
+          {
+            id: 'm4q4-4',
+            prompt: 'Which record helps you measure marketing success?',
+            options: ['A simple log of enquiries and where they came from', 'Only the total monthly sales', 'Unverified rumours'],
+            answerIndex: 0,
+            explanation: 'Tracking sources shows which channels work.'
+          },
+          {
+            id: 'm4q4-5',
+            prompt: 'Why is consistent quality and communication essential?',
+            options: ['It proves customers can trust you every time', 'It lets you skip after-sales service', 'It replaces the need for marketing'],
+            answerIndex: 0,
+            explanation: 'Consistency builds trust and positive word-of-mouth.'
           }
         ]
       }
