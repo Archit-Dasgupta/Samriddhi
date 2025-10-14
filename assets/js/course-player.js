@@ -327,60 +327,45 @@ const mrCopy = {
   'module-4-video-1.description': 'प्रत्येक कपडा ग्राहकाच्या जीवनशैली, बजेट आणि शैलीला जुळावा यासाठी योग्य प्रश्न कसे विचारावेत ते शिका.',
   'module-4-video-1.transcript': 'सखोलपणे ऐकणे, ग्राहक पसंती नोंदवणे आणि चांगले शिवण निर्णय घेण्यासाठी नमुने ओळखणे शिका.',
   'module-4-quiz-1.title': 'प्रश्नमंजुषा १ · ग्राहक समजण्याची मूलतत्त्वे',
-  'module-4-quiz-1.meta': '४ प्रश्न',
+  'module-4-quiz-1.meta': '३ प्रश्न',
   'module-4-quiz-1.description': 'ग्राहकांच्या गरजा ओळखून त्यांच्या अनुरूप सेवा देण्याची तयारी तपासा.',
-  'm4q1-1.prompt': 'ग्राहक कपडा कसा वापरणार आहे हे विचारणे का उपयुक्त ठरते?',
-  'm4q1-1.option0': 'त्यातून माप आणि कापडाची गरज समजते',
-  'm4q1-1.option1': 'त्यामुळे वेळ वाया जातो',
-  'm4q1-1.option2': 'मोजमाप दुर्लक्षित करता येते',
-  'm4q1-1.explanation': 'प्रसंग आणि वापर समजल्यास योग्य डिझाइन निवडता येते.',
-  'm4q1-2.prompt': 'ग्राहक पूर्वीच्या ऑर्डरबद्दल प्रतिक्रिया देतो तेव्हा काय करावे?',
-  'm4q1-2.option0': 'काळजीपूर्वक ऐकून त्यांना हवे असलेले बदल नोंदवा',
-  'm4q1-2.option1': 'त्यांना प्रतिक्रिया नको असे सांगा',
-  'm4q1-2.option2': 'मध्येच अडथळा आणून इतर ग्राहकांबद्दल बोला',
-  'm4q1-2.explanation': 'प्रतिक्रिया पुढील वेळी सेवा सुधारण्याचे मार्ग दाखवते.',
-  'm4q1-3.prompt': 'साधी ग्राहक प्रोफाइल ठेवण्यामुळे तुमच्या शिवण व्यवसायाला कसा फायदा होतो?',
-  'm4q1-3.option0': 'मोजमाप आणि शैलीची पसंती पटकन आठवते',
-  'm4q1-3.option1': 'फिटिंग सत्रे दुर्लक्षित करता येतात',
-  'm4q1-3.option2': 'खाजगी तपशील इतरांना सांगता येतात',
-  'm4q1-3.explanation': 'नोंदींमुळे पुनरावृत्ती ऑर्डर जलद होतात आणि सेवा वैयक्तिक होते.',
-  'm4q1-4.prompt': 'कोणते चिन्ह तुम्हाला उत्पादन नियोजनासाठी ग्राहकांचा कल दाखवते?',
-  'm4q1-4.option0': 'अनेक ग्राहक एकाच डिझाइनची मागणी करायला लागतात',
-  'm4q1-4.option1': 'एक ग्राहक एकदाच तक्रार करतो',
-  'm4q1-4.option2': 'कोणालाही न विचारता अंदाज लावणे',
-  'm4q1-4.explanation': 'पुन्हा-पुन्हा येणाऱ्या मागण्या तयार राहण्यासारखी गरज दर्शवतात.',
+  'm4q1-1.prompt': 'मीना लक्षात घेते की कॉलेज मुलींना आधुनिक डिझाइन्स आवडतात तर वयस्क महिलांना पारंपरिक डिझाइन्स आवडतात. या जाणिवेचा जास्तीत जास्त फायदा घेण्यासाठी तिने काय करावे?',
+  'm4q1-1.option0': 'फॅशनेबल डिझाइन्स लोकप्रिय आहेत म्हणून फक्त तेच तयार करा',
+  'm4q1-1.option1': 'वेगवेगळ्या प्रकारच्या ग्राहकांसाठी वेगवेगळे नमुना कॅटलॉग तयार करा',
+  'm4q1-1.option2': 'ग्राहकांच्या पसंतीकडे दुर्लक्ष करून फक्त स्वतःच्या कल्पनांकडे लक्ष द्या',
+  'm4q1-1.explanation': 'विभिन्न ग्राहक गटांसाठी नमुने तयार केल्यास दोन्ही गरजा पूर्ण करता येतात.',
+  'm4q1-2.prompt': 'नवीन ग्राहक मीनाच्या दुकानात येते पण ऑर्डर देत नाही. त्या ग्राहकाला अधिक चांगले समजून घेण्यासाठी मीनाने काय करावे?',
+  'm4q1-2.option0': 'ती कोणत्या प्रकारचे कपडे शोधत आहे आणि तिचा बजेट किती आहे हे नम्रपणे विचारणे',
+  'm4q1-2.option1': 'तिला दुर्लक्षित करून परत येण्याची वाट पाहणे',
+  'm4q1-2.option2': 'तिला आधी इतर दुकाने पाहायला सांगणे',
+  'm4q1-2.explanation': 'नम्रपणे विचारल्याने तिच्या गरजा आणि बजेट समजते.',
+  'm4q1-3.prompt': 'सर्व ग्राहकांना सारखीच अपेक्षा आहे असे मानणे मीनासाठी धोकादायक का आहे?',
+  'm4q1-3.option0': 'विभिन्न गटांसाठी किंमत आणि डिझाइन बदलण्याची तिची क्षमता कमी होते',
+  'm4q1-3.option1': 'वेळ वाचतो पण नफा कमी होतो',
+  'm4q1-3.option2': 'साहित्य वाचवण्यास मदत होते',
+  'm4q1-3.explanation': 'असे गृहित धरल्याने ती प्रत्येक गटासाठी सेवा समायोजित करू शकत नाही.',
   'module-4-video-2.title': 'व्हिडिओ २ · स्थानिक विपणन',
   'module-4-video-2.meta': '७ मिनिटे',
   'module-4-video-2.description': 'तुमच्या परिसरात तुमची शिवण सेवा कशी प्रचारित करावी आणि नवीन ग्राहक कसे मिळवावेत ते शिका.',
   'module-4-video-2.transcript': 'स्थानिक कार्यक्रम, संदर्भ आणि भागीदारी वापरून तुमचा व्यवसाय ओळखीचा करा.',
   'module-4-quiz-2.title': 'प्रश्नमंजुषा २ · स्थानिक विपणन मूलतत्त्वे',
-  'module-4-quiz-2.meta': '५ प्रश्न',
+  'module-4-quiz-2.meta': '३ प्रश्न',
   'module-4-quiz-2.description': 'स्थानिक पातळीवर तुमची सेवा प्रसिद्ध करण्याच्या महत्त्वाच्या पायऱ्या समजून घ्या.',
-  'm4q2-1.prompt': 'तुमची शिवण सेवा लोकांपर्यंत पोहोचवण्याची पहिली उत्तम पायरी कोणती?',
-  'm4q2-1.option0': 'समाधानी ग्राहक आणि शेजाऱ्यांना तुम्हाला सुचवायला सांगा',
-  'm4q2-1.option1': 'महाग राष्ट्रीय टीव्ही जाहिराती खरेदी करा',
-  'm4q2-1.option2': 'लोक ऑनलाइन स्वतः शोधतील याची वाट पहा',
-  'm4q2-1.explanation': 'मौखिक संदर्भ परवडणारे आणि परिणामकारक असतात.',
-  'm4q2-2.prompt': 'प्रत्येक स्थानिक फ्लायर किंवा पोस्टरवर कोणती माहिती असणे आवश्यक आहे?',
-  'm4q2-2.option0': 'स्पष्ट ऑफर आणि संपर्क माहिती',
-  'm4q2-2.option1': 'तुमच्या आयुष्याची लांबलचक कहाणी',
-  'm4q2-2.option2': 'शब्दांशिवाय फक्त चित्रे',
-  'm4q2-2.explanation': 'स्पष्ट ऑफर आणि संपर्क दिल्यास लोकांना त्वरित कृती करता येते.',
-  'm4q2-3.prompt': 'जवळच्या व्यवसायांशी भागीदारी कशी मदत करते?',
-  'm4q2-3.option0': 'त्यांच्याकडे नमुने किंवा संदर्भ कार्ड ठेवणे',
-  'm4q2-3.option1': 'स्पर्धा टाळण्यासाठी त्यांना दुर्लक्षित करणे',
-  'm4q2-3.option2': 'त्यांच्या ग्राहकांना सेवा देऊ नका असे सांगणे',
-  'm4q2-3.explanation': 'भागीदारीने नवीन ग्राहक तुमच्याकडे वळतात.',
-  'm4q2-4.prompt': 'मार्केटिंगमधून कोणत्या कृतीने ग्राहक येतात याचा मागोवा का ठेवावा?',
-  'm4q2-4.option0': 'ज्यामुळे परिणामकारक गोष्टी पुन्हा करता येतात आणि निष्फळ थांबवता येतात',
-  'm4q2-4.option1': 'जास्त वेळ अंदाज बांधण्यात जाईल म्हणून',
-  'm4q2-4.option2': 'इतर व्यवसाय अंधपणे कॉपी करण्यासाठी',
-  'm4q2-4.explanation': 'डेटा पाहिल्यास योग्य माध्यमांवर लक्ष केंद्रित करता येते.',
-  'm4q2-5.prompt': 'समुदाय कार्यक्रमानंतर गती टिकवण्यासाठी काय करणे योग्य?',
-  'm4q2-5.option0': 'जमा केलेल्या संपर्कांना संदेश किंवा ऑफर पाठवा',
-  'm4q2-5.option1': 'काही महिने थांबून नंतर संपर्क करा',
-  'm4q2-5.option2': 'यादी हटवून पुन्हा सुरुवात करा',
-  'm4q2-5.explanation': 'त्वरित फॉलो-अप केल्यास रस विक्रीत बदलतो.',
+  'm4q2-1.prompt': 'मीनाच्या दुकानात बहुतेक नवीन ग्राहक तोंडी प्रसिद्धीद्वारे येतात. हे कमी खर्चात वाढवण्यासाठी सर्वोत्तम मार्ग कोणता?',
+  'm4q2-1.option0': 'अस्तित्वात असलेल्या ग्राहकांना लहान सवलत किंवा संदर्भ लाभ द्या',
+  'm4q2-1.option1': 'शहरातील वर्तमानपत्रात महाग जाहिरात द्या',
+  'm4q2-1.option2': 'सर्वांसाठी दर मोठ्या प्रमाणात कमी करा',
+  'm4q2-1.explanation': 'संदर्भ प्रोत्साहने स्वस्त असून तोंडी प्रसिद्धी वाढवतात.',
+  'm4q2-2.prompt': 'मीना घराबाहेर फलक लावते पण थोडे लोक तो पाहतात. तिने पुढे काय प्रयत्न करावा?',
+  'm4q2-2.option0': 'जास्त गर्दी असलेल्या बसस्टॉप किंवा बाजारात फलक हलवा',
+  'm4q2-2.option1': 'फलक पूर्णपणे काढून टाका',
+  'm4q2-2.option2': 'लोकांना लक्ष द्यायला जास्त वेळ वाट पाहा',
+  'm4q2-2.explanation': 'अधिक रहदारी असलेल्या ठिकाणी फलक नेल्यास अधिक लोकांचे लक्ष वेधले जाते.',
+  'm4q2-3.prompt': 'मीनाची भाची तिच्यासाठी WhatsApp व्यवसाय खाते तयार करायला म्हणते. अधिक ऑर्डर मिळवण्यासाठी मीनाने तिथे काय पोस्ट करावे?',
+  'm4q2-3.option0': 'तिने शिवलेल्या ड्रेसचे फोटो आणि समाधानी ग्राहकांची माहिती',
+  'm4q2-3.option1': 'अनियमित सणांचे चित्र',
+  'm4q2-3.option2': 'फक्त किंमतीबद्दल लांबलचक संदेश',
+  'm4q2-3.explanation': 'कामाचे नमुने आणि आनंदी ग्राहक दाखवल्यास विश्वास निर्माण होतो.',
   'module-4-video-3.title': 'व्हिडिओ ३ · विश्वास आणि ग्राहक निष्ठा',
   'module-4-video-3.meta': '६ मिनिटे',
   'module-4-video-3.description': 'सतत सेवा, पारदर्शकता आणि फॉलो-अपने दीर्घकालीन ग्राहक संबंध बांधा.',
@@ -388,54 +373,44 @@ const mrCopy = {
   'module-4-quiz-3.title': 'प्रश्नमंजुषा ३ · विश्वास आणि निष्ठा मूलतत्त्वे',
   'module-4-quiz-3.meta': '४ प्रश्न',
   'module-4-quiz-3.description': 'ग्राहकांचा विश्वास जिंकणे आणि पुनरावृत्ती व्यवसाय प्रोत्साहित करणे आपण समजले आहे का ते तपासा.',
-  'm4q3-1.prompt': 'पहिल्या ऑर्डरदरम्यान विश्वास निर्माण करणारी कृती कोणती?',
-  'm4q3-1.option0': 'दिलेल्या वेळेत काम पूर्ण करणे',
-  'm4q3-1.option1': 'अस्पष्ट कालमर्यादा सांगणे',
-  'm4q3-1.option2': 'अपडेट देण्याचे टाळणे',
-  'm4q3-1.explanation': 'वचन पूर्ण केल्यास ग्राहक आत्मविश्वासाने परत येतात.',
-  'm4q3-2.prompt': 'कपड्यात चूक झाल्यास कसे प्रतिसाद द्यावे?',
-  'm4q3-2.option0': 'माफी मागून त्वरित दुरुस्ती करा',
-  'm4q3-2.option1': 'ग्राहकाला दोष द्या',
-  'm4q3-2.option2': 'तक्रार दुर्लक्षित करा',
-  'm4q3-2.explanation': 'त्वरित सुधारणा केल्यास विश्वास टिकतो.',
-  'm4q3-3.prompt': 'ग्राहकांच्या माप आणि पसंतीची वही का ठेवावी?',
-  'm4q3-3.option0': 'सेवा वैयक्तिक करण्यासाठी आणि तपशील लक्षात ठेवण्यासाठी',
-  'm4q3-3.option1': 'ग्राहकांची माहिती सार्वजनिकपणे शेअर करण्यासाठी',
-  'm4q3-3.option2': 'ग्राहकांशी संवादाची गरज कमी करण्यासाठी',
-  'm4q3-3.explanation': 'नोंदींमुळे पुढील ऑर्डर अधिक अचूक बनतात.',
-  'm4q3-4.prompt': 'ग्राहक निष्ठा वाढवणारा साधा संकेत कोणता?',
-  'm4q3-4.option0': 'पुन्हा ऑर्डरनंतर आभार किंवा छोटा बोनस पाठवणे',
-  'm4q3-4.option1': 'सूचना न देता दर वाढवणे',
-  'm4q3-4.option2': 'फक्त विक्रीची गरज असताना संपर्क करणे',
-  'm4q3-4.explanation': 'आभार मानल्याने ग्राहकांना महत्त्व वाटते.',
+  'm4q3-1.prompt': 'ग्राहक म्हणते की ब्लाउजचा फिट थोडा सैल आहे. ते व्यावसायिक पद्धतीने हाताळण्याचा सर्वोत्तम मार्ग कोणता?',
+  'm4q3-1.option0': 'माफी मागून कोणतेही शुल्क न घेता लवकर बदल करून द्या',
+  'm4q3-1.option1': 'ग्राहकाने चुकीचे माप दिले असे म्हणत वाद घाला',
+  'm4q3-1.option2': 'तिला दुसऱ्या टेलरकडे जाण्यास सांगा',
+  'm4q3-1.explanation': 'त्वरित आणि विनम्र बदल केल्याने व्यावसायिक प्रतिमा आणि विश्वास टिकतो.',
+  'm4q3-2.prompt': 'ग्राहकांची नोंद ठेवणे मीनासाठी कसे उपयुक्त आहे?',
+  'm4q3-2.option0': 'सेवा वैयक्तिक करण्यासाठी आणि नवीन ऑर्डरवर वेळ वाचवण्यासाठी',
+  'm4q3-2.option1': 'ग्राहकांच्या निवडीबद्दल गप्पा मारण्यासाठी',
+  'm4q3-2.option2': 'गुप्तपणे दर वाढवण्यासाठी',
+  'm4q3-2.explanation': 'नोंदींमुळे तिने आवडी लक्षात ठेवून जलद सेवा देता येते.',
+  'm4q3-3.prompt': 'मीना दिवाळीत मोफत जुळणारे मास्क देते. ती कोणते व्यावसायिक उद्दिष्ट साध्य करते?',
+  'm4q3-3.option0': 'ग्राहक निष्ठा आणि सदिच्छा निर्माण करणे',
+  'm4q3-3.option1': 'उपयोग नसलेल्या कापडाचा नाश करणे',
+  'm4q3-3.option2': 'नफ्यात घट आणणे',
+  'm4q3-3.explanation': 'लहान भेटी ग्राहकांना जपतात आणि पुन्हा येण्यास प्रोत्साहित करतात.',
+  'm4q3-4.prompt': 'दिर्घकाळचा ग्राहक अचानक दुसऱ्या टेलरकडे जाऊ लागतो. मीनाने काय करावे?',
+  'm4q3-4.option0': 'काही बिनसले का हे नम्रपणे विचारून सुधारण्याचा प्रयत्न करा',
+  'm4q3-4.option1': 'रागावून इतरांना त्या ग्राहकाला सेवा देऊ नका असे सांगा',
+  'm4q3-4.option2': 'पूर्णपणे दुर्लक्ष करा',
+  'm4q3-4.explanation': 'कारण जाणून घेऊन सुधारणा मागवल्यास ग्राहक पुन्हा मिळू शकतो.',
   'module-4-quiz-4.title': 'प्रश्नमंजुषा ४ · मॉड्यूल ४ अंतिम चाचणी',
-  'module-4-quiz-4.meta': '५ प्रश्न',
+  'module-4-quiz-4.meta': '३ प्रश्न',
   'module-4-quiz-4.description': 'स्थानिक विपणन आणि ग्राहक निष्ठा यावरील प्रमुख धडे पुन्हा तपासा.',
-  'm4q4-1.prompt': 'जवळच्या ग्राहकांना आकर्षित करण्यासाठी कोणते संयोजन सर्वोत्तम आहे?',
-  'm4q4-1.option0': 'दृश्यमान फलक आणि तोंडी संदर्भ',
-  'm4q4-1.option1': 'कार्यशाळेचे ठिकाण लपवणे',
-  'm4q4-1.option2': 'अनियमित सोशल मीडिया पोस्टची वाट पाहणे',
-  'm4q4-1.explanation': 'दृश्यता आणि संदर्भ दोन्ही लोकांना तुमच्याकडे आणतात.',
-  'm4q4-2.prompt': 'जवळच्या दुकान मालकांशी भागीदारी करण्यापूर्वी काय तयार असावे?',
-  'm4q4-2.option0': 'स्पष्ट प्रस्ताव आणि तुमच्या कामाचे नमुने',
-  'm4q4-2.option1': 'स्पर्धकांबद्दल तक्रारींची यादी',
-  'm4q4-2.option2': 'काहीही नाही—त्या क्षणी ठरवा',
-  'm4q4-2.explanation': 'तयारीमुळे बैठक व्यावसायिक आणि प्रभावी होते.',
-  'm4q4-3.prompt': 'पहिल्यांदा खरेदी करणाऱ्यांना निष्ठावान ग्राहक कसे बनवाल?',
-  'm4q4-3.option0': 'प्रतिसाद गोळा करून वैयक्तिक ऑफरने फॉलो-अप करा',
-  'm4q4-3.option1': 'ते आपोआप परत येतील असे गृहीत धरा',
-  'm4q4-3.option2': 'ताबडतोब मोठ्या ऑर्डरचा दबाव टाका',
-  'm4q4-3.explanation': 'ऐकून आणि वैयक्तिक संपर्क ठेवल्यास निष्ठा वाढते.',
-  'm4q4-4.prompt': 'मार्केटिंग यश मोजण्यासाठी कोणती नोंद मदत करते?',
-  'm4q4-4.option0': 'प्रत्येक चौकशी आणि ती कुठून आली याची साधी नोंद',
-  'm4q4-4.option1': 'फक्त मासिक एकूण विक्री',
-  'm4q4-4.option2': 'अविश्वसनीय अफवा',
-  'm4q4-4.explanation': 'स्रोत नोंदवल्यास कोणते माध्यम परिणाम देत आहेत ते कळते.',
-  'm4q4-5.prompt': 'गुणवत्ता आणि संवाद सातत्याने राखणे का आवश्यक आहे?',
-  'm4q4-5.option0': 'म्हणजे ग्राहक प्रत्येक वेळी तुमच्यावर विश्वास ठेवू शकतात',
-  'm4q4-5.option1': 'म्हणून विक्रीनंतर सेवा टाळता येते',
-  'm4q4-5.option2': 'म्हणून मार्केटिंगची गरज उरत नाही',
-  'm4q4-5.explanation': 'सातत्यामुळे विश्वास आणि सकारात्मक चर्चा निर्माण होते.',
+  'm4q4-1.prompt': 'ग्राहक म्हणते, "तुमचे ब्लाउज डिझाइन्स छान आहेत, पण अजून आधुनिक शैली असत्या तर बरे झाले असते." मीनाने काय करावे?',
+  'm4q4-1.option0': 'प्रतिसादाबद्दल आभार मानून आधुनिक शैली शोधा आणि एक-दोन नवीन नमुने जोडा',
+  'm4q4-1.option1': 'तिला पारंपरिक शैलीच चांगल्या आहेत असे सांगा',
+  'm4q4-1.option2': 'इतर ग्राहक समाधानी असल्यामुळे प्रतिसाद दुर्लक्षित करा',
+  'm4q4-1.explanation': 'प्रतिसाद स्वीकारून नमुने अद्ययावत केल्याने अधिक ग्राहक आकर्षित होतात.',
+  'm4q4-2.prompt': 'उत्सवाच्या आधी अधिक ग्राहक आणण्यासाठी मीनाकडे ₹५०० आहेत. सर्वोत्तम पर्याय कोणता?',
+  'm4q4-2.option0': '१० रंगीत फ्लायर्स छापून किराणा दुकाने आणि बसस्टॉपवर ठेवा',
+  'm4q4-2.option1': 'प्रत्येक ग्राहकाला ₹५० सूट द्या जरी नफा कमी झाला तरी',
+  'm4q4-2.option2': 'काहीही करू नका आणि नियमित ग्राहकांकडून ऑर्डरची वाट पहा',
+  'm4q4-2.explanation': 'लक्षित फ्लायर्स कमी खर्चात जास्त लोकांपर्यंत पोहोचतात.',
+  'm4q4-3.prompt': 'मीनाच्या ग्राहक आशाला ब्लाउज घट्ट वाटतो आणि मीना आधीच उत्सवाच्या ऑर्डरमध्ये व्यस्त आहे. तिने काय करावे?',
+  'm4q4-3.option0': 'नम्रपणे माफी मागून एक तातडीचे काम पूर्ण झाल्यावर ब्लाउज दुरुस्त करून त्याच दिवशी द्या',
+  'm4q4-3.option1': 'आशाला दोन आठवड्यांनी येायला सांगा',
+  'm4q4-3.option2': 'ती खूप व्यस्त असल्याने बदल नाकारून टाका',
+  'm4q4-3.explanation': 'योग्य वेळ ठरवून त्याच दिवशी बदल केल्यास सेवा आणि विश्वास टिकतो.',
 };
 
 const translate = (key, fallback) => {
@@ -1102,52 +1077,43 @@ const modulesData = [
         id: 'module-4-quiz-1',
         type: 'quiz',
         title: 'Quiz 1 · Understanding Customers Basics',
-        meta: '4 Qs',
+        meta: '3 Qs',
         description: 'Check that you can uncover customer needs and match your tailoring services to them.',
         questions: [
           {
             id: 'm4q1-1',
-            prompt: 'Why is it helpful to ask customers about how they will use a garment?',
+            prompt:
+              'Meena notices that college girls prefer trendy designs while older women prefer traditional ones. What should she do to make the most of this insight?',
             options: [
-              'It reveals fit and fabric needs',
-              'It wastes time',
-              'It lets you ignore measurements'
+              'Make only trendy designs since they are popular',
+              'Prepare different sample catalogs for different types of customers',
+              'Ignore customer preferences and focus only on her own ideas'
             ],
-            answerIndex: 0,
-            explanation: 'Knowing the occasion and usage guides the right design choices.'
+            answerIndex: 1,
+            explanation: 'Offering tailored samples for each group helps Meena serve both segments well.'
           },
           {
             id: 'm4q1-2',
-            prompt: 'What should you do when a customer shares feedback about past orders?',
+            prompt:
+              'A new customer visits Meena\'s shop but doesn\'t place an order. What should Meena do to understand this customer better?',
             options: [
-              'Listen carefully and note the improvements they want',
-              'Tell them feedback is unnecessary',
-              'Interrupt and talk about other customers'
+              'Politely ask what type of clothes she\'s looking for and her price range',
+              'Ignore her and wait for her to return',
+              'Tell her to check other shops first'
             ],
             answerIndex: 0,
-            explanation: 'Feedback shows how to serve them better next time.'
+            explanation: 'Asking friendly questions shows interest and uncovers the customer\'s needs.'
           },
           {
             id: 'm4q1-3',
-            prompt: 'How does keeping a simple customer profile help your tailoring business?',
+            prompt: 'Why is it risky for Meena to assume that all customers want the same things?',
             options: [
-              'You can remember measurements and style preferences quickly',
-              'You can ignore fitting sessions',
-              'You can share private details with others'
+              'It reduces her ability to adjust pricing and design for different segments',
+              'It saves her time but lowers her profits',
+              'It helps her save on materials'
             ],
             answerIndex: 0,
-            explanation: 'Records speed up repeat orders and personalise service.'
-          },
-          {
-            id: 'm4q1-4',
-            prompt: 'Which sign shows a customer trend you can use to plan products?',
-            options: [
-              'Several customers start asking for the same design',
-              'One person complains once',
-              'You guess without asking anyone'
-            ],
-            answerIndex: 0,
-            explanation: 'Repeated requests highlight demand worth preparing for.'
+            explanation: 'Treating everyone the same stops her from tailoring offers and can hurt sales.'
           }
         ]
       },
@@ -1165,63 +1131,44 @@ const modulesData = [
         id: 'module-4-quiz-2',
         type: 'quiz',
         title: 'Quiz 2 · Local Marketing Basics',
-        meta: '5 Qs',
+        meta: '3 Qs',
         description: 'Check your understanding of the essential steps for promoting your services locally.',
         questions: [
           {
             id: 'm4q2-1',
-            prompt: 'What is the best first step to spread the word about your tailoring services?',
+            prompt:
+              'Meena\'s shop gets most new customers through word-of-mouth. What\'s the best way to increase this without spending much?',
             options: [
-              'Ask satisfied customers and neighbours to refer you',
-              'Buy expensive national TV ads',
-              'Wait for people to find you online on their own'
+              'Offer small discounts or referral benefits for existing customers',
+              'Place an expensive ad in the city newspaper',
+              'Reduce her prices drastically for everyone'
             ],
             answerIndex: 0,
-            explanation: 'Word-of-mouth from nearby people is affordable and effective.'
+            explanation: 'Rewarding referrals encourages more recommendations at a low cost.'
           },
           {
             id: 'm4q2-2',
-            prompt: 'Which detail must appear on every local flyer or poster?',
+            prompt:
+              'If Meena puts a signboard outside her house but few people notice it, what should she try next?',
             options: [
-              'A clear offer with contact information',
-              'A long story about your life',
-              'Only pictures without words'
+              'Move the sign to a bus stop or market area where more people pass by',
+              'Remove the board completely',
+              'Wait longer for people to notice'
             ],
             answerIndex: 0,
-            explanation: 'Clear offers and contacts help people act immediately.'
+            explanation: 'Placing signage in a high-traffic spot helps more potential customers see it.'
           },
           {
             id: 'm4q2-3',
-            prompt: 'How can nearby businesses support your marketing?',
+            prompt:
+              'Meena\'s niece offers to make her a WhatsApp Business account. What should Meena post there to attract more orders?',
             options: [
-              'Display samples or referral cards at their shops',
-              'Ignore them to avoid competition',
-              'Tell them to stop serving their customers'
+              'Pictures of her stitched dresses and satisfied customers',
+              'Random festival images',
+              'Only long messages about prices'
             ],
             answerIndex: 0,
-            explanation: 'Partnerships bring new customers your way.'
-          },
-          {
-            id: 'm4q2-4',
-            prompt: 'Why should you track which marketing activities bring in new customers?',
-            options: [
-              'So you can repeat what works and stop what does not',
-              'So you can spend more time guessing',
-              'So you can copy other businesses blindly'
-            ],
-            answerIndex: 0,
-            explanation: 'Looking at the data keeps focus on the right channels.'
-          },
-          {
-            id: 'm4q2-5',
-            prompt: 'After a community event, what follow-up keeps the momentum going?',
-            options: [
-              'Message or share offers with the contacts you collected',
-              'Wait a few months before contacting anyone',
-              'Delete the list and start from zero'
-            ],
-            answerIndex: 0,
-            explanation: 'Fast follow-up converts interest into sales.'
+            explanation: 'Showcasing her work and happy clients builds trust with new leads.'
           }
         ]
       },
@@ -1244,31 +1191,47 @@ const modulesData = [
         questions: [
           {
             id: 'm4q3-1',
-            prompt: 'Which action builds trust during a customer\'s first order?',
-            options: ['Deliver exactly when promised', 'Give vague timelines', 'Avoid sharing updates'],
+            prompt: 'Meena\'s customer says the blouse fitting is slightly loose. What\'s the most professional way to handle it?',
+            options: [
+              'Apologise and offer to alter it quickly at no extra cost',
+              'Argue that the customer gave wrong measurements',
+              'Tell her to go to another tailor'
+            ],
             answerIndex: 0,
-            explanation: 'Keeping promises helps customers return confidently.'
+            explanation: 'A fast, friendly fix shows responsibility and keeps trust strong.'
           },
           {
             id: 'm4q3-2',
-            prompt: 'How should you respond if there is a mistake with a garment?',
-            options: ['Apologise and fix it quickly', 'Blame the customer', 'Ignore the complaint'],
+            prompt: 'Why is keeping records of customers useful for Meena?',
+            options: [
+              'It helps her provide personalised service and save time on new orders',
+              'It helps her gossip about customers\' choices',
+              'It helps her increase prices secretly'
+            ],
             answerIndex: 0,
-            explanation: 'Quick fixes protect trust.'
+            explanation: 'Good records let Meena recall preferences quickly and serve repeat clients better.'
           },
           {
             id: 'm4q3-3',
-            prompt: 'Why maintain a notebook of customer measurements and preferences?',
-            options: ['To personalise service and remember details', 'To share customer data publicly', 'To replace customer conversations'],
+            prompt: 'Meena decides to give free matching masks during Diwali. What business goal is she achieving?',
+            options: [
+              'Building customer loyalty and goodwill',
+              'Reducing her profit without benefit',
+              'Getting rid of old fabric'
+            ],
             answerIndex: 0,
-            explanation: 'Records make future orders more accurate.'
+            explanation: 'Thoughtful freebies delight customers and encourage repeat orders.'
           },
           {
             id: 'm4q3-4',
-            prompt: 'Which simple gesture encourages loyalty?',
-            options: ['Send a thank-you or small bonus after repeat orders', 'Raise prices without notice', 'Contact customers only when you need sales'],
+            prompt: 'A long-term customer suddenly starts going to another tailor. What should Meena do?',
+            options: [
+              'Ask politely if something went wrong and try to improve',
+              'Get angry and tell others not to serve that customer',
+              'Ignore the situation completely'
+            ],
             answerIndex: 0,
-            explanation: 'Showing appreciation makes customers feel valued.'
+            explanation: 'Understanding the issue gives her a chance to fix it and win the customer back.'
           }
         ]
       },
@@ -1276,43 +1239,44 @@ const modulesData = [
         id: 'module-4-quiz-4',
         type: 'quiz',
         title: 'Quiz 4 · Module 4 Final Test',
-        meta: '5 Qs',
+        meta: '3 Qs',
         description: 'Review the key marketing and trust lessons from Module 4.',
         questions: [
           {
             id: 'm4q4-1',
-            prompt: 'Which combination best attracts nearby customers?',
-            options: ['Visible signage plus referrals', 'Hiding your workshop location', 'Waiting for random social media posts'],
+            prompt:
+              'A customer says, “Your blouse designs are nice, but I wish you had more modern styles.” What should Meena do?',
+            options: [
+              'Thank her for the feedback, research modern styles, and add one or two new samples',
+              'Tell her traditional styles are better',
+              'Ignore the feedback because others seem satisfied'
+            ],
             answerIndex: 0,
-            explanation: 'Visibility and referrals draw people to you.'
+            explanation: 'Acting on feedback keeps customers happy and attracts new tastes.'
           },
           {
             id: 'm4q4-2',
-            prompt: 'What should you prepare before meeting local shop owners for partnerships?',
-            options: ['A clear proposal and samples of your work', 'A list of complaints about competitors', 'Nothing—decide in the moment'],
+            prompt:
+              'Meena wants to attract more customers before the festival season. She has ₹500 to spend. What\'s the best option?',
+            options: [
+              'Print 10 colorful flyers and place them in grocery shops and bus stops',
+              'Offer a ₹50 discount to all customers, even if it cuts her profit',
+              'Do nothing and hope regular customers bring more orders'
+            ],
             answerIndex: 0,
-            explanation: 'Preparation keeps the meeting professional and effective.'
+            explanation: 'Targeted flyers stretch her budget while reaching many potential buyers.'
           },
           {
             id: 'm4q4-3',
-            prompt: 'How do you turn first-time buyers into loyal customers?',
-            options: ['Collect feedback and follow up with tailored offers', 'Assume they will return automatically', 'Pressure them immediately for bulk orders'],
+            prompt:
+              'Meena\'s customer, Asha, complains that the blouse she stitched feels tight. Meena is already busy with festival orders. What should she do?',
+            options: [
+              'Politely apologise, adjust Asha\'s blouse after finishing one urgent order, and deliver it on the same day',
+              'Tell Asha to come after two weeks',
+              'Refuse to fix it because she\'s too busy'
+            ],
             answerIndex: 0,
-            explanation: 'Listening and personalised follow-up builds loyalty.'
-          },
-          {
-            id: 'm4q4-4',
-            prompt: 'Which record helps you measure marketing success?',
-            options: ['A simple log of enquiries and where they came from', 'Only the total monthly sales', 'Unverified rumours'],
-            answerIndex: 0,
-            explanation: 'Tracking sources shows which channels work.'
-          },
-          {
-            id: 'm4q4-5',
-            prompt: 'Why is consistent quality and communication essential?',
-            options: ['It proves customers can trust you every time', 'It lets you skip after-sales service', 'It replaces the need for marketing'],
-            answerIndex: 0,
-            explanation: 'Consistency builds trust and positive word-of-mouth.'
+            explanation: 'Scheduling a same-day fix balances her workload and keeps the customer satisfied.'
           }
         ]
       }
