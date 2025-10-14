@@ -12,6 +12,7 @@ const mrCopy = {
   'label.quiz': 'प्रश्नमंजुषा',
   'label.completed': 'पूर्ण झाले',
   'label.markComplete': 'पूर्ण म्हणून चिन्हांकित करा',
+  'label.markIncomplete': 'अपूर्ण म्हणून चिन्हांकित करा',
   'label.nextUp': 'पुढील धडा',
   'label.saved': 'जतन झाले',
   'label.submitQuiz': 'प्रश्नमंजुषा सबमिट करा',
@@ -322,92 +323,95 @@ const mrCopy = {
   'm3q4-5.option2': 'नोंदी पुसून पुन्हा सुरुवात करा',
   'm3q4-5.explanation': 'योजना समायोजित केल्याने सतत सुधारणा आणि नियंत्रण मिळते.',
   'module-4.title': 'हवामान नेतृत्व अंगीकारणे',
-  'module-4-video-1.title': 'व्हिडिओ १ · हवामान नेत्यांना प्रशिक्षित करा',
+  'module-4-video-1.title': 'व्हिडिओ १ · ग्राहकांना समजून घ्या',
   'module-4-video-1.meta': '६ मिनिटे',
-  'module-4-video-1.description': 'व्यवस्थापकांना हवामान-केंद्रित निर्णयांसाठी संघांना मार्गदर्शन करण्यास तयार करा.',
-  'module-4-video-1.transcript': 'कोचिंग सातत्यपूर्ण वर्तन घडवते आणि संघांना हवामान लक्ष्यांसाठी जबाबदार ठेवते.',
-  'module-4-quiz-1.title': 'प्रश्नमंजुषा १ · कोचिंग मूलतत्त्वे',
-  'module-4-quiz-1.meta': '४ प्रश्न',
-  'module-4-quiz-1.description': 'प्रभावी कोचिंगसाठी आवश्यक वर्तन दृढ करा.',
-  'm4q1-1.prompt': 'कोचिंग संभाषणातील पहिला टप्पा कोणता?',
-  'm4q1-1.option0': 'लक्ष्य आणि अपेक्षित निकाल स्पष्ट करा',
-  'm4q1-1.option1': 'सुरुवातीलाच उपाय सुचवा',
-  'm4q1-1.option2': 'असंबंधित मेट्रिक्स पाहा',
-  'm4q1-1.explanation': 'स्पष्ट लक्ष्य असल्यास कोचिंग केंद्रित राहते.',
-  'm4q1-2.prompt': 'कोचेस जबाबदारी कशी वाढवतात?',
-  'm4q1-2.option0': 'कारवाई आणि फॉलो-अप संयुक्तरित्या ठरवतात',
-  'm4q1-2.option1': 'पुढील पावले निश्चित करत नाहीत',
-  'm4q1-2.option2': 'फक्त वार्षिक पुनरावलोकनावर अवलंबून राहतात',
-  'm4q1-2.explanation': 'एकत्र कृती आणि फॉलो-अप प्रगती कायम ठेवतात.',
-  'm4q1-3.prompt': 'कोचिंग नोट्समध्ये काय नोंदवावे?',
-  'm4q1-3.option0': 'प्रतिबद्धता, अडथळे आणि यश',
-  'm4q1-3.option1': 'कामाशी नसलेल्या वैयक्तिक मते',
-  'm4q1-3.option2': 'प्रवास नियोजन',
-  'm4q1-3.explanation': 'नोट्स वचनबद्धता आणि शिकण्याचे क्षण दर्शवतात.',
-  'm4q1-4.prompt': 'कोचिंगमध्ये हवामान यश साजरे का करावे?',
-  'm4q1-4.option0': 'पुन्हा पुन्हा हवे असलेले वर्तन बळकट होते',
-  'm4q1-4.option1': 'ते फक्त मजेसाठी असते',
-  'm4q1-4.option2': 'ते कामगिरी पुनरावलोकनाची जागा घेते',
-  'm4q1-4.explanation': 'यश साजरे केल्याने संस्कृती बदल बळकट होतो.',
-  'module-4-video-2.title': 'व्हिडिओ २ · हवामान प्रशासन अंमलात आणणे',
+  'module-4-video-1.description': 'प्रत्येक कपडा ग्राहकाच्या जीवनशैली, बजेट आणि शैलीला जुळावा यासाठी योग्य प्रश्न कसे विचारावेत ते शिका.',
+  'module-4-video-1.transcript': 'सखोलपणे ऐकणे, ग्राहक पसंती नोंदवणे आणि चांगले शिवण निर्णय घेण्यासाठी नमुने ओळखणे शिका.',
+  'module-4-quiz-1.title': 'प्रश्नमंजुषा १ · ग्राहक समजण्याची मूलतत्त्वे',
+  'module-4-quiz-1.meta': '३ प्रश्न',
+  'module-4-quiz-1.description': 'ग्राहकांच्या गरजा ओळखून त्यांच्या अनुरूप सेवा देण्याची तयारी तपासा.',
+  'm4q1-1.prompt': 'मीना लक्षात घेते की कॉलेज मुलींना आधुनिक डिझाइन्स आवडतात तर वयस्क महिलांना पारंपरिक डिझाइन्स आवडतात. या जाणिवेचा जास्तीत जास्त फायदा घेण्यासाठी तिने काय करावे?',
+  'm4q1-1.option0': 'फॅशनेबल डिझाइन्स लोकप्रिय आहेत म्हणून फक्त तेच तयार करा',
+  'm4q1-1.option1': 'वेगवेगळ्या प्रकारच्या ग्राहकांसाठी वेगवेगळे नमुना कॅटलॉग तयार करा',
+  'm4q1-1.option2': 'ग्राहकांच्या पसंतीकडे दुर्लक्ष करून फक्त स्वतःच्या कल्पनांकडे लक्ष द्या',
+  'm4q1-1.explanation': 'विभिन्न ग्राहक गटांसाठी नमुने तयार केल्यास दोन्ही गरजा पूर्ण करता येतात.',
+  'm4q1-2.prompt': 'नवीन ग्राहक मीनाच्या दुकानात येते पण ऑर्डर देत नाही. त्या ग्राहकाला अधिक चांगले समजून घेण्यासाठी मीनाने काय करावे?',
+  'm4q1-2.option0': 'ती कोणत्या प्रकारचे कपडे शोधत आहे आणि तिचा बजेट किती आहे हे नम्रपणे विचारणे',
+  'm4q1-2.option1': 'तिला दुर्लक्षित करून परत येण्याची वाट पाहणे',
+  'm4q1-2.option2': 'तिला आधी इतर दुकाने पाहायला सांगणे',
+  'm4q1-2.explanation': 'नम्रपणे विचारल्याने तिच्या गरजा आणि बजेट समजते.',
+  'm4q1-3.prompt': 'सर्व ग्राहकांना सारखीच अपेक्षा आहे असे मानणे मीनासाठी धोकादायक का आहे?',
+  'm4q1-3.option0': 'विभिन्न गटांसाठी किंमत आणि डिझाइन बदलण्याची तिची क्षमता कमी होते',
+  'm4q1-3.option1': 'वेळ वाचतो पण नफा कमी होतो',
+  'm4q1-3.option2': 'साहित्य वाचवण्यास मदत होते',
+  'm4q1-3.explanation': 'असे गृहित धरल्याने ती प्रत्येक गटासाठी सेवा समायोजित करू शकत नाही.',
+  'module-4-video-2.title': 'व्हिडिओ २ · स्थानिक विपणन',
   'module-4-video-2.meta': '७ मिनिटे',
-  'module-4-video-2.description': 'फोरम, स्कोअरकार्ड आणि निर्णयाधिकारांमध्ये हवामान प्राधान्ये गुंफा.',
-  'module-4-video-2.transcript': 'प्रशासन हवामान प्राधान्ये प्रत्येक निर्णयात समाविष्ट करते.',
-  'module-4-quiz-2.title': 'प्रश्नमंजुषा २ · प्रशासन क्षण',
-  'module-4-quiz-2.meta': '५ प्रश्न',
-  'module-4-quiz-2.description': 'हवामान केंद्रस्थानी ठेवणारे प्रशासन डिझाइन करू शकता याची खात्री करा.',
-  'm4q2-1.prompt': 'प्रत्येक प्रशासन मंचात काय असावे?',
-  'm4q2-1.option0': 'स्पष्ट हवामान केपीआय आणि जबाबदाऱ्या',
-  'm4q2-1.option1': 'फक्त आर्थिक मापन',
-  'm4q2-1.option2': 'कार्यसूची नसलेले फेरपालट सदस्य',
-  'm4q2-1.explanation': 'केपीआय आणि जबाबदारी प्रशासनाला प्रभावी बनवतात.',
-  'm4q2-2.prompt': 'हवामान धोका किती वेळाने चर्चिला पाहिजे?',
-  'm4q2-2.option0': 'कार्यसूचीत कायम घटक म्हणून',
-  'm4q2-2.option1': 'फक्त वार्षिक',
-  'm4q2-2.option2': 'फक्त मुद्दे आल्यावर',
-  'm4q2-2.explanation': 'नियमित चर्चा धोका लक्षात ठेवते.',
-  'm4q2-3.prompt': 'जलद निर्णय घेण्यास काय मदत करते?',
-  'm4q2-3.option0': 'पूर्वनियोजित उन्नती मार्ग',
-  'm4q2-3.option1': 'बैठकीनंतर एकमताची प्रतीक्षा',
-  'm4q2-3.option2': 'पुढील तिमाहीपर्यंत विलंब',
-  'm4q2-3.explanation': 'स्पष्ट उन्नती मार्ग गती आणि जबाबदारी राखतात.',
-  'm4q2-4.prompt': 'बोर्डना माहिती ठेवण्यासाठी काय करावे?',
-  'm4q2-4.option0': 'आघाडी सूचकांसह क्यूरेटेड डॅशबोर्ड शेअर करा',
-  'm4q2-4.option1': 'कच्चा डेटा एकदम शेअर करा',
-  'm4q2-4.option2': 'सोयीने अडहॉक अपडेट्स पाठवा',
-  'm4q2-4.explanation': 'क्यूरेटेड डॅशबोर्ड माहितीपूर्ण ठेवतात आणि भार कमी करतात.',
-  'm4q2-5.prompt': 'हवामान लक्ष्य भरपाईत समाविष्ट का करावेत?',
-  'm4q2-5.option0': 'प्रोत्साहन इच्छित निकालाशी संरेखित करण्यासाठी',
-  'm4q2-5.option1': 'फक्त क्लिष्टता वाढवण्यासाठी',
-  'm4q2-5.option2': 'कामगिरीपासून वेगळे ठेवायला हवे',
-  'm4q2-5.explanation': 'प्रोत्साहन हवामान परिणामांवर लक्ष केंद्रित करतात.',
-  'module-4-video-3.title': 'व्हिडिओ ३ · परिवर्तन परिणाम मोजणे',
+  'module-4-video-2.description': 'तुमच्या परिसरात तुमची शिवण सेवा कशी प्रचारित करावी आणि नवीन ग्राहक कसे मिळवावेत ते शिका.',
+  'module-4-video-2.transcript': 'स्थानिक कार्यक्रम, संदर्भ आणि भागीदारी वापरून तुमचा व्यवसाय ओळखीचा करा.',
+  'module-4-quiz-2.title': 'प्रश्नमंजुषा २ · स्थानिक विपणन मूलतत्त्वे',
+  'module-4-quiz-2.meta': '३ प्रश्न',
+  'module-4-quiz-2.description': 'स्थानिक पातळीवर तुमची सेवा प्रसिद्ध करण्याच्या महत्त्वाच्या पायऱ्या समजून घ्या.',
+  'm4q2-1.prompt': 'मीनाच्या दुकानात बहुतेक नवीन ग्राहक तोंडी प्रसिद्धीद्वारे येतात. हे कमी खर्चात वाढवण्यासाठी सर्वोत्तम मार्ग कोणता?',
+  'm4q2-1.option0': 'अस्तित्वात असलेल्या ग्राहकांना लहान सवलत किंवा संदर्भ लाभ द्या',
+  'm4q2-1.option1': 'शहरातील वर्तमानपत्रात महाग जाहिरात द्या',
+  'm4q2-1.option2': 'सर्वांसाठी दर मोठ्या प्रमाणात कमी करा',
+  'm4q2-1.explanation': 'संदर्भ प्रोत्साहने स्वस्त असून तोंडी प्रसिद्धी वाढवतात.',
+  'm4q2-2.prompt': 'मीना घराबाहेर फलक लावते पण थोडे लोक तो पाहतात. तिने पुढे काय प्रयत्न करावा?',
+  'm4q2-2.option0': 'जास्त गर्दी असलेल्या बसस्टॉप किंवा बाजारात फलक हलवा',
+  'm4q2-2.option1': 'फलक पूर्णपणे काढून टाका',
+  'm4q2-2.option2': 'लोकांना लक्ष द्यायला जास्त वेळ वाट पाहा',
+  'm4q2-2.explanation': 'अधिक रहदारी असलेल्या ठिकाणी फलक नेल्यास अधिक लोकांचे लक्ष वेधले जाते.',
+  'm4q2-3.prompt': 'मीनाची भाची तिच्यासाठी WhatsApp व्यवसाय खाते तयार करायला म्हणते. अधिक ऑर्डर मिळवण्यासाठी मीनाने तिथे काय पोस्ट करावे?',
+  'm4q2-3.option0': 'तिने शिवलेल्या ड्रेसचे फोटो आणि समाधानी ग्राहकांची माहिती',
+  'm4q2-3.option1': 'अनियमित सणांचे चित्र',
+  'm4q2-3.option2': 'फक्त किंमतीबद्दल लांबलचक संदेश',
+  'm4q2-3.explanation': 'कामाचे नमुने आणि आनंदी ग्राहक दाखवल्यास विश्वास निर्माण होतो.',
+  'module-4-video-3.title': 'व्हिडिओ ३ · विश्वास आणि ग्राहक निष्ठा',
   'module-4-video-3.meta': '६ मिनिटे',
-  'module-4-video-3.description': 'परिणाम दाखवा आणि स्पष्ट कथनाने संघांना ऊर्जित ठेवा.',
-  'module-4-video-3.transcript': 'मापन आणि कथा सांगणे एकत्र आल्यास परिवर्तन दृश्यमान आणि साजरे राहते.',
-  'module-4-quiz-3.title': 'प्रश्नमंजुषा ३ · परिणाम कथा सांगणे',
+  'module-4-video-3.description': 'सतत सेवा, पारदर्शकता आणि फॉलो-अपने दीर्घकालीन ग्राहक संबंध बांधा.',
+  'module-4-video-3.transcript': 'समयावर काम देणे, चुका मान्य करून सुधारणे आणि कृतज्ञता व्यक्त करणे विश्वास वाढवते.',
+  'module-4-quiz-3.title': 'प्रश्नमंजुषा ३ · विश्वास आणि निष्ठा मूलतत्त्वे',
   'module-4-quiz-3.meta': '४ प्रश्न',
-  'module-4-quiz-3.description': 'हवामान परिणाम विश्वासार्हपणे सांगता येतात याची पुष्टी करा.',
-  'm4q3-1.prompt': 'उत्कृष्ट परिणाम कथा कशाने तयार होते?',
-  'm4q3-1.option0': 'डेटा आणि मानवी परिणाम एकत्र',
-  'm4q3-1.option1': 'फक्त भावनिक उद्धरणे',
-  'm4q3-1.option2': 'संदर्भाशिवाय फक्त आकडे',
-  'm4q3-1.explanation': 'परिणाम कथा पुरावे आणि मानवी अर्थ दोन्ही मागते.',
-  'm4q3-2.prompt': 'परिणाम कथा किती वेळाने शेअर कराव्यात?',
-  'm4q3-2.option0': 'संघ आणि चॅनेलवर नियमितपणे',
-  'm4q3-2.option1': 'फक्त वार्षिक अहवालांमध्ये',
-  'm4q3-2.option2': 'फक्त निकाल परिपूर्ण असल्यास',
-  'm4q3-2.explanation': 'वारंवार कथा सांगितल्याने ऊर्जा आणि लक्ष वाढते.',
-  'm4q3-3.prompt': 'निकाल मागे पडल्यास काय करावे?',
-  'm4q3-3.option0': 'मूळ कारणे आणि पुढील पावले स्पष्ट करा',
-  'm4q3-3.option1': 'डेटा लपवा',
-  'm4q3-3.option2': 'फक्त बाह्य घटकांना दोष द्या',
-  'm4q3-3.explanation': 'प्रामाणिक कथन विश्वास निर्माण करते.',
-  'm4q3-4.prompt': 'कथा सांगण्यात नोट्स कशी मदत करतात?',
-  'm4q3-4.option0': 'त्या उद्धरणे, डेटा पॉईंट आणि ग्राहक पुरावे पकडतात',
-  'm4q3-4.option1': 'त्या परिणाम कथांसाठी अप्रासंगिक असतात',
-  'm4q3-4.option2': 'त्या फक्त कामांची यादी असावी',
-  'm4q3-4.explanation': 'नोट्स कथा सजीव करण्यासाठी तपशील देतात.',
+  'module-4-quiz-3.description': 'ग्राहकांचा विश्वास जिंकणे आणि पुनरावृत्ती व्यवसाय प्रोत्साहित करणे आपण समजले आहे का ते तपासा.',
+  'm4q3-1.prompt': 'ग्राहक म्हणते की ब्लाउजचा फिट थोडा सैल आहे. ते व्यावसायिक पद्धतीने हाताळण्याचा सर्वोत्तम मार्ग कोणता?',
+  'm4q3-1.option0': 'माफी मागून कोणतेही शुल्क न घेता लवकर बदल करून द्या',
+  'm4q3-1.option1': 'ग्राहकाने चुकीचे माप दिले असे म्हणत वाद घाला',
+  'm4q3-1.option2': 'तिला दुसऱ्या टेलरकडे जाण्यास सांगा',
+  'm4q3-1.explanation': 'त्वरित आणि विनम्र बदल केल्याने व्यावसायिक प्रतिमा आणि विश्वास टिकतो.',
+  'm4q3-2.prompt': 'ग्राहकांची नोंद ठेवणे मीनासाठी कसे उपयुक्त आहे?',
+  'm4q3-2.option0': 'सेवा वैयक्तिक करण्यासाठी आणि नवीन ऑर्डरवर वेळ वाचवण्यासाठी',
+  'm4q3-2.option1': 'ग्राहकांच्या निवडीबद्दल गप्पा मारण्यासाठी',
+  'm4q3-2.option2': 'गुप्तपणे दर वाढवण्यासाठी',
+  'm4q3-2.explanation': 'नोंदींमुळे तिने आवडी लक्षात ठेवून जलद सेवा देता येते.',
+  'm4q3-3.prompt': 'मीना दिवाळीत मोफत जुळणारे मास्क देते. ती कोणते व्यावसायिक उद्दिष्ट साध्य करते?',
+  'm4q3-3.option0': 'ग्राहक निष्ठा आणि सदिच्छा निर्माण करणे',
+  'm4q3-3.option1': 'उपयोग नसलेल्या कापडाचा नाश करणे',
+  'm4q3-3.option2': 'नफ्यात घट आणणे',
+  'm4q3-3.explanation': 'लहान भेटी ग्राहकांना जपतात आणि पुन्हा येण्यास प्रोत्साहित करतात.',
+  'm4q3-4.prompt': 'दिर्घकाळचा ग्राहक अचानक दुसऱ्या टेलरकडे जाऊ लागतो. मीनाने काय करावे?',
+  'm4q3-4.option0': 'काही बिनसले का हे नम्रपणे विचारून सुधारण्याचा प्रयत्न करा',
+  'm4q3-4.option1': 'रागावून इतरांना त्या ग्राहकाला सेवा देऊ नका असे सांगा',
+  'm4q3-4.option2': 'पूर्णपणे दुर्लक्ष करा',
+  'm4q3-4.explanation': 'कारण जाणून घेऊन सुधारणा मागवल्यास ग्राहक पुन्हा मिळू शकतो.',
+  'module-4-quiz-4.title': 'प्रश्नमंजुषा ४ · मॉड्यूल ४ अंतिम चाचणी',
+  'module-4-quiz-4.meta': '३ प्रश्न',
+  'module-4-quiz-4.description': 'स्थानिक विपणन आणि ग्राहक निष्ठा यावरील प्रमुख धडे पुन्हा तपासा.',
+  'm4q4-1.prompt': 'ग्राहक म्हणते, "तुमचे ब्लाउज डिझाइन्स छान आहेत, पण अजून आधुनिक शैली असत्या तर बरे झाले असते." मीनाने काय करावे?',
+  'm4q4-1.option0': 'प्रतिसादाबद्दल आभार मानून आधुनिक शैली शोधा आणि एक-दोन नवीन नमुने जोडा',
+  'm4q4-1.option1': 'तिला पारंपरिक शैलीच चांगल्या आहेत असे सांगा',
+  'm4q4-1.option2': 'इतर ग्राहक समाधानी असल्यामुळे प्रतिसाद दुर्लक्षित करा',
+  'm4q4-1.explanation': 'प्रतिसाद स्वीकारून नमुने अद्ययावत केल्याने अधिक ग्राहक आकर्षित होतात.',
+  'm4q4-2.prompt': 'उत्सवाच्या आधी अधिक ग्राहक आणण्यासाठी मीनाकडे ₹५०० आहेत. सर्वोत्तम पर्याय कोणता?',
+  'm4q4-2.option0': '१० रंगीत फ्लायर्स छापून किराणा दुकाने आणि बसस्टॉपवर ठेवा',
+  'm4q4-2.option1': 'प्रत्येक ग्राहकाला ₹५० सूट द्या जरी नफा कमी झाला तरी',
+  'm4q4-2.option2': 'काहीही करू नका आणि नियमित ग्राहकांकडून ऑर्डरची वाट पहा',
+  'm4q4-2.explanation': 'लक्षित फ्लायर्स कमी खर्चात जास्त लोकांपर्यंत पोहोचतात.',
+  'm4q4-3.prompt': 'मीनाच्या ग्राहक आशाला ब्लाउज घट्ट वाटतो आणि मीना आधीच उत्सवाच्या ऑर्डरमध्ये व्यस्त आहे. तिने काय करावे?',
+  'm4q4-3.option0': 'नम्रपणे माफी मागून एक तातडीचे काम पूर्ण झाल्यावर ब्लाउज दुरुस्त करून त्याच दिवशी द्या',
+  'm4q4-3.option1': 'आशाला दोन आठवड्यांनी येायला सांगा',
+  'm4q4-3.option2': 'ती खूप व्यस्त असल्याने बदल नाकारून टाका',
+  'm4q4-3.explanation': 'योग्य वेळ ठरवून त्याच दिवशी बदल केल्यास सेवा आणि विश्वास टिकतो.',
 };
 
 const translate = (key, fallback) => {
@@ -588,7 +592,7 @@ const modulesData = [
             explanation: 'Quick wins keep motivation high and sustain long-term ambition.'
           }
         ]
-      }
+      },
     ]
   },
   {
@@ -1063,148 +1067,217 @@ const modulesData = [
       {
         id: 'module-4-video-1',
         type: 'video',
-        title: 'Video 1 · Coaching climate leaders',
+        title: 'Video 1 · Understanding Customers',
         meta: '6 min',
         durationSeconds: 360,
-        description: 'Equip managers to coach teams on climate-first decision making.',
-        transcript: 'Coaching unlocks consistent behaviours and keeps teams accountable to climate goals.',
-        videoId: VIDEO_ID
+        description: 'Learn to ask the right questions so every garment fits your customer’s lifestyle, budget, and style.',
+        transcript: 'Explore how to listen deeply, note customer preferences, and spot patterns that guide better tailoring decisions.',
+        videoId: 'VcS6r_xzVbw'
       },
       {
         id: 'module-4-quiz-1',
         type: 'quiz',
-        title: 'Quiz 1 · Coaching essentials',
-        meta: '4 Qs',
-        description: 'Reinforce the behaviours that make coaching effective.',
+        title: 'Quiz 1 · Understanding Customers Basics',
+        meta: '3 Qs',
+        description: 'Check that you can uncover customer needs and match your tailoring services to them.',
         questions: [
           {
             id: 'm4q1-1',
-            prompt: 'What is the first step in a coaching conversation?',
-            options: ['Agree on the goal and desired outcome', 'Dive into solutions immediately', 'Review unrelated metrics'],
-            answerIndex: 0,
-            explanation: 'Clarity on goals ensures coaching stays targeted.'
+            prompt:
+              'Meena notices that college girls prefer trendy designs while older women prefer traditional ones. What should she do to make the most of this insight?',
+            options: [
+              'Make only trendy designs since they are popular',
+              'Prepare different sample catalogs for different types of customers',
+              'Ignore customer preferences and focus only on her own ideas'
+            ],
+            answerIndex: 1,
+            explanation: 'Offering tailored samples for each group helps Meena serve both segments well.'
           },
           {
             id: 'm4q1-2',
-            prompt: 'How do coaches build accountability?',
-            options: ['Co-design actions and follow-ups', 'Leave next steps undefined', 'Rely on annual reviews only'],
+            prompt:
+              'A new customer visits Meena\'s shop but doesn\'t place an order. What should Meena do to understand this customer better?',
+            options: [
+              'Politely ask what type of clothes she\'s looking for and her price range',
+              'Ignore her and wait for her to return',
+              'Tell her to check other shops first'
+            ],
             answerIndex: 0,
-            explanation: 'Shared actions and follow-ups keep progress moving.'
+            explanation: 'Asking friendly questions shows interest and uncovers the customer\'s needs.'
           },
           {
             id: 'm4q1-3',
-            prompt: 'What should notes capture for coaching?',
-            options: ['Commitments, blockers, and wins', 'Personal opinions unrelated to work', 'Travel itineraries'],
+            prompt: 'Why is it risky for Meena to assume that all customers want the same things?',
+            options: [
+              'It reduces her ability to adjust pricing and design for different segments',
+              'It saves her time but lowers her profits',
+              'It helps her save on materials'
+            ],
             answerIndex: 0,
-            explanation: 'Notes focus on commitments and learning moments.'
-          },
-          {
-            id: 'm4q1-4',
-            prompt: 'Why celebrate climate wins in coaching?',
-            options: ['They reinforce the behaviours we want repeated', 'It is optional fun only', 'It replaces performance reviews'],
-            answerIndex: 0,
-            explanation: 'Celebrating wins reinforces culture change.'
+            explanation: 'Treating everyone the same stops her from tailoring offers and can hurt sales.'
           }
         ]
       },
       {
         id: 'module-4-video-2',
         type: 'video',
-        title: 'Video 2 · Operationalising climate governance',
+        title: 'Video 2 · Local Marketing',
         meta: '7 min',
         durationSeconds: 420,
-        description: 'Embed climate into forums, scorecards, and decision rights.',
-        transcript: 'Governance ensures climate priorities are embedded in every decision.',
-        videoId: VIDEO_ID
+        description: 'Promote your tailoring business in your neighbourhood and attract new customers.',
+        transcript: 'Use local events, referrals, and partnerships to make your services visible and trusted.',
+        videoId: 'Wdu8OTD7sE8'
       },
       {
         id: 'module-4-quiz-2',
         type: 'quiz',
-        title: 'Quiz 2 · Governance moments',
-        meta: '5 Qs',
-        description: 'Confirm you can design governance that keeps climate front and centre.',
+        title: 'Quiz 2 · Local Marketing Basics',
+        meta: '3 Qs',
+        description: 'Check your understanding of the essential steps for promoting your services locally.',
         questions: [
           {
             id: 'm4q2-1',
-            prompt: 'What should every governance forum have?',
-            options: ['Clear climate KPIs and ownership', 'Only financial metrics', 'Rotating membership with no agenda'],
+            prompt:
+              'Meena\'s shop gets most new customers through word-of-mouth. What\'s the best way to increase this without spending much?',
+            options: [
+              'Offer small discounts or referral benefits for existing customers',
+              'Place an expensive ad in the city newspaper',
+              'Reduce her prices drastically for everyone'
+            ],
             answerIndex: 0,
-            explanation: 'KPIs and ownership make governance effective.'
+            explanation: 'Rewarding referrals encourages more recommendations at a low cost.'
           },
           {
             id: 'm4q2-2',
-            prompt: 'How often should climate risk be discussed?',
-            options: ['As a standing agenda item', 'Only annually', 'Only when issues arise'],
+            prompt:
+              'If Meena puts a signboard outside her house but few people notice it, what should she try next?',
+            options: [
+              'Move the sign to a bus stop or market area where more people pass by',
+              'Remove the board completely',
+              'Wait longer for people to notice'
+            ],
             answerIndex: 0,
-            explanation: 'Regular discussion keeps risk on the radar.'
+            explanation: 'Placing signage in a high-traffic spot helps more potential customers see it.'
           },
           {
             id: 'm4q2-3',
-            prompt: 'What enables fast decisions?',
-            options: ['Pre-agreed escalation paths', 'Waiting for consensus after the meeting', 'Delaying until next quarter'],
+            prompt:
+              'Meena\'s niece offers to make her a WhatsApp Business account. What should Meena post there to attract more orders?',
+            options: [
+              'Pictures of her stitched dresses and satisfied customers',
+              'Random festival images',
+              'Only long messages about prices'
+            ],
             answerIndex: 0,
-            explanation: 'Clear escalation keeps momentum and accountability.'
-          },
-          {
-            id: 'm4q2-4',
-            prompt: 'How do you keep boards informed?',
-            options: ['Curate dashboards with leading indicators', 'Share raw data dumps', 'Send ad-hoc updates when convenient'],
-            answerIndex: 0,
-            explanation: 'Dashboards with leading indicators provide insight without overload.'
-          },
-          {
-            id: 'm4q2-5',
-            prompt: 'Why integrate climate targets into compensation?',
-            options: ['To align incentives with desired outcomes', 'To add complexity only', 'It should stay separate from performance'],
-            answerIndex: 0,
-            explanation: 'Incentives drive focus on climate performance.'
+            explanation: 'Showcasing her work and happy clients builds trust with new leads.'
           }
         ]
       },
       {
         id: 'module-4-video-3',
         type: 'video',
-        title: 'Video 3 · Measuring transformation impact',
+        title: 'Video 3 · Trust & Customer Loyalty',
         meta: '6 min',
         durationSeconds: 360,
-        description: 'Showcase outcomes and keep teams energised with clear storytelling.',
-        transcript: 'Measurement paired with storytelling keeps transformation visible and celebrated.',
-        videoId: VIDEO_ID
+        description: 'Build long-term customer relationships with consistent service, transparency, and thoughtful follow-up.',
+        transcript: 'Delivering on promises, fixing mistakes quickly, and thanking customers keeps them returning.',
+        videoId: 't1j4bxYNlX4'
       },
       {
         id: 'module-4-quiz-3',
         type: 'quiz',
-        title: 'Quiz 3 · Impact storytelling',
+        title: 'Quiz 3 · Trust & Loyalty Basics',
         meta: '4 Qs',
-        description: 'Validate your ability to communicate climate impact credibly.',
+        description: 'Confirm you know how to win trust and encourage repeat business.',
         questions: [
           {
             id: 'm4q3-1',
-            prompt: 'What makes a great impact story?',
-            options: ['Data plus human outcomes', 'Only emotional quotes', 'Only numbers without context'],
+            prompt: 'Meena\'s customer says the blouse fitting is slightly loose. What\'s the most professional way to handle it?',
+            options: [
+              'Apologise and offer to alter it quickly at no extra cost',
+              'Argue that the customer gave wrong measurements',
+              'Tell her to go to another tailor'
+            ],
             answerIndex: 0,
-            explanation: 'Impact stories need both evidence and human meaning.'
+            explanation: 'A fast, friendly fix shows responsibility and keeps trust strong.'
           },
           {
             id: 'm4q3-2',
-            prompt: 'How often should impact stories be shared?',
-            options: ['Regularly across teams and channels', 'Only during annual reports', 'Only if results are perfect'],
+            prompt: 'Why is keeping records of customers useful for Meena?',
+            options: [
+              'It helps her provide personalised service and save time on new orders',
+              'It helps her gossip about customers\' choices',
+              'It helps her increase prices secretly'
+            ],
             answerIndex: 0,
-            explanation: 'Frequent storytelling keeps energy and focus high.'
+            explanation: 'Good records let Meena recall preferences quickly and serve repeat clients better.'
           },
           {
             id: 'm4q3-3',
-            prompt: 'What should you do when results lag?',
-            options: ['Explain root causes and next actions', 'Hide the data', 'Blame external factors only'],
+            prompt: 'Meena decides to give free matching masks during Diwali. What business goal is she achieving?',
+            options: [
+              'Building customer loyalty and goodwill',
+              'Reducing her profit without benefit',
+              'Getting rid of old fabric'
+            ],
             answerIndex: 0,
-            explanation: 'Owning the narrative builds trust even when progress slows.'
+            explanation: 'Thoughtful freebies delight customers and encourage repeat orders.'
           },
           {
             id: 'm4q3-4',
-            prompt: 'How can notes support storytelling?',
-            options: ['They capture quotes, data points, and client proof', 'They are not relevant for impact stories', 'They should only list tasks'],
+            prompt: 'A long-term customer suddenly starts going to another tailor. What should Meena do?',
+            options: [
+              'Ask politely if something went wrong and try to improve',
+              'Get angry and tell others not to serve that customer',
+              'Ignore the situation completely'
+            ],
             answerIndex: 0,
-            explanation: 'Notes capture detail that brings stories to life.'
+            explanation: 'Understanding the issue gives her a chance to fix it and win the customer back.'
+          }
+        ]
+      },
+      {
+        id: 'module-4-quiz-4',
+        type: 'quiz',
+        title: 'Quiz 4 · Module 4 Final Test',
+        meta: '3 Qs',
+        description: 'Review the key marketing and trust lessons from Module 4.',
+        questions: [
+          {
+            id: 'm4q4-1',
+            prompt:
+              'A customer says, “Your blouse designs are nice, but I wish you had more modern styles.” What should Meena do?',
+            options: [
+              'Thank her for the feedback, research modern styles, and add one or two new samples',
+              'Tell her traditional styles are better',
+              'Ignore the feedback because others seem satisfied'
+            ],
+            answerIndex: 0,
+            explanation: 'Acting on feedback keeps customers happy and attracts new tastes.'
+          },
+          {
+            id: 'm4q4-2',
+            prompt:
+              'Meena wants to attract more customers before the festival season. She has ₹500 to spend. What\'s the best option?',
+            options: [
+              'Print 10 colorful flyers and place them in grocery shops and bus stops',
+              'Offer a ₹50 discount to all customers, even if it cuts her profit',
+              'Do nothing and hope regular customers bring more orders'
+            ],
+            answerIndex: 0,
+            explanation: 'Targeted flyers stretch her budget while reaching many potential buyers.'
+          },
+          {
+            id: 'm4q4-3',
+            prompt:
+              'Meena\'s customer, Asha, complains that the blouse she stitched feels tight. Meena is already busy with festival orders. What should she do?',
+            options: [
+              'Politely apologise, adjust Asha\'s blouse after finishing one urgent order, and deliver it on the same day',
+              'Tell Asha to come after two weeks',
+              'Refuse to fix it because she\'s too busy'
+            ],
+            answerIndex: 0,
+            explanation: 'Scheduling a same-day fix balances her workload and keeps the customer satisfied.'
           }
         ]
       }
@@ -1262,6 +1335,7 @@ const refs = {
   overlay: $('[data-complete-overlay]'),
   overlayButton: $('[data-overlay-complete]'),
   markComplete: $('[data-mark-complete]'),
+  markIncomplete: $('[data-mark-incomplete]'),
   captionsToggle: $('[data-toggle-captions]'),
   downloadButton: $('[data-download-video]'),
   itemTypeChip: $('[data-item-type]'),
@@ -1775,13 +1849,20 @@ function updateCompletionUI() {
   if (!currentItem) return;
   const eligible = isEligible(currentItem.id);
   const completed = Boolean(state.completed[currentItem.id]);
-  const shouldShowOverlay = currentItem.type === 'video' && eligible && !completed;
+  const isVideo = currentItem.type === 'video';
+  const shouldShowOverlay = isVideo && eligible && !completed;
   refs.overlay.hidden = !shouldShowOverlay;
   refs.markComplete.hidden = !eligible;
   refs.markComplete.disabled = completed;
   refs.markComplete.textContent = completed
     ? translate('label.completed', 'Completed')
     : translate('label.markComplete', 'Mark as complete');
+  if (refs.markIncomplete) {
+    const shouldShowMarkIncomplete = isVideo && completed;
+    refs.markIncomplete.hidden = !shouldShowMarkIncomplete;
+    refs.markIncomplete.disabled = !shouldShowMarkIncomplete;
+    refs.markIncomplete.textContent = translate('label.markIncomplete', 'Mark as incomplete');
+  }
   refs.overlayButton.disabled = completed;
   refs.addTimecode.disabled = currentItem.type !== 'video';
   refs.downloadButton.disabled = currentItem.type !== 'video';
@@ -1799,6 +1880,14 @@ function completeCurrentItem() {
   refs.overlay.hidden = true;
   refs.markComplete.textContent = translate('label.completed', 'Completed');
   refs.markComplete.disabled = true;
+  updateCompletionUI();
+}
+
+function markCurrentItemIncomplete() {
+  if (!currentItem) return;
+  if (!state.completed[currentItem.id]) return;
+  delete state.completed[currentItem.id];
+  persistState();
   updateCompletionUI();
 }
 
@@ -1993,6 +2082,7 @@ function wireEvents() {
   });
   refs.search?.addEventListener('input', applySearchFilter);
   refs.markComplete?.addEventListener('click', completeCurrentItem);
+  refs.markIncomplete?.addEventListener('click', markCurrentItemIncomplete);
   refs.overlayButton?.addEventListener('click', completeCurrentItem);
   refs.downloadButton?.addEventListener('click', handleDownload);
   refs.retryButton?.addEventListener('click', handleRetry);
