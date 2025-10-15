@@ -4,7 +4,7 @@
   --accent-warm:#f97316; --accent-soft:#fff7ed;
   --border:#e5e7eb;
   --nav-glass:rgba(255,255,255,.9);
-  --font-sans:"Inter","Mukta","Noto Sans Devanagari","Hind";
+  --font-sans:"Roboto","Mukta","Noto Sans Devanagari","Hind";
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}

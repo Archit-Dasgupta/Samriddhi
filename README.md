@@ -4,14 +4,14 @@ Samriddhi MVP
 
 ## Typography
 
-The interface uses a shared sans-serif stack that starts with **Inter** for Latin text
+The interface uses a shared sans-serif stack that starts with **Roboto** for Latin text
 and gracefully falls back to **Mukta**, **Noto Sans Devanagari**, and **Hind** so that
 Marathi content renders crisply alongside English labels. You can reuse the exact
 stack anywhere on the site with CSS:
 
 ```css
 body {
-  font-family: "Inter", "Mukta", "Noto Sans Devanagari", "Hind";
+  font-family: "Roboto", "Mukta", "Noto Sans Devanagari", "Hind";
 }
 ```
 
