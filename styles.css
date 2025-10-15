@@ -4,11 +4,11 @@
   --accent-warm:#f97316; --accent-soft:#fff7ed;
   --border:#e5e7eb;
   --nav-glass:rgba(255,255,255,.9);
+  --font-sans:"Inter","Mukta","Noto Sans Devanagari","Hind",system-ui,-apple-system,"Segoe UI","Roboto","Helvetica","Arial",sans-serif;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:Inter,'Mukta','Noto Sans Devanagari','Hind',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:radial-gradient(circle at top,#f1f5f9 0%,#f6f7f9 42%,#f0fdf4 100%);color:var(--text);min-height:100vh;--module-topbar-offset:0px}
-html[lang="mr"] body{font-family:'Mukta','Noto Sans Devanagari','Hind',Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+body{margin:0;font-family:var(--font-sans);background:radial-gradient(circle at top,#f1f5f9 0%,#f6f7f9 42%,#f0fdf4 100%);color:var(--text);min-height:100vh;--module-topbar-offset:0px}
 body,button,input,select,textarea{font-family:inherit}
 
 .hidden{display:none}
@@ -653,7 +653,7 @@ body.course-player{
   --course-header-offset:112px;
   --sticky-rail-offset:calc(var(--site-header-height) + var(--course-header-offset));
   --layout-max-width:1180px;
-  font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-family:var(--font-sans);
   background:var(--bg);
   color:var(--text);
 }
