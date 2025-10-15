@@ -1379,6 +1379,7 @@ let ytPlayer = null;
 let youtubeReadyPromise = null;
 let watchInterval = null;
 let autoAdvanceTimer = null;
+let hasMounted = false;
 
 function persistState() {
   localStorage.setItem(COURSE_STATE, JSON.stringify(state));
@@ -1538,7 +1539,8 @@ function selectItem(itemId, userInitiated = false) {
   currentItem = item;
   state.activeItemId = item.id;
   persistState();
-  updateActiveRow();
+  const shouldScroll = userInitiated || !hasMounted;
+  updateActiveRow(shouldScroll);
   renderCurrentItem();
   updateDetails();
   updateCompletionUI();
@@ -1547,16 +1549,31 @@ function selectItem(itemId, userInitiated = false) {
   if (userInitiated) {
     closeModulesPanelOnMobile();
   }
+  if (!hasMounted) {
+    hasMounted = true;
+  }
 }
 
-function updateActiveRow() {
+function updateActiveRow(shouldScroll = false) {
   itemElements.forEach((element, id) => {
     const isActive = id === currentItem.id;
     element.setAttribute('aria-selected', String(isActive));
     element.classList.toggle('is-active', isActive);
     element.setAttribute('data-complete', state.completed[id] ? 'true' : 'false');
-    if (isActive && !element.hidden) {
-      element.scrollIntoView({ block: 'nearest' });
+    if (isActive && shouldScroll && !element.hidden && typeof element.scrollIntoView === 'function') {
+      const scrollContainer =
+        element.closest('.modules-panel__list') || element.closest('.modules-panel__body');
+      if (scrollContainer instanceof HTMLElement) {
+        const containerRect = scrollContainer.getBoundingClientRect();
+        const elementRect = element.getBoundingClientRect();
+        const outOfViewVertical = elementRect.top < containerRect.top || elementRect.bottom > containerRect.bottom;
+        const outOfViewHorizontal = elementRect.left < containerRect.left || elementRect.right > containerRect.right;
+        if (outOfViewVertical || outOfViewHorizontal) {
+          element.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+        }
+      } else {
+        element.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+      }
     }
   });
 }
@@ -1958,6 +1975,9 @@ function applySearchFilter() {
     });
     progressRef.card.hidden = term && visibleCount === 0;
   });
+  const verticalContainer = refs.moduleList?.closest('.modules-panel__body');
+  verticalContainer?.scrollTo({ top: 0, behavior: 'smooth' });
+  refs.moduleList?.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function handleNotesSubmit(event) {
@@ -2136,7 +2156,7 @@ onLanguageChange(() => {
   if (!allItems.length) return;
   buildModules();
   applySearchFilter();
-  updateActiveRow();
+  updateActiveRow(true);
   updateDetails();
   updateCompletionUI();
   renderCurrentItem();

@@ -71,6 +71,7 @@ const setActiveNav = (route) => {
 };
 
 const setupHeader = (page) => {
+  document.body?.classList.add('has-site-header');
   const hamb = document.querySelector('#hamb');
   const navRight = document.querySelector('#navRight');
   hamb?.addEventListener('click', () => {
@@ -141,7 +142,23 @@ const setupHeader = (page) => {
     },
   });
 
-  setActiveNav(page);
+  const routeMap = {
+    home: 'home',
+    dashboard: 'home',
+    modules: 'modules',
+    lit: 'modules',
+    banking: 'banking',
+    deposits: 'banking',
+    'open-account': 'banking',
+    loan: 'banking',
+    'savings-guide': 'banking',
+    toolkits: 'toolkits',
+    about: 'about',
+    profile: 'profile',
+  };
+
+  const activeRoute = routeMap[page] ?? page;
+  setActiveNav(activeRoute);
   updateHeaderAuthState(getSession());
 };
 
