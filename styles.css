@@ -1166,7 +1166,7 @@ body.course-player .sr-only{position:absolute;width:1px;height:1px;padding:0;mar
 
 .program-layout{display:grid;grid-template-columns:minmax(0,352px) minmax(0,1fr);gap:24px;align-items:start}
 
-.modules-panel{border:1px solid var(--border);border-radius:28px;background:#fff;position:sticky;top:calc(var(--module-topbar-offset) + 32px);height:calc(100vh - (var(--module-topbar-offset) + 64px));height:min(720px,calc(100vh - (var(--module-topbar-offset) + 64px)));max-height:calc(100vh - (var(--module-topbar-offset) + 64px));max-height:min(720px,calc(100vh - (var(--module-topbar-offset) + 64px)));overflow:hidden;display:flex;flex-direction:column}
+.modules-panel{border:1px solid var(--border);border-radius:28px;background:#fff;position:relative;top:auto;height:auto;max-height:calc(100vh - (var(--module-topbar-offset) + 64px));max-height:min(720px,calc(100vh - (var(--module-topbar-offset) + 64px)));overflow:hidden;display:flex;flex-direction:column}
 .modules-panel__inner{display:flex;flex-direction:column;flex:1;min-height:0;height:100%;overflow:hidden}
 .modules-panel__handle{display:none}
 .modules-panel__header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:24px 28px 16px;border-bottom:1px solid var(--border)}
