@@ -11,8 +11,7 @@ stack anywhere on the site with CSS:
 
 ```css
 body {
-  font-family: "Inter", "Mukta", "Noto Sans Devanagari", "Hind", system-ui,
-    -apple-system, "Segoe UI", "Roboto", "Helvetica", "Arial", sans-serif;
+  font-family: "Inter", "Mukta", "Noto Sans Devanagari", "Hind";
 }
 ```
 
