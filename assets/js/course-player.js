@@ -542,69 +542,70 @@ const modulesData = [
         id: 'module-1-quiz-3',
         type: 'quiz',
         title: 'Quiz 3 · Module 1 Knowledge Test',
-        meta: '६ प्रश्न',
-        description: 'मॉड्यूल १ मधील संकल्पना दैनंदिन कामात कशा वापरायच्या याचा सराव करा.',
+        meta: '6 Qs',
+        description: 'Practice applying Module 1 concepts to everyday tailoring decisions.',
         questions: [
           {
             id: 'm1q3-1',
-            prompt: 'शिवणकामाचा व्यवसाय सुरू करण्यापूर्वी आपले लक्ष्य ग्राहक ओळखणे का महत्त्वाचे आहे?',
+            prompt:
+              'Why is identifying your target customers important before starting your tailoring business?',
             options: [
-              'यामुळे तुम्हाला अधिक कापड खरेदी करता येते',
-              'यामुळे काय शिवायचे आणि कोणत्या किमतीत शिवायचे हे ठरवता येते',
-              'यामुळे तुम्हाला दुकान सजवता येते',
-              'यामुळे तुम्हाला जास्त शिवणकाम करणारे सापडतात'
+              'It helps you buy more cloth',
+              'It helps you decide what to stitch and at what price',
+              'It helps you decorate your shop',
+              'It helps you find more tailors'
             ],
             answerIndex: 1,
-            explanation: 'लक्ष्य ग्राहक समजले की त्यांना हवे असलेले डिझाइन्स आणि त्यांना योग्य वाटणारे दर ठरवता येतात.'
+            explanation: 'Knowing your target customers makes it easier to choose designs and price points they value.'
           },
           {
             id: 'm1q3-2',
-            prompt: 'खालीलपैकी कोणता खर्च व्यवसाय सुरू करतानाचा (स्टार्ट-अप कॉस्ट) नाही?',
+            prompt: 'Which of the following is not a startup cost?',
             options: [
-              'शिलाई मशीन खरेदी',
-              'भाड्याची जामीन रक्कम',
-              'दररोजचा धाग्याचा खर्च',
-              'दुकानाचे नूतनीकरण'
+              'Buying a sewing machine',
+              'Paying a rent deposit',
+              'Daily thread expense',
+              'Shop renovation'
             ],
             answerIndex: 2,
-            explanation: 'दररोजचा धाग्याचा खर्च हा चालू (दैनंदिन) खर्च आहे, सुरुवातीला एकदाच येणारा खर्च नाही.'
+            explanation: 'Daily thread expense is an ongoing operating cost, not a one-time startup expense.'
           },
           {
             id: 'm1q3-3',
-            prompt: 'शिवणकामाचा व्यवसाय सुरू करण्यापूर्वी चांगले पहिले पाऊल कोणते?',
+            prompt: 'What’s a good first step before starting your tailoring business?',
             options: [
-              'ताबडतोब कामगार ठेवणे',
-              'खर्च माहित नसताना कर्ज घेणे',
-              'खर्च आणि अपेक्षित उत्पन्न यांची साधी व्यवसाय योजना तयार करणे',
-              'सर्वात महाग मशीन खरेदी करणे'
+              'Hiring workers right away',
+              'Borrowing without knowing your costs',
+              'Creating a simple plan of your costs and expected income',
+              'Buying the most expensive machine'
             ],
             answerIndex: 2,
-            explanation: 'व्यवसाय योजना बनवल्याने खर्च आणि उत्पन्नाचा अंदाज येतो आणि निर्णय व्यवस्थित घेता येतात.'
+            explanation: 'A basic business plan helps you estimate costs and income before making commitments.'
           },
           {
             id: 'm1q3-4',
             prompt:
-              'राणी तिची शिवणकामाची दुकान सुरू करत आहे. तिच्याकडे बचतीत ₹२०,००० आहेत. तिने सगळी रक्कम मशीन आणि भाड्यावर खर्च करावी का, की थोडी रक्कम धागा, कापड आणि दैनंदिन खर्चासाठी राखून ठेवावी?',
+              'Rani is planning to start her tailoring shop. She has ₹20,000 in savings. Should she spend it all on machines and rent, or keep some aside for thread, cloth, and daily expenses?',
             options: [
-              'संपूर्ण ₹२०,००० मशीन आणि भाड्यासाठी वापरणे',
-              'काही रक्कम धागा, कापड आणि दैनंदिन खर्चासाठी बाजूला ठेवणे'
+              'Spend the entire ₹20,000 on machines and rent',
+              'Keep some money aside for thread, cloth, and daily expenses'
             ],
             answerIndex: 1,
-            explanation: 'दैनंदिन साहित्य आणि छोट्या खर्चांसाठी रक्कम बाजूला ठेवली तर व्यवसाय चालू ठेवणे सोपे जाते.'
+            explanation: 'Setting money aside for daily supplies keeps the business running smoothly.'
           },
           {
             id: 'm1q3-5',
-            prompt: 'खालीलपैकी कोणता खर्च निश्चित (फिक्स्ड) खर्च आहे?',
-            options: ['वीज बिल', 'भाडे', 'धागा आणि कापड', 'बटणे आणि साखळ्या'],
+            prompt: 'Which of the following is a fixed cost?',
+            options: ['Electricity bill', 'Rent', 'Thread and cloth', 'Buttons and zippers'],
             answerIndex: 1,
-            explanation: 'भाडे हा दर महिन्याला ठराविक प्रमाणात येणारा खर्च असतो, उत्पादनावर अवलंबून नसतो.'
+            explanation: 'Rent is usually the same each month regardless of how many orders you stitch.'
           },
           {
             id: 'm1q3-6',
-            prompt: 'शिवणकामात खालीलपैकी कोणता खर्च चल (व्हेरिएबल) खर्च आहे?',
-            options: ['शिवण मशीन दुरुस्ती', 'भाडे', 'प्रत्येक ऑर्डरसाठी लागणारा धागा', 'मासिक इंटरनेट बिल'],
+            prompt: 'Which of the following is a variable cost in tailoring?',
+            options: ['Sewing machine repair', 'Rent', 'Thread used per order', 'Monthly internet bill'],
             answerIndex: 2,
-            explanation: 'प्रत्येक ऑर्डरनुसार धाग्याचे प्रमाण बदलते, म्हणून तो चल खर्च मानला जातो.'
+            explanation: 'Thread usage changes with each order, so it is a variable cost.'
           }
         ]
       },
