@@ -533,63 +533,69 @@ const modulesData = [
         id: 'module-1-quiz-3',
         type: 'quiz',
         title: 'Quiz 3 · Module 1 Knowledge Test',
-        meta: '5 Qs',
+        meta: '६ प्रश्न',
         description: 'Ensure you can translate Module 1’s key concepts into daily routines.',
         questions: [
           {
             id: 'm1q3-1',
-            prompt: 'What should you do before alignment workshops?',
+            prompt: 'शिवणकामाचा व्यवसाय सुरू करण्यापूर्वी आपले लक्ष्य ग्राहक ओळखणे का महत्त्वाचे आहे?',
             options: [
-              'Share success stories and blockers gathered from notes',
-              'Wait to gather feedback live in the session',
-              'Focus only on reporting slides'
+              'यामुळे तुम्हाला अधिक कापड खरेदी करता येते',
+              'यामुळे काय शिवायचे आणि कोणत्या किमतीत शिवायचे हे ठरवता येते',
+              'यामुळे तुम्हाला दुकान सजवता येते',
+              'यामुळे तुम्हाला जास्त शिवणकाम करणारे सापडतात'
             ],
-            answerIndex: 0,
-            explanation: 'Sharing insights ahead of time lets teams arrive prepared to solve real issues.'
+            answerIndex: 1,
+            explanation: 'लक्ष्य ग्राहक समजले की त्यांना हवे असलेले डिझाइन्स आणि त्यांना योग्य वाटणारे दर ठरवता येतात.'
           },
           {
             id: 'm1q3-2',
-            prompt: 'Which behaviour builds trust across teams?',
+            prompt: 'खालीलपैकी कोणता खर्च व्यवसाय सुरू करतानाचा (स्टार्ट-अप कॉस्ट) नाही?',
             options: [
-              'Transparent progress updates and clear ownership',
-              'Keeping plans private until finalised',
-              'Delegating coordination to external consultants'
+              'शिलाई मशीन खरेदी',
+              'भाड्याची जामीन रक्कम',
+              'दररोजचा धाग्याचा खर्च',
+              'दुकानाचे नूतनीकरण'
             ],
-            answerIndex: 0,
-            explanation: 'Transparency and ownership give teams confidence in the process.'
+            answerIndex: 2,
+            explanation: 'दररोजचा धाग्याचा खर्च हा चालू (दैनंदिन) खर्च आहे, सुरुवातीला एकदाच येणारा खर्च नाही.'
           },
           {
             id: 'm1q3-3',
-            prompt: 'How should blockers be escalated?',
+            prompt: 'शिवणकामाचा व्यवसाय सुरू करण्यापूर्वी चांगले पहिले पाऊल कोणते?',
             options: [
-              'Capture them in notes with proposed actions for quick review',
-              'Wait for quarterly steering meetings',
-              'Escalate only after multiple failed attempts'
+              'ताबडतोब कामगार ठेवणे',
+              'खर्च माहित नसताना कर्ज घेणे',
+              'खर्च आणि अपेक्षित उत्पन्न यांची साधी व्यवसाय योजना तयार करणे',
+              'सर्वात महाग मशीन खरेदी करणे'
             ],
-            answerIndex: 0,
-            explanation: 'Fast escalation with context keeps momentum on track.'
+            answerIndex: 2,
+            explanation: 'व्यवसाय योजना बनवल्याने खर्च आणि उत्पन्नाचा अंदाज येतो आणि निर्णय व्यवस्थित घेता येतात.'
           },
           {
             id: 'm1q3-4',
-            prompt: 'What signals a module is complete?',
+            prompt:
+              'राणी तिची शिवणकामाची दुकान सुरू करत आहे. तिच्याकडे बचतीत ₹२०,००० आहेत. तिने सगळी रक्कम मशीन आणि भाड्यावर खर्च करावी का, की थोडी रक्कम धागा, कापड आणि दैनंदिन खर्चासाठी राखून ठेवावी?',
             options: [
-              'Videos watched, quizzes passed, and notes saved',
-              'Only videos watched',
-              'Only quizzes passed'
+              'संपूर्ण ₹२०,००० मशीन आणि भाड्यासाठी वापरणे',
+              'काही रक्कम धागा, कापड आणि दैनंदिन खर्चासाठी बाजूला ठेवणे'
             ],
-            answerIndex: 0,
-            explanation: 'Completion combines learning consumption and assessment.'
+            answerIndex: 1,
+            explanation: 'दैनंदिन साहित्य आणि छोट्या खर्चांसाठी रक्कम बाजूला ठेवली तर व्यवसाय चालू ठेवणे सोपे जाते.'
           },
           {
             id: 'm1q3-5',
-            prompt: 'Why celebrate quick wins?',
-            options: [
-              'They reinforce the cultural shift toward climate-first thinking',
-              'They are optional nice-to-haves',
-              'They replace long-term planning'
-            ],
-            answerIndex: 0,
-            explanation: 'Quick wins keep motivation high and sustain long-term ambition.'
+            prompt: 'खालीलपैकी कोणता खर्च निश्चित (फिक्स्ड) खर्च आहे?',
+            options: ['वीज बिल', 'भाडे', 'धागा आणि कापड', 'बटणे आणि साखळ्या'],
+            answerIndex: 1,
+            explanation: 'भाडे हा दर महिन्याला ठराविक प्रमाणात येणारा खर्च असतो, उत्पादनावर अवलंबून नसतो.'
+          },
+          {
+            id: 'm1q3-6',
+            prompt: 'शिवणकामात खालीलपैकी कोणता खर्च चल (व्हेरिएबल) खर्च आहे?',
+            options: ['शिवण मशीन दुरुस्ती', 'भाडे', 'प्रत्येक ऑर्डरसाठी लागणारा धागा', 'मासिक इंटरनेट बिल'],
+            answerIndex: 2,
+            explanation: 'प्रत्येक ऑर्डरनुसार धाग्याचे प्रमाण बदलते, म्हणून तो चल खर्च मानला जातो.'
           }
         ]
       },
